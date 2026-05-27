@@ -292,16 +292,6 @@ def llm_enabled() -> bool:
     return bool(os.getenv("LLM_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY"))
 
 
-def llm_provider_label() -> str:
-    if os.getenv("LLM_API_KEY"):
-        return "openai-compatible"
-    if os.getenv("OPENAI_API_KEY"):
-        return "openai"
-    if os.getenv("DEEPSEEK_API_KEY"):
-        return "deepseek"
-    return "disabled"
-
-
 def llm_headers(api_key: str) -> dict[str, str]:
     return {
         "Content-Type": "application/json",
@@ -319,8 +309,7 @@ def call_openai_compatible(prompt: str) -> dict[str, Any]:
     endpoint = base_url.rstrip("/") + "/chat/completions"
     payload = {
         "model": model,
-        "temperature": float(os.getenv("LLM_TEMPERATURE", "0.2")),
-        "max_tokens": int(os.getenv("LLM_MAX_TOKENS", "1200")),
+        "temperature": 0.2,
         "response_format": {"type": "json_object"},
         "messages": [
             {
@@ -338,67 +327,13 @@ def call_openai_compatible(prompt: str) -> dict[str, Any]:
     )
     with urllib.request.urlopen(req, timeout=90) as resp:
         data = json.loads(resp.read().decode("utf-8"))
-    choice = data["choices"][0]
-    content = choice["message"].get("content") or ""
-    if choice.get("finish_reason") == "length":
-        raise ValueError("model output was truncated by max_tokens")
-    return parse_llm_json(content)
-
-
-def extract_balanced_json(text: str) -> str | None:
-    start = text.find("{")
-    if start < 0:
-        return None
-
-    depth = 0
-    in_string = False
-    escaped = False
-    for index, char in enumerate(text[start:], start=start):
-        if in_string:
-            if escaped:
-                escaped = False
-            elif char == "\\":
-                escaped = True
-            elif char == '"':
-                in_string = False
-            continue
-
-        if char == '"':
-            in_string = True
-        elif char == "{":
-            depth += 1
-        elif char == "}":
-            depth -= 1
-            if depth == 0:
-                return text[start : index + 1]
-    return None
-
-
-def parse_llm_json(content: str) -> dict[str, Any]:
-    stripped = content.strip()
-    if not stripped:
-        raise ValueError("empty model content")
-
-    try:
-        return json.loads(stripped)
-    except json.JSONDecodeError:
-        pass
-
-    fenced = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", stripped, flags=re.S | re.I)
-    if fenced:
-        return json.loads(fenced.group(1))
-
-    balanced = extract_balanced_json(stripped)
-    if balanced:
-        return json.loads(balanced)
-
-    preview = stripped[:120].replace("\n", " ")
-    raise ValueError(f"model content is not valid JSON: {preview}")
+    content = data["choices"][0]["message"]["content"]
+    return json.loads(content)
 
 
 def build_llm_prompt(topic: Topic, paper: dict[str, Any], base_match: dict[str, Any]) -> str:
     return f"""
-请根据论文标题、摘要、分类和我的研究方向，输出精确中文技术分析。不要夸大摘要中没有的信息；如果证据不足，请明确说明。
+请根据论文标题、摘要、分类和我的研究方向，输出精确中文分析。不要夸大摘要中没有的信息；如果证据不足，请明确说明。
 
 我的研究方向：
 名称：{topic.name}
@@ -430,27 +365,16 @@ arXiv 分类：{", ".join(paper.get("categories", []))}
 """.strip()
 
 
-def summarize_with_llm(topic: Topic, paper: dict[str, Any], base_match: dict[str, Any]) -> tuple[dict[str, str], dict[str, Any], bool]:
+def summarize_with_llm(topic: Topic, paper: dict[str, Any], base_match: dict[str, Any]) -> tuple[dict[str, str], dict[str, Any]]:
     if not llm_enabled():
-        return fallback_summary(paper, base_match), base_match, False
+        return fallback_summary(paper, base_match), base_match
 
     prompt = build_llm_prompt(topic, paper, base_match)
-    retries = max(0, int(os.getenv("LLM_RETRIES", "2")))
-    last_error: Exception | None = None
-    for attempt in range(retries + 1):
-        try:
-            retry_prompt = prompt
-            if attempt:
-                retry_prompt += "\n\n上一次输出不是合法 JSON。请只返回一个完整 JSON 对象，不要 Markdown，不要额外解释。"
-            data = call_openai_compatible(retry_prompt)
-            break
-        except Exception as exc:
-            last_error = exc
-            if attempt < retries:
-                time.sleep(1.5 * (attempt + 1))
-            else:
-                print(f"Warning: LLM summary failed for {paper.get('id')} after {retries + 1} attempts: {exc}", file=sys.stderr)
-                return fallback_summary(paper, base_match), base_match, False
+    try:
+        data = call_openai_compatible(prompt)
+    except Exception as exc:
+        print(f"Warning: LLM summary failed for {paper.get('id')}: {exc}", file=sys.stderr)
+        return fallback_summary(paper, base_match), base_match
 
     summary = {
         "problem": str(data.get("problem", "")),
@@ -469,14 +393,14 @@ def summarize_with_llm(topic: Topic, paper: dict[str, Any], base_match: dict[str
     adjusted_match["score"] = round(adjusted_score, 3)
     adjusted_match["level"] = adjusted_level
     adjusted_match["llm_reason"] = summary["why_relevant"]
-    return summary, adjusted_match, True
+    return summary, adjusted_match
 
 
-def summarize_one(args: tuple[Topic, dict[str, Any]]) -> tuple[str, dict[str, str], dict[str, Any], bool]:
+def summarize_one(args: tuple[Topic, dict[str, Any]]) -> tuple[str, dict[str, str], dict[str, Any]]:
     topic, paper = args
     paper_id = str(paper.get("id", ""))
-    summary, adjusted_match, used_llm = summarize_with_llm(topic, paper, paper["best_match"])
-    return paper_id, summary, adjusted_match, used_llm
+    summary, adjusted_match = summarize_with_llm(topic, paper, paper["best_match"])
+    return paper_id, summary, adjusted_match
 
 
 def dedupe_papers(papers: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -496,12 +420,6 @@ def collect(config_path: Path, output_path: Path, days: int, max_per_topic: int,
     config = load_issue_config(default_config)
     topics = parse_topics(config)
     now = dt.datetime.now(dt.timezone.utc)
-    print(
-        f"LLM provider: {llm_provider_label()}, enabled={llm_enabled()}, "
-        f"model={os.getenv('LLM_MODEL') or ('deepseek-chat' if os.getenv('DEEPSEEK_API_KEY') else 'gpt-4o-mini')}",
-        flush=True,
-    )
-
     all_candidates = []
     successful_fetches = 0
     failed_fetches = 0
@@ -543,42 +461,35 @@ def collect(config_path: Path, output_path: Path, days: int, max_per_topic: int,
             recent_papers.append(paper)
 
     recent_papers.sort(key=lambda p: (p["best_match"]["score"], p.get("published", "")), reverse=True)
-    print(f"Collected {len(recent_papers)} matched papers; max summaries: {max_summaries}", flush=True)
-    if not recent_papers:
-        print("No matched papers found, so the LLM will not be called.", flush=True)
-
-    summaries_by_id: dict[str, tuple[dict[str, str], dict[str, Any], bool]] = {}
+    summaries_by_id: dict[str, tuple[dict[str, str], dict[str, Any]]] = {}
     llm_jobs = []
     for paper in recent_papers[:max_summaries]:
         best_topic = next(topic for topic in topics if topic.id == paper["best_match"]["topic_id"])
         llm_jobs.append((best_topic, paper))
 
     if llm_enabled() and llm_jobs:
-        concurrency = max(1, int(os.getenv("LLM_CONCURRENCY", "4")))
-        print(f"Summarizing {len(llm_jobs)} papers with {llm_provider_label()} using concurrency={concurrency}", flush=True)
+        concurrency = max(1, int(os.getenv("LLM_CONCURRENCY", "2")))
+        print(f"Summarizing {len(llm_jobs)} papers with LLM using concurrency={concurrency}", flush=True)
         with concurrent.futures.ThreadPoolExecutor(max_workers=concurrency) as executor:
             futures = [executor.submit(summarize_one, job) for job in llm_jobs]
             for future in concurrent.futures.as_completed(futures):
-                paper_id, summary, adjusted_match, used_llm = future.result()
-                summaries_by_id[paper_id] = (summary, adjusted_match, used_llm)
-                label = "Finished LLM summary" if used_llm else "Used fallback summary"
-                print(f"{label}: {paper_id}", flush=True)
+                paper_id, summary, adjusted_match = future.result()
+                summaries_by_id[paper_id] = (summary, adjusted_match)
+                print(f"Finished summary: {paper_id}", flush=True)
     else:
         for topic, paper in llm_jobs:
-            summary, adjusted_match, used_llm = summarize_with_llm(topic, paper, paper["best_match"])
-            summaries_by_id[str(paper.get("id", ""))] = (summary, adjusted_match, used_llm)
+            summary, adjusted_match = summarize_with_llm(topic, paper, paper["best_match"])
+            summaries_by_id[str(paper.get("id", ""))] = (summary, adjusted_match)
 
     for index, paper in enumerate(recent_papers):
         paper_id = str(paper.get("id", ""))
         if index < max_summaries and paper_id in summaries_by_id:
-            summary, adjusted_match, used_llm = summaries_by_id[paper_id]
+            summary, adjusted_match = summaries_by_id[paper_id]
             paper["chinese_summary"] = summary
-            paper["summary_source"] = "llm" if used_llm else "fallback"
             paper["best_match"] = adjusted_match
             paper["matches"] = [adjusted_match if m["topic_id"] == adjusted_match["topic_id"] else m for m in paper["matches"]]
         else:
             paper["chinese_summary"] = fallback_summary(paper, paper["best_match"])
-            paper["summary_source"] = "fallback"
 
     payload = {
         "generated_at": email.utils.format_datetime(now),
@@ -591,10 +502,7 @@ def collect(config_path: Path, output_path: Path, days: int, max_per_topic: int,
             "days": days,
             "max_per_topic": max_per_topic,
             "llm_enabled": llm_enabled(),
-            "llm_provider": llm_provider_label(),
-            "llm_concurrency": int(os.getenv("LLM_CONCURRENCY", "4")),
-            "llm_max_tokens": int(os.getenv("LLM_MAX_TOKENS", "1200")),
-            "llm_retries": max(0, int(os.getenv("LLM_RETRIES", "2"))),
+            "llm_concurrency": int(os.getenv("LLM_CONCURRENCY", "2")),
             "successful_fetches": successful_fetches,
             "failed_fetches": failed_fetches,
         },

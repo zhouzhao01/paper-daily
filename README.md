@@ -40,13 +40,9 @@
 
 - `LLM_BASE_URL`，例如 `https://api.deepseek.com/v1`
 - `LLM_MODEL`，例如 `deepseek-chat`
-- `LLM_CONCURRENCY`，模型并发数，默认 `4`
-- `LLM_MAX_TOKENS`，单篇总结最大输出 token，默认 `1200`
-- `LLM_RETRIES`，单篇总结失败重试次数，默认 `2`
+- `LLM_CONCURRENCY`，模型并发数，默认 `2`
 
 `LLM_BASE_URL` 和 `LLM_MODEL` 也可以放在 Secrets 中；workflow 会优先读取 Variables，未设置时读取 Secrets。
-
-想进一步提速时，可以使用 `deepseek-v4-flash`，或者把 `MAX_SUMMARIES` 从 `40` 降到 `20`。如果更重视分析质量，建议继续使用 `deepseek-v4-pro`，并保持 `LLM_CONCURRENCY=4`。
 
 不配置 API key 时，项目仍会正常抓取论文，但中文总结会退化为基础摘要。
 
