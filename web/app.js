@@ -4,36 +4,95 @@ const state = {
     query: "",
     topic: "all",
     level: "all",
-    days: "all",
+    view: "daily",
+    date: "",
   },
 };
 
 const nodes = {
   updatedAt: document.querySelector("#updatedAt"),
   paperCount: document.querySelector("#paperCount"),
-  topicCount: document.querySelector("#topicCount"),
-  llmStatus: document.querySelector("#llmStatus"),
+  weekCount: document.querySelector("#weekCount"),
+  monthCount: document.querySelector("#monthCount"),
+  topScore: document.querySelector("#topScore"),
   resultCount: document.querySelector("#resultCount"),
+  viewTitle: document.querySelector("#viewTitle"),
+  listTitle: document.querySelector("#listTitle"),
+  scopeLabel: document.querySelector("#scopeLabel"),
   paperList: document.querySelector("#paperList"),
   topicFilter: document.querySelector("#topicFilter"),
   levelFilter: document.querySelector("#levelFilter"),
   dateFilter: document.querySelector("#dateFilter"),
   searchInput: document.querySelector("#searchInput"),
+  tabs: document.querySelectorAll(".tab"),
   template: document.querySelector("#paperTemplate"),
 };
 
-function formatDate(value) {
-  if (!value) return "-";
+function parseDate(value) {
+  if (!value) return null;
   const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return value.slice(0, 10);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function formatDate(value) {
+  const date = parseDate(value);
+  if (!date) return value ? String(value).slice(0, 10) : "-";
   return date.toLocaleDateString("zh-CN", { year: "numeric", month: "2-digit", day: "2-digit" });
 }
 
-function daysSince(value) {
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return Infinity;
-  const now = new Date();
-  return Math.floor((now.setHours(0, 0, 0, 0) - date.setHours(0, 0, 0, 0)) / 86400000);
+function dateKey(value) {
+  const date = parseDate(value);
+  if (!date) return "";
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function collectionTime(paper) {
+  return paper.first_seen_at || paper.last_seen_at || paper.published || paper.updated || "";
+}
+
+function startOfDay(date) {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+function startOfWeek(date) {
+  const day = startOfDay(date);
+  const offset = (day.getDay() + 6) % 7;
+  day.setDate(day.getDate() - offset);
+  return day;
+}
+
+function endOfWeek(date) {
+  const end = startOfWeek(date);
+  end.setDate(end.getDate() + 7);
+  return end;
+}
+
+function startOfMonth(date) {
+  return new Date(date.getFullYear(), date.getMonth(), 1);
+}
+
+function endOfMonth(date) {
+  return new Date(date.getFullYear(), date.getMonth() + 1, 1);
+}
+
+function inRange(value, start, end) {
+  const date = parseDate(value);
+  return Boolean(date && date >= start && date < end);
+}
+
+function selectedDate() {
+  return parseDate(`${state.filters.date}T12:00:00`) || new Date();
+}
+
+function scoreOf(paper) {
+  return Number(paper.best_match?.score || 0);
+}
+
+function levelOf(paper) {
+  return String(paper.best_match?.level || "low").toLowerCase();
 }
 
 function textIncludes(paper, query) {
@@ -45,23 +104,49 @@ function textIncludes(paper, query) {
     (paper.categories || []).join(" "),
     paper.best_match?.reason,
     paper.chinese_summary?.innovation,
+    paper.chinese_summary?.why_relevant,
   ]
     .join(" ")
     .toLowerCase();
   return haystack.includes(query.toLowerCase());
 }
 
-function matchesFilters(paper) {
-  const best = paper.best_match || {};
+function matchesBaseFilters(paper) {
   if (!textIncludes(paper, state.filters.query)) return false;
-  if (state.filters.topic !== "all" && best.topic_id !== state.filters.topic) return false;
-  if (state.filters.level !== "all" && best.level !== state.filters.level) return false;
-  if (state.filters.days !== "all" && daysSince(paper.published) > Number(state.filters.days)) return false;
+  if (state.filters.topic !== "all" && paper.best_match?.topic_id !== state.filters.topic) return false;
+  if (state.filters.level !== "all" && levelOf(paper) !== state.filters.level) return false;
   return true;
+}
+
+function matchesView(paper) {
+  const date = selectedDate();
+  const collectedAt = collectionTime(paper);
+  if (state.filters.view === "daily") return dateKey(collectedAt) === state.filters.date;
+  if (state.filters.view === "week") return inRange(collectedAt, startOfWeek(date), endOfWeek(date));
+  if (state.filters.view === "month") return inRange(collectedAt, startOfMonth(date), endOfMonth(date));
+  if (state.filters.view === "highlights") {
+    return inRange(collectedAt, startOfWeek(date), endOfWeek(date)) && scoreOf(paper) >= 0.42;
+  }
+  return true;
+}
+
+function filteredPapers() {
+  return (state.data?.papers || [])
+    .filter((paper) => matchesBaseFilters(paper) && matchesView(paper))
+    .sort((a, b) => scoreOf(b) - scoreOf(a) || String(b.published || "").localeCompare(String(a.published || "")));
 }
 
 function setText(parent, selector, text) {
   parent.querySelector(selector).textContent = text || "暂无";
+}
+
+function safeFilename(paper) {
+  const title = String(paper.title || paper.id || "paper")
+    .replace(/[\\/:*?"<>|]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 120);
+  return `${title || "paper"}.pdf`;
 }
 
 function renderPaper(paper) {
@@ -69,19 +154,18 @@ function renderPaper(paper) {
   const best = paper.best_match || {};
   const summary = paper.chinese_summary || {};
   const badge = node.querySelector(".match-badge");
+  const level = levelOf(paper);
 
-  badge.textContent = `${best.level || "low"} ${(best.score ?? 0).toFixed(2)}`;
-  badge.classList.add(best.level || "low");
+  badge.textContent = `${level} ${scoreOf(paper).toFixed(2)}`;
+  badge.classList.add(level);
 
-  setText(node, ".paper-date", formatDate(paper.published));
+  setText(node, ".paper-date", `发布 ${formatDate(paper.published)} · 收录 ${formatDate(collectionTime(paper))}`);
   setText(node, ".paper-source", paper.source || "paper");
   setText(node, ".paper-title", paper.title);
   setText(node, ".paper-authors", (paper.authors || []).slice(0, 8).join(", "));
   setText(node, ".summary-problem", summary.problem);
   setText(node, ".summary-method", summary.method);
   setText(node, ".summary-innovation", summary.innovation);
-  setText(node, ".summary-evidence", summary.evidence);
-  setText(node, ".summary-limitations", summary.limitations);
   setText(node, ".summary-relevant", summary.why_relevant);
   setText(node, ".match-reason", `${best.topic_name || "未分类"}：${best.reason || ""}`);
 
@@ -95,15 +179,45 @@ function renderPaper(paper) {
 
   const absLink = node.querySelector(".abs-link");
   const pdfLink = node.querySelector(".pdf-link");
+  const downloadLink = node.querySelector(".download-link");
+  const pdfUrl = paper.pdf_url || paper.paper_url || "#";
   absLink.href = paper.paper_url || "#";
-  pdfLink.href = paper.pdf_url || paper.paper_url || "#";
+  pdfLink.href = pdfUrl;
+  downloadLink.href = pdfUrl;
+  downloadLink.setAttribute("download", safeFilename(paper));
+  downloadLink.setAttribute("target", "_blank");
+  downloadLink.setAttribute("rel", "noreferrer");
   return node;
 }
 
-function render() {
-  const papers = (state.data?.papers || []).filter(matchesFilters);
-  nodes.paperList.textContent = "";
+function viewLabels() {
+  const date = selectedDate();
+  const dayLabel = formatDate(date.toISOString());
+  const weekStart = formatDate(startOfWeek(date).toISOString());
+  const weekEndDate = endOfWeek(date);
+  weekEndDate.setDate(weekEndDate.getDate() - 1);
+  const weekEnd = formatDate(weekEndDate.toISOString());
+  const monthLabel = `${date.getFullYear()} 年 ${String(date.getMonth() + 1).padStart(2, "0")} 月`;
+  return {
+    daily: ["当日论文", dayLabel],
+    week: ["本周论文", `${weekStart} - ${weekEnd}`],
+    month: ["月度论文", monthLabel],
+    highlights: ["本周精选", `${weekStart} - ${weekEnd}`],
+  };
+}
+
+function updateHeadings(papers) {
+  const labels = viewLabels()[state.filters.view];
+  nodes.viewTitle.textContent = labels[0];
+  nodes.listTitle.textContent = labels[0];
+  nodes.scopeLabel.textContent = labels[1];
   nodes.resultCount.textContent = `${papers.length} 篇`;
+}
+
+function render() {
+  const papers = filteredPapers();
+  updateHeadings(papers);
+  nodes.paperList.textContent = "";
 
   if (!papers.length) {
     const empty = document.createElement("div");
@@ -118,7 +232,7 @@ function render() {
   nodes.paperList.appendChild(fragment);
 }
 
-function hydrateFilters() {
+function hydrateTopicFilter() {
   nodes.topicFilter.innerHTML = '<option value="all">全部方向</option>';
   for (const topic of state.data.topics || []) {
     const option = document.createElement("option");
@@ -126,6 +240,32 @@ function hydrateFilters() {
     option.textContent = topic.name;
     nodes.topicFilter.appendChild(option);
   }
+}
+
+function hydrateDateFilter() {
+  const dates = [...new Set((state.data.papers || []).map((paper) => dateKey(collectionTime(paper))).filter(Boolean))].sort().reverse();
+  const fallback = dateKey(state.data.generated_at_iso || new Date().toISOString());
+  const options = dates.length ? dates : [fallback];
+  state.filters.date = options[0];
+  nodes.dateFilter.textContent = "";
+  for (const key of options) {
+    const option = document.createElement("option");
+    option.value = key;
+    option.textContent = formatDate(`${key}T12:00:00`);
+    nodes.dateFilter.appendChild(option);
+  }
+}
+
+function updateStats() {
+  const papers = state.data.papers || [];
+  const date = selectedDate();
+  const weekPapers = papers.filter((paper) => inRange(collectionTime(paper), startOfWeek(date), endOfWeek(date)));
+  const monthPapers = papers.filter((paper) => inRange(collectionTime(paper), startOfMonth(date), endOfMonth(date)));
+  const top = papers.reduce((max, paper) => Math.max(max, scoreOf(paper)), 0);
+  nodes.paperCount.textContent = String(papers.length);
+  nodes.weekCount.textContent = String(weekPapers.length);
+  nodes.monthCount.textContent = String(monthPapers.length);
+  nodes.topScore.textContent = top.toFixed(2);
 }
 
 function bindEvents() {
@@ -142,9 +282,17 @@ function bindEvents() {
     render();
   });
   nodes.dateFilter.addEventListener("change", (event) => {
-    state.filters.days = event.target.value;
+    state.filters.date = event.target.value;
+    updateStats();
     render();
   });
+  for (const tab of nodes.tabs) {
+    tab.addEventListener("click", () => {
+      state.filters.view = tab.dataset.view;
+      for (const item of nodes.tabs) item.classList.toggle("active", item === tab);
+      render();
+    });
+  }
 }
 
 async function loadData() {
@@ -168,11 +316,11 @@ async function main() {
   }
 
   const stats = state.data.stats || {};
-  nodes.updatedAt.textContent = `更新于 ${formatDate(state.data.generated_at_iso)} · ${state.data.config_source || "file"}`;
-  nodes.paperCount.textContent = String(state.data.papers?.length || 0);
-  nodes.topicCount.textContent = String(state.data.topics?.length || 0);
-  nodes.llmStatus.textContent = stats.llm_enabled ? "LLM" : "基础";
-  hydrateFilters();
+  const mode = stats.collection_mode === "incremental" ? "增量" : "初始化";
+  nodes.updatedAt.textContent = `更新于 ${formatDate(state.data.generated_at_iso)} · ${mode} · ${stats.llm_enabled ? "LLM" : "基础"}`;
+  hydrateTopicFilter();
+  hydrateDateFilter();
+  updateStats();
   render();
 }
 

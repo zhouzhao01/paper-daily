@@ -1,7 +1,7 @@
 import datetime as dt
 import unittest
 
-from scripts.collect_papers import merge_with_retained_papers, trim_papers_for_storage
+from scripts.collect_papers import collection_cutoff, merge_with_retained_papers, trim_papers_for_storage
 
 
 def paper(paper_id: str, level: str, published: str) -> dict:
@@ -22,23 +22,51 @@ def paper(paper_id: str, level: str, published: str) -> dict:
 
 
 class RetentionTest(unittest.TestCase):
-    def test_merge_retains_only_previous_high_and_medium(self) -> None:
+    def test_merge_retains_previous_high_medium_and_recent_low(self) -> None:
         now = dt.datetime(2026, 5, 28, tzinfo=dt.timezone.utc)
+        stale_low = paper("old-low", "low", "2026-03-01T00:00:00+00:00")
+        stale_low["first_seen_at"] = "2026-03-02T00:00:00+00:00"
         existing = {
             "generated_at_iso": "2026-05-27T00:00:00+00:00",
             "papers": [
                 paper("old-high", "high", "2026-05-26T00:00:00+00:00"),
                 paper("old-medium", "medium", "2026-05-25T00:00:00+00:00"),
-                paper("old-low", "low", "2026-05-24T00:00:00+00:00"),
+                paper("recent-low", "low", "2026-05-24T00:00:00+00:00"),
+                stale_low,
             ],
         }
 
-        merged, stats = merge_with_retained_papers([paper("new-low", "low", "2026-05-28T00:00:00+00:00")], existing, now)
+        merged, stats = merge_with_retained_papers(
+            [paper("new-low", "low", "2026-05-28T00:00:00+00:00")],
+            existing,
+            now,
+            recent_history_days=45,
+        )
 
-        self.assertEqual({item["id"] for item in merged}, {"new-low", "old-high", "old-medium"})
-        self.assertEqual(stats["retained_paper_count"], 2)
+        self.assertEqual({item["id"] for item in merged}, {"new-low", "old-high", "old-medium", "recent-low"})
+        self.assertEqual(stats["retained_paper_count"], 3)
+        self.assertEqual(stats["retained_recent_low_count"], 1)
         self.assertEqual(stats["dropped_low_relevance_count"], 1)
         self.assertTrue(next(item for item in merged if item["id"] == "old-high")["retained_from_previous_run"])
+
+    def test_collection_cutoff_uses_previous_run_for_incremental_mode(self) -> None:
+        now = dt.datetime(2026, 5, 28, 22, tzinfo=dt.timezone.utc)
+        cutoff, mode = collection_cutoff(
+            {"generated_at_iso": "2026-05-27T22:00:00+00:00"},
+            now,
+            days=7,
+            incremental_since_last_run=True,
+        )
+
+        self.assertEqual(mode, "incremental")
+        self.assertEqual(cutoff, dt.datetime(2026, 5, 27, 22, tzinfo=dt.timezone.utc))
+
+    def test_collection_cutoff_falls_back_to_lookback(self) -> None:
+        now = dt.datetime(2026, 5, 28, 22, tzinfo=dt.timezone.utc)
+        cutoff, mode = collection_cutoff({}, now, days=7, incremental_since_last_run=True)
+
+        self.assertEqual(mode, "lookback")
+        self.assertEqual(cutoff, dt.datetime(2026, 5, 21, 22, tzinfo=dt.timezone.utc))
 
     def test_storage_trim_removes_low_then_oldest(self) -> None:
         payload = {

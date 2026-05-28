@@ -25,8 +25,9 @@ ARXIV_NS = {"atom": "http://www.w3.org/2005/Atom", "arxiv": "http://arxiv.org/sc
 DEFAULT_CONFIG = Path("config/interests.json")
 DEFAULT_OUTPUT = Path("web/data/papers.json")
 RETAINED_MATCH_LEVELS = {"high", "medium"}
-DEFAULT_MAX_STORED_PAPERS = 300
-DEFAULT_MAX_DATA_BYTES = 5 * 1024 * 1024
+DEFAULT_MAX_STORED_PAPERS = 800
+DEFAULT_MAX_DATA_BYTES = 8 * 1024 * 1024
+DEFAULT_RECENT_HISTORY_DAYS = 45
 
 
 @dataclass(frozen=True)
@@ -217,11 +218,6 @@ def fetch_arxiv(topic: Topic, max_results: int) -> list[dict[str, Any]]:
     return papers
 
 
-def days_old(iso_date: str, now: dt.datetime) -> int:
-    parsed = dt.datetime.fromisoformat(iso_date.replace("Z", "+00:00"))
-    return (now.date() - parsed.date()).days
-
-
 def parse_datetime(value: str | None) -> dt.datetime | None:
     if not value:
         return None
@@ -243,6 +239,28 @@ def paper_datetime(paper: dict[str, Any]) -> dt.datetime:
         if parsed:
             return parsed
     return dt.datetime.min.replace(tzinfo=dt.timezone.utc)
+
+
+def env_flag(name: str, default: bool = False) -> bool:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return value.strip().lower() in {"1", "true", "yes", "on"}
+
+
+def collection_cutoff(
+    existing_payload: dict[str, Any],
+    now: dt.datetime,
+    days: int,
+    incremental_since_last_run: bool,
+) -> tuple[dt.datetime, str]:
+    if incremental_since_last_run:
+        previous_run = parse_datetime(
+            str(existing_payload.get("generated_at_iso") or existing_payload.get("generated_at") or "")
+        )
+        if previous_run:
+            return previous_run, "incremental"
+    return now - dt.timedelta(days=max(0, days)), "lookback"
 
 
 def keyword_score(topic: Topic, paper: dict[str, Any]) -> tuple[float, list[str]]:
@@ -467,19 +485,29 @@ def merge_with_retained_papers(
     current_papers: list[dict[str, Any]],
     existing_payload: dict[str, Any],
     now: dt.datetime,
+    recent_history_days: int,
 ) -> tuple[list[dict[str, Any]], dict[str, int]]:
     existing_papers = existing_payload.get("papers", []) if isinstance(existing_payload, dict) else []
     existing_generated_at = str(existing_payload.get("generated_at_iso") or existing_payload.get("generated_at") or now.isoformat())
     retained_by_key: dict[str, dict[str, Any]] = {}
     dropped_low = 0
+    retained_recent = 0
     for paper in existing_papers:
         if not isinstance(paper, dict):
             continue
         key = paper_key(paper)
         if not key:
             continue
-        if best_match_level(paper) in RETAINED_MATCH_LEVELS:
+        seen_at = parse_datetime(str(paper.get("first_seen_at") or paper.get("last_seen_at") or existing_generated_at))
+        is_recent = bool(
+            recent_history_days > 0
+            and seen_at
+            and (now.date() - seen_at.date()).days <= recent_history_days
+        )
+        if best_match_level(paper) in RETAINED_MATCH_LEVELS or is_recent:
             retained_by_key[key] = paper
+            if is_recent and best_match_level(paper) not in RETAINED_MATCH_LEVELS:
+                retained_recent += 1
         else:
             dropped_low += 1
 
@@ -512,6 +540,7 @@ def merge_with_retained_papers(
 
     return dedupe_papers(merged), {
         "retained_paper_count": retained_count,
+        "retained_recent_low_count": retained_recent,
         "dropped_low_relevance_count": dropped_low,
     }
 
@@ -563,12 +592,15 @@ def collect(
     max_summaries: int,
     max_stored_papers: int,
     max_data_bytes: int,
+    incremental_since_last_run: bool,
+    recent_history_days: int,
 ) -> dict[str, Any]:
     default_config = load_json(config_path)
     config = load_issue_config(default_config)
     topics = parse_topics(config)
     now = dt.datetime.now(dt.timezone.utc)
     existing_payload = load_existing_payload(output_path)
+    cutoff, collection_mode = collection_cutoff(existing_payload, now, days, incremental_since_last_run)
     all_candidates = []
     successful_fetches = 0
     failed_fetches = 0
@@ -588,7 +620,9 @@ def collect(
         existing = existing_payload
         if existing.get("papers"):
             print("All sources failed; preserving existing paper data.", file=sys.stderr)
-            retained_papers, retention_stats = merge_with_retained_papers([], existing_payload, now)
+            retained_papers, retention_stats = merge_with_retained_papers(
+                [], existing_payload, now, recent_history_days
+            )
             retained_papers.sort(key=lambda p: (p["best_match"]["score"], p.get("published", "")), reverse=True)
             existing["papers"] = retained_papers
             existing["generated_at"] = email.utils.format_datetime(now)
@@ -616,7 +650,8 @@ def collect(
         published = paper.get("published") or paper.get("updated")
         if not published:
             continue
-        if days_old(published, now) <= days:
+        published_at = parse_datetime(str(published))
+        if published_at and published_at >= cutoff:
             matches = [score_paper(topic, paper) for topic in topics]
             matches.sort(key=lambda item: item["score"], reverse=True)
             best_match = matches[0]
@@ -657,7 +692,9 @@ def collect(
         else:
             paper["chinese_summary"] = fallback_summary(paper, paper["best_match"])
 
-    merged_papers, retention_stats = merge_with_retained_papers(recent_papers, existing_payload, now)
+    merged_papers, retention_stats = merge_with_retained_papers(
+        recent_papers, existing_payload, now, recent_history_days
+    )
     merged_papers.sort(key=lambda p: (p["best_match"]["score"], p.get("published", "")), reverse=True)
 
     payload = {
@@ -670,9 +707,12 @@ def collect(
             "paper_count": len(merged_papers),
             "new_paper_count": len(recent_papers),
             "days": days,
+            "collection_mode": collection_mode,
+            "collection_cutoff_iso": cutoff.isoformat(),
             "max_per_topic": max_per_topic,
             "llm_enabled": llm_enabled(),
             "llm_concurrency": int(os.getenv("LLM_CONCURRENCY", "2")),
+            "recent_history_days": recent_history_days,
             "successful_fetches": successful_fetches,
             "failed_fetches": failed_fetches,
             **retention_stats,
@@ -697,6 +737,8 @@ def main() -> None:
     parser.add_argument("--max-summaries", type=int, default=int(os.getenv("MAX_SUMMARIES", "40")))
     parser.add_argument("--max-stored-papers", type=int, default=int(os.getenv("MAX_STORED_PAPERS", str(DEFAULT_MAX_STORED_PAPERS))))
     parser.add_argument("--max-data-bytes", type=int, default=int(os.getenv("MAX_DATA_BYTES", str(DEFAULT_MAX_DATA_BYTES))))
+    parser.add_argument("--incremental-since-last-run", action="store_true", default=env_flag("INCREMENTAL_SINCE_LAST_RUN"))
+    parser.add_argument("--recent-history-days", type=int, default=int(os.getenv("RECENT_HISTORY_DAYS", str(DEFAULT_RECENT_HISTORY_DAYS))))
     args = parser.parse_args()
     payload = collect(
         args.config,
@@ -706,6 +748,8 @@ def main() -> None:
         args.max_summaries,
         args.max_stored_papers,
         args.max_data_bytes,
+        args.incremental_since_last_run,
+        args.recent_history_days,
     )
     print(f"Wrote {len(payload['papers'])} papers to {args.output}")
 
