@@ -12,7 +12,10 @@ import http.client
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.parse
@@ -1581,8 +1584,118 @@ def fallback_summary(paper: dict[str, Any], best_match: dict[str, Any]) -> dict[
     }
 
 
+def llm_backend() -> str:
+    """Which summarization backend to use: 'codex' (local CLI) or 'openai' (HTTP API)."""
+    backend = os.getenv("LLM_BACKEND", "").strip().lower()
+    if backend in {"codex", "openai"}:
+        return backend
+    if env_flag("USE_CODEX_CLI", False):
+        return "codex"
+    return "openai"
+
+
 def llm_enabled() -> bool:
+    if llm_backend() == "codex":
+        return bool(shutil.which(os.getenv("CODEX_BIN", "codex")))
     return bool(os.getenv("LLM_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY"))
+
+
+SUMMARY_JSON_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "properties": {
+        "problem": {"type": "string"},
+        "method": {"type": "string"},
+        "innovation": {"type": "string"},
+        "evidence": {"type": "string"},
+        "limitations": {"type": "string"},
+        "why_relevant": {"type": "string"},
+        "match_score_adjustment": {"type": "number"},
+        "match_level": {"type": "string", "enum": ["high", "medium", "low"]},
+    },
+    "required": [
+        "problem",
+        "method",
+        "innovation",
+        "evidence",
+        "limitations",
+        "why_relevant",
+        "match_score_adjustment",
+        "match_level",
+    ],
+    "additionalProperties": False,
+}
+
+
+def parse_json_loose(text: str) -> dict[str, Any]:
+    """Parse a JSON object, tolerating Markdown fences or surrounding prose."""
+    stripped = text.strip()
+    try:
+        return json.loads(stripped)
+    except json.JSONDecodeError:
+        pass
+    fenced = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", stripped, re.DOTALL)
+    if fenced:
+        return json.loads(fenced.group(1))
+    start = stripped.find("{")
+    end = stripped.rfind("}")
+    if start != -1 and end != -1 and end > start:
+        return json.loads(stripped[start : end + 1])
+    raise ValueError("no JSON object found in model output")
+
+
+def call_codex_cli(prompt: str) -> dict[str, Any]:
+    codex_bin = os.getenv("CODEX_BIN", "codex")
+    model = os.getenv("CODEX_MODEL", "")
+    timeout = int(os.getenv("CODEX_TIMEOUT", "180"))
+    with tempfile.TemporaryDirectory() as tmpdir:
+        schema_path = os.path.join(tmpdir, "schema.json")
+        out_path = os.path.join(tmpdir, "last_message.txt")
+        with open(schema_path, "w", encoding="utf-8") as handle:
+            json.dump(SUMMARY_JSON_SCHEMA, handle)
+        cmd = [
+            codex_bin,
+            "exec",
+            "--skip-git-repo-check",
+            "--sandbox",
+            "read-only",
+            "--color",
+            "never",
+            "--ephemeral",
+            "--output-schema",
+            schema_path,
+            "--output-last-message",
+            out_path,
+        ]
+        if model:
+            cmd.extend(["-m", model])
+        cmd.append("-")  # read the prompt from stdin
+        try:
+            result = subprocess.run(
+                cmd,
+                input=prompt,
+                text=True,
+                capture_output=True,
+                timeout=timeout,
+            )
+        except subprocess.TimeoutExpired as exc:
+            raise RuntimeError(f"codex exec timed out after {timeout}s") from exc
+        if result.returncode != 0:
+            stderr = (result.stderr or "").strip()[:500]
+            raise RuntimeError(f"codex exec failed (exit {result.returncode}): {stderr}")
+        try:
+            with open(out_path, "r", encoding="utf-8") as handle:
+                content = handle.read().strip()
+        except FileNotFoundError as exc:
+            raise RuntimeError("codex exec produced no output message") from exc
+    if not content:
+        raise RuntimeError("codex exec returned an empty message")
+    return parse_json_loose(content)
+
+
+def call_llm(prompt: str) -> dict[str, Any]:
+    if llm_backend() == "codex":
+        return call_codex_cli(prompt)
+    return call_openai_compatible(prompt)
 
 
 def llm_headers(api_key: str) -> dict[str, str]:
@@ -1593,6 +1706,28 @@ def llm_headers(api_key: str) -> dict[str, str]:
     }
 
 
+def post_chat_completion(endpoint: str, api_key: str, model: str, payload: dict[str, Any]) -> str:
+    req = urllib.request.Request(
+        endpoint,
+        data=json.dumps(payload).encode("utf-8"),
+        headers=llm_headers(api_key),
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=90) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        try:
+            body = exc.read().decode("utf-8", "replace").strip()
+        except Exception:
+            body = ""
+        detail = f" - {body[:500]}" if body else ""
+        raise RuntimeError(
+            f"LLM API HTTP {exc.code} from {endpoint} (model={model}){detail}"
+        ) from exc
+    return data["choices"][0]["message"]["content"]
+
+
 def call_openai_compatible(prompt: str) -> dict[str, Any]:
     api_key = os.getenv("LLM_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY") or ""
     base_url = os.getenv("LLM_BASE_URL", "")
@@ -1600,28 +1735,30 @@ def call_openai_compatible(prompt: str) -> dict[str, Any]:
         base_url = "https://api.deepseek.com/v1" if os.getenv("DEEPSEEK_API_KEY") else "https://api.openai.com/v1"
     model = os.getenv("LLM_MODEL", "deepseek-chat" if os.getenv("DEEPSEEK_API_KEY") else "gpt-4o-mini")
     endpoint = base_url.rstrip("/") + "/chat/completions"
+    messages = [
+        {
+            "role": "system",
+            "content": "你是严谨的论文技术分析助手。只输出合法 JSON，不要输出 Markdown。",
+        },
+        {"role": "user", "content": prompt},
+    ]
     payload = {
         "model": model,
         "temperature": 0.2,
         "response_format": {"type": "json_object"},
-        "messages": [
-            {
-                "role": "system",
-                "content": "你是严谨的论文技术分析助手。只输出合法 JSON，不要输出 Markdown。",
-            },
-            {"role": "user", "content": prompt},
-        ],
+        "messages": messages,
     }
-    req = urllib.request.Request(
-        endpoint,
-        data=json.dumps(payload).encode("utf-8"),
-        headers=llm_headers(api_key),
-        method="POST",
-    )
-    with urllib.request.urlopen(req, timeout=90) as resp:
-        data = json.loads(resp.read().decode("utf-8"))
-    content = data["choices"][0]["message"]["content"]
-    return json.loads(content)
+    try:
+        content = post_chat_completion(endpoint, api_key, model, payload)
+    except RuntimeError as exc:
+        # Some models (e.g. thinking-oriented variants) reject `temperature` or
+        # `response_format`, returning HTTP 400. Retry once with a minimal payload;
+        # parse_json_loose tolerates Markdown/prose around the JSON.
+        if " HTTP 400 " not in str(exc):
+            raise
+        print(f"LLM 400 with full payload, retrying without temperature/response_format: {exc}", file=sys.stderr)
+        content = post_chat_completion(endpoint, api_key, model, {"model": model, "messages": messages})
+    return parse_json_loose(content)
 
 
 def build_llm_prompt(topic: Topic, paper: dict[str, Any], base_match: dict[str, Any]) -> str:
@@ -1670,7 +1807,7 @@ def summarize_with_llm(topic: Topic, paper: dict[str, Any], base_match: dict[str
 
     prompt = build_llm_prompt(topic, paper, base_match)
     try:
-        data = call_openai_compatible(prompt)
+        data = call_llm(prompt)
     except Exception as exc:
         print(f"Warning: LLM summary failed for {paper.get('id')}: {exc}", file=sys.stderr)
         return fallback_summary(paper, base_match), base_match
