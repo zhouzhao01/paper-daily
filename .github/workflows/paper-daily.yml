@@ -112,7 +112,10 @@ jobs:
             echo "No library changes to commit."
           else
             git commit -m "Daily digest: $(date -u +%F) (run ${{ github.run_id }})"
-            git pull --rebase origin main
+            # --autostash: the conference-collect step leaves uncommitted edits
+            # to tracked web/data files that we deploy but deliberately do not
+            # commit; a plain rebase refuses to run with unstaged changes.
+            git pull --rebase --autostash origin main
             git push origin main
           fi
 
