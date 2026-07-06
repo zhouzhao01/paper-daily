@@ -1730,10 +1730,12 @@ def post_chat_completion(endpoint: str, api_key: str, model: str, payload: dict[
 
 def call_openai_compatible(prompt: str) -> dict[str, Any]:
     api_key = os.getenv("LLM_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY") or ""
-    base_url = os.getenv("LLM_BASE_URL", "")
+    base_url = os.getenv("LLM_BASE_URL", "").strip()
     if not base_url:
         base_url = "https://api.deepseek.com/v1" if os.getenv("DEEPSEEK_API_KEY") else "https://api.openai.com/v1"
-    model = os.getenv("LLM_MODEL", "deepseek-chat" if os.getenv("DEEPSEEK_API_KEY") else "gpt-4o-mini")
+    # Use `or` (not the getenv default) so an empty env var — e.g. an unset
+    # GitHub Actions variable resolving to "" — still falls back to a valid model.
+    model = os.getenv("LLM_MODEL", "").strip() or ("deepseek-v4-flash" if os.getenv("DEEPSEEK_API_KEY") else "gpt-4o-mini")
     endpoint = base_url.rstrip("/") + "/chat/completions"
     messages = [
         {
