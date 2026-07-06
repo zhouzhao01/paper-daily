@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "updated_at_iso": "2026-07-06T10:25:22.654966+00:00",
+  "topics": [
+    {
+      "id": "speech_enhancement_frontend",
+      "name": "Speech Enhancement and Audio Frontend"
+    },
+    {
+      "id": "microphone_array_beamforming",
+      "name": "Microphone Array and Beamforming"
+    },
+    {
+      "id": "speech_separation_extraction",
+      "name": "Speech Separation and Target Speaker Extraction"
+    },
+    {
+      "id": "generative_speech",
+      "name": "Generative Speech Technology"
+    },
+    {
+      "id": "music_mir_representation",
+      "name": "Music Information Retrieval and Representation"
+    }
+  ],
+  "papers": [
+    {
+      "id": "arxiv:2310.16338",
+      "arxiv_id": "2310.16338",
+      "title": "Generative Pre-training for Speech with Flow Matching",
+      "authors": [
+        "Alexander H. Liu",
+        "Matt Le",
+        "Apoorv Vyas",
+        "Bowen Shi",
+        "Andros Tjandra",
+        "Wei-Ning Hsu"
+      ],
+      "published": "2023-10-25T00:00:00+00:00",
+      "summary": "Generative models have gained more and more attention in recent years for their remarkable success in tasks that required estimating and sampling data distribution to generate high-fidelity synthetic data. In speech, text-to-speech synthesis and neural vocoder are good examples where generative models have shined. While generative models have been applied to different applications in speech, there exists no general-purpose generative model that models speech directly. In this work, we take a step toward this direction by showing a single pre-trained generative model can be adapted to different downstream tasks with strong performance. Specifically, we pre-trained a generative model, named SpeechFlow, on 60k hours of untranscribed speech with Flow Matching and masked conditions. Experiment results show the pre-trained generative model can be fine-tuned with task-specific data to match or surpass existing expert models on speech enhancement, separation, and synthesis. Our work suggested a foundational model for generation tasks in speech can be built with generative pre-training.",
+      "paper_url": "https://arxiv.org/abs/2310.16338",
+      "pdf_url": "https://arxiv.org/pdf/2310.16338",
+      "categories": [
+        "International Conference on Learning Representations"
+      ],
+      "venue": "International Conference on Learning Representations",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "论文提出SpeechFlow，采用Flow Matching预训练语音生成模型，可微调用于语音增强、分离和合成，与生成式语音技术方向高度相关，方法新颖且具基础性，是必读级别工作。",
+      "citation_count": 72,
+      "date_added": "2026-07-06",
+      "chinese_summary": {
+        "problem": "当前语音生成模型多为任务专用，缺乏统一预训练的基础生成模型，难以通用和共享知识。",
+        "method": "提出SpeechFlow，在60k小时未转录语音上使用Flow Matching和masked条件进行生成预训练；下游任务通过微调适配，覆盖语音增强、分离和合成。",
+        "innovation": "首次证明单一预训练生成模型可适应多个语音下游任务（增强、分离、合成）且性能优异；引入Flow Matching实现大规模无监督语音生成预训练，填补通用语音生成基础模型的空白。",
+        "evidence": "摘要声称在语音增强、分离和合成任务上微调后匹配或超越现有专家模型，但未提供具体量化指标或比较细节，证据强度有限。",
+        "limitations": "未披露实验设置、数据集细节、与baseline的精确对比，masked condition的具体设计需全文确认；泛化到未见任务（如语音修复、带宽扩展）的潜力存疑。",
+        "why_relevant": "论文直接采用Flow Matching进行语音生成预训练，并示范在语音增强、分离和合成上的应用，完美匹配我的研究方向中'generative speech enhancement'、'speech synthesis'、'flow matching speech'等关键词，且'generative pre-training'思路对构建通用生成模型极具参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2307.16516",
+      "arxiv_id": "2307.16516",
+      "title": "SpatialNet: Extensively Learning Spatial Information for Multichannel Joint Speech Separation, Denoising and Dereverberation",
+      "authors": [
+        "Changsheng Quan",
+        "Xiaofei Li"
+      ],
+      "published": "2023-07-31T00:00:00+00:00",
+      "summary": "This work proposes a neural network to extensively exploit spatial information for multichannel joint speech separation, denoising and dereverberation, named SpatialNet. In the short-time Fourier transform (STFT) domain, the proposed network performs end-to-end speech enhancement. It is mainly composed of interleaved narrow-band and cross-band blocks to respectively exploit narrow-band and cross-band spatial information. The narrow-band blocks process frequencies independently, and use self-attention mechanism and temporal convolutional layers to respectively perform spatial-feature-based speaker clustering and temporal smoothing/filtering. The cross-band blocks process frames independently, and use full-band linear layer and frequency convolutional layers to respectively learn the correlation between all frequencies and adjacent frequencies. Experiments are conducted on various simulated and real datasets, and the results show that 1) the proposed network achieves the state-of-the-art performance on almost all tasks; 2) the proposed network suffers little from the spectral generalization problem; and 3) the proposed network is indeed performing speaker clustering (demonstrated by attention maps).",
+      "paper_url": "https://arxiv.org/abs/2307.16516",
+      "pdf_url": "https://ieeexplore.ieee.org/ielx7/6570655/6633080/10423815.pdf",
+      "categories": [
+        "IEEE/ACM Transactions on Audio Speech and Language Processing"
+      ],
+      "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "该论文提出SpatialNet，有效利用空间信息进行多通道语音分离、去噪和去混响，与研究方向高度相关，方法新颖且具有影响力，符合经典赛道必读级。研究方向涉及Speech Separation和Microphone Array。",
+      "citation_count": 100,
+      "date_added": "2026-07-06",
+      "chinese_summary": {
+        "problem": "解决多通道场景下语音分离、去噪和去混响的联合处理问题，充分利用空间信息提升性能。",
+        "method": "提出SpatialNet，在STFT域进行端到端增强，由交错的窄带和跨波段模块组成：窄带模块独立处理每个频率，使用自注意力机制进行空间特征驱动的说话者聚类，时间卷积层进行时域平滑/滤波；跨波段模块独立处理每个时间帧，使用全频带线性层学习所有频率间的相关性，频率卷积层学习相邻频率的相关性。",
+        "innovation": "1) 将空间信息在窄带和跨波段两个维度上分别建模，窄带模块实现基于空间特征的聚类，跨波段模块学习频率间依赖；2) 自注意力机制显式用于说话者聚类并通过注意力图可视化验证；3) 在多种模拟和真实数据集上实现近乎所有任务的当前最佳性能，且显著缓解了频谱泛化问题。",
+        "evidence": "在多种模拟和真实数据集上的实验表明：1) 几乎所有任务达到SOTA；2) 频谱泛化问题小；3) 通过注意力图证明网络确实执行了说话者聚类。",
+        "limitations": "摘要未提及计算复杂度、实际部署实时性、对极低信噪比或强混响场景的鲁棒性，且未明确说明训练数据配置（如麦克风数量、阵列几何等）。",
+        "why_relevant": "论文聚焦语音分离与目标说话人提取的核心问题（语音分离），提出基于空间信息的多通道端到端方法，直接匹配研究方向中的source separation、speech separation、masking model及time-frequency分离方法，且自注意力聚类机制与speaker extraction场景高度相关。"
+      }
+    },
+    {
+      "id": "arxiv:2406.04660",
+      "arxiv_id": "2406.04660",
+      "title": "URGENT Challenge: Universality, Robustness, and Generalizability For Speech Enhancement",
+      "authors": [
+        "Wangyou Zhang",
+        "Robin Scheibler",
+        "Kohei Saijo",
+        "Samuele Cornell",
+        "Chenda Li",
+        "Zhaoheng Ni",
+        "Anurag Kumar",
+        "Jan Pirklbauer",
+        "Marvin Sach",
+        "Shinji Watanabe",
+        "Tim Fingscheidt",
+        "Yanmin Qian"
+      ],
+      "published": "2024-06-07T00:00:00+00:00",
+      "summary": "The last decade has witnessed significant advancements in deep learning-based speech enhancement (SE). However, most existing SE research has limitations on the coverage of SE sub-tasks, data diversity and amount, and evaluation metrics. To fill this gap and promote research toward universal SE, we establish a new SE challenge, named URGENT, to focus on the universality, robustness, and generalizability of SE. We aim to extend the SE definition to cover different sub-tasks to explore the limits of SE models, starting from denoising, dereverberation, bandwidth extension, and declipping. A novel framework is proposed to unify all these sub-tasks in a single model, allowing the use of all existing SE approaches. We collected public speech and noise data from different domains to construct diverse evaluation data. Finally, we discuss the insights gained from our preliminary baseline experiments based on both generative and discriminative SE methods with 12 curated metrics.",
+      "paper_url": "https://arxiv.org/abs/2406.04660",
+      "pdf_url": "https://arxiv.org/pdf/2406.04660",
+      "categories": [
+        "Interspeech"
+      ],
+      "venue": "Interspeech",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "该论文提出了URGENT挑战，统一去噪、去混响、带宽扩展和去削波等多个子任务，框架具有基础性和影响力，与语音增强和音频前端方向高度相关，且引用数较高，是必读级别的工作。",
+      "citation_count": 66,
+      "date_added": "2026-07-06",
+      "chinese_summary": {
+        "problem": "现有语音增强研究覆盖的子任务有限，数据多样性和评估指标不足，缺乏统一的基准来评估模型的通用性、鲁棒性和泛化性。",
+        "method": "提出URGENT挑战，构建一个统一框架将去噪、去混响、带宽扩展和削波恢复等子任务整合到单个模型中，并收集多样化公开数据构建评估集，基于生成式和判别式SE方法进行基线实验。",
+        "innovation": "首次将多个SE子任务（去噪、去混响、带宽扩展、削波恢复）统一到一个挑战框架中，并构建了跨域多样化评估数据；通过12个精选指标全面评估模型性能，促进通用SE研究。",
+        "evidence": "摘要中提及了初步基线实验，采用生成式和判别式方法以及12个指标，但未给出具体数值结果，证据为初步框架和实验设计。",
+        "limitations": "挑战赛介绍性质，核心方法细节需阅读全文；基线性能未公开，无法评估方法实际效果；是否涵盖声学回声消除等子任务尚不明确。",
+        "why_relevant": "直接涉及语音增强核心子任务（去噪、去混响等），与研究方向的关键词高度匹配（speech enhancement, dereverberation），场景为通用SE模型评估，但论文侧重基准挑战而非新算法，需人工复核具体方法是否与前端处理相关。"
+      }
+    },
+    {
+      "id": "s2:6add86034dea776f682f59fcc3b7aaf0efee98e3",
+      "arxiv_id": "",
+      "title": "Sixty Years of Frequency-Domain Monaural Speech Enhancement: From Traditional to Deep Learning Methods",
+      "authors": [
+        "C. Zheng",
+        "Huiyong Zhang",
+        "Wenzhe Liu",
+        "Xiaoxue Luo",
+        "Andong Li",
+        "Xiaodong Li",
+        "Brian C. J. Moore"
+      ],
+      "published": "2023-01-01T00:00:00+00:00",
+      "summary": "Frequency-domain monaural speech enhancement has been extensively studied for over 60 years, and a great number of methods have been proposed and applied to many devices. In the last decade, monaural speech enhancement has made tremendous progress with the advent and development of deep learning, and performance using such methods has been greatly improved relative to traditional methods. This survey paper first provides a comprehensive overview of traditional and deep-learning methods for monaural speech enhancement in the frequency domain. The fundamental assumptions of each approach are then summarized and analyzed to clarify their limitations and advantages. A comprehensive evaluation of some typical methods was conducted using the WSJ + Deep Noise Suppression (DNS) challenge and Voice Bank + DEMAND datasets to give an intuitive and unified comparison. The benefits of monaural speech enhancement methods using objective metrics relevant for normal-hearing and hearing-impaired listeners were evaluated. The objective test results showed that compression of the input features was important for simulated normal-hearing listeners but not for simulated hearing-impaired listeners. Potential future research and development topics in monaural speech enhancement are suggested.",
+      "paper_url": "https://www.semanticscholar.org/paper/6add86034dea776f682f59fcc3b7aaf0efee98e3",
+      "pdf_url": "https://doi.org/10.1177/23312165231209913",
+      "categories": [
+        "Trends in Hearing"
+      ],
+      "venue": "Trends in Hearing",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "该综述系统梳理了频域单通道语音增强60年发展，涵盖传统与深度学习方法，与语音增强方向高度相关，具有重要参考价值和影响力，是必读级基础文献。",
+      "citation_count": 109,
+      "date_added": "2026-07-06",
+      "chinese_summary": {
+        "problem": "系统综述60年来频域单通道语音增强的发展，包括传统方法和深度学习方法，总结各自假设、优缺点，并提供统一性能评估及未来方向。",
+        "method": "这是一篇综述论文，通过系统性文献回顾，整理和分析传统方法（如谱减法、维纳滤波）与深度学习方法（如DNN、CNN、RNN）在频域单通道语音增强中的技术与假设；并在WSJ+DNS和Voice Bank+DEMAND数据集上对典型方法进行客观评测，使用针对正常听力和听障听者的指标。",
+        "innovation": "提供全面且结构化的历史回顾，首次深入分析各方法的基本假设以揭示局限性和优势；在统一数据集上对比多种方法，并特别考察听障听者的客观指标，揭示输入特征压缩对不同听者群体的影响差异。",
+        "evidence": "摘要明确使用WSJ+Deep Noise Suppression (DNS) challenge和Voice Bank+DEMAND数据集进行了典型方法的客观评测，指标针对正常和听障听者，并得出特征压缩对正常听者重要但对听障听者不重要的结论。",
+        "limitations": "作为综述，未提出新算法；评估仅基于特定数据集和客观指标，缺乏主观听力实验验证；分类为Trends in Hearing，可能侧重听觉感知而非纯工程实现。",
+        "why_relevant": "论文主题（频域单通道语音增强）完全匹配研究方向中的speech enhancement、denoising、noise reduction等关键词；综述内容涵盖传统与深度学习，与音频前端处理中的neural masking、U-Net等方法直接相关；评估考虑听障听者，与音频前端在助听设备中的应用场景一致。"
+      }
+    },
+    {
+      "id": "arxiv:2308.05037",
+      "arxiv_id": "2308.05037",
+      "title": "Separate Anything You Describe",
+      "authors": [
+        "Xubo Liu",
+        "Qiuqiang Kong",
+        "Yan Zhao",
+        "Haohe Liu",
+        "Yiitan Yuan",
+        "Yuzhuo Liu",
+        "Rui Xia",
+        "Yuxuan Wang",
+        "Mark D. Plumbley",
+        "Wenwu Wang"
+      ],
+      "published": "2023-08-09T00:00:00+00:00",
+      "summary": "Language-queried audio source separation (LASS) is a new paradigm for computational auditory scene analysis (CASA). LASS aims to separate a target sound from an audio mixture given a natural language query, which provides a natural and scalable interface for digital audio applications. Recent works on LASS, despite attaining promising separation performance on specific sources (e.g., musical instruments, limited classes of audio events), are unable to separate audio concepts in the open domain. In this work, we introduce AudioSep, a foundation model for open-domain audio source separation with natural language queries. We train AudioSep on large-scale multimodal datasets and extensively evaluate its capabilities on numerous tasks including audio event separation, musical instrument separation, and speech enhancement. AudioSep demonstrates strong separation performance and impressive zero-shot generalization ability using audio captions or text labels as queries, substantially outperforming previous audio-queried and language-queried sound separation models. Specifically, AudioSep achieved strong results including a signal-to-distortion ratio improvement (SDRi) of 7.74 dB across 527 sound classes of the AudioSet; 9.14 dB on the VGGSound dataset; 8.22 dB on the AudioCaps dataset; 6.85 dB on the Clotho dataset; 10.51 dB on the MUSIC dataset; 10.04 dB on the ESC-50 dataset; 8.16 dB on the DCASE 2024 Task 9 dataset; and a segmental signal to noise ratio (SSNR) of 9.21 dB on the Voicebank-Demand dataset.",
+      "paper_url": "https://arxiv.org/abs/2308.05037",
+      "pdf_url": "http://arxiv.org/pdf/2308.05037",
+      "categories": [
+        "IEEE Transactions on Audio, Speech, and Language Processing"
+      ],
+      "venue": "IEEE Transactions on Audio, Speech, and Language Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "与语音分离和目标说话人提取方向高度相关，提出了语言查询的开放域音频源分离基础模型AudioSep，性能优异且具备零样本泛化能力，是领域内的重要基线工作。",
+      "citation_count": 86,
+      "date_added": "2026-07-06",
+      "chinese_summary": {
+        "problem": "现有语言查询音频源分离方法仅能处理特定类别（如乐器、有限音频事件），无法在开放域中分离任意音频概念。",
+        "method": "提出AudioSep基础模型，使用大规模多模态数据集训练，以自然语言查询作为输入，采用端到端架构实现开放域音频源分离。模型通过文本标签或音频描述作为查询，直接输出目标音频源。",
+        "innovation": "1) 首次实现开放域音频源分离，支持任意自然语言查询；2) 在大规模多模态数据上训练，展现强大的零样本泛化能力；3) 在多个数据集上显著优于此前音频查询和语言查询的分离模型。",
+        "evidence": "在AudioSet（527类）上SDRi 7.74 dB，VGGSound 9.14 dB，AudioCaps 8.22 dB，Clotho 6.85 dB，MUSIC 10.51 dB，ESC-50 10.04 dB，DCASE 2024 Task 9 8.16 dB，以及语音增强任务Voicebank-Demand上SSNR 9.21 dB。",
+        "limitations": "论文主要聚焦于通用音频事件分离，语音增强仅为其中一项任务，未专门针对语音分离或目标说话人提取进行优化；可能对多说话人混合场景的分离效果未知。",
+        "why_relevant": "论文涉及源分离任务，包含语音增强任务，与研究方向中的'语音分离'和'源分离'关键词部分匹配，但核心是开放域音频事件分离而非专门的目标说话人提取。"
+      }
+    }
+  ]
+}
