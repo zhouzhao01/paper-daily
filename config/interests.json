@@ -2,127 +2,142 @@
   "sources": [
     { "type": "arxiv", "name": "arXiv" }
   ],
+  "digest": {
+    "max_labor_paper": 200,
+    "max_daily_added": 5,
+    "min_score": 7.0,
+    "shortlist_size": 40,
+    "frontier_budget_ratio": 0.75,
+    "frontier_lookback_days": 4,
+    "foundation_lookback_years": 3,
+    "foundation_min_citations": 20
+  },
   "conference_sources": {
     "enabled": true,
+    "include_default_venues": false,
     "current_year": 2026,
     "lookback_years": 2,
     "venues": [
       {
-        "id": "isca",
-        "name": "ISCA",
-        "group": "computer architecture",
-        "dblp_toc_patterns": ["db/conf/isca/isca{year}.bht"]
+        "id": "icassp",
+        "name": "ICASSP",
+        "enabled": true,
+        "group": "speech and audio signal processing",
+        "dblp_toc_patterns": ["db/conf/icassp/icassp{year}.bht"]
       },
       {
-        "id": "micro",
-        "name": "MICRO",
-        "group": "computer architecture",
-        "dblp_toc_patterns": ["db/conf/micro/micro{year}.bht"]
+        "id": "interspeech",
+        "name": "INTERSPEECH",
+        "enabled": true,
+        "group": "speech and audio signal processing",
+        "dblp_toc_patterns": ["db/conf/interspeech/interspeech{year}.bht"]
       },
       {
-        "id": "hpca",
-        "name": "HPCA",
-        "group": "computer architecture",
-        "dblp_toc_patterns": ["db/conf/hpca/hpca{year}.bht"]
+        "id": "waspaa",
+        "name": "WASPAA",
+        "enabled": true,
+        "group": "speech and audio signal processing",
+        "dblp_toc_patterns": ["db/conf/waspaa/waspaa{year}.bht"]
       },
       {
-        "id": "asplos",
-        "name": "ASPLOS",
-        "group": "computer architecture",
-        "dblp_toc_patterns": [
-          "db/conf/asplos/asplos{year}-1.bht",
-          "db/conf/asplos/asplos{year}-2.bht",
-          "db/conf/asplos/asplos{year}-3.bht",
-          "db/conf/asplos/asplos{year}-4.bht"
-        ]
-      },
-      {
-        "id": "mlsys",
-        "name": "MLSys",
-        "group": "systems for machine learning",
-        "dblp_toc_patterns": ["db/conf/mlsys/mlsys{year}.bht"]
-      },
-      {
-        "id": "eurosys",
-        "name": "EuroSys",
-        "group": "systems",
-        "dblp_toc_patterns": ["db/conf/eurosys/eurosys{year}.bht"]
+        "id": "ismir",
+        "name": "ISMIR",
+        "enabled": true,
+        "group": "music information retrieval",
+        "dblp_toc_patterns": ["db/conf/ismir/ismir{year}.bht"]
       }
     ]
   },
   "topics": [
     {
-      "id": "llm_low_precision_quantization",
-      "name": "大模型低精度量化",
-      "description": "关注大语言模型低比特量化、混合精度、量化感知训练、后训练量化、权重量化、激活量化、KV cache 量化以及量化对推理性能和精度的影响。",
+      "id": "speech_enhancement_frontend",
+      "name": "Speech Enhancement and Audio Frontend",
+      "description": "Single- and multi-channel speech enhancement, denoising, dereverberation, acoustic echo cancellation and residual echo suppression, noise suppression, and audio frontend processing, including classical methods and Neural Networking Model.",
       "keywords": [
-        "large language model quantization",
-        "LLM quantization",
-        "low-bit quantization",
-        "post-training quantization",
-        "weight-only quantization",
-        "activation quantization",
-        "mixed precision",
-        "FP8",
-        "INT4",
-        "INT8",
-        "KV cache quantization"
+        "speech enhancement",
+        "speech denoising",
+        "noise reduction",
+        "noise suppression",
+        "dereverberation",
+        "acoustic echo cancellation",
+        "residual echo suppression",
+        "speech frontend",
+        "neural masking",
+        "U-Net speech enhancement"
       ],
-      "arxiv_categories": ["cs.CL", "cs.LG", "cs.AI", "cs.DC"]
+      "arxiv_categories": ["eess.AS", "cs.SD", "eess.SP", "cs.LG"]
     },
     {
-      "id": "tensor_compute_unit_architecture",
-      "name": "张量计算单元结构",
-      "description": "关注 GPU/NPU/TPU 张量计算单元、矩阵乘加阵列、数据流架构、片上存储层次、低精度张量核、AI 加速器微架构和算子映射。",
+      "id": "microphone_array_beamforming",
+      "name": "Microphone Array and Beamforming",
+      "description": "Microphone array signal processing, beamforming, neural beamforming, multichannel speech enhancement, spatial filtering, sound source localization, and direction-of-arrival estimation.",
       "keywords": [
-        "tensor processing unit",
-        "tensor core",
-        "matrix multiply unit",
-        "systolic array",
-        "AI accelerator architecture",
-        "NPU architecture",
-        "GPU tensor core",
-        "low precision tensor compute",
-        "dataflow architecture",
-        "on-chip memory hierarchy"
+        "microphone array",
+        "array signal processing",
+        "beamforming",
+        "neural beamforming",
+        "multichannel speech enhancement",
+        "spatial filtering",
+        "MVDR beamforming",
+        "sound source localization",
+        "direction of arrival",
+        "spatial features"
       ],
-      "arxiv_categories": ["cs.AR", "cs.DC", "cs.LG", "cs.PF"]
+      "arxiv_categories": ["eess.AS", "cs.SD", "eess.SP"]
     },
     {
-      "id": "llm_inference_cluster_communication",
-      "name": "大模型推理集群通信优化",
-      "description": "关注分布式大模型推理、prefill/decode 分离、张量并行、流水并行、专家并行、跨节点通信、调度、负载均衡和 serving 系统吞吐延迟优化。",
+      "id": "speech_separation_extraction",
+      "name": "Speech Separation and Target Speaker Extraction",
+      "description": "Speech separation, target speaker extraction, blind source separation, masking methods, end to end methods, and time-domain / time-frequency separation methods.",
       "keywords": [
-        "LLM inference serving",
-        "distributed inference",
-        "inference cluster",
-        "tensor parallelism",
-        "pipeline parallelism",
-        "expert parallelism",
-        "all-reduce",
-        "collective communication",
-        "prefill decode disaggregation",
-        "serving scheduler"
+        "speech separation",
+        "target speaker extraction",
+        "speaker extraction",
+        "source separation",
+        "blind source separation",
+        "time-domain separation",
+        "dual-path network",
+        "masking model",
+        "permutation invariant training",
+        "cocktail party"
       ],
-      "arxiv_categories": ["cs.DC", "cs.PF", "cs.CL", "cs.LG"]
+      "arxiv_categories": ["eess.AS", "cs.SD", "cs.LG"]
     },
     {
-      "id": "kvcache_compression_storage_scheduling",
-      "name": "KV cache 压缩与存储调度",
-      "description": "关注大模型推理中的 KV cache 压缩、淘汰、分页、卸载、预取、层级存储、显存管理和长上下文推理效率优化。",
+      "id": "generative_speech",
+      "name": "Generative Speech Technology",
+      "description": "Generative speech enhancement, speech restoration, speech synthesis and TTS, neural vocoders, and generative methods such as diffusion models and flow matching applied to speech.",
       "keywords": [
-        "KV cache compression",
-        "KV cache eviction",
-        "KV cache scheduling",
-        "paged attention",
-        "attention cache",
-        "long context inference",
-        "memory offloading",
-        "GPU memory management",
-        "cache prefetching",
-        "LLM serving memory"
+        "generative speech enhancement",
+        "speech restoration",
+        "speech generation",
+        "diffusion model speech",
+        "flow matching speech",
+        "generative model audio",
+        "speech synthesis",
+        "text-to-speech",
+        "neural vocoder",
+        "bandwidth extension"
       ],
-      "arxiv_categories": ["cs.CL", "cs.LG", "cs.DC", "cs.PF"]
+      "arxiv_categories": ["eess.AS", "cs.SD", "cs.CL", "cs.LG"]
+    },
+    {
+      "id": "music_mir_representation",
+      "name": "Music Information Retrieval and Representation",
+      "description": "Music information retrieval (MIR), music encoders and representation learning, music understanding and generation, and self-supervised audio representation.",
+      "keywords": [
+        "music information retrieval",
+        "MIR",
+        "music representation learning",
+        "music encoder",
+        "music understanding",
+        "music generation",
+        "audio representation learning",
+        "self-supervised audio",
+        "music tagging",
+        "audio foundation model"
+      ],
+      "arxiv_categories": ["cs.SD", "eess.AS", "cs.LG", "cs.MM"]
     }
   ]
 }
