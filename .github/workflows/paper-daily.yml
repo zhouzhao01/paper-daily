@@ -4,25 +4,22 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "0 22 * * *"
+    # Main daily run, off-peak odd minute (UTC).
+    - cron: "23 1 * * *"
+    # Catch-up run ~6h later; the pipeline is idempotent (library index dedupe
+    # + per-day admission cap), so a double run is harmless.
+    - cron: "41 7 * * *"
   workflow_dispatch:
     inputs:
-      lookback_days:
-        description: "首次初始化要回看最近几天的论文"
-        required: false
-        default: "7"
       clear_cache:
-        description: "是否清空历史缓存后重新生成论文列表"
+        description: "是否清空顶会论文缓存后重新抓取"
         required: false
         default: "false"
-  issues:
-    types: [opened, edited, reopened]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
-  issues: read
 
 concurrency:
   group: pages
@@ -30,8 +27,8 @@ concurrency:
 
 jobs:
   collect-and-deploy:
-    if: github.event_name != 'issues' || github.event.issue.title == 'Research Interests'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -47,7 +44,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Restore paper data cache
+      - name: Restore conference paper cache
         uses: actions/cache/restore@v4
         with:
           path: .paper-cache
@@ -55,7 +52,7 @@ jobs:
           restore-keys: |
             paper-data-
 
-      - name: Hydrate cached paper data
+      - name: Hydrate cached conference data
         run: |
           mkdir -p web/data
           if [ -f .paper-cache/papers.json ]; then
@@ -65,58 +62,58 @@ jobs:
             cp .paper-cache/conference_papers.json web/data/conference_papers.json
           fi
 
-      - name: Collect papers
+      - name: Collect conference papers
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CONFIG_ISSUE_TITLE: Research Interests
-          LOOKBACK_DAYS: ${{ github.event_name == 'workflow_dispatch' && inputs.lookback_days || vars.LOOKBACK_DAYS || '1' }}
-          MAX_PER_TOPIC: ${{ vars.MAX_PER_TOPIC || '10' }}
-          MAX_SUMMARIES: ${{ vars.MAX_SUMMARIES || '20' }}
-          MAX_NEW_PAPERS: ${{ vars.MAX_NEW_PAPERS || '50' }}
-          MAX_STORED_PAPERS: ${{ vars.MAX_STORED_PAPERS || '50' }}
-          MAX_NEW_CONFERENCE_PAPERS: ${{ vars.MAX_NEW_CONFERENCE_PAPERS || '50' }}
-          MAX_STORED_CONFERENCE_PAPERS: ${{ vars.MAX_STORED_CONFERENCE_PAPERS || '300' }}
-          MAX_DATA_BYTES: ${{ vars.MAX_DATA_BYTES || '8388608' }}
-          RECENT_HISTORY_DAYS: ${{ vars.RECENT_HISTORY_DAYS || '45' }}
-          PAPER_SOURCES: ${{ vars.PAPER_SOURCES || '' }}
+          SKIP_DAILY_SOURCES: "true"
+          MAX_SUMMARIES: "0"
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || '' }}
-          CROSSREF_EMAIL: ${{ vars.CROSSREF_EMAIL || '' }}
-          OPENALEX_EMAIL: ${{ vars.OPENALEX_EMAIL || '' }}
           SOURCE_DELAY_SECONDS: ${{ vars.SOURCE_DELAY_SECONDS || '3' }}
           DBLP_DELAY_SECONDS: ${{ vars.DBLP_DELAY_SECONDS || '5' }}
           DBLP_PATTERN_DELAY_SECONDS: ${{ vars.DBLP_PATTERN_DELAY_SECONDS || '3' }}
           DBLP_RETRIES: ${{ vars.DBLP_RETRIES || '3' }}
           MAX_PER_CONFERENCE: ${{ vars.MAX_PER_CONFERENCE || '1000' }}
-          ARXIV_QUERY_MODE: ${{ vars.ARXIV_QUERY_MODE || 'keyword' }}
-          ARXIV_SORT_BY: ${{ vars.ARXIV_SORT_BY || 'lastUpdatedDate' }}
-          ARXIV_EXPAND_CATEGORY_SEARCH: ${{ vars.ARXIV_EXPAND_CATEGORY_SEARCH || 'false' }}
-          ARXIV_CATEGORY_MAX_RESULTS: ${{ vars.ARXIV_CATEGORY_MAX_RESULTS || vars.MAX_PER_TOPIC || '10' }}
-          ARXIV_IN_TOPIC_DELAY_SECONDS: ${{ vars.ARXIV_IN_TOPIC_DELAY_SECONDS || '3' }}
-          MIN_DAILY_PAPERS: ${{ vars.MIN_DAILY_PAPERS || '8' }}
-          DAILY_BACKFILL_DAYS: ${{ vars.DAILY_BACKFILL_DAYS || '14' }}
-          MAX_CONFERENCE_ABSTRACT_ENRICHMENTS: ${{ vars.MAX_CONFERENCE_ABSTRACT_ENRICHMENTS || vars.MAX_CONFERENCE_ARXIV_ENRICHMENTS || '50' }}
+          MAX_NEW_CONFERENCE_PAPERS: ${{ vars.MAX_NEW_CONFERENCE_PAPERS || '50' }}
+          MAX_STORED_CONFERENCE_PAPERS: ${{ vars.MAX_STORED_CONFERENCE_PAPERS || '300' }}
+          MAX_CONFERENCE_ABSTRACT_ENRICHMENTS: ${{ vars.MAX_CONFERENCE_ABSTRACT_ENRICHMENTS || '50' }}
           CONFERENCE_ABSTRACT_SOURCES: ${{ vars.CONFERENCE_ABSTRACT_SOURCES || 'arxiv,openalex,crossref' }}
-          CONFERENCE_ABSTRACT_DELAY_SECONDS: ${{ vars.CONFERENCE_ABSTRACT_DELAY_SECONDS || vars.CONFERENCE_ARXIV_DELAY_SECONDS || '3' }}
-          CONFERENCE_ABSTRACT_SEARCH_RESULTS: ${{ vars.CONFERENCE_ABSTRACT_SEARCH_RESULTS || vars.CONFERENCE_ARXIV_SEARCH_RESULTS || '5' }}
-          MAX_CONFERENCE_ARXIV_ENRICHMENTS: ${{ vars.MAX_CONFERENCE_ARXIV_ENRICHMENTS || '50' }}
-          CONFERENCE_ARXIV_DELAY_SECONDS: ${{ vars.CONFERENCE_ARXIV_DELAY_SECONDS || '3' }}
-          CONFERENCE_ARXIV_SEARCH_RESULTS: ${{ vars.CONFERENCE_ARXIV_SEARCH_RESULTS || '5' }}
-          ENABLE_SEMANTIC_SCHOLAR: ${{ vars.ENABLE_SEMANTIC_SCHOLAR || 'false' }}
-          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
-          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
-          CUSTOM_FEED_HEADERS: ${{ secrets.CUSTOM_FEED_HEADERS }}
-          CUSTOM_FEED_BEARER_TOKEN: ${{ secrets.CUSTOM_FEED_BEARER_TOKEN }}
-          CLEAR_PAPER_CACHE: ${{ github.event_name == 'workflow_dispatch' && inputs.clear_cache || vars.CLEAR_PAPER_CACHE || 'false' }}
-          INCREMENTAL_SINCE_LAST_RUN: ${{ github.event_name == 'schedule' && 'true' || vars.INCREMENTAL_SINCE_LAST_RUN || 'false' }}
-          LLM_CONCURRENCY: ${{ vars.LLM_CONCURRENCY || '2' }}
+          CONFERENCE_ABSTRACT_DELAY_SECONDS: ${{ vars.CONFERENCE_ABSTRACT_DELAY_SECONDS || '3' }}
+          CLEAR_PAPER_CACHE: ${{ github.event_name == 'workflow_dispatch' && inputs.clear_cache || 'false' }}
+        run: python scripts/collect_papers.py
+
+      - name: Run daily digest
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_BASE_URL: ${{ vars.LLM_BASE_URL || secrets.LLM_BASE_URL }}
           LLM_MODEL: ${{ vars.LLM_MODEL || secrets.LLM_MODEL }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-        run: python scripts/collect_papers.py
+          LLM_CONCURRENCY: ${{ vars.LLM_CONCURRENCY || '2' }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || '' }}
+          ARXIV_RETRY_THROTTLED: "true"
+          # Optional overrides; when unset, values come from config/interests.json.
+          MAX_LABOR_PAPER: ${{ vars.MAX_LABOR_PAPER || '' }}
+          MAX_DAILY_ADDED: ${{ vars.MAX_DAILY_ADDED || '' }}
+          MIN_SCORE: ${{ vars.MIN_SCORE || '' }}
+          SHORTLIST_SIZE: ${{ vars.SHORTLIST_SIZE || '' }}
+        run: python scripts/digest.py
 
-      - name: Stage paper data cache
+      - name: Commit library updates
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898270+github-actions[bot]@users.noreply.github.com"
+          git add data web/data/library.json
+          if git diff --cached --quiet; then
+            echo "No library changes to commit."
+          else
+            git commit -m "Daily digest: $(date -u +%F) (run ${{ github.run_id }})"
+            git pull --rebase origin main
+            git push origin main
+          fi
+
+      - name: Stage conference paper cache
         run: |
           mkdir -p .paper-cache
           cp web/data/papers.json .paper-cache/papers.json
@@ -124,7 +121,7 @@ jobs:
             cp web/data/conference_papers.json .paper-cache/conference_papers.json
           fi
 
-      - name: Save paper data cache
+      - name: Save conference paper cache
         uses: actions/cache/save@v4
         with:
           path: .paper-cache
