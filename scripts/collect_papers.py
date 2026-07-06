@@ -393,10 +393,47 @@ def date_to_iso(value: str | int | None) -> str:
     return text
 
 
-def request_json(url: str, headers: dict[str, str] | None = None, timeout: float = 60) -> Any:
-    req = urllib.request.Request(url, headers=headers or {"User-Agent": "paper-daily-collector/1.0"})
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+def collector_user_agent() -> str:
+    repository = os.getenv("GITHUB_REPOSITORY", "").strip()
+    if repository:
+        return f"paper-daily-collector/1.0 (+https://github.com/{repository})"
+    return "paper-daily-collector/1.0"
+
+
+def is_transient_http_error(exc: Exception) -> bool:
+    if isinstance(exc, urllib.error.HTTPError):
+        return exc.code in TRANSIENT_HTTP_CODES
+    return isinstance(exc, (TimeoutError, urllib.error.URLError, OSError, http.client.RemoteDisconnected))
+
+
+def transient_retry_wait_seconds(exc: Exception, attempt: int, base: float = 3.0, cap: float = 60.0) -> float:
+    if isinstance(exc, urllib.error.HTTPError):
+        retry_after = exc.headers.get("Retry-After")
+        if retry_after and retry_after.isdigit():
+            return min(cap, max(base, float(retry_after)))
+    return min(cap, base * (2**attempt))
+
+
+def request_json(url: str, headers: dict[str, str] | None = None, timeout: float = 60, retries: int | None = None) -> Any:
+    retry_count = max(1, retries if retries is not None else env_int("HTTP_RETRIES", 4))
+    last_error: Exception | None = None
+    for attempt in range(retry_count):
+        req = urllib.request.Request(url, headers=headers or {"User-Agent": collector_user_agent()})
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except Exception as exc:
+            last_error = exc
+            if not is_transient_http_error(exc) or attempt == retry_count - 1:
+                raise
+            wait_seconds = transient_retry_wait_seconds(exc, attempt)
+            print(
+                f"Transient HTTP error for {url.split('?', 1)[0]}: {exc}; retrying in {wait_seconds:.0f}s",
+                file=sys.stderr,
+                flush=True,
+            )
+            time.sleep(wait_seconds)
+    raise RuntimeError(f"request failed: {last_error}")
 
 
 def request_bytes(url: str, headers: dict[str, str] | None = None, timeout: float = 60) -> bytes:
@@ -507,7 +544,7 @@ def fetch_arxiv_query(search_query: str, max_results: int, sort_by: str, sort_or
     timeout_seconds = float(os.getenv("ARXIV_TIMEOUT_SECONDS", "90"))
     last_error: Exception | None = None
     for attempt in range(retry_count):
-        req = urllib.request.Request(url, headers={"User-Agent": "paper-daily-collector/1.0 (+https://github.com/Futuresxy/paper-daily)"})
+        req = urllib.request.Request(url, headers={"User-Agent": collector_user_agent()})
         try:
             with urllib.request.urlopen(req, timeout=timeout_seconds) as resp:
                 xml_data = resp.read()
@@ -842,7 +879,7 @@ def fetch_dblp_json(query: str, max_results: int) -> dict[str, Any]:
     last_error: Exception | None = None
     for attempt in range(retry_count):
         try:
-            return fetch_json_url(url, "paper-daily-collector/1.0 (+https://github.com/Futuresxy/paper-daily)", timeout_seconds)
+            return fetch_json_url(url, collector_user_agent(), timeout_seconds)
         except Exception as exc:
             last_error = exc
             if not is_retryable_dblp_error(exc) or attempt == retry_count - 1:
@@ -1015,7 +1052,7 @@ def fetch_dblp_html_toc(toc_key: str, source: ConferenceSource, year: int) -> li
     retry_count = max(1, int(os.getenv("DBLP_RETRIES", "3")))
     last_error: Exception | None = None
     for attempt in range(retry_count):
-        req = urllib.request.Request(url, headers={"User-Agent": "paper-daily-collector/1.0 (+https://github.com/Futuresxy/paper-daily)"})
+        req = urllib.request.Request(url, headers={"User-Agent": collector_user_agent()})
         try:
             with urllib.request.urlopen(req, timeout=timeout_seconds) as resp:
                 html_text = resp.read().decode("utf-8", "replace")
@@ -1643,7 +1680,7 @@ def parse_json_loose(text: str) -> dict[str, Any]:
     raise ValueError("no JSON object found in model output")
 
 
-def call_codex_cli(prompt: str) -> dict[str, Any]:
+def call_codex_cli(prompt: str, schema: dict[str, Any] | None = None) -> dict[str, Any]:
     codex_bin = os.getenv("CODEX_BIN", "codex")
     model = os.getenv("CODEX_MODEL", "")
     timeout = int(os.getenv("CODEX_TIMEOUT", "180"))
@@ -1651,7 +1688,7 @@ def call_codex_cli(prompt: str) -> dict[str, Any]:
         schema_path = os.path.join(tmpdir, "schema.json")
         out_path = os.path.join(tmpdir, "last_message.txt")
         with open(schema_path, "w", encoding="utf-8") as handle:
-            json.dump(SUMMARY_JSON_SCHEMA, handle)
+            json.dump(schema or SUMMARY_JSON_SCHEMA, handle)
         cmd = [
             codex_bin,
             "exec",
@@ -1692,9 +1729,9 @@ def call_codex_cli(prompt: str) -> dict[str, Any]:
     return parse_json_loose(content)
 
 
-def call_llm(prompt: str) -> dict[str, Any]:
+def call_llm(prompt: str, schema: dict[str, Any] | None = None) -> dict[str, Any]:
     if llm_backend() == "codex":
-        return call_codex_cli(prompt)
+        return call_codex_cli(prompt, schema=schema)
     return call_openai_compatible(prompt)
 
 
@@ -1707,25 +1744,41 @@ def llm_headers(api_key: str) -> dict[str, str]:
 
 
 def post_chat_completion(endpoint: str, api_key: str, model: str, payload: dict[str, Any]) -> str:
-    req = urllib.request.Request(
-        endpoint,
-        data=json.dumps(payload).encode("utf-8"),
-        headers=llm_headers(api_key),
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=90) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as exc:
+    retry_count = max(1, env_int("LLM_RETRIES", 3))
+    timeout_seconds = float(os.getenv("LLM_TIMEOUT_SECONDS", "90"))
+    last_error: Exception | None = None
+    for attempt in range(retry_count):
+        req = urllib.request.Request(
+            endpoint,
+            data=json.dumps(payload).encode("utf-8"),
+            headers=llm_headers(api_key),
+            method="POST",
+        )
         try:
-            body = exc.read().decode("utf-8", "replace").strip()
-        except Exception:
-            body = ""
-        detail = f" - {body[:500]}" if body else ""
-        raise RuntimeError(
-            f"LLM API HTTP {exc.code} from {endpoint} (model={model}){detail}"
-        ) from exc
-    return data["choices"][0]["message"]["content"]
+            with urllib.request.urlopen(req, timeout=timeout_seconds) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            return data["choices"][0]["message"]["content"]
+        except urllib.error.HTTPError as exc:
+            try:
+                body = exc.read().decode("utf-8", "replace").strip()
+            except Exception:
+                body = ""
+            detail = f" - {body[:500]}" if body else ""
+            error = RuntimeError(f"LLM API HTTP {exc.code} from {endpoint} (model={model}){detail}")
+            if exc.code not in TRANSIENT_HTTP_CODES or attempt == retry_count - 1:
+                raise error from exc
+            last_error = error
+            wait_seconds = transient_retry_wait_seconds(exc, attempt, base=5.0, cap=120.0)
+            print(f"LLM transient HTTP {exc.code}; retrying in {wait_seconds:.0f}s", file=sys.stderr, flush=True)
+            time.sleep(wait_seconds)
+        except (TimeoutError, urllib.error.URLError, OSError) as exc:
+            last_error = exc
+            if attempt == retry_count - 1:
+                raise RuntimeError(f"LLM API request failed for {endpoint} (model={model}): {exc}") from exc
+            wait_seconds = transient_retry_wait_seconds(exc, attempt, base=5.0, cap=120.0)
+            print(f"LLM network error: {exc}; retrying in {wait_seconds:.0f}s", file=sys.stderr, flush=True)
+            time.sleep(wait_seconds)
+    raise RuntimeError(f"LLM API request failed for {endpoint} (model={model}): {last_error}")
 
 
 def call_openai_compatible(prompt: str) -> dict[str, Any]:
@@ -2068,6 +2121,11 @@ def collect(
     config = load_issue_config(default_config)
     topics = parse_topics(config)
     sources = parse_sources(config)
+    if env_flag("SKIP_DAILY_SOURCES", False):
+        # Digest mode: scripts/digest.py owns daily arXiv collection; this run
+        # only refreshes conference data.
+        print("Skipping daily topic sources (SKIP_DAILY_SOURCES=true).", flush=True)
+        sources = []
     now = dt.datetime.now(dt.timezone.utc)
     conference_sources = parse_conference_sources(config, now)
     active_conference_years_by_source = active_conference_years(conference_sources)
