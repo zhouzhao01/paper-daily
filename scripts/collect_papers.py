@@ -668,7 +668,12 @@ def find_semantic_scholar_by_title(title: str, max_results: int = 5) -> dict[str
     if api_key:
         headers["x-api-key"] = api_key
     url = f"{SEMANTIC_SCHOLAR_SEARCH_URL}?{urllib.parse.urlencode(params)}"
-    data = request_json(url, headers=headers, timeout=float(os.getenv("SEMANTIC_SCHOLAR_TIMEOUT_SECONDS", "60")))
+    data = request_json(
+        url,
+        headers=headers,
+        timeout=float(os.getenv("SEMANTIC_SCHOLAR_TIMEOUT_SECONDS", "60")),
+        retries=max(1, env_int("ENRICHMENT_RETRIES", 1)),
+    )
     for item in data.get("data") or []:
         candidate = semantic_scholar_paper_from_item(item)
         if candidate and titles_match(title, candidate["title"]) and has_meaningful_summary(candidate):
@@ -721,7 +726,11 @@ def find_openalex_by_title(title: str, max_results: int = 5) -> dict[str, Any] |
     if mailto:
         params["mailto"] = mailto
     url = f"{OPENALEX_WORKS_URL}?{urllib.parse.urlencode(params)}"
-    data = request_json(url, timeout=float(os.getenv("OPENALEX_TIMEOUT_SECONDS", "60")))
+    data = request_json(
+        url,
+        timeout=float(os.getenv("OPENALEX_TIMEOUT_SECONDS", "60")),
+        retries=max(1, env_int("ENRICHMENT_RETRIES", 1)),
+    )
     for work in data.get("results", []):
         candidate = openalex_paper_from_work(work)
         if candidate and titles_match(title, candidate["title"]) and has_meaningful_summary(candidate):
@@ -771,12 +780,27 @@ def find_crossref_by_title(title: str, max_results: int = 5) -> dict[str, Any] |
         params["mailto"] = mailto
     headers = {"User-Agent": f"paper-daily-collector/1.0 (mailto:{mailto or 'unknown@example.com'})"}
     url = f"{CROSSREF_WORKS_URL}?{urllib.parse.urlencode(params)}"
-    data = request_json(url, headers=headers, timeout=float(os.getenv("CROSSREF_TIMEOUT_SECONDS", "60")))
+    data = request_json(
+        url,
+        headers=headers,
+        timeout=float(os.getenv("CROSSREF_TIMEOUT_SECONDS", "60")),
+        retries=max(1, env_int("ENRICHMENT_RETRIES", 1)),
+    )
     for item in (data.get("message") or {}).get("items", []):
         candidate = crossref_paper_from_item(item)
         if candidate and titles_match(title, candidate["title"]) and has_meaningful_summary(candidate):
             return candidate
     return None
+
+
+# Consecutive-failure counts per enrichment source; a source that keeps
+# failing (e.g. a provider outage) is disabled for the rest of the run so a
+# best-effort lookup can never stall the whole pipeline.
+_enrichment_source_failures: dict[str, int] = {}
+
+
+def reset_enrichment_failures() -> None:
+    _enrichment_source_failures.clear()
 
 
 def find_conference_abstract_by_title(title: str, max_results: int = 5) -> dict[str, Any] | None:
@@ -787,15 +811,28 @@ def find_conference_abstract_by_title(title: str, max_results: int = 5) -> dict[
         "openalex": find_openalex_by_title,
         "crossref": find_crossref_by_title,
     }
+    failure_limit = max(1, env_int("ENRICHMENT_SOURCE_FAILURE_LIMIT", 5))
     for source_type in conference_abstract_sources():
-        finder = finders.get(source_type.strip().lower())
+        key = source_type.strip().lower()
+        finder = finders.get(key)
         if not finder:
+            continue
+        if _enrichment_source_failures.get(key, 0) >= failure_limit:
             continue
         try:
             candidate = finder(title, max_results=max_results)
         except Exception as exc:
+            failures = _enrichment_source_failures.get(key, 0) + 1
+            _enrichment_source_failures[key] = failures
             print(f"Warning: {source_type} title enrichment failed for {title[:80]}: {exc}", file=sys.stderr)
+            if failures == failure_limit:
+                print(
+                    f"Warning: disabling {source_type} title enrichment for this run "
+                    f"after {failures} consecutive failures",
+                    file=sys.stderr,
+                )
             continue
+        _enrichment_source_failures[key] = 0
         if candidate and has_meaningful_summary(candidate):
             return candidate
     return None

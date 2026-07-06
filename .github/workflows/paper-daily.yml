@@ -66,6 +66,9 @@ jobs:
         env:
           SKIP_DAILY_SOURCES: "true"
           MAX_SUMMARIES: "0"
+          # Abstract enrichment is best-effort: fail fast instead of stalling
+          # the run when a provider is down.
+          ARXIV_RETRIES: "2"
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || '' }}
           SOURCE_DELAY_SECONDS: ${{ vars.SOURCE_DELAY_SECONDS || '3' }}
           DBLP_DELAY_SECONDS: ${{ vars.DBLP_DELAY_SECONDS || '5' }}
