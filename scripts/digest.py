@@ -538,7 +538,18 @@ def stage2_score(shortlist: list[dict[str, Any]], topics: list[cp.Topic]) -> Non
     if failures:
         for failure in failures:
             print(f"ERROR: {failure}", file=sys.stderr)
-        raise DigestError(f"{len(failures)} of {len(shortlist)} LLM scoring calls failed")
+        # Tolerate isolated flaky calls: unscored papers are simply not
+        # considered this run (and are NOT logged as rejected, so a future
+        # run scores them fresh). Systemic failure still sinks the run.
+        max_tolerated = max(1, len(shortlist) // 10)
+        if len(failures) > max_tolerated:
+            raise DigestError(f"{len(failures)} of {len(shortlist)} LLM scoring calls failed")
+        print(
+            f"Warning: {len(failures)} of {len(shortlist)} LLM scoring calls failed; "
+            "continuing with the successfully scored papers",
+            file=sys.stderr,
+            flush=True,
+        )
 
 
 def admit(
@@ -546,7 +557,14 @@ def admit(
     settings: dict[str, Any],
     remaining_cap: int,
 ) -> tuple[list[dict[str, Any]], list[tuple[dict[str, Any], str]]]:
-    scored = sorted(shortlist, key=lambda p: p.get("llm_score", 0.0), reverse=True)
+    # Papers whose scoring call failed have no llm_score; exclude them rather
+    # than treating them as 0 (a below_threshold log entry would permanently
+    # ban them from re-scoring).
+    scored = sorted(
+        (p for p in shortlist if p.get("llm_score") is not None),
+        key=lambda p: p["llm_score"],
+        reverse=True,
+    )
     eligible = [p for p in scored if p.get("llm_score", 0.0) >= settings["min_score"]]
     admitted = eligible[:remaining_cap]
     rejected: list[tuple[dict[str, Any], str]] = []

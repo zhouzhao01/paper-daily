@@ -123,6 +123,12 @@ class AdmitTest(unittest.TestCase):
         self.assertEqual(admitted, [])
         self.assertEqual(rejected[0][1], "over_cap")
 
+    def test_unscored_papers_are_neither_admitted_nor_rejected(self):
+        shortlist = [make_candidate("arxiv:1", llm_score=9.0), make_candidate("arxiv:2")]
+        admitted, rejected = digest.admit(shortlist, self.settings, remaining_cap=2)
+        self.assertEqual([p["id"] for p in admitted], ["arxiv:1"])
+        self.assertEqual(rejected, [])
+
 
 class RejectedKeysTest(unittest.TestCase):
     def test_only_below_threshold_entries_block_rescoring(self):

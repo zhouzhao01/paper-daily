@@ -403,7 +403,9 @@ def collector_user_agent() -> str:
 def is_transient_http_error(exc: Exception) -> bool:
     if isinstance(exc, urllib.error.HTTPError):
         return exc.code in TRANSIENT_HTTP_CODES
-    return isinstance(exc, (TimeoutError, urllib.error.URLError, OSError, http.client.RemoteDisconnected))
+    # http.client.HTTPException covers truncated/aborted responses such as
+    # IncompleteRead and RemoteDisconnected.
+    return isinstance(exc, (TimeoutError, urllib.error.URLError, OSError, http.client.HTTPException))
 
 
 def transient_retry_wait_seconds(exc: Exception, attempt: int, base: float = 3.0, cap: float = 60.0) -> float:
@@ -1808,7 +1810,7 @@ def post_chat_completion(endpoint: str, api_key: str, model: str, payload: dict[
             wait_seconds = transient_retry_wait_seconds(exc, attempt, base=5.0, cap=120.0)
             print(f"LLM transient HTTP {exc.code}; retrying in {wait_seconds:.0f}s", file=sys.stderr, flush=True)
             time.sleep(wait_seconds)
-        except (TimeoutError, urllib.error.URLError, OSError) as exc:
+        except (TimeoutError, urllib.error.URLError, OSError, http.client.HTTPException) as exc:
             last_error = exc
             if attempt == retry_count - 1:
                 raise RuntimeError(f"LLM API request failed for {endpoint} (model={model}): {exc}") from exc
