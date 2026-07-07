@@ -62,27 +62,9 @@ jobs:
             cp .paper-cache/conference_papers.json web/data/conference_papers.json
           fi
 
-      - name: Collect conference papers
-        env:
-          SKIP_DAILY_SOURCES: "true"
-          MAX_SUMMARIES: "0"
-          # Abstract enrichment is best-effort: fail fast instead of stalling
-          # the run when a provider is down.
-          ARXIV_RETRIES: "2"
-          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || '' }}
-          SOURCE_DELAY_SECONDS: ${{ vars.SOURCE_DELAY_SECONDS || '3' }}
-          DBLP_DELAY_SECONDS: ${{ vars.DBLP_DELAY_SECONDS || '5' }}
-          DBLP_PATTERN_DELAY_SECONDS: ${{ vars.DBLP_PATTERN_DELAY_SECONDS || '3' }}
-          DBLP_RETRIES: ${{ vars.DBLP_RETRIES || '3' }}
-          MAX_PER_CONFERENCE: ${{ vars.MAX_PER_CONFERENCE || '1000' }}
-          MAX_NEW_CONFERENCE_PAPERS: ${{ vars.MAX_NEW_CONFERENCE_PAPERS || '50' }}
-          MAX_STORED_CONFERENCE_PAPERS: ${{ vars.MAX_STORED_CONFERENCE_PAPERS || '300' }}
-          MAX_CONFERENCE_ABSTRACT_ENRICHMENTS: ${{ vars.MAX_CONFERENCE_ABSTRACT_ENRICHMENTS || '50' }}
-          CONFERENCE_ABSTRACT_SOURCES: ${{ vars.CONFERENCE_ABSTRACT_SOURCES || 'arxiv,openalex,crossref' }}
-          CONFERENCE_ABSTRACT_DELAY_SECONDS: ${{ vars.CONFERENCE_ABSTRACT_DELAY_SECONDS || '3' }}
-          CLEAR_PAPER_CACHE: ${{ github.event_name == 'workflow_dispatch' && inputs.clear_cache || 'false' }}
-        run: python scripts/collect_papers.py
-
+      # The digest runs BEFORE conference collection: both hit the arXiv API
+      # from the same runner IP, and the digest's five topic queries must not
+      # start rate-limited by the collect step's abstract-enrichment lookups.
       - name: Run daily digest
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         env:
@@ -100,7 +82,30 @@ jobs:
           MAX_DAILY_ADDED: ${{ vars.MAX_DAILY_ADDED || '' }}
           MIN_SCORE: ${{ vars.MIN_SCORE || '' }}
           SHORTLIST_SIZE: ${{ vars.SHORTLIST_SIZE || '' }}
+          DIGEST_ARXIV_DELAY_SECONDS: ${{ vars.DIGEST_ARXIV_DELAY_SECONDS || '6' }}
         run: python scripts/digest.py
+
+      - name: Collect conference papers
+        env:
+          SKIP_DAILY_SOURCES: "true"
+          MAX_SUMMARIES: "0"
+          # Abstract enrichment is best-effort: fail fast instead of stalling
+          # the run when a provider is down, cap the lookups (they resume the
+          # next day), and query arXiv last to preserve its rate budget.
+          ARXIV_RETRIES: "2"
+          MAX_CONFERENCE_ABSTRACT_ENRICHMENTS: ${{ vars.MAX_CONFERENCE_ABSTRACT_ENRICHMENTS || '25' }}
+          CONFERENCE_ABSTRACT_SOURCES: ${{ vars.CONFERENCE_ABSTRACT_SOURCES || 'openalex,crossref,arxiv' }}
+          CONFERENCE_ABSTRACT_DELAY_SECONDS: ${{ vars.CONFERENCE_ABSTRACT_DELAY_SECONDS || '3' }}
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || '' }}
+          SOURCE_DELAY_SECONDS: ${{ vars.SOURCE_DELAY_SECONDS || '3' }}
+          DBLP_DELAY_SECONDS: ${{ vars.DBLP_DELAY_SECONDS || '5' }}
+          DBLP_PATTERN_DELAY_SECONDS: ${{ vars.DBLP_PATTERN_DELAY_SECONDS || '3' }}
+          DBLP_RETRIES: ${{ vars.DBLP_RETRIES || '3' }}
+          MAX_PER_CONFERENCE: ${{ vars.MAX_PER_CONFERENCE || '1000' }}
+          MAX_NEW_CONFERENCE_PAPERS: ${{ vars.MAX_NEW_CONFERENCE_PAPERS || '50' }}
+          MAX_STORED_CONFERENCE_PAPERS: ${{ vars.MAX_STORED_CONFERENCE_PAPERS || '300' }}
+          CLEAR_PAPER_CACHE: ${{ github.event_name == 'workflow_dispatch' && inputs.clear_cache || 'false' }}
+        run: python scripts/collect_papers.py
 
       - name: Commit library updates
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
