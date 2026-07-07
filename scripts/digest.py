@@ -172,6 +172,92 @@ def frontier_candidate(paper: dict[str, Any], topic: cp.Topic) -> dict[str, Any]
     }
 
 
+def arxiv_id_from_openalex(work: dict[str, Any]) -> str:
+    primary = work.get("primary_location") if isinstance(work.get("primary_location"), dict) else {}
+    texts = [
+        str(work.get("doi") or ""),
+        str(primary.get("landing_page_url") or ""),
+        str(primary.get("pdf_url") or ""),
+    ]
+    for text in texts:
+        match = re.search(r"(?:arxiv\.org/(?:abs|pdf)/|10\.48550/arxiv\.)(\d{4}\.\d{4,5})", text, re.I)
+        if match:
+            return match.group(1)
+    return ""
+
+
+def openalex_frontier_candidates(topic: cp.Topic, per_topic: int, cutoff: dt.datetime) -> list[dict[str, Any]]:
+    params = {
+        "search": cp.topic_plain_query(topic),
+        "filter": f"from_publication_date:{cutoff.date().isoformat()}",
+        "sort": "publication_date:desc",
+        "per-page": str(min(max(per_topic, 1), 100)),
+    }
+    mailto = os.getenv("CONTACT_EMAIL") or os.getenv("OPENALEX_EMAIL")
+    if mailto:
+        params["mailto"] = mailto
+    data = cp.request_json(
+        f"{cp.OPENALEX_WORKS_URL}?{urllib.parse.urlencode(params)}",
+        timeout=float(os.getenv("OPENALEX_TIMEOUT_SECONDS", "60")),
+    )
+    candidates = []
+    for work in data.get("results", []):
+        base = cp.openalex_paper_from_work(work)
+        if not base or not cp.has_meaningful_summary(base):
+            continue
+        arxiv_id = arxiv_id_from_openalex(work)
+        candidates.append(
+            {
+                "id": f"arxiv:{arxiv_id}" if arxiv_id else base["id"],
+                "arxiv_id": arxiv_id,
+                "title": base["title"],
+                "authors": base["authors"],
+                "summary": base["summary"],
+                "published": base["published"],
+                "paper_url": f"https://arxiv.org/abs/{arxiv_id}" if arxiv_id else base["paper_url"],
+                "pdf_url": base["pdf_url"] or (f"https://arxiv.org/pdf/{arxiv_id}" if arxiv_id else ""),
+                "categories": base["categories"],
+                "venue": "",
+                "track": "frontier",
+                "seed_topic": topic.id,
+                "citation_count": None,
+            }
+        )
+    return candidates
+
+
+def fetch_frontier_topic(topic: cp.Topic, per_topic: int, cutoff: dt.datetime) -> list[dict[str, Any]]:
+    """Fetch one topic's frontier candidates from arXiv, falling back to OpenAlex.
+
+    arXiv aggressively rate-limits shared CI runner IPs, so a 429 there must
+    not sink the whole run; OpenAlex indexes new arXiv papers within a day or
+    two, which the frontier lookback window absorbs.
+    """
+    try:
+        papers = cp.fetch_arxiv_query(
+            cp.arxiv_query_for_topic(topic),
+            per_topic,
+            sort_by="submittedDate",
+            sort_order="descending",
+            label=f"frontier:{topic.name}",
+        )
+        return [frontier_candidate(paper, topic) for paper in papers]
+    except Exception as exc:
+        print(
+            f"Warning: arXiv frontier fetch failed for {topic.name} ({exc}); falling back to OpenAlex",
+            file=sys.stderr,
+            flush=True,
+        )
+    try:
+        candidates = openalex_frontier_candidates(topic, per_topic, cutoff)
+        print(f"[frontier] OpenAlex fallback returned {len(candidates)} works for topic: {topic.name}", flush=True)
+        return candidates
+    except Exception as exc:
+        raise DigestError(
+            f"frontier fetch failed for topic {topic.name} on both arXiv and the OpenAlex fallback: {exc}"
+        ) from exc
+
+
 def gather_frontier(
     topics: list[cp.Topic],
     settings: dict[str, Any],
@@ -189,21 +275,10 @@ def gather_frontier(
         if index and delay_seconds > 0:
             time.sleep(delay_seconds)
         print(f"[frontier] fetching arXiv for topic: {topic.name}", flush=True)
-        try:
-            papers = cp.fetch_arxiv_query(
-                cp.arxiv_query_for_topic(topic),
-                per_topic,
-                sort_by="submittedDate",
-                sort_order="descending",
-                label=f"frontier:{topic.name}",
-            )
-        except Exception as exc:
-            raise DigestError(f"arXiv frontier fetch failed for topic {topic.name}: {exc}") from exc
-        for paper in papers:
-            published = cp.parse_datetime(str(paper.get("published") or paper.get("updated") or ""))
+        for candidate in fetch_frontier_topic(topic, per_topic, cutoff):
+            published = cp.parse_datetime(str(candidate.get("published") or ""))
             if not published or published < cutoff:
                 continue
-            candidate = frontier_candidate(paper, topic)
             keys = candidate_keys(candidate)
             if keys & skip_keys:
                 skipped_known += 1

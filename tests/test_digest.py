@@ -194,11 +194,45 @@ class GatherFrontierDedupeTest(unittest.TestCase):
             candidates = digest.gather_frontier([topic], settings, skip_keys, now)
         self.assertEqual([c["id"] for c in candidates], ["arxiv:2607.00002"])
 
-    def test_fetch_failure_raises_digest_error(self):
+    def test_falls_back_to_openalex_when_arxiv_fails(self):
         topic = make_topic()
         now = dt.datetime.now(dt.timezone.utc)
         settings = digest.digest_settings({})
-        with mock.patch.object(cp, "fetch_arxiv_query", side_effect=RuntimeError("arXiv down")):
+        openalex_response = {
+            "results": [
+                {
+                    "id": "https://openalex.org/W123",
+                    "title": "Fallback Speech Enhancement Paper",
+                    "doi": "https://doi.org/10.48550/arXiv.2607.01234",
+                    "publication_date": now.date().isoformat(),
+                    "abstract_inverted_index": {
+                        f"enhancement{i}": [i] for i in range(30)
+                    },
+                    "authorships": [{"author": {"display_name": "A. Author"}}],
+                    "primary_location": {"landing_page_url": "https://arxiv.org/abs/2607.01234"},
+                    "concepts": [],
+                    "locations": [],
+                }
+            ]
+        }
+        with (
+            mock.patch.object(cp, "fetch_arxiv_query", side_effect=RuntimeError("HTTP Error 429")),
+            mock.patch.object(cp, "request_json", return_value=openalex_response),
+        ):
+            candidates = digest.gather_frontier([topic], settings, set(), now)
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0]["id"], "arxiv:2607.01234")
+        self.assertEqual(candidates[0]["arxiv_id"], "2607.01234")
+        self.assertEqual(candidates[0]["track"], "frontier")
+
+    def test_fetch_failure_raises_digest_error_when_fallback_also_fails(self):
+        topic = make_topic()
+        now = dt.datetime.now(dt.timezone.utc)
+        settings = digest.digest_settings({})
+        with (
+            mock.patch.object(cp, "fetch_arxiv_query", side_effect=RuntimeError("arXiv down")),
+            mock.patch.object(cp, "request_json", side_effect=RuntimeError("OpenAlex down")),
+        ):
             with self.assertRaises(digest.DigestError):
                 digest.gather_frontier([topic], settings, set(), now)
 

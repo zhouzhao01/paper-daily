@@ -77,6 +77,9 @@ jobs:
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || '' }}
           ARXIV_RETRY_THROTTLED: "true"
+          # Shared CI runner IPs are often pre-throttled by arXiv; give up
+          # after one retry and let the OpenAlex fallback take over.
+          ARXIV_RETRIES: "2"
           # Optional overrides; when unset, values come from config/interests.json.
           MAX_LABOR_PAPER: ${{ vars.MAX_LABOR_PAPER || '' }}
           MAX_DAILY_ADDED: ${{ vars.MAX_DAILY_ADDED || '' }}
