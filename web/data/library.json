@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-06T10:25:22.654966+00:00",
+  "updated_at_iso": "2026-07-07T03:09:20.849510+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -209,6 +209,185 @@
         "evidence": "在AudioSet（527类）上SDRi 7.74 dB，VGGSound 9.14 dB，AudioCaps 8.22 dB，Clotho 6.85 dB，MUSIC 10.51 dB，ESC-50 10.04 dB，DCASE 2024 Task 9 8.16 dB，以及语音增强任务Voicebank-Demand上SSNR 9.21 dB。",
         "limitations": "论文主要聚焦于通用音频事件分离，语音增强仅为其中一项任务，未专门针对语音分离或目标说话人提取进行优化；可能对多说话人混合场景的分离效果未知。",
         "why_relevant": "论文涉及源分离任务，包含语音增强任务，与研究方向中的'语音分离'和'源分离'关键词部分匹配，但核心是开放域音频事件分离而非专门的目标说话人提取。"
+      }
+    },
+    {
+      "id": "arxiv:2607.04140",
+      "arxiv_id": "2607.04140",
+      "title": "DELTA-TTS: Adapting Autoregressive Model into Diffusion Language Model for Text-to-Speech",
+      "authors": [
+        "Junwon Moon",
+        "Seungbeom Kim",
+        "Yejin Lee",
+        "Hoseong Ahn",
+        "Sewoong Park",
+        "Heeseung Kim",
+        "Kyuhong Shim"
+      ],
+      "published": "2026-07-05T06:45:47Z",
+      "summary": "Autoregressive (AR) text-to-speech (TTS) models generate discrete speech tokens sequentially, which makes inference slow and can degrade robustness by propagating local errors and hallucinations. This limitation stems from their left-to-right AR commitment: each token must be determined before future speech-token context is available. However, such ordering is not an inherent requirement for TTS, as the full input text is available before synthesis. In this paper, we introduce DELTA-TTS, a lightweight LoRA-based adaptation framework that converts a pretrained AR TTS model into a discrete diffusion language model (dLLM) for confidence-ordered speech-token decoding. To better capture the local structure of speech, DELTA-TTS incorporates a convolution module that injects local acoustic context, together with a $1/t$-weighted training objective and a time-shifted inference schedule that defer low-confidence positions to later steps. Trained on only $585$ hours of LibriTTS, DELTA-TTS achieves a $\\textbf{1.75}\\%$ WER on Seed-TTS test-en, outperforming its AR backbone while generating tokens $\\textbf{3.3}\\times$ faster. Further analysis shows that DELTA-TTS produces sharper text--speech alignment, increases overall decoding confidence, and mitigates hallucinations observed in AR generation.",
+      "paper_url": "http://arxiv.org/abs/2607.04140v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.04140v1",
+      "categories": [
+        "eess.AS",
+        "cs.CL"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "该论文直接针对语音合成（TTS）任务，提出将自回归模型转换为扩散语言模型，与研究方向中的Generative Speech Technology高度相关；方法新颖（LoRA适配、卷积模块、1/t加权训练），实验结果表明在质量和速度上均有提升，是必读级别的工作。",
+      "citation_count": null,
+      "date_added": "2026-07-07",
+      "chinese_summary": {
+        "problem": "现有自回归（AR）文本到语音（TTS）模型逐序列生成离散语音token，导致推理速度慢，且因局部误差传播和幻觉问题而鲁棒性下降。",
+        "method": "提出DELTA-TTS框架，通过轻量级LoRA适配将预训练的AR TTS模型转换为离散扩散语言模型（dLLM），实现基于置信度排序的语音token解码。集成卷积模块以捕获局部声学上下文，采用1/t加权训练目标和时移推理调度，将低置信度位置推迟到后续步骤处理。",
+        "innovation": "1. 首次将AR TTS模型转化为扩散语言模型，突破自左向右的生成顺序约束，允许按置信度解码。2. 利用LoRA实现高效适配，仅需微调少量参数即可转换预训练模型。3. 设计结合卷积模块、加权训练目标和时移推理的机制，提升解码置信度和对齐质量，减少幻觉。",
+        "evidence": "在LibriTTS 585小时数据上训练，Seed-TTS test-en测试集词错误率1.75%，优于AR骨干模型；推理速度提升3.3倍。进一步分析显示对齐更尖锐、解码置信度更高、幻觉减少。",
+        "limitations": "依赖预训练AR模型的质量和结构；训练数据量相对较小（585小时），可能限制泛化性；扩散模型推理步数未明确讨论，可能与速度-质量权衡有关。",
+        "why_relevant": "直接对应研究方向中的Text-to-Speech（TTS）和扩散模型在语音中的应用（diffusion model speech），方法创新且性能提升显著，可借鉴其模型适配思路用于其他生成式语音任务。"
+      }
+    },
+    {
+      "id": "s2:6d53fde2f713e5825bdc30c10cedc399dc6495ee",
+      "arxiv_id": "",
+      "title": "Twenty-Five Years of Sensor Array and Multichannel Signal Processing: A review of progress to date and potential research directions",
+      "authors": [
+        "Wei Liu",
+        "M. Haardt",
+        "M. Greco",
+        "C. Mecklenbräuker",
+        "P. Willett"
+      ],
+      "published": "2023-06-01T00:00:00+00:00",
+      "summary": "In this article, a general introduction to the area of sensor array and multichannel signal processing is provided, including associated activities of the IEEE Signal Processing Society (SPS) Sensor Array and Multichannel (SAM) Technical Committee (TC). The main technological advances in five SAM subareas made in the past 25 years are then presented in detail, including beamforming, direction-of-arrival (DOA) estimation, sensor location optimization, target/source localization based on sensor arrays, and multiple-input multiple-output (MIMO) arrays. Six recent developments are also provided at the end to indicate possible promising directions for future SAM research, which are graph signal processing (GSP) for sensor networks; tensor-based array signal processing, quaternion-valued array signal processing, 1-bit and noncoherent sensor array signal processing, machine learning and artificial intelligence (AI) for sensor arrays; and array signal processing for next-generation communication systems.",
+      "paper_url": "https://www.semanticscholar.org/paper/6d53fde2f713e5825bdc30c10cedc399dc6495ee",
+      "pdf_url": "https://ieeexplore.ieee.org/ielx7/79/10144695/10144727.pdf",
+      "categories": [
+        "IEEE Signal Processing Magazine"
+      ],
+      "venue": "IEEE Signal Processing Magazine",
+      "track": "foundation",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 9.0,
+      "justification": "全面回顾传感器阵列和波束形成领域25年进展，与麦克风阵列和波束形成方向高度相关，基础性强、影响力高，是必读综述。",
+      "citation_count": 149,
+      "date_added": "2026-07-07",
+      "chinese_summary": {
+        "problem": "缺乏对传感器阵列和多通道信号处理领域过去25年主要技术进展和未来研究方向的系统综述，特别是波束形成、DOA估计、传感器位置优化、目标定位和MIMO阵列等子领域的总结。",
+        "method": "采用综述方法，首先概述传感器阵列和多通道信号处理领域的基本概念及IEEE SPS SAM技术委员会的相关活动，然后详细回顾五个子领域（波束形成、DOA估计、传感器位置优化、基于传感器阵列的目标源定位、MIMO阵列）在过去25年的主要技术进展，最后提出六个未来研究方向（图信号处理、张量阵列处理、四元数阵列处理、1比特非相干阵列处理、机器学习/AI、下一代通信系统阵列处理）。",
+        "innovation": "1. 提供首个涵盖过去25年SAM五个核心子领域进展的综合综述；2. 系统性地将六个新兴方向 (GSP、张量、四元数、1比特、AI、通信) 作为未来研究展望；3. 基于IEEE SPS SAM技术委员会的视角，确保内容权威性和时效性。",
+        "evidence": "摘要中没有提供具体实验数据或系统证据，仅描述综述结构和历史回顾，属于综述性文章，证据来自文献总结。",
+        "limitations": "1. 综述性质，缺乏实验对比或性能定量分析；2. 对每个子领域的介绍可能较为概括，深度有限；3. 未来方向的探讨偏重趋势，缺少具体算法设计。",
+        "why_relevant": "直接覆盖用户研究方向中的核心内容：beamforming、DOA estimation、array signal processing、spatial filtering、MIMO array等关键词，且综述性质有助于了解领域全貌和前沿方向，特别适合概念梳理和研究方向选择。"
+      }
+    },
+    {
+      "id": "s2:7154cd21052dc8c0d34f24b27383672c50480c12",
+      "arxiv_id": "",
+      "title": "Structured Nyquist Correlation Reconstruction for DOA Estimation With Sparse Arrays",
+      "authors": [
+        "Chengwei Zhou",
+        "Yujie Gu",
+        "Zhiguo Shi",
+        "M. Haardt"
+      ],
+      "published": "2023-01-01T00:00:00+00:00",
+      "summary": "Sparse arrays are known to achieve an increased number of degrees-of-freedom (DOFs) for direction-of-arrival (DOA) estimation, where an augmented virtual uniform array calculated from the correlations of sub-Nyquist spatial samples is processed to retrieve the angles unambiguously. Nevertheless, the geometry of the derived virtual array is dominated by the specific physical array configurations, as well as the deviation caused by the practical unforeseen circumstances such as detection malfunction and missing data, resulting in a quite sensitive model for virtual array signal processing. In this paper, we propose a novel sparse array DOA estimation algorithm via structured correlation reconstruction, where the Nyquist spatial filling is implemented on the physical array with a compressed transformation related to its equivalent filled array to guarantee the general applicability. While the unknown correlations located in the whole rows and columns of the augmented covariance matrix lead to the fact that strong incoherence property is no longer satisfied for matrix completion, the structural information is introduced as a priori to formulate the structured correlation reconstruction problem for matrix reconstruction. As such, the reconstructed covariance matrix can be effectively processed with full utilization of the achievable DOFs from the virtual array, but with a more flexible constraint on the array configuration. The described estimation problem is theoretically analyzed by deriving the corresponding Cramér-Rao bound (CRB). Moreover, we compare the derived CRB with the performance of the virtual array interpolation-based algorithm. Simulation results demonstrate the effectiveness of the proposed algorithm in terms of DOFs, resolution, and estimation accuracy.",
+      "paper_url": "https://www.semanticscholar.org/paper/7154cd21052dc8c0d34f24b27383672c50480c12",
+      "pdf_url": "",
+      "categories": [
+        "IEEE Transactions on Signal Processing"
+      ],
+      "venue": "IEEE Transactions on Signal Processing",
+      "track": "foundation",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 9.0,
+      "justification": "该论文针对稀疏阵列DOA估计提出结构化相关重构算法，与麦克风阵列及DOA估计方向高度相关，方法新颖且理论推导完整，属于经典赛道必读水平。",
+      "citation_count": 157,
+      "date_added": "2026-07-07",
+      "chinese_summary": {
+        "problem": "解决稀疏阵列在DOA估计中因物理阵列配置和实际因素（如检测故障、缺失数据）导致虚拟协方差矩阵重构敏感、自由度利用不充分的问题。",
+        "method": "提出结构化奈奎斯特相关重构算法：首先对物理阵列进行压缩变换实现奈奎斯特空间填充，然后利用协方差矩阵中整行整列未知相关的结构化先验信息，将矩阵重构问题建模为结构化相关重构，从而有效重建协方差矩阵，充分利用虚拟阵列自由度。",
+        "innovation": "1. 通过压缩变换实现物理阵列的奈奎斯特空间填充，使算法对不同阵列配置具有通用性；2. 利用结构化先验信息（整行整列未知相关）解决矩阵补全中强非相干性不满足的问题，实现鲁棒的重建；3. 理论上推导了克拉美-罗界（CRB），并与虚拟阵列插值算法对比，验证了在自由度、分辨率和估计精度上的优势。",
+        "evidence": "摘要中给出了理论推导的CRB，并通过与虚拟阵列插值算法的仿真比较，证明了所提算法在DOFs、分辨率和估计精度方面的有效性。",
+        "limitations": "未讨论实际麦克风阵列中非理想因素（如噪声相关性、阵元互耦）的影响；仿真设置可能与实际麦克风阵列场景存在差距，需阅读全文确认具体实现细节和计算复杂度。",
+        "why_relevant": "论文直接研究稀疏阵列的DOA估计，与我的研究方向“麦克风阵列与波束形成”中的“声源定位”和“到达方向估计”高度吻合。文中使用的稀疏阵列、虚拟均匀阵列、协方差矩阵重构等技术直接适用于麦克风阵列场景，尤其对提升低阵列数情况下的DOA分辨能力有重要参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2607.04471",
+      "arxiv_id": "2607.04471",
+      "title": "Weakly Guided and Autoregressive Beamformer Parameterization for Generalizable Moving Speaker Extraction in Higher-Order Ambisonics",
+      "authors": [
+        "Jakob Kienegger",
+        "Tal Peer",
+        "Sina Khanagha",
+        "Timo Gerkmann"
+      ],
+      "published": "2026-07-05T19:32:57Z",
+      "summary": "Linear spatial filters (beamformers) enable robust, generalizable and interpretable speech enhancement with performance guarantees under ideal parameterization. Modern beamformers are often parameterized by deep neural networks, whose performance degrades in dynamic scenarios with multiple moving speakers of unknown directions. We propose a data-driven beamforming pipeline, which only requires an estimate of the target's initial direction. Building on a higher-order ambisonics representation, we show that neural temporal-spectral processing can be decoupled from linear spatial processing, and thereby achieve generalizable and array-agnostic enhancement. By incorporating autoregression into a frame-wise causal framework, we maintain consistent performance throughout fast speaker motion and long recordings. Evaluation on synthetic data demonstrates robust enhancement under challenging conditions with closely spaced and crossing speakers. Real-world recordings in a dynamic office meeting scenario complement these findings and show generalizability across varying ambisonics orders.",
+      "paper_url": "http://arxiv.org/abs/2607.04471v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.04471v1",
+      "categories": [
+        "eess.AS",
+        "cs.LG",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 8.0,
+      "justification": "论文聚焦移动说话人提取中的波束形成问题，方法与我的麦克风阵列和波束形成方向高度相关，提出新颖的自回归参数化框架，实验充分，泛化性强。",
+      "citation_count": null,
+      "date_added": "2026-07-07",
+      "chinese_summary": {
+        "problem": "现有基于深度神经网络的波束形成器在多个未知方向移动说话人的动态场景下性能下降，需要一种鲁棒、可泛化且阵列无关的移动说话人提取方法。",
+        "method": "提出一种数据驱动的波束形成流水线，仅需目标初始方向估计；基于高阶Ambisonics表示解耦神经时频处理与线性空间处理，并通过自回归帧级因果框架保持快速运动下的性能一致性，实现阵列无关的语音增强。",
+        "innovation": "创新点包括：1）弱引导策略仅需初始方向，降低先验需求；2）自回归因果框架在帧级处理中保持对快速移动和长序列的稳定性能；3）基于高阶Ambisonics的解耦设计使方法可泛化至不同阵列配置和Ambisonics阶数。",
+        "evidence": "合成数据实验在紧密间隔和交叉说话人挑战条件下显示鲁棒增强；真实动态办公室会议场景中验证了跨不同Ambisonics阶数的泛化性。",
+        "limitations": "摘要未提及噪声类型及信噪比范围、未与现有移动说话人提取方法（如时域方法）定量对比、未讨论初始方向估计误差的影响。",
+        "why_relevant": "论文核心为波束形成（beamforming）和空间滤波（spatial filtering）在移动多说话人场景下的多通道语音增强（multichannel speech enhancement），直接命中研究方向关键词beamforming、array signal processing、spatial filtering、MVDR beamforming、sound source localization（通过初始方向估计），且使用高阶Ambisonics表示与空间特征相关。"
+      }
+    },
+    {
+      "id": "arxiv:2607.04826",
+      "arxiv_id": "2607.04826",
+      "title": "Ranking the Impact of Contextual Specialization in Neural Speech Enhancement",
+      "authors": [
+        "Peter Leer",
+        "Svend Feldt",
+        "Zheng-Hua Tan",
+        "Jan Østergaard",
+        "Jesper Jensen"
+      ],
+      "published": "2026-07-06T08:59:07Z",
+      "summary": "We systematically investigate neural speech enhancement systems, ranging from very small ($\\sim$10\\,k parameters) to medium-large ($\\sim$2-5\\,M parameters), which specialize to acoustic conditions using contextual information such as speaker identity, noise type, speaker gender, spoken language, and SNR. By fine-tuning generalist models on specific data subsets, we find that specializing to a speaker's identity consistently yields the largest gains in estimated speech intelligibility and quality. In contrast, specializing to SNR, noise type, or gender offers only marginal benefits. Crucially, we show that a small model specialized to both a specific speaker and a specific noise type can match or exceed the performance of a generalist model ten times its size. Further, cross-lingual tests reveal that models specialized to a target language outperform multilingual generalists, suggesting that language is a salient feature for specialization. These findings highlight the potential of small, adaptive models for resource-constrained applications like hearing aids, which specialize on-the-fly to contextual information.",
+      "paper_url": "http://arxiv.org/abs/2607.04826v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.04826v1",
+      "categories": [
+        "eess.AS",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 8.0,
+      "justification": "该论文系统评估了不同上下文信息对语音增强系统性能的影响，发现说话人身份特化效果最显著，与Speech Enhancement and Audio Frontend方向高度相关，实验扎实，具有应用价值。",
+      "citation_count": null,
+      "date_added": "2026-07-07",
+      "chinese_summary": {
+        "problem": "在资源受限的语音增强系统中（如助听器），确定哪些上下文信息（说话人身份、噪声类型、性别、语言、SNR）的专门化能带来最大的性能提升，以指导小模型自适应。",
+        "method": "通过微调通用语音增强模型（基于特定数据子集），系统比较不同上下文专门化（说话人身份、噪声类型、性别、语言、SNR）对估计的语音可懂度和质量的影响；包含从极小（约10k参数）到中大型（2-5M参数）模型的对比实验。",
+        "innovation": "1) 首次系统评估多种上下文专门化对神经语音增强的相对贡献，并量化其影响排名；2) 发现说话人身份专门化始终带来最大增益，而SNR、噪声类型或性别专门化收益甚微；3) 证明专用于特定说话人和噪声类型的模型（即使参数少十倍）可匹配或超越通用模型；4) 揭示语言专门化优于多语言通用模型。",
+        "evidence": "摘要中明确报告：说话人身份专门化在语音可懂度和质量上增益最大；小模型（专门化）可匹敌十倍参数通用模型；跨语言测试显示目标语言专门化优于多语言通用模型。但未提供具体数值或统计显著性，需阅读全文确认。",
+        "limitations": "1) 模型结构仅限特定神经语音增强系统，未涵盖所有架构（如U-Net变体）；2) 实验基于有限数据集和上下文组合，泛化性需验证；3) 未涉及实际实时自适应系统实现细节。",
+        "why_relevant": "论文直接研究语音增强系统性能，与研究方向中的speech enhancement核心主题一致；专门化策略与资源受限场景（如助听器）匹配，关键词如speech enhancement、noise suppression、speech frontend均命中。"
       }
     }
   ]
