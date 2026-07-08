@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-07T03:09:20.849510+00:00",
+  "updated_at_iso": "2026-07-08T04:36:07.944449+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -388,6 +388,200 @@
         "evidence": "摘要中明确报告：说话人身份专门化在语音可懂度和质量上增益最大；小模型（专门化）可匹敌十倍参数通用模型；跨语言测试显示目标语言专门化优于多语言通用模型。但未提供具体数值或统计显著性，需阅读全文确认。",
         "limitations": "1) 模型结构仅限特定神经语音增强系统，未涵盖所有架构（如U-Net变体）；2) 实验基于有限数据集和上下文组合，泛化性需验证；3) 未涉及实际实时自适应系统实现细节。",
         "why_relevant": "论文直接研究语音增强系统性能，与研究方向中的speech enhancement核心主题一致；专门化策略与资源受限场景（如助听器）匹配，关键词如speech enhancement、noise suppression、speech frontend均命中。"
+      }
+    },
+    {
+      "id": "arxiv:2607.05196",
+      "arxiv_id": "2607.05196",
+      "title": "Unified Audio Intelligence Without Regressing on Text Intelligence",
+      "authors": [
+        "Zhifeng Kong",
+        "Sang-gil Lee",
+        "Jaehyeon Kim",
+        "Boxin Wang",
+        "Zihan Liu",
+        "Sungwon Kim",
+        "Yang Chen",
+        "Arushi Goel",
+        "Rajarshi Roy",
+        "Wenliang Dai",
+        "Zhuolin Yang",
+        "Yangyi Chen",
+        "Dongfu Jiang",
+        "Sreyan Ghosh",
+        "Tuomas Rintamaki",
+        "Andrew Tao",
+        "Jonathan Raiman",
+        "Mohammad Shoeybi",
+        "Bryan Catanzaro",
+        "Wei Ping"
+      ],
+      "published": "2026-07-06T15:11:57Z",
+      "summary": "Audio intelligence involves understanding, reasoning about, and generating both audio and speech. In this work, we introduce Nemotron-Labs-Audex-30B-A3B (Audex), a unified audio-text LLM built on Nemotron-Cascade-2-30B-A3B, a strong text-only MoE LLM. Audex adopts a simple unified design with a single Transformer decoder: audio inputs are encoded and projected into the text embedding space, while text tokens and quantized audio output tokens are treated uniformly during generation. This architecture enables strong audio-text fusion, seamless multimodal generation, and compatibility with standard LLM training and inference infrastructure. For training, we meticulously curate audio-text datasets comprising 157.4B audio tokens and 320.5B text tokens. We apply multi-stage supervised training on these datasets, followed by text-only Cascade RL and multi-domain on-policy distillation. Audex delivers state-of-the-art audio understanding, speech recognition and translation, text-to-speech, audio generation, and speech-to-speech generation, while preserving very compelling reasoning, alignment, knowledge, long-context, and agentic capabilities of its text-only LLM backbone with marginal or no regression. We release the model checkpoints to facilitate open research.",
+      "paper_url": "http://arxiv.org/abs/2607.05196v2",
+      "pdf_url": "https://arxiv.org/pdf/2607.05196v2",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG",
+        "cs.SD",
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "论文提出统一音频文本大模型Audex，基于MoE架构实现语音理解、合成、翻译与生成，在生成式语音技术方向高度相关，工作质量与新颖性突出，为必读级成果。",
+      "citation_count": null,
+      "date_added": "2026-07-08",
+      "chinese_summary": {
+        "problem": "论文旨在构建一个统一的音频-文本大语言模型，在集成音频理解、识别、翻译、TTS和音频生成等多种任务的同时，避免其文本LLM基座的能力退化。",
+        "method": "核心方法：基于预训练文本MoE LLM（Nemotron-Cascade）设计单一Transformer解码器架构；音频输入经编码后投影到文本嵌入空间，文本token与量化音频输出token在生成过程中统一处理。训练流程包括多阶段监督训练（利用157.4B音频token和320.5B文本token），随后进行纯文本强化学习与多领域在线蒸馏以保持文本智能。",
+        "innovation": "创新点：1) 采用统一的token化与解码框架，将音频和文本无缝融合，简化多模态生成流程；2) 通过精心策划的多模态数据和分阶段训练，在取得SOTA音频理解和生成性能的同时，完整保留文本LLM的推理、对齐、知识、长上下文等高级能力，未见回归；3) 支持语音到语音的直接生成通道，扩展了语音交互范式。",
+        "evidence": "证据不足：摘要仅声称在音频理解、语音识别/翻译、TTS、音频生成和语音到语音生成等任务上达到SOTA，但未提供任何量化指标、基准测试或对比数据；仅提及模型发布以促进开放研究，具体性能需阅读全文核实。",
+        "limitations": "可能局限：未披露模型规模细节（仅提及MoE），生成音频的质量指标、是否支持可控语音生成（如情感、风格）未知；训练资源和推理效率未说明；对生成式语音增强、修复等任务未涉及，与扩散模型、流匹配等生成范式的关联有待确认。",
+        "why_relevant": "论文直接涉及text-to-speech和音频生成，匹配您研究方向中的speech synthesis和TTS；但其生成机制未知（可能是自回归），与生成式语音增强、修复、扩散模型/流匹配等核心方向关联度低，属于泛泛相关，建议人工复核全文以判断是否提供新的生成范式或神经声码器设计。"
+      }
+    },
+    {
+      "id": "arxiv:2607.06088",
+      "arxiv_id": "2607.06088",
+      "title": "Flow Matching-Based Speech Source Separation with Best-of-N Biometric Sampling",
+      "authors": [
+        "Anastasia Zorkina",
+        "Alexandr Anikin",
+        "Nikita Khmelev",
+        "Anastasiya Korenevskaya",
+        "Sergey Novoselov",
+        "Vladimir Volokhov",
+        "Maxim Korenevsky",
+        "Yuriy Matveev"
+      ],
+      "published": "2026-07-07T10:00:23Z",
+      "summary": "Single-channel speech separation remains challenging for real-world deployment due to source permutation ambiguity, sampling variability of generative models, and the difficulty of processing long recordings with chunk-wise inference. We address these issues with a conditional flow-matching-based method that produces an ordered two-source output conditioned on the mixture. A frozen speaker encoder defines the source order during training and is reused at inference for biometric best-of-$N$ candidate selection and chunk-level channel alignment. We evaluate separation quality on Libri2Mix benchmark using SI-SDR, PESQ, and ESTOI, and measure downstream impact using cpWER for automatic speech recognition and EER for speaker verification. The results show that the proposed Transformer U-Net variant is competitive with strong baselines in objective separation metrics and achieves the lowest downstream automatic speech recognition and speaker verification error rates in all evaluated settings.",
+      "paper_url": "http://arxiv.org/abs/2607.06088v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.06088v1",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出基于条件流匹配的语音分离方法，利用生物特征采样和最佳N选择解决排列模糊与块处理问题，在分离质量及下游ASR、说话人验证上表现优异，高度相关语音分离与生成式语音技术方向。",
+      "citation_count": null,
+      "date_added": "2026-07-08",
+      "chinese_summary": {
+        "problem": "单通道语音分离中源置换模糊、生成模型采样不确定性以及长录音分块推理导致的通道错位问题。",
+        "method": "提出基于条件流匹配的分离方法，输出有序双源结果并以混合信号为条件；训练时利用冻结的说话人编码器固定源顺序，推理时通过生物特征最佳N候选选择和块级通道对齐来提升一致性。",
+        "innovation": "将流匹配生成模型引入语音分离，通过说话人编码器定义源顺序以消除置换模糊；提出基于生物特征的最佳N采样策略，结合块级对齐解决长录音的连续性问题。",
+        "evidence": "在Libri2Mix数据集上评估SI-SDR、PESQ、ESTOI客观指标，以及下游ASR的cpWER和说话人验证的EER；结果表明Transformer U-Net变体在客观指标上与强基线相当，并在所有下游任务中获得最低错误率。",
+        "limitations": "摘要仅提及双源分离，未验证更多说话人场景；流匹配模型的推理效率与实时性未说明；块级对齐策略的细节及对极长录音的稳健性有待确认。",
+        "why_relevant": "论文属于语音分离范畴，匹配关键词‘speech separation’和‘source separation’；处理置换模糊和长录音推理的瓶颈与双路径网络、盲源分离等研究方向有交集；但方法基于生成式流匹配，非本方向主流的掩蔽或时域分离技术，且无明确的目标说话人提取设定，相关性较低，需人工复核是否借鉴其排序或块对齐策略。"
+      }
+    },
+    {
+      "id": "arxiv:2607.06027",
+      "arxiv_id": "2607.06027",
+      "title": "Fréchet Distance Loss on Speech Representations for Text-to-Speech Synthesis",
+      "authors": [
+        "Ho-Lam Chung",
+        "Kuan-Po Huang",
+        "Bo-Ru Lu",
+        "Hung-yi Lee"
+      ],
+      "published": "2026-07-07T09:07:30Z",
+      "summary": "Few-step diffusion and flow-matching text-to-speech (TTS) models are usually trained with local objectives, such as conditional flow matching, reconstruction, and stop prediction. These losses provide stable optimization, but they never ask whether sampled speech follows the distribution of high-quality speech. We propose Speech Representation Fr'echet Distance loss (SR-FD), a training-time distributional regularizer for tokenizer-free flow-matching autoregressive TTS. During fine-tuning, the model synthesizes speech with the same few-step sampler used at deployment, and SR-FD matches the mean and covariance of frozen Whisper and CTC features of this speech to reference statistics computed offline from three complementary content targets. The loss requires no discriminator and no inference-time computation. On Seed-TTS English, four-step SR-FD fine-tuning reduces WER from the original four-step VoxCPM2 baseline's 2.2279% to 1.4147%, a 36.5% relative reduction, and also surpasses the original ten-step baseline at 1.7366%; both gains are significant under an utterance-level paired bootstrap. Speaker similarity and objective quality proxies are preserved at the ten-step level, and an error analysis shows the gain comes from content substitutions across all prompt lengths. SR-FD is thus an intelligibility-improving distributional regularizer for few-step TTS.",
+      "paper_url": "http://arxiv.org/abs/2607.06027v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.06027v1",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "论文提出基于语音表征的Fréchet距离损失，显著提升少步流匹配TTS的可懂度，与生成式语音合成方向高度相关，方法新颖且效果扎实。",
+      "citation_count": null,
+      "date_added": "2026-07-08",
+      "chinese_summary": {
+        "problem": "少步扩散和流匹配TTS模型通常仅用局部损失训练，缺乏对生成语音整体分布是否接近高质量语音的考量，导致合成语音的可懂度不足。",
+        "method": "提出Speech Representation Fréchet Distance loss (SR-FD)，一种训练时分布正则化器。在微调阶段，用部署时的少步采样器生成语音，提取冻结的Whisper和CTC特征，计算其与离线获得的参考特征分布（基于三种内容目标）之间的Fréchet距离，即均值和协方差的差异，作为额外损失项加入训练。",
+        "innovation": "首次将Fréchet距离引入语音表征空间，作为TTS的分布正则化损失，不同于传统局部损失或判别器方法；该损失无需推理时额外计算且不依赖判别器，仅通过微调即可显著提升少步生成的可懂度。",
+        "evidence": "在Seed-TTS英文数据集上，对VoxCPM2基线四步微调，WER从2.2279%降至1.4147%（相对降低36.5%），并优于原十步基线的1.7366%，差异在话语级别配对bootstrap检验下显著；说话人相似度和质量代理指标保持在十步水平；错误分析表明提升来自不同提示长度下的内容替换减少。",
+        "limitations": "仅在单一模型（VoxCPM2）和英文数据上验证；依赖特定的冻结特征提取器（Whisper和CTC）；对其他模型结构、多语言或更少步数的泛化性需阅读全文确认。",
+        "why_relevant": "论文直接针对TTS生成式模型，结合流匹配和分布匹配技术，属于生成式语音合成核心方向，与研究方向中的speech synthesis、text-to-speech、generative model speech等关键词高度匹配。"
+      }
+    },
+    {
+      "id": "arxiv:2301.13341",
+      "arxiv_id": "2301.13341",
+      "title": "Neural Target Speech Extraction: An overview",
+      "authors": [
+        "Kateřina Žmolíková",
+        "Marc Delcroix",
+        "Tsubasa Ochiai",
+        "K. Kinoshita",
+        "Jan vCernock'y",
+        "Dong Yu"
+      ],
+      "published": "2023-01-31T00:00:00+00:00",
+      "summary": "Humans can listen to a target speaker even in challenging acoustic conditions that have noise, reverberation, and interfering speakers. This phenomenon is known as the cocktail party effect. For decades, researchers have focused on approaching the listening ability of humans. One critical issue is handling interfering speakers because the target and nontarget speech signals share similar characteristics, complicating their discrimination. Target speech/speaker extraction (TSE) isolates the speech signal of a target speaker from a mixture of several speakers, with or without noises and reverberations, using clues that identify the speaker in the mixture. Such clues might be a spatial clue indicating the direction of the target speaker, a video of the speaker’s lips, and a prerecorded enrollment utterance from which the speaker’s voice characteristics can be derived. TSE is an emerging field of research that has received increased attention in recent years because it offers a practical approach to the cocktail party problem and involves such aspects of signal processing as audio, visual, and array processing as well as deep learning. This article focuses on recent neural-based approaches and presents an in-depth overview of TSE. We guide readers through the different major approaches, emphasizing the similarities among frameworks and discussing potential future directions.",
+      "paper_url": "https://arxiv.org/abs/2301.13341",
+      "pdf_url": "https://arxiv.org/pdf/2301.13341",
+      "categories": [
+        "IEEE Signal Processing Magazine"
+      ],
+      "venue": "IEEE Signal Processing Magazine",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "神经目标语音提取综述，系统梳理基于空间、视觉和注册语音的多种方法框架，高度契合语音分离与目标说话人提取方向，引用高，为领域必读基础文献。",
+      "citation_count": 161,
+      "date_added": "2026-07-08",
+      "chinese_summary": {
+        "problem": "全面综述神经目标说话人提取（TSE）的关键方法、框架和未来趋势，解决如何利用辅助线索（如空间、视觉、声纹）从多说话人混合信号中提取目标语音的问题。",
+        "method": "本文为综述方法，系统分类和总结基于深度学习的TSE技术，涵盖音频、视觉和阵列处理等跨领域线索，并强调不同框架（如掩码网络、端到端模型）间的关联。",
+        "innovation": "首次对神经网络TSE领域进行深入概述，不局限于单一模态，横向对比多种线索与架构的共性；指出TSE作为解决鸡尾酒会问题的实用途径，并明确给出未来潜在研究方向。",
+        "evidence": "证据不足：本文为综述，摘要未提供任何实验数据或量化结果，仅概括领域进展。",
+        "limitations": "可能局限于截至2019-2020年的方法（需查看全文确认是否涵盖最新Transformer或自监督模型）；作为综述，缺乏原创方法贡献，深度依赖于讨论的正交性。",
+        "why_relevant": "直接匹配我的‘目标说话人提取’研究方向，覆盖神经方法、线索利用、框架对比等核心关注点，且涉及鸡尾酒会效应和盲源分离背景，有助于梳理领域全貌。"
+      }
+    },
+    {
+      "id": "arxiv:2302.11824",
+      "arxiv_id": "2302.11824",
+      "title": "MossFormer: Pushing the Performance Limit of Monaural Speech Separation Using Gated Single-Head Transformer with Convolution-Augmented Joint Self-Attentions",
+      "authors": [
+        "Shengkui Zhao",
+        "Bin Ma"
+      ],
+      "published": "2023-02-23T00:00:00+00:00",
+      "summary": "Transformer based models have provided significant performance improvements in monaural speech separation. However, there is still a performance gap compared to a recent proposed upper bound. The major limitation of the current dual-path Transformer models is the inefficient modelling of long-range elemental interactions and local feature patterns. In this work, we achieve the upper bound by proposing a gated single-head transformer architecture with convolution-augmented joint self-attentions, named MossFormer (Monaural speech separation TransFormer). To effectively solve the indirect elemental interactions across chunks in the dual-path architecture, MossFormer employs a joint local and global self-attention architecture that simultaneously performs a full-computation self-attention on local chunks and a linearised low-cost self-attention over the full sequence. The joint attention enables MossFormer model full-sequence elemental interaction directly. In addition, we employ a powerful attentive gating mechanism with simplified single-head self-attentions. Besides the attentive long-range modelling, we also augment MossFormer with convolutions for the position-wise local pattern modelling. As a consequence, MossFormer significantly outperforms the previous models and achieves the state-of-the-art results on WSJ0-2/3mix and WHAM!/WHAMR! benchmarks. Our model achieves the SI-SDRi upper bound of 21.2 dB on WSJ0-3mix and only 0.3 dB below the upper bound of 23.1 dB on WSJ0-2mix.",
+      "paper_url": "https://arxiv.org/abs/2302.11824",
+      "pdf_url": "https://arxiv.org/pdf/2302.11824",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出了联合局部和全局自注意力的门控单头Transformer架构，在多个单声道语音分离基准上达到领先性能，是语音分离方向的近年重要代表性工作。",
+      "citation_count": 82,
+      "date_added": "2026-07-08",
+      "chinese_summary": {
+        "problem": "如何在单声道语音分离中克服双路径Transformer模型对长程元素交互和局部特征模式建模效率低的问题，从而逼近理论上限。",
+        "method": "提出MossFormer，采用门控单头Transformer架构，结合卷积增强的联合自注意力。通过联合局部和全局自注意力，同时对局部块进行全计算自注意力和对全序列进行线性化低成本自注意力，实现直接的全序列元素交互；并使用注意力门控机制与简化的单头自注意力，以及卷积增强位置局部模式建模。",
+        "innovation": "1) 提出联合局部和全局自注意力，同时计算局部全注意力和全序列线性注意力，使模型能直接进行全序列元素交互，克服双路径架构的间接交互限制；2) 采用门控单头自注意力机制，简化多头注意力并提升建模能力；3) 结合卷积增强局部模式建模，提升模型对位置局部特征的捕获能力。",
+        "evidence": "在WSJ0-2mix和WSJ0-3mix以及WHAM!/WHAMR!基准上达到最先进水平；在WSJ0-3mix上取得SI-SDRi上限21.2 dB，在WSJ0-2mix上仅低于上限0.3 dB。",
+        "limitations": "摘要未提及计算复杂度、实时性等局限；仅在标准数据集验证，泛化能力未知；性能接近上限但在WSJ0-2mix上仍有0.3 dB差距，能否进一步缩小需确认。",
+        "why_relevant": "论文专注于单声道语音分离，属于语音分离核心研究；采用时域Transformer架构与掩蔽估计，匹配关键词‘speech separation’、‘dual-path network’等；提出的联合自注意力机制直接改进双路径网络，与研究方向高度一致。"
       }
     }
   ]
