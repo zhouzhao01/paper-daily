@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-08T04:36:07.944449+00:00",
+  "updated_at_iso": "2026-07-09T05:16:19.229963+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -582,6 +582,203 @@
         "evidence": "在WSJ0-2mix和WSJ0-3mix以及WHAM!/WHAMR!基准上达到最先进水平；在WSJ0-3mix上取得SI-SDRi上限21.2 dB，在WSJ0-2mix上仅低于上限0.3 dB。",
         "limitations": "摘要未提及计算复杂度、实时性等局限；仅在标准数据集验证，泛化能力未知；性能接近上限但在WSJ0-2mix上仍有0.3 dB差距，能否进一步缩小需确认。",
         "why_relevant": "论文专注于单声道语音分离，属于语音分离核心研究；采用时域Transformer架构与掩蔽估计，匹配关键词‘speech separation’、‘dual-path network’等；提出的联合自注意力机制直接改进双路径网络，与研究方向高度一致。"
+      }
+    },
+    {
+      "id": "arxiv:2306.15687",
+      "arxiv_id": "2306.15687",
+      "title": "Voicebox: Text-Guided Multilingual Universal Speech Generation at Scale",
+      "authors": [
+        "Matt Le",
+        "Apoorv Vyas",
+        "Bowen Shi",
+        "B. Karrer",
+        "Leda Sari",
+        "Rashel Moritz",
+        "Mary Williamson",
+        "Vimal Manohar",
+        "Yossi Adi",
+        "Jay Mahadeokar",
+        "Wei-Ning Hsu"
+      ],
+      "published": "2023-06-23T00:00:00+00:00",
+      "summary": "Large-scale generative models such as GPT and DALL-E have revolutionized the research community. These models not only generate high fidelity outputs, but are also generalists which can solve tasks not explicitly taught. In contrast, speech generative models are still primitive in terms of scale and task generalization. In this paper, we present Voicebox, the most versatile text-guided generative model for speech at scale. Voicebox is a non-autoregressive flow-matching model trained to infill speech, given audio context and text, trained on over 50K hours of speech that are not filtered or enhanced. Similar to GPT, Voicebox can perform many different tasks through in-context learning, but is more flexible as it can also condition on future context. Voicebox can be used for mono or cross-lingual zero-shot text-to-speech synthesis, noise removal, content editing, style conversion, and diverse sample generation. In particular, Voicebox outperforms the state-of-the-art zero-shot TTS model VALL-E on both intelligibility (5.9% vs 1.9% word error rates) and audio similarity (0.580 vs 0.681) while being up to 20 times faster. Audio samples can be found in \\url{https://voicebox.metademolab.com}.",
+      "paper_url": "https://arxiv.org/abs/2306.15687",
+      "pdf_url": "http://arxiv.org/pdf/2306.15687",
+      "categories": [
+        "Neural Information Processing Systems"
+      ],
+      "venue": "Neural Information Processing Systems",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "提出Voicebox，基于流匹配的非自回归语音生成模型，实现文本引导的多任务语音生成（含零样本TTS、降噪等），是生成式语音技术方向的重要基础工作，引用高，必读。",
+      "citation_count": 544,
+      "date_added": "2026-07-09",
+      "chinese_summary": {
+        "problem": "构建一个大规模、文本引导的通用语音生成模型，能够在多种语音任务上通过上下文学习实现零样本泛化，解决现有语音生成模型在规模和任务灵活性上的局限。",
+        "method": "提出Voicebox，一个基于流匹配的非自回归生成模型。它通过在超过5万小时未增强语音上训练语音填充任务（给定音频上下文和文本预测缺失片段），使模型学会利用过去与未来上下文，实现文本引导的语音生成。推理时无需微调，即可通过上下文学习执行单/跨语言零样本文本到语音合成、降噪、内容编辑、风格转换等任务。",
+        "innovation": "首次将流匹配与大规模语音填充训练结合，赋予非自回归模型上下文学习能力，可同时条件于过去与未来音频上下文，而GPT式自回归模型仅能利用过去；模型在零样本多语言TTS上显著优于VALL-E，同时生成速度快20倍，展示了流匹配在通用语音生成中的高效性与可扩展性。",
+        "evidence": "在零样本TTS任务上，Voicebox的词错误率（WER）为1.9%，优于VALL-E的5.9%；音频相似度得分0.681，优于VALL-E的0.580，且推理快20倍。模型基于50K小时非净化语音训练，演示了噪声去除、内容编辑等任务。音频样例发布于项目页面。",
+        "limitations": "摘要未报告语音增强（如降噪）的客观指标，仅提及功能；流匹配的非自回归生成质量依赖于掩码采样策略，可能产生不连贯片段；训练数据规模大，资源需求高。",
+        "why_relevant": "研究方向聚焦生成式语音技术，尤其涉及流匹配、扩散模型等生成方法。Voicebox直接应用流匹配于语音生成，覆盖语音合成、降噪、风格转换，且强调零样本泛化，与我方的'flow matching speech'、'speech generation'、'speech synthesis'等关键词高度吻合。"
+      }
+    },
+    {
+      "id": "arxiv:2301.02111",
+      "arxiv_id": "2301.02111",
+      "title": "Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers",
+      "authors": [
+        "Chengyi Wang",
+        "Sanyuan Chen",
+        "Yu Wu",
+        "Zi-Hua Zhang",
+        "Long Zhou",
+        "Shujie Liu",
+        "Zhuo Chen",
+        "Yanqing Liu",
+        "Huaming Wang",
+        "Jinyu Li",
+        "Lei He",
+        "Sheng Zhao"
+      ],
+      "published": "2023-01-05T00:00:00+00:00",
+      "summary": "We introduce a language modeling approach for text to speech synthesis (TTS). Specifically, we train a neural codec language model (called VALL-E) using discrete codes derived from an off-the-shelf neural audio codec model, and regard TTS as a conditional language modeling task rather than continuous signal regression as in previous work. During the pre-training stage, we scale up the TTS training data to 50 k hours of English speech which is hundreds of times larger than existing systems. VALL-E emerges in-context learning capability and can be used to synthesize high-quality personalized speech with only a 3-second enrolled recording of an unseen speaker as a prompt. Experiment results show that VALL-E significantly outperforms the state-of-the-art zero-shot TTS system in terms of speech naturalness and speaker similarity. In addition, we find VALL-E could preserve the speaker's emotion and acoustic environment from the prompt in synthesis.",
+      "paper_url": "https://arxiv.org/abs/2301.02111",
+      "pdf_url": "https://arxiv.org/pdf/2301.02111",
+      "categories": [
+        "IEEE Transactions on Audio, Speech, and Language Processing"
+      ],
+      "venue": "IEEE Transactions on Audio, Speech, and Language Processing",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "提出VALL-E，首次将TTS转化为基于神经编解码语言模型的条件生成任务，实现仅需3秒语音提示的零样本声音克隆，是生成式语音技术方向的里程碑式工作，引用超1200，必读基础文献。",
+      "citation_count": 1278,
+      "date_added": "2026-07-09",
+      "chinese_summary": {
+        "problem": "实现零样本文本到语音合成，通过语言建模方法将连续信号回归转化为离散代码生成，仅需极短提示即可克隆未见说话人音色并保持情感与声学环境。",
+        "method": "基于现成神经音频编解码器提取离散音频代码，将TTS视为条件语言建模任务，训练语言模型VALL-E自回归预测音频代码序列，再经编解码器重构波形；预训练使用5万小时英语语音，推理时以3秒目标说话人录音作为提示进行零样本合成。",
+        "innovation": "首次将语言模型范式引入TTS，从连续信号回归转向离散代码的条件生成；利用大规模数据（5万小时）与情境学习能力，突破性地以极短音频提示实现高质量个性化语音合成，且能迁移提示中的情感和环境特性。",
+        "evidence": "摘要声明实验在语音自然度和说话人相似度上显著超越现有零样本TTS系统，并具备情感与声学环境保持能力，但无具体数值或统计检验。",
+        "limitations": "摘要未提及局限性；需阅读全文确认对极短或嘈杂提示、跨语言、不同录音条件下泛化性，模型规模与推理效率，以及训练细节。",
+        "why_relevant": "论文属于语音合成（TTS）范畴，与研究方向中的“speech synthesis”“text-to-speech”关键词部分匹配，但未涉及生成增强、修复、扩散模型或流匹配等核心关注点，且基于语言模型而非生成式声学模型，相关性较低，建议人工复核是否需要关注。"
+      }
+    },
+    {
+      "id": "arxiv:2410.00037",
+      "arxiv_id": "2410.00037",
+      "title": "Moshi: a speech-text foundation model for real-time dialogue",
+      "authors": [
+        "Alexandre Défossez",
+        "Laurent Mazaré",
+        "Manu Orsini",
+        "Amélie Royer",
+        "Patrick P'erez",
+        "Herv'e J'egou",
+        "Edouard Grave",
+        "Neil Zeghidour"
+      ],
+      "published": "2024-09-17T00:00:00+00:00",
+      "summary": "We introduce Moshi, a speech-text foundation model and full-duplex spoken dialogue framework. Current systems for spoken dialogue rely on pipelines of independent components, namely voice activity detection, speech recognition, textual dialogue and text-to-speech. Such frameworks cannot emulate the experience of real conversations. First, their complexity induces a latency of several seconds between interactions. Second, text being the intermediate modality for dialogue, non-linguistic information that modifies meaning -- such as emotion or non-speech sounds -- is lost in the interaction. Finally, they rely on a segmentation into speaker turns, which does not take into account overlapping speech, interruptions and interjections. Moshi solves these independent issues altogether by casting spoken dialogue as speech-to-speech generation. Starting from a text language model backbone, Moshi generates speech as tokens from the residual quantizer of a neural audio codec, while modeling separately its own speech and that of the user into parallel streams. This allows for the removal of explicit speaker turns, and the modeling of arbitrary conversational dynamics. We moreover extend the hierarchical semantic-to-acoustic token generation of previous work to first predict time-aligned text tokens as a prefix to audio tokens. Not only this\"Inner Monologue\"method significantly improves the linguistic quality of generated speech, but we also illustrate how it can provide streaming speech recognition and text-to-speech. Our resulting model is the first real-time full-duplex spoken large language model, with a theoretical latency of 160ms, 200ms in practice, and is available at https://github.com/kyutai-labs/moshi.",
+      "paper_url": "https://arxiv.org/abs/2410.00037",
+      "pdf_url": "https://arxiv.org/pdf/2410.00037",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "首个实时全双工语音大语言模型，将口语对话建模为语音到语音生成，通过神经音频编解码器Token化和Inner Monologue方法提升生成质量，是生成式语音技术领域的里程碑工作，与研究方向高度相关且必读。",
+      "citation_count": 624,
+      "date_added": "2026-07-09",
+      "chinese_summary": {
+        "problem": "现有口语对话系统依赖串行流水线（语音活动检测、语音识别、文本对话、文本转语音），导致高延迟（数秒）、丢失副语言信息、无法处理重叠语音和打断。",
+        "method": "将口语对话建模为语音到语音的生成任务：基于文本语言模型骨干，使用神经音频编解码器的残差量化生成语音令牌，将自身和用户语音建模为并行流以去除说话人轮次；提出 Inner Monologue 方法，先生成时间对齐的文本令牌作为音频令牌的前缀，提升语言质量并实现流式语音识别和文本转语音。",
+        "innovation": "首次将全双工口语对话完全转化为语音到语音生成，消除流水线依赖；通过并行流建模实现任意对话动态，不再需要显式说话人轮次；Inner Monologue 方法统一了语音识别和合成的内部表示，同时提升了生成语音的语言质量。",
+        "evidence": "理论延迟 160ms，实际 200ms，代码开源（https://github.com/kyutai-labs/moshi）。声称显著改善语言质量，但无定量指标或对比基线。",
+        "limitations": "摘要未提供评估指标（如 WER、MOS、对话质量评分），未说明训练数据、语言支持范围或与传统级联系统的定量比较；生成式语音增强或修复等能力未提及。",
+        "why_relevant": "命中关键词 'speech generation' 和 'text-to-speech'，涉及神经音频编解码器与语音合成/生成技术，与我的研究方向部分重叠。但核心贡献在对话系统架构，而非生成式模型方法（如扩散、流匹配）本身的创新，且未涉及语音增强或修复，相关性较弱，建议人工复核以确认是否涵盖值得关注的生成技术细节。"
+      }
+    },
+    {
+      "id": "s2:f6c494234a818b2aec286b257ee6117f2894bcf7",
+      "arxiv_id": "",
+      "title": "CLAP Learning Audio Concepts from Natural Language Supervision",
+      "authors": [
+        "Benjamin Elizalde",
+        "Soham Deshmukh",
+        "Mahmoud Al Ismail",
+        "Huaming Wang"
+      ],
+      "published": "2023-06-04T00:00:00+00:00",
+      "summary": "Mainstream machine listening models are trained to learn audio concepts under the paradigm of one class label to many recordings focusing on one task. Learning under such restricted supervision limits the flexibility of models because they require labeled audio for training and can only predict the predefined categories. Instead, we propose to learn audio concepts from natural language supervision. We call our approach Contrastive Language-Audio Pretraining (CLAP), which connects language and audio by using two encoders and a contrastive learning objective, bringing audio and text descriptions into a joint multimodal space. We trained CLAP with 128k audio and text pairs and evaluated it on 16 downstream tasks across 7 domains, such as classification of sound events, scenes, music, and speech. CLAP establishes state-of-the-art (SoTA) in Zero-Shot performance. Also, we evaluated CLAP’s audio encoder in a supervised learning setup and achieved SoTA in 5 tasks. The Zero-Shot capability removes the need of training with class labeled audio, enables flexible class prediction at inference time, and generalizes well in multiple downstream tasks. Code is available at: https://github.com/microsoft/CLAP.",
+      "paper_url": "https://www.semanticscholar.org/paper/f6c494234a818b2aec286b257ee6117f2894bcf7",
+      "pdf_url": "https://arxiv.org/pdf/2206.04769",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "提出对比语言-音频预训练(CLAP)，实现跨模态零样本学习，显著推动音频表示学习和音乐信息检索，成为必读基础工作。",
+      "citation_count": 958,
+      "date_added": "2026-07-09",
+      "chinese_summary": {
+        "problem": "传统音频分类模型依赖预定义类别标签，灵活性差且需要大量标注数据，难以泛化到未知类别。论文旨在通过自然语言监督学习音频概念，实现无需类标签训练的零样本音频分类。",
+        "method": "提出对比语言-音频预训练（CLAP）方法，使用双塔结构：一个音频编码器和一个文本编码器，通过对比学习目标将音频与文本描述映射到联合多模态空间。训练使用128k音频-文本对，推理时直接计算测试音频与候选类别文本的相似度进行零样本分类。",
+        "innovation": "将对比语言-图像预训练范式成功迁移至音频领域，首次实现大规模音频-文本联合学习；在7个领域共16个下游分类任务上取得零样本SOTA，打破了传统依赖类标签的局限；预训练音频编码器在监督微调后也展现出强大性能，在5项任务上达到SOTA。",
+        "evidence": "摘要中声明在16个下游任务上零样本性能达到SOTA，监督学习设置下音频编码器在5个任务上取得SOTA，代码已开源。但未提供具体指标数值。",
+        "limitations": "未涉及生成式语音任务，仅聚焦分类；训练数据规模仅128k，可能限制复杂语音场景的泛化；未讨论模型复杂度、推理速度或对文本描述质量的敏感性；在语音增强、合成等生成任务上的适用性完全未知。",
+        "why_relevant": "论文提出的音频-文本联合表示学习方法可作为通用音频基础模型，理论上其音频理解能力可能用于指导语音生成任务（如TTS的内容一致性、语音增强的语义保真度），但摘要未提供任何与生成相关的证据，匹配度低，需人工复核潜在迁移可能性。"
+      }
+    },
+    {
+      "id": "arxiv:2406.02430",
+      "arxiv_id": "2406.02430",
+      "title": "Seed-TTS: A Family of High-Quality Versatile Speech Generation Models",
+      "authors": [
+        "Philip Anastassiou",
+        "Jiawei Chen",
+        "Jitong Chen",
+        "Yuanzhe Chen",
+        "Zhuo Chen",
+        "Ziyi Chen",
+        "Jian Cong",
+        "Lelai Deng",
+        "Chuang Ding",
+        "Lu Gao",
+        "Ming Gong",
+        "Peisong Huang"
+      ],
+      "published": "2024-06-04T00:00:00+00:00",
+      "summary": "We introduce Seed-TTS, a family of large-scale autoregressive text-to-speech (TTS) models capable of generating speech that is virtually indistinguishable from human speech. Seed-TTS serves as a foundation model for speech generation and excels in speech in-context learning, achieving performance in speaker similarity and naturalness that matches ground truth human speech in both objective and subjective evaluations. With fine-tuning, we achieve even higher subjective scores across these metrics. Seed-TTS offers superior controllability over various speech attributes such as emotion and is capable of generating highly expressive and diverse speech for speakers in the wild. Furthermore, we propose a self-distillation method for speech factorization, as well as a reinforcement learning approach to enhance model robustness, speaker similarity, and controllability. We additionally present a non-autoregressive (NAR) variant of the Seed-TTS model, named $\\text{Seed-TTS}_\\text{DiT}$, which utilizes a fully diffusion-based architecture. Unlike previous NAR-based TTS systems, $\\text{Seed-TTS}_\\text{DiT}$ does not depend on pre-estimated phoneme durations and performs speech generation through end-to-end processing. We demonstrate that this variant achieves comparable performance to the language model-based variant and showcase its effectiveness in speech editing. We encourage readers to listen to demos at \\url{https://bytedancespeech.github.io/seedtts_tech_report}.",
+      "paper_url": "https://arxiv.org/abs/2406.02430",
+      "pdf_url": "https://arxiv.org/pdf/2406.02430",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "高度契合生成语音技术方向，提出大规模自回归TTS基础模型与扩散变体，具备上下文学习、高质量与控制能力，是近年语音合成领域的里程碑式工作，必读级别。",
+      "citation_count": 391,
+      "date_added": "2026-07-09",
+      "chinese_summary": {
+        "problem": "开发能够生成接近真人水平、具有高度可控性和多样性的语音合成基础模型，并拓展至语音编辑等任务。",
+        "method": "提出Seed-TTS模型族，包含大规模自回归TTS与基于全扩散的非自回归变体Seed-TTS_DiT；通过自蒸馏实现语音因子分解，并采用强化学习提升模型鲁棒性、说话人相似度和可控性。Seed-TTS_DiT无需预估计音素时长，实现端到端的语音生成与编辑。",
+        "innovation": "1) 在自回归TTS中引入语音上下文学习，客观与主观评估均显示说话人相似度和自然度匹配真人语音；2) 提出完全基于扩散的非自回归TTS架构Seed-TTS_DiT，不依赖时长模型，性能与语言模型变体相当，并能有效用于语音编辑；3) 结合自蒸馏与强化学习技术，进一步增强模型对情感等属性的控制能力。",
+        "evidence": "摘要中声明在客观和主观评估中，种子TTS在说话人相似度和自然度上与真人语音无显著差异；微调后主观得分更高；展示了Seed-TTS_DiT在语音编辑中的有效性，并提供了演示链接。但未给出具体指标数值。",
+        "limitations": "摘要未提及模型规模、推理速度、计算成本等实际部署问题；未说明对不同语言、口音或噪声环境下的泛化能力；语音编辑的具体实现与边界未展开。",
+        "why_relevant": "研究方向聚焦生成语音技术，特别是TTS和扩散模型在语音中的应用。本论文既是高质量TTS模型，又提出扩散驱动的非自回归变体，直接匹配关键词text-to-speech、speech generation、diffusion model speech，且涉及可控生成和语音编辑，与研究兴趣高度重合。"
       }
     }
   ]

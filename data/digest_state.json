@@ -1,11 +1,12 @@
 {
-  "foundation_rotation_index": 3,
+  "foundation_rotation_index": 4,
   "added_by_day": {
     "2026-07-06": 5,
     "2026-07-07": 5,
-    "2026-07-08": 5
+    "2026-07-08": 5,
+    "2026-07-09": 5
   },
-  "last_run_iso": "2026-07-08T09:57:58.156894+00:00",
-  "last_run_status": "ok-cap-reached",
-  "foundation_last_topic": "speech_separation_extraction"
+  "last_run_iso": "2026-07-09T05:16:19.229963+00:00",
+  "last_run_status": "ok",
+  "foundation_last_topic": "generative_speech"
 }
