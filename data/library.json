@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-09T05:16:19.229963+00:00",
+  "updated_at_iso": "2026-07-10T05:11:42.973252+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -779,6 +779,206 @@
         "evidence": "摘要中声明在客观和主观评估中，种子TTS在说话人相似度和自然度上与真人语音无显著差异；微调后主观得分更高；展示了Seed-TTS_DiT在语音编辑中的有效性，并提供了演示链接。但未给出具体指标数值。",
         "limitations": "摘要未提及模型规模、推理速度、计算成本等实际部署问题；未说明对不同语言、口音或噪声环境下的泛化能力；语音编辑的具体实现与边界未展开。",
         "why_relevant": "研究方向聚焦生成语音技术，特别是TTS和扩散模型在语音中的应用。本论文既是高质量TTS模型，又提出扩散驱动的非自回归变体，直接匹配关键词text-to-speech、speech generation、diffusion model speech，且涉及可控生成和语音编辑，与研究兴趣高度重合。"
+      }
+    },
+    {
+      "id": "arxiv:2306.00107",
+      "arxiv_id": "2306.00107",
+      "title": "MERT: Acoustic Music Understanding Model with Large-Scale Self-supervised Training",
+      "authors": [
+        "Yizhi Li",
+        "Ruibin Yuan",
+        "Ge Zhang",
+        "Yi Ma",
+        "Xingran Chen",
+        "Hanzhi Yin",
+        "Chen-Li Lin",
+        "A. Ragni",
+        "Emmanouil Benetos",
+        "N. Gyenge",
+        "R. Dannenberg",
+        "Ruibo Liu"
+      ],
+      "published": "2023-05-31T00:00:00+00:00",
+      "summary": "Self-supervised learning (SSL) has recently emerged as a promising paradigm for training generalisable models on large-scale data in the fields of vision, text, and speech. Although SSL has been proven effective in speech and audio, its application to music audio has yet to be thoroughly explored. This is partially due to the distinctive challenges associated with modelling musical knowledge, particularly tonal and pitched characteristics of music. To address this research gap, we propose an acoustic Music undERstanding model with large-scale self-supervised Training (MERT), which incorporates teacher models to provide pseudo labels in the masked language modelling (MLM) style acoustic pre-training. In our exploration, we identified an effective combination of teacher models, which outperforms conventional speech and audio approaches in terms of performance. This combination includes an acoustic teacher based on Residual Vector Quantisation - Variational AutoEncoder (RVQ-VAE) and a musical teacher based on the Constant-Q Transform (CQT). Furthermore, we explore a wide range of settings to overcome the instability in acoustic language model pre-training, which allows our designed paradigm to scale from 95M to 330M parameters. Experimental results indicate that our model can generalise and perform well on 14 music understanding tasks and attain state-of-the-art (SOTA) overall scores.",
+      "paper_url": "https://arxiv.org/abs/2306.00107",
+      "pdf_url": "http://arxiv.org/pdf/2306.00107",
+      "categories": [
+        "International Conference on Learning Representations"
+      ],
+      "venue": "International Conference on Learning Representations",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 10.0,
+      "justification": "提出大规模自监督音乐理解模型MERT，融合声学教师RVQ-VAE和音乐教师CQT，在14个音乐理解任务上取得SOTA，成为音乐信息检索的重要基线，完全匹配研究方向。",
+      "citation_count": 312,
+      "date_added": "2026-07-10",
+      "chinese_summary": {
+        "problem": "探索自监督学习在音乐音频中的应用，解决音乐知识建模中音调和音高特性的独特挑战。",
+        "method": "提出MERT模型，采用掩码语言建模风格的声学预训练，结合两种教师模型提供伪标签：基于RVQ-VAE的声学教师和基于CQT的音乐教师；通过优化训练稳定性，将模型规模扩展至3.3亿参数。",
+        "innovation": "首次将声学与音乐双教师模型引入音乐自监督预训练，有效捕获音乐的音调和音高信息；解决了音乐预训练中的不稳定性问题，实现从9500万到3.3亿参数的扩展；在14项音乐理解任务上达到最先进水平。",
+        "evidence": "摘要提及模型在14个音乐理解任务上取得SOTA总体分数，具体实验证据需查阅全文。",
+        "limitations": "教师模型设计与预训练数据细节未在摘要中说明；模型在更多样化音乐风格和长音频上的泛化能力待验证；对生成任务的适用性未提及。",
+        "why_relevant": "论文直接针对音乐理解与音乐表示学习，采用自监督音频预训练，与研究方向的核心关键词高度匹配，包括音乐信息检索、音乐编码器、音乐理解、自监督音频表示等。"
+      }
+    },
+    {
+      "id": "arxiv:2607.06461",
+      "arxiv_id": "2607.06461",
+      "title": "WordVoice: Explicit and Decoupled Multi-Dimensional Word-Level Control for LLM-Based TTS",
+      "authors": [
+        "Sihang Nie",
+        "Jinxin Ji",
+        "Xiaofen Xing",
+        "Deyi Tuo",
+        "Chengbin Jin",
+        "Jialong Mai",
+        "Xiangmin Xu"
+      ],
+      "published": "2026-07-07T16:22:59Z",
+      "summary": "While recent Large Language Model (LLM)-based Text-to-Speech (TTS) systems have achieved remarkable naturalness, they predominantly rely on implicit end-to-end generation paradigms, resulting in coarse-grained control. In scenarios demanding precise stylistic interventions and strict temporal alignment, such as audiobook narration and video dubbing, the inability to explicitly manipulate word-level acoustic attributes remains a critical bottleneck. This limitation is primarily amplified by the severe scarcity of fine-grained annotated datasets and the architectural challenge of integrating multi-dimensional control signals into discrete autoregressive generation. To address this, we propose a unified framework for highly precise word-level control. First, we construct WordVoice-5A, a massive 4.7k-hour bilingual dataset featuring five-dimensional word-level annotations (duration, boundary, energy, pitch and tone) developed through a rigorous linguistically-guided pipeline. Second, we introduce WordVoice to transform the implicit generation process into an explicit, highly controllable paradigm. Specifically, we introduce a bound-token mechanism within the LLM to formulate an explicit ``acoustic planning'' process, enabling adaptive multi-task prosodic planning and flexible manual intervention. Furthermore, we augment the token-to-waveform stage with a fine-grained acoustic modulation module, bridging the resolution gap to strictly align word-level attributes between highly compressed discrete tokens and continuous waveforms. Extensive experiments demonstrate that WordVoice achieves superior, decoupled control over multiple acoustic dimensions while maintaining competitive zero-shot synthesis stability. The code and audio samples are publicly available at https://xxh333.github.io/wordvoice-demo/.",
+      "paper_url": "http://arxiv.org/abs/2607.06461v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.06461v1",
+      "categories": [
+        "eess.AS",
+        "cs.CL",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "论文提出WordVoice框架，实现LLM-based TTS的词级多维显式控制，构建大规模标注数据集，创新性地引入bound-token机制和细粒度声学调制模块，与生成式语音技术方向高度相关，工作扎实且具有重要应用价值。",
+      "citation_count": null,
+      "date_added": "2026-07-10",
+      "chinese_summary": {
+        "problem": "LLM-based TTS系统缺乏词级声学属性的显式解耦控制，难以满足有声书、视频配音等场景对精细风格干预和严格时间对齐的需求。",
+        "method": "构建4.7k小时双语词级五维（时长、边界、能量、音高、音调）标注数据集WordVoice-5A；提出WordVoice框架，在LLM中引入bound-token机制实现显式声学规划，支持多任务韵律规划和人工干预；在token-to-waveform阶段增加细粒度声学调制模块，缩小离散token与连续波形间的分辨率差距，实现词级属性的严格对齐。",
+        "innovation": "将LLM-TTS的隐式生成转化为显式、高度可控的范式，通过bound-token机制构建声学规划过程，允许自适应多任务韵律规划和灵活手动干预；设计细粒度声学调制模块，弥合高压缩离散token与连续波形之间的分辨率鸿沟，实现多维声学属性的解耦控制。",
+        "evidence": "摘要提及大量实验表明WordVoice在多个声学维度上实现了优越的解耦控制，并保持了竞争力的零样本合成稳定性；代码和音频样本已公开。但未给出具体客观指标。",
+        "limitations": "摘要未提供MOS等客观评测数据，解耦控制的独立性和稳定性需全文验证；五维标注的质量及覆盖范围可能影响泛化性。",
+        "why_relevant": "直接匹配研究方向中的语音合成和TTS，尤其关注LLM-based TTS系统的可控生成，属于生成式语音技术的重要组成部分。论文针对词级显式控制，弥补了当前系统在精细风格调节上的不足，与研究方向高度相关。"
+      }
+    },
+    {
+      "id": "arxiv:2607.08111",
+      "arxiv_id": "2607.08111",
+      "title": "PS4: Proxy-Supervised Joint Training for Real Target Speaker Extraction",
+      "authors": [
+        "Wanyi Ning",
+        "Wei Zhou",
+        "Yingpeng Li",
+        "Yinshang Guo",
+        "Haitao Qian",
+        "Yiming Cheng"
+      ],
+      "published": "2026-07-09T04:51:11Z",
+      "summary": "Training target speaker extraction (TSE) models for real conversational mixtures remains challenging because large-scale training corpora and clean target speech for supervision are unavailable. We present PS4, a proxy-supervised training framework for TSE in real conversational mixtures, with two main contributions. First, we construct a large-scale corpus of 71,771 training samples derived from four public datasets, covering both Chinese and English scenarios. Each sample contains an overlapping speech mixture, per-speaker enrollment audio, a ground-truth transcript, and frame-level voice activity labels. Second, we propose a proxy-supervised joint training strategy that fine-tunes a BSRNN-based TSE model using four complementary differentiable objectives: ASR cross-entropy, speaker similarity, frame-level voice activity detection, and perceptual audio quality. Starting from a publicly available pre-trained checkpoint, only the BSRNN separator is updated during fine-tuning. On the REAL-T challenge leaderboard, PS4 ranks 2nd overall, achieving the best speaker similarity and timing F1 among all submitted systems.",
+      "paper_url": "http://arxiv.org/abs/2607.08111v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.08111v1",
+      "categories": [
+        "cs.SD",
+        "cs.AI"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "论文针对真实对话场景的目标说话人提取（TSE），提出无需干净参考的代理监督联合训练框架PS4，构建大规模多语种语料，在REAL-T挑战赛获第二名，与研究方向高度相关且贡献扎实。",
+      "citation_count": null,
+      "date_added": "2026-07-10",
+      "chinese_summary": {
+        "problem": "如何在缺乏干净目标语音监督的真实对话混合中有效训练目标说话人提取模型，以应对大规模真实数据的标注和泛化挑战。",
+        "method": "提出代理监督联合训练框架PS4，首先通过整合四个公开数据集构建大规模中英文混合训练语料（含注册音频、转录文本和帧级VAD标签）；然后基于BSRNN分离器，联合优化ASR交叉熵、说话人相似度、帧级VAD和感知音频质量四个可微目标，仅微调解离器参数。",
+        "innovation": "1) 构建首个大规模中英文真实对话混合数据集，提供注册音频、转录和VAD标签的多模态监督；2) 提出无需干净目标语音的代理监督联合训练策略，通过多个辅助任务替代传统信号级监督，缓解真实场景下的标注瓶颈；3) 在真实挑战REAL-T中验证有效性，取得最佳说话人相似度和时序F1。",
+        "evidence": "在REAL-T挑战排行榜上总体排名第二，并取得所有系统中最佳说话人相似度和时序F1；训练集规模达71,771样本。",
+        "limitations": "方法重度依赖预训练模型且只微调节点，泛化至其他分离架构或非预训练场景未验证；代理监督损失与最终提取性能的因果关系需全文分析；未与使用干净监督的TSE模型公平对比。",
+        "why_relevant": "精准匹配研究方向关键词“目标说话人提取”，且关注真实场景下的训练挑战，与我的盲源分离、端到端分离方法研究直接相关；其中的联合训练和代理监督思路可借鉴至其它分离范式。"
+      }
+    },
+    {
+      "id": "arxiv:2308.05734",
+      "arxiv_id": "2308.05734",
+      "title": "AudioLDM 2: Learning Holistic Audio Generation With Self-Supervised Pretraining",
+      "authors": [
+        "Haohe Liu",
+        "Qiao Tian",
+        "Yiitan Yuan",
+        "Xubo Liu",
+        "Xinhao Mei",
+        "Qiuqiang Kong",
+        "Yuping Wang",
+        "Wenwu Wang",
+        "Yuxuan Wang",
+        "Mark D. Plumbley"
+      ],
+      "published": "2023-08-10T00:00:00+00:00",
+      "summary": "Although audio generation shares commonalities across different types of audio, such as speech, music, and sound effects, designing models for each type requires careful consideration of specific objectives and biases that can significantly differ from those of other types. To bring us closer to a unified perspective of audio generation, this paper proposes a holistic framework that utilizes the same learning method for speech, music, and sound effect generation. Our framework utilizes a general representation of audio, called “language of audio” (LOA). Any audio can be translated into LOA based on AudioMAE, a self-supervised pre-trained representation learning model. In the generation process, we translate other modalities into LOA by using a GPT-2 model, and we perform self-supervised audio generation learning with a latent diffusion model conditioned on the LOA of audio in our training set. The proposed framework naturally brings advantages such as reusable self-supervised pretrained latent diffusion models. Experiments on the major benchmarks of text-to-audio, text-to-music, and text-to-speech with three AudioLDM 2 variants demonstrate competitive performance of the AudioLDM 2 framework against previous approaches.",
+      "paper_url": "https://arxiv.org/abs/2308.05734",
+      "pdf_url": "https://arxiv.org/pdf/2308.05734",
+      "categories": [
+        "IEEE/ACM Transactions on Audio Speech and Language Processing"
+      ],
+      "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 9.0,
+      "justification": "该文提出了基于自监督预训练的统一音频生成框架，覆盖语音、音乐和音效，对生成式语音技术与音乐生成有重要基础影响，高度相关于生成式语音技术及音乐信息检索与表示方向。",
+      "citation_count": 499,
+      "date_added": "2026-07-10",
+      "chinese_summary": {
+        "problem": "如何构建一个统一的音频生成框架，以同一学习方法同时处理语音、音乐和音效生成，避免为每种音频类型单独设计模型。",
+        "method": "提出“语言音频”（LOA）作为通用音频表示，该表示基于自监督预训练模型 AudioMAE 提取；在生成时，先用 GPT-2 将其他模态映射为 LOA，再以 LOA 为条件训练潜在扩散模型进行自监督音频生成，从而复用预训练组件。",
+        "innovation": "通过引入语言音频（LOA）统一不同音频类型的表示，使得语音、音乐和音效生成可共享同一学习框架；利用自监督预训练的 AudioMAE 和可复用的潜扩散模型，避免从零开始设计特定类型模型。",
+        "evidence": "在文本到音频、文本到音乐和文本到语音三个主流基准上，用三种 AudioLDM 2 变体进行了实验，声称与先前方法相比具有竞争性表现，但摘要未提供具体指标。",
+        "limitations": "生成性能的细节（如客观指标、主观评估）未在摘要中给出；LOA 表示对音乐生成的下游任务（如旋律、和弦控制）的适用性未知；需要阅读全文确认模型是否在纯音乐表示学习任务上进行了验证。",
+        "why_relevant": "论文涉及音乐生成和自监督音频表示学习，与研究方向的 music generation、audio representation learning、self-supervised audio 相关，但核心贡献在于统一生成框架，而非音乐信息检索或表示质量评估，直接相关性较低。"
+      }
+    },
+    {
+      "id": "arxiv:2301.11325",
+      "arxiv_id": "2301.11325",
+      "title": "MusicLM: Generating Music From Text",
+      "authors": [
+        "A. Agostinelli",
+        "Timo I. Denk",
+        "Zalán Borsos",
+        "Jesse Engel",
+        "Mauro Verzetti",
+        "Antoine Caillon",
+        "Qingqing Huang",
+        "A. Jansen",
+        "Adam Roberts",
+        "M. Tagliasacchi",
+        "Matthew Sharifi",
+        "Neil Zeghidour"
+      ],
+      "published": "2023-01-26T00:00:00+00:00",
+      "summary": "We introduce MusicLM, a model generating high-fidelity music from text descriptions such as\"a calming violin melody backed by a distorted guitar riff\". MusicLM casts the process of conditional music generation as a hierarchical sequence-to-sequence modeling task, and it generates music at 24 kHz that remains consistent over several minutes. Our experiments show that MusicLM outperforms previous systems both in audio quality and adherence to the text description. Moreover, we demonstrate that MusicLM can be conditioned on both text and a melody in that it can transform whistled and hummed melodies according to the style described in a text caption. To support future research, we publicly release MusicCaps, a dataset composed of 5.5k music-text pairs, with rich text descriptions provided by human experts.",
+      "paper_url": "https://arxiv.org/abs/2301.11325",
+      "pdf_url": "http://arxiv.org/pdf/2301.11325",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出了基于文本描述生成高保真音乐的分层序列到序列模型MusicLM，发布MusicCaps数据集，在音乐生成领域具有里程碑意义，与音乐信息检索和生成方向高度相关，是必读级基础工作。",
+      "citation_count": 711,
+      "date_added": "2026-07-10",
+      "chinese_summary": {
+        "problem": "从文本描述生成高保真音乐，并支持旋律条件的风格化生成，即根据文本提示将哼唱或口哨旋律转换为特定风格音乐。",
+        "method": "MusicLM将条件音乐生成建模为分层序列到序列任务，通过自回归与离散音频表示，从文本和可选旋律输入生成24kHz音乐，整体流程为编码文本-旋律，解码为多层级音频token序列。",
+        "innovation": "首次实现从文本生成分钟级高保真音乐；提出分层序列建模整合文本与旋律条件；公开带有丰富人类标注的音乐-文本数据集MusicCaps。",
+        "evidence": "摘要提及实验表明在音频质量和文本描述一致性上超越先前系统；提供了自定义数据集MusicCaps有5.5k音乐-文本对，但未给出具体指标。",
+        "limitations": "音乐生成和语音生成任务不同，方法迁移性待验证；旋律条件仅展示哼唱转换，未提及对说话人音色或语音内容的影响；生成模型的具体架构（如是否使用扩散或流匹配）未披露。",
+        "why_relevant": "研究方向要求生成式语音技术，MusicLM虽为音乐生成，但其分层序列到序列条件生成范式可能部分适用于语音合成或生成式语音模型；摘要未直接涉及语音增强、神经声码器等核心关键词，且生成对象为音乐而非语音，因此匹配度低，建议人工确认是否有借鉴价值。"
       }
     }
   ]
