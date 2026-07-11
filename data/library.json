@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-10T05:11:42.973252+00:00",
+  "updated_at_iso": "2026-07-11T04:32:13.108868+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -979,6 +979,190 @@
         "evidence": "摘要提及实验表明在音频质量和文本描述一致性上超越先前系统；提供了自定义数据集MusicCaps有5.5k音乐-文本对，但未给出具体指标。",
         "limitations": "音乐生成和语音生成任务不同，方法迁移性待验证；旋律条件仅展示哼唱转换，未提及对说话人音色或语音内容的影响；生成模型的具体架构（如是否使用扩散或流匹配）未披露。",
         "why_relevant": "研究方向要求生成式语音技术，MusicLM虽为音乐生成，但其分层序列到序列条件生成范式可能部分适用于语音合成或生成式语音模型；摘要未直接涉及语音增强、神经声码器等核心关键词，且生成对象为音乐而非语音，因此匹配度低，建议人工确认是否有借鉴价值。"
+      }
+    },
+    {
+      "id": "arxiv:2303.11510",
+      "arxiv_id": "2303.11510",
+      "title": "ICASSP 2023 Deep Noise Suppression Challenge",
+      "authors": [
+        "Harishchandra Dubey",
+        "Vishak Gopal",
+        "Ross Cutler",
+        "A. Aazami",
+        "Sergiy Matusevych",
+        "Sebastian Braun",
+        "S. Eskimez",
+        "Manthan Thakker",
+        "T. Yoshioka",
+        "H. Gamper",
+        "R. Aichner"
+      ],
+      "published": "2023-03-21T00:00:00+00:00",
+      "summary": "The ICASSP 2023 Deep Noise Suppression (DNS) Challenge marks the fifth edition of the DNS challenge series. DNS challenges were organized from 2019 to 2023 to foster research in the field of DNS. Previous DNS challenges were held at INTERSPEECH 2020, ICASSP 2021, INTERSPEECH 2021, and ICASSP 2022. This challenge aims to advance models capable of jointly addressing denoising, dereverberation, and interfering talker suppression, with separate tracks focusing on headset and speakerphone scenarios. The challenge facilitates personalized deep noise suppression by providing accompanying enrollment clips for each test clip, each containing the primary talker only, which can be used to compute a speaker identity feature and disentangle primary and interfering speech. While the majority of models submitted to the challenge were personalized, the same teams emerged as the winners in both tracks. The best models demonstrated improvements of 0.145 and 0.141 in the challenge's score, respectively, when compared to the noisy blind test set. We present additional analysis and draw comparisons to previous challenges.",
+      "paper_url": "https://arxiv.org/abs/2303.11510",
+      "pdf_url": "https://ieeexplore.ieee.org/ielx7/8782710/9006934/10474162.pdf",
+      "categories": [
+        "IEEE Open Journal of Signal Processing"
+      ],
+      "venue": "IEEE Open Journal of Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 10.0,
+      "justification": "DNS挑战是语音增强领域的核心基准，直接推动去噪、去混响和干扰抑制研究，与研究方向高度匹配且影响力显著。",
+      "citation_count": 192,
+      "date_added": "2026-07-11",
+      "chinese_summary": {
+        "problem": "该论文为DNS挑战赛的总结性描述，旨在汇报赛事组织、参赛模型性能对比及趋势，并非提出或解决一个具体的技术问题。",
+        "method": "论文概述了ICASSP 2023 DNS挑战赛的设定：包含头戴式和扬声器两个赛道，要求模型联合处理降噪、去混响和干扰说话人抑制；提供说话人注册音频以支持个性化降噪。未涉及参赛模型的具体架构或算法细节。",
+        "innovation": "本文无算法创新，属于挑战赛综述；其价值在于展示基于个性化信息的深度噪声抑制已成为主流方向，并给出官方基准和最优结果的数值对比。",
+        "evidence": "摘要中给出了可核验的定量结果：最佳模型在挑战赛评分上相对带噪盲测集分别提升0.145和0.141。",
+        "limitations": "论文为挑战赛概述，不含任何具体的模型结构、训练策略或消融实验；无法从中获取可复现的方法细节。",
+        "why_relevant": "研究方向命中关键词降噪、去混响，但本论文仅为赛事总结，不涉及具体前端处理技术，与日常的算法研究关联度低，建议人工复核后决定是否需要阅读全文以了解领域进展。"
+      }
+    },
+    {
+      "id": "arxiv:2308.06873",
+      "arxiv_id": "2308.06873",
+      "title": "SpeechX: Neural Codec Language Model as a Versatile Speech Transformer",
+      "authors": [
+        "Xiaofei Wang",
+        "Manthan Thakker",
+        "Zhuo Chen",
+        "Naoyuki Kanda",
+        "S. Eskimez",
+        "Sanyuan Chen",
+        "Min Tang",
+        "Shujie Liu",
+        "Jinyu Li",
+        "T. Yoshioka"
+      ],
+      "published": "2023-08-14T00:00:00+00:00",
+      "summary": "Recent advancements in generative speech models based on audio-text prompts have enabled remarkable innovations like high-quality zero-shot text-to-speech. However, existing models still face limitations in handling diverse audio-text speech generation tasks involving transforming input speech and processing audio captured in adverse acoustic conditions. This paper introduces SpeechX, a versatile speech generation model capable of zero-shot TTS and various speech transformation tasks, dealing with both clean and noisy signals. SpeechX combines neural codec language modeling with multi-task learning using task-dependent prompting, enabling unified and extensible modeling and providing a consistent way for leveraging textual input in speech enhancement and transformation tasks. Experimental results show SpeechX's efficacy in various tasks, including zero-shot TTS, noise suppression, target speaker extraction, speech removal, and speech editing with or without background noise, achieving comparable or superior performance to specialized models across tasks.",
+      "paper_url": "https://arxiv.org/abs/2308.06873",
+      "pdf_url": "https://arxiv.org/pdf/2308.06873",
+      "categories": [
+        "IEEE/ACM Transactions on Audio Speech and Language Processing"
+      ],
+      "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "SpeechX提出基于神经编解码语言模型的统一框架，在零样本文本到语音、语音增强、目标说话人提取等任务中表现优异，与生成式语音技术及语音增强/分离方向高度相关，是重要基线工作。",
+      "citation_count": 122,
+      "date_added": "2026-07-11",
+      "chinese_summary": {
+        "problem": "现有语音生成模型难以统一处理多种语音转换任务，尤其是在处理含噪语音的增强与编辑方面存在局限。SpeechX 旨在提供一个统一的框架，同时支持零样本 TTS、语音增强与转换等任务。",
+        "method": "结合神经编解码语言模型与多任务学习，首先将语音信号离散化为编解码器编码，然后通过任务相关提示（task-dependent prompting）控制语言模型生成目标语音，实现包括噪声抑制、目标说话人提取等任务。",
+        "innovation": "提出统一框架 SpeechX，将语音增强、分离、编辑和 TTS 等任务整合到神经编解码语言模型中；引入任务提示机制实现多任务学习，无需为每个任务设计专用模型；实验证明该通用模型在多个任务上能达到或超过专用模型的性能。",
+        "evidence": "摘要声称 SpeechX 在零样本 TTS、噪声抑制、目标说话人提取、语音移除和带噪语音编辑等任务上取得与专用模型相当或更优的性能，但未提供具体实验指标。",
+        "limitations": "计算复杂度未知，可能不适合实时前端处理；生成式模型在增强任务中可能引入内容变化或伪影；未提及去混响、回声消除等典型前端任务；需确认对多通道输入的兼容性。",
+        "why_relevant": "论文明确涉及噪声抑制（noise suppression）任务，与研究方向中的降噪、语音增强高度相关。但该方法属于生成式模型，而研究方向侧重于传统前端和神经网络降噪，可能需要人工判断生成式增强是否适合音频前端。"
+      }
+    },
+    {
+      "id": "arxiv:2305.13686",
+      "arxiv_id": "2305.13686",
+      "title": "MP-SENet: A Speech Enhancement Model with Parallel Denoising of Magnitude and Phase Spectra",
+      "authors": [
+        "Ye-Xin Lu",
+        "Yang Ai",
+        "Zhenhua Ling"
+      ],
+      "published": "2023-05-23T00:00:00+00:00",
+      "summary": "This paper proposes MP-SENet, a novel Speech Enhancement Network which directly denoises Magnitude and Phase spectra in parallel. The proposed MP-SENet adopts a codec architecture in which the encoder and decoder are bridged by convolution-augmented transformers. The encoder aims to encode time-frequency representations from the input noisy magnitude and phase spectra. The decoder is composed of parallel magnitude mask decoder and phase decoder, directly recovering clean magnitude spectra and clean-wrapped phase spectra by incorporating learnable sigmoid activation and parallel phase estimation architecture, respectively. Multi-level losses defined on magnitude spectra, phase spectra, short-time complex spectra, and time-domain waveforms are used to train the MP-SENet model jointly. Experimental results show that our proposed MP-SENet achieves a PESQ of 3.50 on the public VoiceBank+DEMAND dataset and outperforms existing advanced speech enhancement methods.",
+      "paper_url": "https://arxiv.org/abs/2305.13686",
+      "pdf_url": "https://arxiv.org/pdf/2305.13686",
+      "categories": [
+        "Interspeech"
+      ],
+      "venue": "Interspeech",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "论文提出MP-SENet，并行估计幅度和相位谱进行语音增强，性能先进且引用较高，是语音增强领域的代表性工作，与我的研究方向高度相关，属于必读级别。",
+      "citation_count": 157,
+      "date_added": "2026-07-11",
+      "chinese_summary": {
+        "problem": "传统语音增强方法通常仅估计幅度谱，相位信息保留带噪相位或单独处理，导致语音质量受限。MP-SENet旨在直接并行去噪幅度和相位谱，以更准确地恢复干净语音。",
+        "method": "MP-SENet采用编解码架构，编码器和解码器之间通过卷积增强的Transformer连接。编码器对输入的噪声幅度和相位谱进行时频编码；解码器由并行的幅度掩码解码器和相位解码器构成，幅度掩码解码器利用可学习sigmoid激活生成幅度掩码，相位解码器通过并行相位估计架构直接恢复包裹相位。训练使用多级损失函数，包括幅度谱损失、相位谱损失、短时复数谱损失和时域波形损失。",
+        "innovation": "提出并行去噪幅度与相位谱的语音增强框架，不同于传统的仅幅度或串行处理方式；在编解码结构中引入卷积增强Transformer，提升时频建模能力；设计了涵盖幅度、相位、复数谱和波形的多级联合损失，促进信号级保真。",
+        "evidence": "在VoiceBank+DEMAND数据集上，MP-SENet达到PESQ 3.50，声称优于现有先进语音增强方法，但未列出具体对比方法或消融实验。",
+        "limitations": "仅在单一数据集上评估，泛化性未验证；未提及模型参数量、推理速度等计算资源需求；并行相位估计的具体架构及其对包裹相位的处理细节需查阅全文。",
+        "why_relevant": "论文直接针对语音增强中的幅度和相位去噪问题，与我的研究方向高度契合，匹配关键词：speech enhancement, noise suppression, neural masking；所提方法可归入音频前端处理范畴，对提升降噪性能有直接价值。"
+      }
+    },
+    {
+      "id": "arxiv:2407.16074",
+      "arxiv_id": "2407.16074",
+      "title": "Schrödinger Bridge for Generative Speech Enhancement",
+      "authors": [
+        "Ante Jukic",
+        "Roman Korostik",
+        "J. Balam",
+        "Boris Ginsburg"
+      ],
+      "published": "2024-07-22T00:00:00+00:00",
+      "summary": "This paper proposes a generative speech enhancement model based on Schr\\\"odinger bridge (SB). The proposed model is employing a tractable SB to formulate a data-to-data process between the clean speech distribution and the observed noisy speech distribution. The model is trained with a data prediction loss, aiming to recover the complex-valued clean speech coefficients, and an auxiliary time-domain loss is used to improve training of the model. The effectiveness of the proposed SB-based model is evaluated in two different speech enhancement tasks: speech denoising and speech dereverberation. The experimental results demonstrate that the proposed SB-based outperforms diffusion-based models in terms of speech quality metrics and ASR performance, e.g., resulting in relative word error rate reduction of 20% for denoising and 6% for dereverberation compared to the best baseline model. The proposed model also demonstrates improved efficiency, achieving better quality than the baselines for the same number of sampling steps and with a reduced computational cost.",
+      "paper_url": "https://arxiv.org/abs/2407.16074",
+      "pdf_url": "https://arxiv.org/pdf/2407.16074",
+      "categories": [
+        "Interspeech"
+      ],
+      "venue": "Interspeech",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "提出基于薛定谔桥的生成式语音增强新范式，在去噪和去混响上超越扩散模型，属于生成式语音增强方向的必读工作，高度相关且有影响力。",
+      "citation_count": 53,
+      "date_added": "2026-07-11",
+      "chinese_summary": {
+        "problem": "在语音增强任务（去噪和去混响）中，现有扩散模型存在计算成本和采样效率问题，论文旨在通过Schrödinger桥构建更高效且高质量的生成模型。",
+        "method": "采用可处理的Schrödinger桥公式化干净语音分布与带噪语音分布之间的数据到数据过程，使用数据预测损失恢复复数域干净语音系数，并引入辅助时域损失改善训练。",
+        "innovation": "首次将Schrödinger桥应用于语音增强，直接在成对数据分布间建模，避免了扩散模型从噪声到数据的逆向过程；相比扩散模型，在相同采样步数下获得更高质量，且计算成本更低。",
+        "evidence": "在语音去噪和去混响任务上实验，相对于最佳基线，去噪任务词错误率降低20%，去混响降低6%，同时展示了更高的效率（相同步数下质量更优，计算量减少）。",
+        "limitations": "仅在Interspeech风格摘要中汇报，未说明测试集规模和具体噪声/混响条件，泛化性待验证；未提及是否适用于回声消除等其他语音增强子任务；辅助时域损失的权重和具体形式未披露。",
+        "why_relevant": "论文直接针对语音增强的核心任务（去噪、去混响），与我研究方向中的语音增强、语音去噪、去混响关键词高度吻合，且提出的生成模型框架可能对音频前端处理提供新范式。"
+      }
+    },
+    {
+      "id": "arxiv:2402.09821",
+      "arxiv_id": "2402.09821",
+      "title": "Diffusion Models for Audio Restoration: A review [Special Issue On Model-Based and Data-Driven Audio Signal Processing]",
+      "authors": [
+        "Jean-Marie Lemercier",
+        "Julius Richter",
+        "Simon Welker",
+        "Eloi Moliner",
+        "V. Välimäki",
+        "Timo Gerkmann"
+      ],
+      "published": "2024-02-15T00:00:00+00:00",
+      "summary": "With the development of audio playback devices and fast data transmission, the demand for high sound quality is rising for both entertainment and communications. In this quest for better sound quality, challenges emerge from distortions and interferences originating at the recording side or caused by an imperfect transmission pipeline. To address this problem, audio restoration methods aim to recover clean sound signals from the corrupted input data. We present here audio restoration algorithms based on diffusion models, with a focus on speech enhancement and music restoration tasks. Traditional approaches, often grounded in handcrafted rules and statistical heuristics, have shaped our understanding of audio signals. In the past decades, there has been a notable shift toward data-driven methods that exploit the modeling capabilities of deep neural networks (DNNs). Deep generative models, and among them diffusion models, have emerged as powerful techniques for learning complex data distributions. However, relying solely on DNN-based learning approaches carries the risk of reducing interpretability, particularly when employing end-to-end models. Nonetheless, data-driven approaches allow more flexibility in comparison to statistical model-based frameworks, whose performance depends on distributional and statistical assumptions that can be difficult to guarantee. Here, we aim to show that diffusion models can combine the best of both worlds and offer the opportunity to design audio restoration algorithms with a good degree of interpretability and a remarkable performance in terms of sound quality. In this article, we review the use of diffusion models for audio restoration. We explain the diffusion formalism and its application to the conditional generation of clean audio signals. We believe that diffusion models open an exciting field of research with the potential to spawn new audio restoration algorithms that are natural-sounding and remain robust in difficult acoustic situations.",
+      "paper_url": "https://arxiv.org/abs/2402.09821",
+      "pdf_url": "https://research.aalto.fi/en/publications/3a147333-7731-46b7-b398-e007f8155a38",
+      "categories": [
+        "IEEE Signal Processing Magazine"
+      ],
+      "venue": "IEEE Signal Processing Magazine",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "综述扩散模型在音频修复（核心是语音增强与声音恢复）中的应用，与生成式语音技术方向高度相关，内容系统且具有基础影响力，是必读文献。",
+      "citation_count": 62,
+      "date_added": "2026-07-11",
+      "chinese_summary": {
+        "problem": "音频信号在录制或传输时引入失真和干扰，需恢复纯净语音和音乐信号。",
+        "method": "采用扩散模型进行音频恢复，利用其学习复杂数据分布的能力，通过条件生成从受损输入中重建干净音频，结合了统计模型的可解释性与深度神经网络的灵活性。",
+        "innovation": "扩散模型在音频恢复中融合了传统统计建模与深度学习的优势，既保持了一定的可解释性，又提升了合成音质，且在困难声学场景下具有鲁棒性。",
+        "evidence": "摘要为综述性质，未提供具体实验数据或系统验证。",
+        "limitations": "综述未涉及具体算法实现细节和量化评估，对回声消除、去混响等音频前端任务的覆盖可能不足，需阅读全文确认是否包含针对性讨论。",
+        "why_relevant": "本文以语音增强为主要应用之一，与研究方向高度匹配；扩散模型作为一种前沿生成模型，可能为语音增强提供新思路，但综述泛在介绍扩散模型，对音频前端特有任务（如残差回声抑制）的着墨可能有限。"
       }
     }
   ]
