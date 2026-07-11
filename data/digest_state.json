@@ -8,7 +8,7 @@
     "2026-07-10": 5,
     "2026-07-11": 5
   },
-  "last_run_iso": "2026-07-11T04:32:13.108868+00:00",
-  "last_run_status": "ok",
+  "last_run_iso": "2026-07-11T09:09:04.479005+00:00",
+  "last_run_status": "ok-cap-reached",
   "foundation_last_topic": "speech_enhancement_frontend"
 }
