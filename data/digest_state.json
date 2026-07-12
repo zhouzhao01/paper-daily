@@ -9,7 +9,7 @@
     "2026-07-11": 5,
     "2026-07-12": 5
   },
-  "last_run_iso": "2026-07-12T04:43:17.070037+00:00",
-  "last_run_status": "ok",
+  "last_run_iso": "2026-07-12T09:28:56.256583+00:00",
+  "last_run_status": "ok-cap-reached",
   "foundation_last_topic": "microphone_array_beamforming"
 }
