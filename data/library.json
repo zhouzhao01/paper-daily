@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-11T04:32:13.108868+00:00",
+  "updated_at_iso": "2026-07-12T04:43:17.070037+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -1163,6 +1163,189 @@
         "evidence": "摘要为综述性质，未提供具体实验数据或系统验证。",
         "limitations": "综述未涉及具体算法实现细节和量化评估，对回声消除、去混响等音频前端任务的覆盖可能不足，需阅读全文确认是否包含针对性讨论。",
         "why_relevant": "本文以语音增强为主要应用之一，与研究方向高度匹配；扩散模型作为一种前沿生成模型，可能为语音增强提供新思路，但综述泛在介绍扩散模型，对音频前端特有任务（如残差回声抑制）的着墨可能有限。"
+      }
+    },
+    {
+      "id": "arxiv:2607.08256",
+      "arxiv_id": "2607.08256",
+      "title": "Best-of-$N$ TTS Evaluation is Confounded by ASR Family Alignment",
+      "authors": [
+        "Taehyung Yu",
+        "Seongjae Kang"
+      ],
+      "published": "2026-07-09T09:01:03Z",
+      "summary": "Best-of-$N$ (BoN) inference improves content consistency in zero-shot text-to-speech by selecting from $N$ candidates with an automatic speech recognition (ASR) verifier. We identify an underexplored evaluation confound: a verifier's apparent quality depends strongly on which ASR family judges it. On LibriSpeech-PC test-clean~\\citep{librispeechpc} with F5-TTS~\\citep{f5tts}, verifier rankings reverse across Whisper, wav2vec~2.0, and HuBERT evaluators, and same-family verifier-evaluator pairs recover 2-3$\\times$ more oracle headroom than cross-family pairs despite near-identical representations (linear CKA $0.978$) -- a pattern consistent with identity- or lineage-level coupling rather than representational overlap. We propose two \\textbf{cross-family rank ensembles} (rank-averaging and conjunctive max-rank) that attain the lowest mean WER across three independent evaluators -- $1.61\\%$ at $N{=}10$ ($-12\\%$ relative to F5-TTS) -- with no measurable degradation under automatic SIM-o/UTMOS metrics; the best single verifier drives WER from $2.06\\%$ to $1.72\\%$ ($-16.5\\%$) under the official F5-TTS evaluator. We recommend cross-evaluator triangulation as default reporting practice.",
+      "paper_url": "http://arxiv.org/abs/2607.08256v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.08256v1",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "论文揭示TTS评估中ASR验证器的家族偏差并提出跨家族集成方法，直接属于生成式语音技术子方向，工作扎实且具重要实践意义，对TTS研究者是必读。",
+      "citation_count": null,
+      "date_added": "2026-07-12",
+      "chinese_summary": {
+        "problem": "本文识别并解决Best-of-N TTS评估中因ASR验证器与评估器家族对齐导致的评分混淆问题，即同一ASR家族的验证器在评估时获得虚高的性能优势。",
+        "method": "提出两种跨家族排名集成方法：rank-averaging（平均排名）和conjunctive max-rank（联合最大排名），通过组合不同ASR家族的验证器来生成更鲁棒的候选排序，从而在不同评估器下稳定降低WER。",
+        "innovation": "首次指出ASR家族对齐是BoN TTS评估的显著混淆变量，并实验证实同一家族验证器-评估器对可恢复额外2-3倍oracle性能；提出并验证了跨家族排名集成作为缓解方法，无需修改TTS模型即可获得稳健的评估。",
+        "evidence": "在LibriSpeech-PC test-clean上用F5-TTS进行实验，Whisper、wav2vec 2.0、HuBERT评估器间验证器排名反转，同家族配对oracle回收倍数2-3x，跨家族集成在N=10时平均WER为1.61%（较F5-TTS降低12%），最佳单一验证器在官方评估器下WER从2.06%降至1.72%（降低16.5%）。",
+        "limitations": "实验仅基于F5-TTS单一模型和LibriSpeech-PC数据集，泛化性待验证；未考虑评估器在自然度等主观指标上的影响；跨家族集成可能增加计算开销。",
+        "why_relevant": "直接聚焦TTS评估，与研究方向'Generative Speech Technology'中的'speech synthesis and TTS'高度相关；评估方法的改进有助于生成语音质量判断，可能影响扩散模型或流匹配等生成方法的设计优化。"
+      }
+    },
+    {
+      "id": "arxiv:2607.08645",
+      "arxiv_id": "2607.08645",
+      "title": "It Takes Few to TANGO: A Quantized Distributed Model for Binaural Speech Enhancement",
+      "authors": [
+        "Zahra Benslimane",
+        "Pierre Chouteau",
+        "Martyna Poreba",
+        "Fabrice Auzanneau",
+        "Michal Szczepanski",
+        "Fabian Chersi",
+        "Romain Serizel"
+      ],
+      "published": "2026-07-09T16:17:42Z",
+      "summary": "Neural network-based multichannel speech enhancement systems achieve strong enhancement performance, but their computational and memory requirements limit deployment on resource-constrained devices. This paper investigates low-precision inference for TANGO, a hybrid distributed binaural speech enhancement system combining neural mask estimation with spatial filtering. We evaluate post-training quantization and quantization-aware training for the neural components, and analyze how quantization errors in the mask estimators propagate through the downstream spatial filtering stage. Our analysis shows that, although quantization degrades intermediate mask estimates, the spatial filtering stage compensates for most quantization-induced errors. Leveraging this robustness, we simplify TANGO into MN-TANGO, reducing both model size and computational complexity while maintaining comparable final performance. By combining INT8 weight-and-activation quantization with ERB compression and grouped recurrent layers, the most compact MN-TANGO reaches 4.65 MMAC/s and 0.177 MB.",
+      "paper_url": "http://arxiv.org/abs/2607.08645v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.08645v1",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 8.0,
+      "justification": "该工作针对双耳语音增强的量化部署，分析了量化误差在空间滤波阶段的鲁棒性，并提出了简化模型MN-TANGO，显著降低了计算和存储开销，与麦克风阵列波束成形及语音增强方向高度相关，质量扎实，实用性强。",
+      "citation_count": null,
+      "date_added": "2026-07-12",
+      "chinese_summary": {
+        "problem": "论文研究在资源受限设备上部署神经多通道语音增强系统时，量化推理如何影响双耳语音增强系统TANGO的性能，并探索利用空间滤波的鲁棒性进行模型压缩。",
+        "method": "核心方法：对TANGO系统（混合分布式双耳语音增强，结合神经掩膜估计与空间滤波）的神经部分进行训练后量化（PTQ）和量化感知训练（QAT），分析量化误差在空间滤波阶段的传播，并基于空间滤波的补偿能力简化网络，得到更紧凑的MN-TANGO（如采用INT8量化、ERB压缩和分组循环层）。",
+        "innovation": "首次系统研究量化对混合神经‑空间滤波语音增强系统的影响，揭示空间滤波对神经网络量化误差的补偿效应；利用该鲁棒性设计出轻量级模型MN‑TANGO，显著降低计算量（4.65 MMAC/s）和存储（0.177 MB），同时保持相近的最终增强性能。",
+        "evidence": "摘要中进行了量化误差传播分析，表明尽管量化降低中间掩膜估计质量，但空间滤波能补偿大部分误差；给出了最终紧凑模型的规格，但未提供具体性能指标对比。",
+        "limitations": "仅针对双耳（两通道）场景，泛化至更多麦克风阵列未验证；量化鲁棒性依赖于TANGO特定的空间滤波设计；摘要未给出性能下降的具体数值，最终增强质量是否真正可比需确认。",
+        "why_relevant": "论文直接涉及多通道语音增强（双耳为两通道）、空间滤波（波束成形关键步骤）以及神经波束成形系统在资源受限场景的部署，与研究方向中的关键词“multichannel speech enhancement”“spatial filtering”等高度匹配，对神经波束成形的实际落地有参考价值，但主要贡献在模型量化而非算法创新，因此相关性中等。"
+      }
+    },
+    {
+      "id": "arxiv:2306.09126",
+      "arxiv_id": "2306.09126",
+      "title": "STARSS23: An Audio-Visual Dataset of Spatial Recordings of Real Scenes with Spatiotemporal Annotations of Sound Events",
+      "authors": [
+        "Kazuki Shimada",
+        "A. Politis",
+        "Parthasaarathy Sudarsanam",
+        "D. Krause",
+        "Kengo Uchida",
+        "Sharath Adavanne",
+        "Aapo Hakala",
+        "Yuichiro Koyama",
+        "Naoya Takahashi",
+        "Shusuke Takahashi",
+        "Tuomas Virtanen",
+        "Yuki Mitsufuji"
+      ],
+      "published": "2023-06-15T00:00:00+00:00",
+      "summary": "While direction of arrival (DOA) of sound events is generally estimated from multichannel audio data recorded in a microphone array, sound events usually derive from visually perceptible source objects, e.g., sounds of footsteps come from the feet of a walker. This paper proposes an audio-visual sound event localization and detection (SELD) task, which uses multichannel audio and video information to estimate the temporal activation and DOA of target sound events. Audio-visual SELD systems can detect and localize sound events using signals from a microphone array and audio-visual correspondence. We also introduce an audio-visual dataset, Sony-TAu Realistic Spatial Soundscapes 2023 (STARSS23), which consists of multichannel audio data recorded with a microphone array, video data, and spatiotemporal annotation of sound events. Sound scenes in STARSS23 are recorded with instructions, which guide recording participants to ensure adequate activity and occurrences of sound events. STARSS23 also serves human-annotated temporal activation labels and human-confirmed DOA labels, which are based on tracking results of a motion capture system. Our benchmark results demonstrate the benefits of using visual object positions in audio-visual SELD tasks. The data is available at https://zenodo.org/record/7880637.",
+      "paper_url": "https://arxiv.org/abs/2306.09126",
+      "pdf_url": "http://arxiv.org/pdf/2306.09126",
+      "categories": [
+        "Neural Information Processing Systems"
+      ],
+      "venue": "Neural Information Processing Systems",
+      "track": "foundation",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 7.0,
+      "justification": "提出音频-视觉声音事件定位与检测数据集，结合多通道音频与视觉信息进行声源DOA估计，与麦克风阵列与声源定位方向相关，但作为数据集论文对基础方法的贡献有限。",
+      "citation_count": 114,
+      "date_added": "2026-07-12",
+      "chinese_summary": {
+        "problem": "提出音视频结合的声音事件定位与检测任务，利用多通道音频和视频信息估计声音事件的时域激活和到达方向。",
+        "method": "引入音视频 SELD 系统，融合麦克风阵列信号与视觉目标位置，通过跨模态对应关系进行联合定位；构建并公开发布 STARSS23 数据集，提供运动捕捉系统验证的 DOA 标注。",
+        "innovation": "首次将视觉信息系统性地引入 SELD 任务，突破纯音频 DOA 估计的局限；提供包含真实场景多通道音频、视频及精确时空标注的数据集，并利用运动捕捉系统确认 DOA 标签，提升标注可靠性。",
+        "evidence": "摘要中提及基准测试结果表明使用视觉目标位置对音视频 SELD 任务有益，但未给出具体指标。",
+        "limitations": "未明确说明音视频融合的具体模型架构、是否需要波束形成预处理，以及仅在受控录制场景下的泛化能力。",
+        "why_relevant": "论文涉及麦克风阵列和到达方向估计，与研究方向的关键词匹配，但核心聚焦于音视频数据集与跨模态定位，非波束形成或空间滤波方法，需人工核实是否包含多通道增强技术。"
+      }
+    },
+    {
+      "id": "s2:e838280ec9eab097dc78c9ac4f3ed466dc1d9b49",
+      "arxiv_id": "",
+      "title": "Deep Learning-Based DOA Estimation",
+      "authors": [
+        "Shilian Zheng",
+        "Zhuang Yang",
+        "W. Shen",
+        "Luxin Zhang",
+        "Jiawei Zhu",
+        "Zhijin Zhao",
+        "Xiaoniu Yang"
+      ],
+      "published": "2024-06-01T00:00:00+00:00",
+      "summary": "Direction-of-arrival (DOA) estimation is a vital research topic in array signal processing, with extensive applications in many fields. In recent years, deep learning has been applied to DOA estimation to improve the performance. However, most existing deep learning-based DOA estimation methods extract DOA information from the covariance matrix (CM) input. In this paper, we introduce a novel deep learning-based DOA estimation scheme that utilizes the raw in-phase (I) and quadrature (Q) components of the signal as the input. We formulate the problem as single-label classification and multi-label classification based on the number of signal sources. We design a convolutional neural network to solve the problems and to adapt to different number of snapshots. We also propose a deep learning regression-based method to overcome the limitations of classify-based methods in dealing with off-grid angles. We conduct extensive experiments with simulations and over-the-air collected signals to analyze the performance of the proposed method in various scenarios including different SNRs, additive generalized Gaussian noise (AGGN) and extreme multi-source DOA estimation. Results demonstrate that our proposed method outperforms the existing deep learning-based DOA estimation methods.",
+      "paper_url": "https://www.semanticscholar.org/paper/e838280ec9eab097dc78c9ac4f3ed466dc1d9b49",
+      "pdf_url": "https://ieeexplore.ieee.org/ielx7/6687307/7294639/10418176.pdf",
+      "categories": [
+        "IEEE Transactions on Cognitive Communications and Networking"
+      ],
+      "venue": "IEEE Transactions on Cognitive Communications and Networking",
+      "track": "foundation",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 7.0,
+      "justification": "论文提出基于原始I/Q信号的深度学习DOA估计新方法，与麦克风阵列与波束形成方向高度相关，实验验证充分；但作为经典赛道论文，引用数尚可（94），尚未成为领域内广泛使用的基线方法。",
+      "citation_count": 94,
+      "date_added": "2026-07-12",
+      "chinese_summary": {
+        "problem": "现有基于深度学习的DOA估计方法大多依赖协方差矩阵作为输入，缺乏对原始信号直接利用的研究。",
+        "method": "提出一种直接使用原始I/Q信号作为输入的深度学习DOA估计方案。将问题建模为单标签和多标签分类以处理不同信源数，设计CNN适应不同快拍数，并引入回归方法解决离网角估计。",
+        "innovation": "首次以原始I/Q信号代替协方差矩阵作为网络输入，保留了信号的完整相位信息；通过分类与回归结合统一处理单源/多源与离网角问题；网络结构能灵活适应不同快拍数。",
+        "evidence": "摘要中明确进行了大量仿真和实际空口信号采集实验，验证了在不同信噪比、广义高斯噪声和极端多源场景下的性能提升，优于现有深度学习方法。",
+        "limitations": "主要基于I/Q信号模型，可能面向通信接收场景，未提及麦克风阵列或语音信号，其泛化到声学领域的效果需通过全文确认。",
+        "why_relevant": "匹配研究方向中的DOA估计、阵列信号处理关键词；但论文侧重通信信号，与麦克风阵列语音处理在信号模型上存在差异，需要人工复核迁移可行性。"
+      }
+    },
+    {
+      "id": "s2:2148fc0776426853161d986b50ac0c75696abb72",
+      "arxiv_id": "",
+      "title": "A Survey of Sound Source Localization and Detection Methods and Their Applications",
+      "authors": [
+        "Gabriel Jekateryńczuk",
+        "Zbigniew Piotrowski"
+      ],
+      "published": "2023-12-22T00:00:00+00:00",
+      "summary": "This study is a survey of sound source localization and detection methods. The study provides a detailed classification of the methods used in the fields of science mentioned above. It classifies sound source localization systems based on criteria found in the literature. Moreover, an analysis of classic methods based on the propagation model and methods based on machine learning and deep learning techniques has been carried out. Attention has been paid to providing the most detailed information on the possibility of using physical phenomena, mathematical relationships, and artificial intelligence to determine sound source localization. Additionally, the article underscores the significance of these methods within both military and civil contexts. The study culminates with a discussion of forthcoming trends in the realms of acoustic detection and localization. The primary objective of this research is to serve as a valuable resource for selecting the most suitable approach within this domain.",
+      "paper_url": "https://www.semanticscholar.org/paper/2148fc0776426853161d986b50ac0c75696abb72",
+      "pdf_url": "https://www.mdpi.com/1424-8220/24/1/68/pdf?version=1703237385",
+      "categories": [
+        "Italian National Conference on Sensors"
+      ],
+      "venue": "Italian National Conference on Sensors",
+      "track": "foundation",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 7.0,
+      "justification": "该综述系统梳理了麦克风阵列声源定位的经典与深度学习方法，与研究方向高度相关，但作为综述缺乏原创方法，引用量中等。",
+      "citation_count": 86,
+      "date_added": "2026-07-12",
+      "chinese_summary": {
+        "problem": "对现有声源定位与检测方法进行分类和综述，为领域内选择合适方法提供参考资源。",
+        "method": "按文献中的标准对声源定位系统进行分类，详细分析了基于传播模型的经典方法和基于机器学习/深度学习的方法，并探讨了物理现象、数学关系和人工智能的利用方式。",
+        "innovation": "提供一种综合的分类视角，同时覆盖经典与数据驱动方法，并强调军事和民用应用的意义。但作为综述，具体创新点不足。",
+        "evidence": "摘要中无实验、理论或系统证据；论文为综述性研究，证据不足。",
+        "limitations": "可能未深入麦克风阵列或波束成形等特定技术；综述覆盖范围可能较宽泛，针对性有限；需阅读全文确认是否包含空间滤波、MVDR等阵列处理方法的详细讨论。",
+        "why_relevant": "声源定位是我的研究方向关键词之一，综述可能包含与麦克风阵列和波束成形相关的定位技术，但由于摘要未明确提及阵列信号处理，需人工复核内容覆盖度。"
       }
     }
   ]
