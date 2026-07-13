@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-12T04:43:17.070037+00:00",
+  "updated_at_iso": "2026-07-13T04:50:46.827092+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -1346,6 +1346,191 @@
         "evidence": "摘要中无实验、理论或系统证据；论文为综述性研究，证据不足。",
         "limitations": "可能未深入麦克风阵列或波束成形等特定技术；综述覆盖范围可能较宽泛，针对性有限；需阅读全文确认是否包含空间滤波、MVDR等阵列处理方法的详细讨论。",
         "why_relevant": "声源定位是我的研究方向关键词之一，综述可能包含与麦克风阵列和波束成形相关的定位技术，但由于摘要未明确提及阵列信号处理，需人工复核内容覆盖度。"
+      }
+    },
+    {
+      "id": "arxiv:2501.15417",
+      "arxiv_id": "2501.15417",
+      "title": "AnyEnhance: A Unified Generative Model With Prompt-Guidance and Self-Critic for Voice Enhancement",
+      "authors": [
+        "Junan Zhang",
+        "Jing Yang",
+        "Zihao Fang",
+        "Yuancheng Wang",
+        "Ze-bao Zhang",
+        "Zhuo Wang",
+        "Fan Fan",
+        "Zhizheng Wu"
+      ],
+      "published": "2025-01-26T00:00:00+00:00",
+      "summary": "We introduce AnyEnhance, a unified generative model for voice enhancement that processes both speech and singing voices. Based on a masked generative model, AnyEnhance is capable of handling both speech and singing voices, supporting a wide range of enhancement tasks including denoising, dereverberation, declipping, super-resolution, and target speaker extraction, all simultaneously and without fine-tuning. AnyEnhance introduces a prompt-guidance mechanism for in-context learning, which allows the model to natively accept a reference speaker’s timbre. In this way, it could boost enhancement performance when a reference audio is available and enable the target speaker extraction task without altering the underlying architecture. Moreover, we also introduce a self-critic mechanism into the generative process for masked generative models, yielding higher-quality outputs through iterative self-assessment and refinement. Extensive experiments on various enhancement tasks demonstrate AnyEnhance outperforms existing methods in terms of both objective metrics and subjective listening tests.",
+      "paper_url": "https://arxiv.org/abs/2501.15417",
+      "pdf_url": "https://arxiv.org/pdf/2501.15417",
+      "categories": [
+        "IEEE Transactions on Audio, Speech, and Language Processing"
+      ],
+      "venue": "IEEE Transactions on Audio, Speech, and Language Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出统一生成模型AnyEnhance，单模型实现去噪、去混响、去削波、超分辨率和目标说话人提取，创新引入提示引导和自批评机制，性能优异，与语音增强和分离方向高度相关，工作扎实，具有成为生成式语音处理基线的潜力。",
+      "citation_count": 42,
+      "date_added": "2026-07-13",
+      "chinese_summary": {
+        "problem": "提出一个统一的生成式语音增强模型，能够同时处理多种任务（去噪、去混响、去削波、超分辨率、目标说话人提取），并利用参考音频提升性能。",
+        "method": "基于掩码生成模型，引入prompt-guidance机制实现上下文学习，使模型能直接接受参考说话人音色以增强性能或完成目标说话人提取；引入self-critic机制，通过迭代自评估和精炼提高生成质量。",
+        "innovation": "1) 将多类语音增强任务统一到一个生成模型中，无需微调即可完成所有任务；2) 提出prompt-guidance机制，使生成模型在推理时通过参考音频实现目标说话人提取，无需改变架构；3) 在掩码生成模型中引入self-critic机制，迭代改进输出质量。",
+        "evidence": "摘要仅提及大量实验表明在多种增强任务上主客观指标均优于现有方法，但未给出具体数值或对比细节，证据有限。",
+        "limitations": "目标说话人提取性能未单独详述，缺乏与专用提取模型的深入对比；统一模型在特定任务上可能受限于模型容量；prompt-guidance机制的具体实现方式及鲁棒性需阅读全文确认。",
+        "why_relevant": "论文明确包含目标说话人提取任务，通过参考音色引导实现，与研究方向关键词‘target speaker extraction’直接匹配。但论文以通用增强框架为主，目标说话人提取仅为其中一个应用示例，并非核心焦点，因此相关性较低。"
+      }
+    },
+    {
+      "id": "arxiv:2607.09134",
+      "arxiv_id": "2607.09134",
+      "title": "ReGen: Hierarchical Multi-Prompt Representation Generation for Efficient Waveform Diffusion Models",
+      "authors": [
+        "Sang-Hoon Lee",
+        "Ha-Yeong Choi"
+      ],
+      "published": "2026-07-10T06:44:04Z",
+      "summary": "Representation alignment (REPA) has been investigated to accelerate diffusion training, but we observe that regularizing intermediate representations in diffusion Transformers (DiT) may implicitly entangle latents and limit generative capacity. To address this issue, we propose ReGen, a hierarchical multi-prompt representation generation framework that jointly estimates multiple vector fields for both representations and data within a single diffusion model. We further introduce generalized flow matching (GFM) to improve the generalization of conditional flow matching (CFM). We validate ReGen on single-stage waveform diffusion models including neural audio codec and Wave-VAE. ReGen significantly improves waveform generation quality from highly compressed latent representations at 12.5 Hz. We also present ReGenVoice, a latent diffusion model (LDM)-based text-to-speech model that achieves strong speech intelligibility (WER) and speaker similarity (SIM) with a small dataset. Moreover, operating the LDM at 6.25 Hz with rich semantic and acoustic latent representation enables efficient training and sampling, requiring only 1 day of training on 4 GPUs and fast inference with an RTF of 0.08. Audio samples are available at https://regenvoice.github.io/demo/.",
+      "paper_url": "http://arxiv.org/abs/2607.09134v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.09134v1",
+      "categories": [
+        "cs.SD",
+        "cs.AI",
+        "eess.AS",
+        "eess.SP"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 8.0,
+      "justification": "该工作提出层次多提示表示生成框架ReGen及广义流匹配，有效提升波形扩散模型的训练与采样效率，并在低比特率音频编解码和TTS中取得优异表现，与生成式语音技术方向高度相关且质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-07-13",
+      "chinese_summary": {
+        "problem": "在扩散变换器（DiT）中，中间表示正则化可能隐式纠缠潜在变量，限制生成能力；现有波形扩散模型在高压缩低帧率（如12.5 Hz或6.25 Hz）条件下生成质量不足，训练与推理效率有待提升。",
+        "method": "提出ReGen框架，在单一扩散模型中联合估计表示向量场和数据向量场，通过层次化多提示表示生成缓解表示纠缠；引入广义流匹配（GFM）提升条件流匹配（CFM）的泛化性。在神经音频编解码器和Wave-VAE上验证，并构建ReGenVoice，一种基于潜在扩散模型（LDM）的文本到语音模型，利用6.25 Hz的语义和声学潜在表示实现高效训练与推理。",
+        "innovation": "1) 发现REPA正则化会隐式纠缠潜在变量，提出层次化多提示生成避免该问题；2) 将表示生成与数据生成统一在同一个扩散模型中，同时估计两个向量场；3) 提出广义流匹配（GFM）作为条件流匹配的泛化改进。",
+        "evidence": "在单阶段波形扩散模型（神经音频编解码器、Wave-VAE）上显著提升12.5 Hz压缩表示的波形生成质量；ReGenVoice在小数据集上即实现强语音可懂度（WER）和说话人相似度（SIM）；LDM在6.25 Hz下训练仅需4 GPU训练1天，推理实时率0.08。",
+        "limitations": "未看到对语音增强或前端处理任务的直接实验，可能局限于生成类任务；泛化到其他音频域或更大规模数据的效果需进一步确认。",
+        "why_relevant": "arXiv分类包含eess.AS和eess.SP，但论文聚焦于波形生成（编解码、TTS）而非语音增强或前端处理，缺乏去噪、去混响、回声消除等关键词和任务场景，直接相关性低，仅扩散模型训练技巧可能迁移，但需人工复核是否适用于语音增强类模型。"
+      }
+    },
+    {
+      "id": "arxiv:2304.12023",
+      "arxiv_id": "2304.12023",
+      "title": "Multi-Channel Speech Separation Using Spatially Selective Deep Non-Linear Filters",
+      "authors": [
+        "Kristina Tesch",
+        "Timo Gerkmann"
+      ],
+      "published": "2023-04-24T00:00:00+00:00",
+      "summary": "In a multi-channel separation task with multiple speakers, we aim to recover all individual speech signals from the mixture. In contrast to single-channel approaches, which rely on the different spectro-temporal characteristics of the speech signals, multi-channel approaches should additionally utilize the different spatial locations of the sources for a more powerful separation especially when the number of sources increases. To enhance the spatial processing in a multi-channel source separation scenario, in this work, we propose a deep neural network (DNN) based spatially selective filter (SSF) that can be spatially steered to extract the speaker of interest by initializing a recurrent neural network layer with the target direction. We compare the proposed SSF with a common end-to-end direct separation (DS) approach trained using utterance-wise permutation invariant training (PIT), which only implicitly learns to perform spatial filtering. We show that the SSF has a clear advantage over a DS approach with the same underlying network architecture when there are more than two speakers in the mixture, which can be attributed to a better use of the spatial information. Furthermore, we find that the SSF generalizes much better to additional noise sources that were not seen during training and to scenarios with speakers positioned at a similar angle.",
+      "paper_url": "https://arxiv.org/abs/2304.12023",
+      "pdf_url": "https://arxiv.org/pdf/2304.12023",
+      "categories": [
+        "IEEE/ACM Transactions on Audio Speech and Language Processing"
+      ],
+      "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "提出空间选择性深度非线性滤波器，通过目标方向引导RNN进行多通道语音分离，在多说话人场景下优于直接分离方法，与语音分离和麦克风阵列方向高度相关，质量扎实。",
+      "citation_count": 44,
+      "date_added": "2026-07-13",
+      "chinese_summary": {
+        "problem": "在多说话人混合的多通道语音分离中，现有端到端直接分离方法未能显式利用空间位置信息，导致当说话人数量增加时分离性能受限。",
+        "method": "提出基于深度神经网络的空间选择性滤波器（SSF），通过将目标方向信息作为RNN层的初始状态，实现对特定方向说话人的空间转向与提取；整体系统可联合训练，并与使用话语级置换不变训练（PIT）的直接分离模型相对比。",
+        "innovation": "提出可显式利用空间信息的选择性滤波结构，将目标方向编码为网络初始化参数实现可转向提取，而非依赖隐式学习空间线索；相比直接分离模型，该设计在多于两个说话人时体现明显性能提升，并展现出对未见噪声源与相近角度干扰的更强泛化能力。",
+        "evidence": "摘要中提及与基于PIT的端到端直接分离方法进行了对比实验，结果显示SSF在混合说话人超过两人时具有清晰优势，且在遇到未在训练中出现的噪声源以及说话人角度接近的场景下，泛化表现更优。具体指标数值未给出。",
+        "limitations": "性能依赖目标方向的准确先验；方法仅适用于多通道配置；网络架构细节、训练数据及具体分离指标需阅读全文确认。",
+        "why_relevant": "论文涉及语音分离与目标说话人提取场景，使用置换不变训练（PIT）与深度网络，匹配研究方向关键词‘speech separation’、‘source separation’、‘permutation invariant training’及‘target speaker extraction’。但论文核心为多通道空间选择性滤波，与主流单通道时频或时域分离方法存在差异，需人工复核其对当前研究的参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2306.14170",
+      "arxiv_id": "2306.14170",
+      "title": "Av-Sepformer: Cross-Attention Sepformer for Audio-Visual Target Speaker Extraction",
+      "authors": [
+        "Jiuxin Lin",
+        "X. Cai",
+        "Heinrich Dinkel",
+        "Jun Chen",
+        "Zhiyong Yan",
+        "Yongqing Wang",
+        "Junbo Zhang",
+        "Zhiyong Wu",
+        "Yujun Wang",
+        "Helen M. Meng"
+      ],
+      "published": "2023-06-04T00:00:00+00:00",
+      "summary": "Visual information can serve as an effective cue for target speaker extraction (TSE) and is vital to improving extraction performance. In this paper, we propose AV-SepFormer, a SepFormer-based attention dual-scale model that utilizes cross- and self-attention to fuse and model features from audio and visual. AV-SepFormer splits the audio feature into a number of chunks, equivalent to the length of the visual feature. Then self- and cross-attention are employed to model the multi-modal features. Furthermore, we use a novel 2D positional encoding, that introduces the positional information between and within chunks and provides significant gains over the traditional positional encoding. Our model has two key advantages: the time granularity of audio chunked feature is synchronized to the visual feature, which alleviates the harm caused by the inconsistency of audio and video sampling rate; by combining self- and cross-attention, feature fusion and speech extraction processes are unified within an attention paradigm. The experimental results show that AV-SepFormer significantly outperforms other existing methods.",
+      "paper_url": "https://arxiv.org/abs/2306.14170",
+      "pdf_url": "https://arxiv.org/pdf/2306.14170",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "提出视听目标说话人提取的AV-SepFormer，利用交叉注意力融合音视频特征，与语音分离方向高度相关，方法新颖且性能显著提升，质量扎实。",
+      "citation_count": 46,
+      "date_added": "2026-07-13",
+      "chinese_summary": {
+        "problem": "如何在音频-视觉目标说话人提取中，有效融合异步的视听特征，并缓解音频与视频采样率不一致导致的特征不匹配问题。",
+        "method": "基于SepFormer构建双尺度注意力的AV-SepFormer模型，将音频特征均匀分块，与视觉特征在时间维度对齐；利用自注意力和跨注意力交替建模多模态特征交互，实现特征融合与语音提取的统一；引入二维位置编码，分别对块内与块间位置进行建模。",
+        "innovation": "提出音频分块与视觉特征时间同步的策略，直接解决视听采样率不一致对特征对齐的干扰；在一个注意力范式内统一特征融合与目标说话人提取，避免了多阶段流水线；设计2D位置编码，同时捕捉块级和帧级时序关系，显著提升模型性能。",
+        "evidence": "摘要仅提及“experimental results show that AV-SepFormer significantly outperforms other existing methods”，但未给出具体数据集、评价指标或对比方法的细节，可核验证据不足，具体提升幅度需阅读全文。",
+        "limitations": "依赖视觉模态，不适用于纯音频或无视觉信号的场景；计算复杂度与跨模态注意力机制的开销未提及；实验对比的公平性和泛化能力需全文确认。",
+        "why_relevant": "该论文属于目标说话人提取（target speaker extraction），与研究方向中的核心关键词精确匹配，但引入了视觉信息，与我方侧重纯音频分离/提取的设定不完全一致；匹配主要集中在任务名称上，方法层面（视觉融合）可能超出当前研究范围，需要人工复核以决定是否纳入参考。"
+      }
+    },
+    {
+      "id": "arxiv:2312.11825",
+      "arxiv_id": "2312.11825",
+      "title": "MossFormer2: Combining Transformer and RNN-Free Recurrent Network for Enhanced Time-Domain Monaural Speech Separation",
+      "authors": [
+        "Shengkui Zhao",
+        "Yukun Ma",
+        "Chongjia Ni",
+        "Chong Zhang",
+        "Hao Wang",
+        "Trung Hieu Nguyen",
+        "Kun Zhou",
+        "J. Yip",
+        "Dianwen Ng",
+        "Bin Ma"
+      ],
+      "published": "2023-12-19T00:00:00+00:00",
+      "summary": "Our previously proposed MossFormer has achieved promising performance in monaural speech separation. However, it predominantly adopts a self-attention-based MossFormer module, which tends to emphasize longer-range, coarser-scale dependencies, with a deficiency in effectively modelling finer-scale recurrent patterns. In this paper, we introduce a novel hybrid model that provides the capabilities to model both long-range, coarse-scale dependencies and fine-scale recurrent patterns by integrating a recurrent module into the MossFormer framework. Instead of applying the recurrent neural networks (RNNs) that use traditional recurrent connections, we present a recurrent module based on a feedforward sequential memory network (FSMN), which is considered \"RNN-free\" recurrent network due to the ability to capture recurrent patterns without using recurrent connections. Our recurrent module mainly comprises an enhanced dilated FSMN block by using gated convolutional units (GCU) and dense connections. In addition, a bottleneck layer and an output layer are also added for controlling information flow. The recurrent module relies on linear projections and convolutions for seamless, parallel processing of the entire sequence. The integrated MossFormer2 hybrid model demonstrates remarkable enhancements over MossFormer and surpasses other state-of-the-art methods in WSJ0-2/3mix, Libri2Mix, and WHAM!/WHAMR! benchmarks.",
+      "paper_url": "https://arxiv.org/abs/2312.11825",
+      "pdf_url": "https://arxiv.org/pdf/2312.11825",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "提出结合Transformer与FSMN的MossFormer2，针对单通道语音分离，在多个基准上超越SOTA，与语音分离方向高度相关，方法新颖有效，但非奠基性必读经典。",
+      "citation_count": 84,
+      "date_added": "2026-07-13",
+      "chinese_summary": {
+        "problem": "如何在时域单声道语音分离中同时有效建模长程粗粒度依赖和细粒度循环模式，以弥补原MossFormer模型对细粒度循环模式捕获不足的问题。",
+        "method": "提出MossFormer2混合模型，将基于前馈序列记忆网络（FSMN）的循环模块集成到MossFormer框架中。该循环模块采用增强的扩张FSMN块，结合门控卷积单元（GCU）和密集连接来捕捉循环模式，并通过瓶颈层和输出层控制信息流，实现无循环连接的并行处理。",
+        "innovation": "1) 首次将“无RNN”的循环模块与Transformer架构融合于语音分离，同时捕获长程依赖和细粒度循环模式。2) 设计的循环模块利用扩张FSMN、GCU和密集连接，无需显式循环连接即可高效建模时序规律。3) 在多个基准数据上验证了该混合模型的显著性能提升。",
+        "evidence": "在WSJ0-2/3mix、Libri2Mix和WHAM!/WHAMR!基准上，MossFormer2相比原MossFormer有显著提升，并超越其他当前最先进方法。",
+        "limitations": "摘要未提供模型复杂度、参数量或推理实时性数据；未讨论在目标说话人提取任务上的适用性；循环模块的超参数和具体架构细节需阅读全文确认。",
+        "why_relevant": "该论文直接针对语音分离任务，采用时域方法和掩蔽估计框架，与研究方向中的关键词“speech separation”、“time-domain separation”、“masking model”高度匹配。其混合架构对解决复杂声学场景下的分离问题具有参考价值。"
       }
     }
   ]
