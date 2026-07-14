@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-13T04:50:46.827092+00:00",
+  "updated_at_iso": "2026-07-14T04:18:56.277481+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -1531,6 +1531,202 @@
         "evidence": "在WSJ0-2/3mix、Libri2Mix和WHAM!/WHAMR!基准上，MossFormer2相比原MossFormer有显著提升，并超越其他当前最先进方法。",
         "limitations": "摘要未提供模型复杂度、参数量或推理实时性数据；未讨论在目标说话人提取任务上的适用性；循环模块的超参数和具体架构细节需阅读全文确认。",
         "why_relevant": "该论文直接针对语音分离任务，采用时域方法和掩蔽估计框架，与研究方向中的关键词“speech separation”、“time-domain separation”、“masking model”高度匹配。其混合架构对解决复杂声学场景下的分离问题具有参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2410.06885",
+      "arxiv_id": "2410.06885",
+      "title": "F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching",
+      "authors": [
+        "Yushen Chen",
+        "Zhikang Niu",
+        "Ziyang Ma",
+        "Keqi Deng",
+        "Chunhui Wang",
+        "Jian Zhao",
+        "Kai Yu",
+        "Xie Chen"
+      ],
+      "published": "2024-10-09T00:00:00+00:00",
+      "summary": "This paper introduces F5-TTS, a fully non-autoregressive text-to-speech system based on flow matching with Diffusion Transformer (DiT). Without requiring complex designs such as duration model, text encoder, and phoneme alignment, the text input is simply padded with filler tokens to the same length as input speech, and then the denoising is performed for speech generation, which was originally proved feasible by E2 TTS. However, the original design of E2 TTS makes it hard to follow due to its slow convergence and low robustness. To address these issues, we first model the input with ConvNeXt to refine the text representation, making it easy to align with the speech. We further propose an inference-time Sway Sampling strategy, which significantly improves our model's performance and efficiency. This sampling strategy for flow step can be easily applied to existing flow matching based models without retraining. Our design allows faster training and achieves an inference RTF of 0.15, which is greatly improved compared to state-of-the-art diffusion-based TTS models. Trained on a public 100K hours multilingual dataset, our F5-TTS exhibits highly natural and expressive zero-shot ability, seamless code-switching capability, and speed control efficiency. We have released all codes and checkpoints to promote community development, at https://SWivid.github.io/F5-TTS/.",
+      "paper_url": "https://arxiv.org/abs/2410.06885",
+      "pdf_url": "https://arxiv.org/pdf/2410.06885",
+      "categories": [
+        "Annual Meeting of the Association for Computational Linguistics"
+      ],
+      "venue": "Annual Meeting of the Association for Computational Linguistics",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "F5-TTS是流匹配TTS的代表性工作，与生成式语音技术方向高度相关，方法简洁高效，已成为该领域重要基线。",
+      "citation_count": 484,
+      "date_added": "2026-07-14",
+      "chinese_summary": {
+        "problem": "解决非自回归文本到语音（TTS）系统训练收敛慢、鲁棒性低的问题，提升流匹配在语音生成中的效率与零样本能力。",
+        "method": "基于流匹配与扩散Transformer（DiT）的全非自回归TTS架构。文本通过填充符对齐到语音长度后去噪生成语音；使用ConvNeXt模块细化文本表征以改善对齐，并提出推理阶段Sway Sampling步长策略，无需重训即可提升性能与效率。",
+        "innovation": "1) 引入ConvNeXt增强文本与语音的对齐易度；2) 提出Sway Sampling推理采样策略，在不增加训练成本下显著加速并提升流匹配TTS模型性能；3) 在10万小时多语言数据上训练，展现高自然度零样本复刻、无缝语码切换及语速控制能力。",
+        "evidence": "在10万小时多语言公开数据集上训练，推理实时因子（RTF）达到0.15，相比现有扩散TTS有大幅提升；演示了零样本、语码切换、速度控制等能力，并开源代码与模型。",
+        "limitations": "未提及对比基准模型的具体客观指标（如MOS、词错率），泛化到低资源语言或极端噪声环境的表现尚不明确，需阅读全文验证。",
+        "why_relevant": "论文直接聚焦于流匹配在TTS（文本到语音合成）中的应用，与研究方向中的“speech synthesis and TTS”、“flow matching speech”高度吻合；其ConvNeXt对齐与Sway Sampling策略对生成式语音建模具有直接参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2403.03100",
+      "arxiv_id": "2403.03100",
+      "title": "NaturalSpeech 3: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models",
+      "authors": [
+        "Zeqian Ju",
+        "Yuancheng Wang",
+        "Kai Shen",
+        "Xu Tan",
+        "Detai Xin",
+        "Dongchao Yang",
+        "Yanqing Liu",
+        "Yichong Leng",
+        "Kaitao Song",
+        "Siliang Tang",
+        "Zhizheng Wu",
+        "Tao Qin"
+      ],
+      "published": "2024-03-05T00:00:00+00:00",
+      "summary": "While recent large-scale text-to-speech (TTS) models have achieved significant progress, they still fall short in speech quality, similarity, and prosody. Considering speech intricately encompasses various attributes (e.g., content, prosody, timbre, and acoustic details) that pose significant challenges for generation, a natural idea is to factorize speech into individual subspaces representing different attributes and generate them individually. Motivated by it, we propose NaturalSpeech 3, a TTS system with novel factorized diffusion models to generate natural speech in a zero-shot way. Specifically, 1) we design a neural codec with factorized vector quantization (FVQ) to disentangle speech waveform into subspaces of content, prosody, timbre, and acoustic details; 2) we propose a factorized diffusion model to generate attributes in each subspace following its corresponding prompt. With this factorization design, NaturalSpeech 3 can effectively and efficiently model intricate speech with disentangled subspaces in a divide-and-conquer way. Experiments show that NaturalSpeech 3 outperforms the state-of-the-art TTS systems on quality, similarity, prosody, and intelligibility, and achieves on-par quality with human recordings. Furthermore, we achieve better performance by scaling to 1B parameters and 200K hours of training data.",
+      "paper_url": "https://arxiv.org/abs/2403.03100",
+      "pdf_url": "https://arxiv.org/pdf/2403.03100",
+      "categories": [
+        "International Conference on Machine Learning"
+      ],
+      "venue": "International Conference on Machine Learning",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "提出因子化神经编解码与扩散模型，实现零样本语音合成，质量媲美人类录音，是生成式语音技术方向的必读代表作。",
+      "citation_count": 401,
+      "date_added": "2026-07-14",
+      "chinese_summary": {
+        "problem": "大规模文本到语音模型在语音质量、说话人相似度和韵律表现上仍有不足，难以精细捕捉语音的多重属性。",
+        "method": "采用分解式神经编解码器（因子化向量量化）将语音波形解耦成内容、韵律、音色和声学细节四个子空间，然后使用分解式扩散模型在每个子空间中根据指定的提示生成对应属性。",
+        "innovation": "提出因子化向量量化（FVQ）实现对语音属性的无监督解耦；设计分解式扩散模型以分治法高效生成各属性子空间；通过将模型扩展至10亿参数和20万小时数据进一步验证了可扩展性。",
+        "evidence": "实验表明在语音质量、相似度、韵律和可懂度上超越现有最优TTS系统，合成质量与人类录音相当；扩大参数量和训练数据后性能进一步提升。",
+        "limitations": "摘要未提及计算复杂度和推理效率；零样本泛化在极端领域可能受限；分解机制是否对语音增强等任务同样有效未验证。",
+        "why_relevant": "直接属于文本到语音合成（TTS）领域，并且采用扩散模型，完全匹配您的研究方向“语音合成、文本到语音、基于扩散模型的语音生成”等关键词。"
+      }
+    },
+    {
+      "id": "arxiv:2304.09116",
+      "arxiv_id": "2304.09116",
+      "title": "NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers",
+      "authors": [
+        "Kai Shen",
+        "Zeqian Ju",
+        "Xu Tan",
+        "Yanqing Liu",
+        "Yichong Leng",
+        "Lei He",
+        "Tao Qin",
+        "Sheng Zhao",
+        "Jiang Bian"
+      ],
+      "published": "2023-04-18T00:00:00+00:00",
+      "summary": "Scaling text-to-speech (TTS) to large-scale, multi-speaker, and in-the-wild datasets is important to capture the diversity in human speech such as speaker identities, prosodies, and styles (e.g., singing). Current large TTS systems usually quantize speech into discrete tokens and use language models to generate these tokens one by one, which suffer from unstable prosody, word skipping/repeating issue, and poor voice quality. In this paper, we develop NaturalSpeech 2, a TTS system that leverages a neural audio codec with residual vector quantizers to get the quantized latent vectors and uses a diffusion model to generate these latent vectors conditioned on text input. To enhance the zero-shot capability that is important to achieve diverse speech synthesis, we design a speech prompting mechanism to facilitate in-context learning in the diffusion model and the duration/pitch predictor. We scale NaturalSpeech 2 to large-scale datasets with 44K hours of speech and singing data and evaluate its voice quality on unseen speakers. NaturalSpeech 2 outperforms previous TTS systems by a large margin in terms of prosody/timbre similarity, robustness, and voice quality in a zero-shot setting, and performs novel zero-shot singing synthesis with only a speech prompt. Audio samples are available at https://speechresearch.github.io/naturalspeech2.",
+      "paper_url": "https://arxiv.org/abs/2304.09116",
+      "pdf_url": "http://arxiv.org/pdf/2304.09116",
+      "categories": [
+        "International Conference on Learning Representations"
+      ],
+      "venue": "International Conference on Learning Representations",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "提出基于扩散模型和神经音频编解码器的零样本语音合成系统，大幅提升音质和自然度，属于生成式语音技术的里程碑工作，与研究方向高度相关且必读。",
+      "citation_count": 392,
+      "date_added": "2026-07-14",
+      "chinese_summary": {
+        "problem": "大规模文本到语音（TTS）系统在处理多说话人、野外数据集时，使用离散标记和自回归语言模型导致韵律不稳定、跳词/重复和语音质量差，难以捕捉语音多样性（如说话人身份、韵律和歌唱风格）。",
+        "method": "NaturalSpeech 2采用基于残差向量量化的神经音频编解码器提取连续潜在向量，并使用扩散模型以文本为条件生成这些潜在向量；引入语音提示机制，将提示语音的潜在向量和时长/音高信息作为条件，实现扩散模型的上下文学习，支持零样本合成。",
+        "innovation": "用潜在扩散模型替代离散标记语言模型进行TTS，避免了不稳定的自回归生成；设计了语音提示机制，使扩散模型和时长/音高预测器能够进行上下文学习，实现了强大的零样本语音克隆与歌唱合成能力。",
+        "evidence": "在包含4.4万小时语音和歌唱数据的大规模数据集上训练，在未见过的说话人上评估，零样本场景下韵律/音色相似度、鲁棒性和语音质量大幅优于先前TTS系统；仅需语音提示即可实现新颖的零样本歌唱合成。",
+        "limitations": "摘要未提供具体评估指标数值和比较细节，也未讨论扩散模型的推理效率；零样本能力仅基于语音提示，未说明在复杂或极端口音下的表现；歌唱合成仅提及一种提示类型，泛化性需全文确认。",
+        "why_relevant": "直接匹配研究方向中的‘speech synthesis’、‘text-to-speech’和‘diffusion model speech’关键词，且该方法利用扩散生成模型实现高质量语音合成，与生成式语音技术的核心目标高度一致。"
+      }
+    },
+    {
+      "id": "arxiv:2306.07691",
+      "arxiv_id": "2306.07691",
+      "title": "StyleTTS 2: Towards Human-Level Text-to-Speech through Style Diffusion and Adversarial Training with Large Speech Language Models",
+      "authors": [
+        "Yinghao Aaron Li",
+        "Cong Han",
+        "Vinay S. Raghavan",
+        "Gavin Mischler",
+        "N. Mesgarani"
+      ],
+      "published": "2023-06-13T00:00:00+00:00",
+      "summary": "In this paper, we present StyleTTS 2, a text-to-speech (TTS) model that leverages style diffusion and adversarial training with large speech language models (SLMs) to achieve human-level TTS synthesis. StyleTTS 2 differs from its predecessor by modeling styles as a latent random variable through diffusion models to generate the most suitable style for the text without requiring reference speech, achieving efficient latent diffusion while benefiting from the diverse speech synthesis offered by diffusion models. Furthermore, we employ large pre-trained SLMs, such as WavLM, as discriminators with our novel differentiable duration modeling for end-to-end training, resulting in improved speech naturalness. StyleTTS 2 surpasses human recordings on the single-speaker LJSpeech dataset and matches it on the multispeaker VCTK dataset as judged by native English speakers. Moreover, when trained on the LibriTTS dataset, our model outperforms previous publicly available models for zero-shot speaker adaptation. This work achieves the first human-level TTS on both single and multispeaker datasets, showcasing the potential of style diffusion and adversarial training with large SLMs. The audio demos and source code are available at https://styletts2.github.io/.",
+      "paper_url": "https://arxiv.org/abs/2306.07691",
+      "pdf_url": "http://arxiv.org/pdf/2306.07691",
+      "categories": [
+        "Neural Information Processing Systems"
+      ],
+      "venue": "Neural Information Processing Systems",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "高度相关于生成式语音技术（TTS），首次实现单/多说话人人类水平合成，采用风格扩散与SLM对抗训练，引用285，是必读基础工作。",
+      "citation_count": 285,
+      "date_added": "2026-07-14",
+      "chinese_summary": {
+        "problem": "实现单说话人和多说话人场景下达到人类水平的文本到语音合成，无需参考语音即可生成适合文本的风格。",
+        "method": "将语音风格建模为潜随机变量，通过扩散模型生成文本对应的最优风格，实现高效潜空间扩散；采用大规模预训练语音语言模型（如WavLM）作为判别器，结合新颖的可微分时长建模进行端到端对抗训练。",
+        "innovation": "首次在TTS中引入潜空间扩散，在无需参考语音的情况下完成风格建模；利用大语音语言模型作判别器，通过对抗训练和可微时长建模提升语音自然度；在单/多说话人数据集上均达到人类水平。",
+        "evidence": "在LJSpeech上超越人类录音，在VCTK上达到人类水平，经母语者评判；在LibriTTS上零样本说话人自适应超越已有公开模型。",
+        "limitations": "未提及多语言或超长文本表现；风格扩散的多样性控制程度需阅读全文确认；对抗训练可能影响训练稳定性。",
+        "why_relevant": "直接对应研究方向中的text-to-speech、speech synthesis及diffusion model speech，其风格扩散机制与对抗训练策略对生成式语音合成前沿方法有参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2303.03926",
+      "arxiv_id": "2303.03926",
+      "title": "Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling",
+      "authors": [
+        "Zi-Hua Zhang",
+        "Long Zhou",
+        "Chengyi Wang",
+        "Sanyuan Chen",
+        "Yu Wu",
+        "Shujie Liu",
+        "Zhuo Chen",
+        "Yanqing Liu",
+        "Huaming Wang",
+        "Jinyu Li",
+        "Lei He",
+        "Sheng Zhao"
+      ],
+      "published": "2023-03-07T00:00:00+00:00",
+      "summary": "We propose a cross-lingual neural codec language model, VALL-E X, for cross-lingual speech synthesis. Specifically, we extend VALL-E and train a multi-lingual conditional codec language model to predict the acoustic token sequences of the target language speech by using both the source language speech and the target language text as prompts. VALL-E X inherits strong in-context learning capabilities and can be applied for zero-shot cross-lingual text-to-speech synthesis and zero-shot speech-to-speech translation tasks. Experimental results show that it can generate high-quality speech in the target language via just one speech utterance in the source language as a prompt while preserving the unseen speaker's voice, emotion, and acoustic environment. Moreover, VALL-E X effectively alleviates the foreign accent problems, which can be controlled by a language ID. Audio samples are available at \\url{https://aka.ms/vallex}.",
+      "paper_url": "https://arxiv.org/abs/2303.03926",
+      "pdf_url": "http://arxiv.org/pdf/2303.03926",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "提出了跨语言神经编解码语言模型VALL-E X，实现零样本跨语言语音合成与翻译，属于生成式语音技术中TTS领域的代表性工作，与研究方向高度相关且影响力显著。",
+      "citation_count": 272,
+      "date_added": "2026-07-14",
+      "chinese_summary": {
+        "problem": "实现跨语言语音合成，在仅给定源语言语音和目标语言文本的情况下，生成保留说话人声音、情感和声学环境的目标语言语音，并缓解外国口音问题。",
+        "method": "提出VALL-E X，一种多语言条件神经编解码语言模型。它扩展VALL-E，将源语言语音的声学token和目标语言文本作为条件，通过语言模型预测目标语言语音的声学token序列，并利用编解码器重建波形。模型继承上下文学习能力，支持零样本场景。",
+        "innovation": "首次将神经编解码语言模型应用于跨语言语音合成，实现零样本跨语言文本到语音和语音到语音翻译；仅需一条源语言语音提示即可生成高质量目标语言语音，且完整保留说话人音色、情感和环境声学特征；引入语言ID控制，有效缓解跨语言合成中的外国口音问题。",
+        "evidence": "摘要仅定性描述实验结果为可生成高质量语音，并提供音频样例链接，未给出定量指标（如MOS、WER等），具体性能需审阅全文。",
+        "limitations": "缺少客观评估指标；多语言覆盖范围和模型规模未说明；上下文学习能力在跨语言翻译中的稳定性有待验证；零样本设置下对源语言口音和噪声的鲁棒性不明。",
+        "why_relevant": "研究方向包含语音合成与TTS，该论文提出了一种基于生成式语言模型的跨语言语音合成方法，直接对应于speech synthesis和text-to-speech，且涉及zero-shot合成，与研究兴趣高度吻合。"
       }
     }
   ]
