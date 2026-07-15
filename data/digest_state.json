@@ -10,7 +10,7 @@
     "2026-07-14": 5,
     "2026-07-15": 5
   },
-  "last_run_iso": "2026-07-15T04:19:06.363782+00:00",
-  "last_run_status": "ok",
+  "last_run_iso": "2026-07-15T09:32:02.481006+00:00",
+  "last_run_status": "ok-cap-reached",
   "foundation_last_topic": "music_mir_representation"
 }
