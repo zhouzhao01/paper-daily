@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-14T04:18:56.277481+00:00",
+  "updated_at_iso": "2026-07-15T04:19:06.363782+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -1727,6 +1727,206 @@
         "evidence": "摘要仅定性描述实验结果为可生成高质量语音，并提供音频样例链接，未给出定量指标（如MOS、WER等），具体性能需审阅全文。",
         "limitations": "缺少客观评估指标；多语言覆盖范围和模型规模未说明；上下文学习能力在跨语言翻译中的稳定性有待验证；零样本设置下对源语言口音和噪声的鲁棒性不明。",
         "why_relevant": "研究方向包含语音合成与TTS，该论文提出了一种基于生成式语言模型的跨语言语音合成方法，直接对应于speech synthesis和text-to-speech，且涉及zero-shot合成，与研究兴趣高度吻合。"
+      }
+    },
+    {
+      "id": "arxiv:2607.11699",
+      "arxiv_id": "2607.11699",
+      "title": "Qwen-Music Technical Report",
+      "authors": [
+        "Jin Xu",
+        "Kangdi Wang",
+        "Ruibin Yuan",
+        "Shun Lei",
+        "Xiong Wang",
+        "Xize Cheng",
+        "Xueyao Zhang",
+        "Yang Zhang",
+        "Yiheng Chen",
+        "Yongqi Wang",
+        "Yue Wang",
+        "Zhifang Guo",
+        "Zihan Liu",
+        "Zijian Lin",
+        "Dake Guo",
+        "Hangrui Hu",
+        "Lei Xie",
+        "Linhan Ma",
+        "Wei Xue",
+        "Wenxiang Guo",
+        "Xinfa Zhu",
+        "Xipin Wei",
+        "Yangze Li",
+        "Yuanjun Lv",
+        "Yuxuan Wang",
+        "Yunfei Chu",
+        "Zhiyong Wu"
+      ],
+      "published": "2026-07-13T15:31:45Z",
+      "summary": "In this report, we introduce Qwen-Music, a powerful music generation model capable of producing highly musical and high-fidelity songs with complete vocal singing. Qwen-Music supports two core tasks: Text to Music Generation, which create entirely new songs from text descriptions, lyrics, and musical attributes, and Cover Song Generation, which reinterprets existing songs with different styles and vocal characteristics. Architecturally, Qwen-Music integrates three core components: Qwen-Music-Tokenizer, Qwen-Music-LLM, and Qwen-Music-Render. Qwen-Music-Tokenizer compresses audio into a 25 Hz single-codebook stream of Music Semantic Tokens that preserve semantic and melodic information for LLM prediction. Based on these tokens, Qwen-Music-LLM performs autoregressive music semantic modeling, with a key novelty being a melody-token-based chain-of-thought (Melody-CoT) mechanism that plans melodies before full-song generation, improving creativity, musicality, structural coherence, and reference-audio-based melody cloning. To overcome the fidelity limitations of discrete semantic tokens, Qwen-Music-Render performs generative stereo rendering, enriching acoustic details and producing high-fidelity stereo waveforms. Finally, we train Qwen-Music-LLM on more than 5 million hours of multilingual music data covering hundreds of languages. We first apply quality-aware pre-training curriculum, then use progressive post-training, comprising supervised initialization, offline DPO, and online GSPO, to further improve musicality and instruction-following ability. Across 600 Chinese and English prompts, Qwen-Music achieves state-of-the-art results in 13 of 16 objective musicality and audio-quality metrics. Professional evaluators also prefer Qwen-Music over leading proprietary systems. For cover song generation, Qwen-Music preserves reference melodies more accurately than leading proprietary systems.",
+      "paper_url": "http://arxiv.org/abs/2607.11699v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.11699v1",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 10.0,
+      "justification": "论文提出了大规模音乐生成模型Qwen-Music，包含音乐语义令牌、旋律链式思维生成和高保真渲染，与音乐信息检索与表示方向高度相关，是必读级工作。",
+      "citation_count": null,
+      "date_added": "2026-07-15",
+      "chinese_summary": {
+        "problem": "如何生成具有高音乐性和完整人声演唱的高保真歌曲，并支持从文本描述、歌词、音乐属性生成新曲，以及用不同风格和声线重新演绎现有歌曲。",
+        "method": "模型由三部分组成：Qwen-Music-Tokenizer将音频压缩为25Hz单码书音乐语义令牌流，保留语义与旋律信息；Qwen-Music-LLM基于令牌进行自回归音乐语义建模，创新地引入旋律令牌链式思维（Melody-CoT）机制，先生成旋律再生成完整歌曲；Qwen-Music-Render对离散语义令牌进行生成式立体声渲染，增强声学细节并产生高保真立体声波形。训练采用质量感知预训练课程和渐进式后训练（监督初始化、离线DPO、在线GSPO），数据量超500万小时多语言音乐。",
+        "innovation": "提出Melody-CoT，通过先规划旋律再生成歌曲，提升创造力、音乐性和结构连贯性，并支持基于参考音频的旋律克隆；设计质量感知预训练与渐进式后训练策略，结合DPO和GSPO增强音乐性与指令跟随能力；在600个中英文提示覆盖的16项客观指标中13项达到最优，并获专业评估者主观偏好。",
+        "evidence": "在600个中英文提示上评估，16项客观音乐性和音质指标中13项达到最优；专业评估者的主观偏好优于领先闭源系统；翻唱任务保留参考旋律更准确。",
+        "limitations": "未披露模型规模和推理效率；生成结果可能受限于离散语义令牌的信息瓶颈；未验证音乐理解或表示学习任务的迁移能力；需阅读全文确认Melody-CoT的具体实现和渲染模块的细节。",
+        "why_relevant": "研究方向明确包含music generation，本文直接贡献于高质量音乐生成；Qwen-Music-Tokenizer学习的离散音乐语义表示可用于音乐理解任务，与music representation learning和self-supervised audio相关；LLM的音乐建模策略可能启发music encoder设计；整体架构可作为音乐基础模型参考。"
+      }
+    },
+    {
+      "id": "arxiv:2607.12706",
+      "arxiv_id": "2607.12706",
+      "title": "AutoSIFT: Automatic Style Sifting for Controllable Speech Generation with Arbitrary Style Infilling",
+      "authors": [
+        "Haowei Lou",
+        "Junda Wu",
+        "Chengkai Huang",
+        "Tong Yu",
+        "Hye-young Paik",
+        "Wen Hu",
+        "Lina Yao"
+      ],
+      "published": "2026-07-14T12:28:43Z",
+      "summary": "State-of-the-art text-to-speech (TTS) models achieve impressive naturalness and expressiveness, yet fine-grained, disentangled control over speaking styles remains challenging. In professional scenarios such as film dubbing, game voice acting, and video content generation, users often need to modify a specific style category, such as emotion, age, or gender, while preserving all others. Existing style-controllable TTS methods typically rely on either text-described styles or speech-reference style transfer, making it difficult to jointly control explicit semantic attributes and preserve subtle, text-undescribed prosodic details. We propose AutoSIFT, a controllable speech generation framework for category-level style editing. AutoSIFT decomposes speaking style into known text-describable categories and unknown residual styles that capture non-verbal prosody and speaker-specific nuances. It consists of a generalized Style Disentangler, which extracts category-aware style prototypes from reference speech, and an Arbitrary Style Infiller, which selectively infills unspecified style categories from the reference. By replacing only text-specified style categories while preserving residual speech-derived styles, AutoSIFT enables natural, expressive, and highly customizable speech generation.",
+      "paper_url": "http://arxiv.org/abs/2607.12706v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.12706v1",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出风格解耦与任意风格填充的可控语音生成框架，创新性强，高度匹配生成式语音技术方向。",
+      "citation_count": null,
+      "date_added": "2026-07-15",
+      "chinese_summary": {
+        "problem": "细粒度解耦控制说话风格，在修改特定风格类别（如情感、年龄）时保留其他风格和未描述的韵律细节。",
+        "method": "提出AutoSIFT框架，包含通用风格解缠器，从参考语音提取类别感知风格原型；任意风格填充器，根据文本描述选择性替换指定风格类别，保留残差风格，实现类别级风格编辑的语音生成。",
+        "innovation": "将风格分解为文本可描述类别和未知残差风格，通过填充机制仅替换指定风格而保留韵律细节和说话人特征，实现自然、表达力强的解耦风格控制，弥补了现有方法依赖全文本描述或全参考风格迁移的不足。",
+        "evidence": "证据不足，摘要未提供实验数据、主观评价或与基线模型的对比结果。",
+        "limitations": "残差风格分解和填充机制的有效性未知；类别级风格编辑的粒度与控制范围需要全文确认；可能仅适用于已知风格类别，未见对zero-shot风格的讨论。",
+        "why_relevant": "该论文属于语音合成（TTS）的风格可控生成，与您研究方向中的“speech synthesis and TTS”、“generative speech”直接相关，可为生成式语音风格解缠提供方法参考。"
+      }
+    },
+    {
+      "id": "arxiv:2607.12529",
+      "arxiv_id": "2607.12529",
+      "title": "Listen first: Output-based multi-microphone speech enhancement",
+      "authors": [
+        "Panos Apostolidis",
+        "Svend Feldt",
+        "Zheng-Hua Tan",
+        "Jan Østergaard",
+        "Jesper Jensen"
+      ],
+      "published": "2026-07-14T09:04:29Z",
+      "summary": "Traditionally, hearing-aid speech enhancement (SE) algorithms rely on input-based feature estimation, often derived by a voice activity detector (VAD), to configure beamformers. Yet features extracted from noisy microphone signals can become unreliable in challenging acoustic scenes where users most need help. We introduce a novel paradigm in which the settings of a sound processing system are determined by evaluating characteristics of its output. To demonstrate this idea, we employ an output-based system that selects among a set of minimum power distortionless response (MPDR) beamformers. Although MPDR beamformers are typically avoided due to their sensitivity to steering errors, we show that they become effective within an output-based framework. We compare the proposed system to a conventional input-based minimum variance distortionless response (MVDR) baseline. Experimental results show that the proposed system consistently outperforms the MVDR baseline, particularly at low SNRs, in terms of SNR, ESTOI and PESQ.",
+      "paper_url": "http://arxiv.org/abs/2607.12529v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.12529v1",
+      "categories": [
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 9.0,
+      "justification": "提出输出驱动多麦克风增强新范式，通过评估输出选择MPDR波束形成器，在低信噪比下显著优于MVDR，与麦克风阵列及波束形成高度相关，具有显著新颖性。",
+      "citation_count": null,
+      "date_added": "2026-07-15",
+      "chinese_summary": {
+        "problem": "传统助听器语音增强依赖输入特征（如VAD）估计来配置波束形成器，在复杂声学场景下特征提取不可靠，导致增强性能下降。",
+        "method": "提出输出驱动的系统，通过评估助听器输出特性动态选择一组最小功率无失真响应（MPDR）波束形成器。该系统并行运行多个MPDR波束形成器，根据输出特征（如SNR、可懂度）选择最佳输出，避免了传统MPDR对导向误差的敏感问题。",
+        "innovation": "首次将输出评估范式引入多麦克风语音增强，颠覆传统基于输入特征的控制逻辑；证明通常因导向误差而被避免的MPDR波束形成器在输出选择框架下可有效工作；无需显式声源定位或VAD，系统基于输出性能端到端优化。",
+        "evidence": "实验对比MVDR基线，在SNR、ESTOI和PESQ指标上均取得一致提升，尤其在低SNR条件下优势明显。",
+        "limitations": "摘要未提供输出评估的具体机制、MPDR候选波束形成器的数量与设计、计算复杂度，也未验证在动态声源或强混响环境下的性能，需阅读全文确认。",
+        "why_relevant": "直接涉及麦克风阵列波束形成（MPDR/MVDR）与多通道语音增强，与研究方向中的'波束形成'、'多通道语音增强'、'MVDR波束形成'等关键词紧密匹配，且提出了新颖的输出驱动框架，对阵列信号处理研究有启发意义。"
+      }
+    },
+    {
+      "id": "arxiv:2607.10129",
+      "arxiv_id": "2607.10129",
+      "title": "A Closed-Form Noise-Sensitivity Asymmetry for Causal Branch Selection in Minimal-Array TDoA Localization",
+      "authors": [
+        "Abeer Nasir Chaudhry",
+        "Salman Liaquat",
+        "Hasan Saeed Mir"
+      ],
+      "published": "2026-07-11T05:40:38Z",
+      "summary": "Minimal-array time-difference-of-arrival (TDoA) localization with three planar receivers reduces to a scalar quadratic whose two roots can both be feasible target positions, leaving a branch-selection ambiguity intrinsic to the minimal geometry. Because a minimal array is the cheapest, most deployable passive configuration, this ambiguity is conventionally broken only by adding a fourth receiver or an angle sensor, sacrificing the very minimality that motivates the array. This article resolves it from the measurements alone. Implicit differentiation shows that the two roots share an identical sensitivity denominator, so classical root conditioning cannot separate them and the entire asymmetry resides in the numerator. A closed-form analysis then yields an exact sign condition for the asymmetry, and over the feasible interior the more sensitive root is the outer, physical one, away from two algebraic degeneracy loci. A causal, constant-memory selector smooths a per-root variability statistic, whose expectation is shown to be proportional to the per-root sensitivity in the noise-dominated regime, and selects the larger one. Across a dimensionless receiver atlas the physical root is the more sensitive at a median of 85\\% of two-feasible-root operating points (median sensitivity ratio 16), and, because the more sensitive root is the outer one, a simple outer-root rule attains near-0.99 branch-selection accuracy on this interior, matched online by a causal, constant-memory realization. The decisive empirical finding is that smoothness- and continuity-based disambiguation, the natural alternatives, invert under timing noise and fall below chance.",
+      "paper_url": "http://arxiv.org/abs/2607.10129v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.10129v1",
+      "categories": [
+        "eess.SP"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 9.0,
+      "justification": "论文提出基于灵敏度分析的闭式分支选择方法，解决最小麦克风阵列TDoA定位的根本歧义问题，直接属于声源定位研究方向，理论新颖，实验充分。",
+      "citation_count": null,
+      "date_added": "2026-07-15",
+      "chinese_summary": {
+        "problem": "最小三平面接收器阵列的TDoA定位中，二次方程的两个可行根导致分支选择模糊，传统方法依赖增加传感器，本文仅从测量本身解决该模糊性。",
+        "method": "通过隐式微分分析两个根的噪声灵敏度，发现灵敏度分母相同，不对称性集中在分子；推导出闭式符号条件，表明在可行内部更灵敏的根是外部物理根；基于此设计因果常数记忆选择器，利用每根变异性统计量（期望与灵敏度成比例）选择外部根。",
+        "innovation": "首次在不增加传感器的情况下，利用灵敏度不对称性解决三接收器阵列的分支模糊；导出了灵敏度不对称性的闭式条件与外部根规则；提出因果常数记忆选择器，相比基于平滑和连续性的方法在噪声下更鲁棒。",
+        "evidence": "在无量纲接收器图谱上，物理根在85%的双可行根操作点更灵敏（中值灵敏度比16）；外部根规则在内部达到近0.99的分支选择精度；因果常数记忆实现匹配该精度；平滑和连续性消歧在定时噪声下表现低于随机水平。",
+        "limitations": "限定于三平面接收器最小阵列；依赖噪声主导假设；代数退化轨迹附近性能未明确，需全文确认。",
+        "why_relevant": "直接匹配研究方向中的声源定位与DOA估计，研究最小阵列TDoA定位分支模糊问题，对麦克风阵列低成本部署有参考意义。"
+      }
+    },
+    {
+      "id": "arxiv:2306.05284",
+      "arxiv_id": "2306.05284",
+      "title": "Simple and Controllable Music Generation",
+      "authors": [
+        "Jade Copet",
+        "F. Kreuk",
+        "Itai Gat",
+        "Tal Remez",
+        "David Kant",
+        "Gabriel Synnaeve",
+        "Yossi Adi",
+        "Alexandre D'efossez"
+      ],
+      "published": "2023-06-08T00:00:00+00:00",
+      "summary": "We tackle the task of conditional music generation. We introduce MusicGen, a single Language Model (LM) that operates over several streams of compressed discrete music representation, i.e., tokens. Unlike prior work, MusicGen is comprised of a single-stage transformer LM together with efficient token interleaving patterns, which eliminates the need for cascading several models, e.g., hierarchically or upsampling. Following this approach, we demonstrate how MusicGen can generate high-quality samples, while being conditioned on textual description or melodic features, allowing better controls over the generated output. We conduct extensive empirical evaluation, considering both automatic and human studies, showing the proposed approach is superior to the evaluated baselines on a standard text-to-music benchmark. Through ablation studies, we shed light over the importance of each of the components comprising MusicGen. Music samples, code, and models are available at https://github.com/facebookresearch/audiocraft.",
+      "paper_url": "https://arxiv.org/abs/2306.05284",
+      "pdf_url": "http://arxiv.org/pdf/2306.05284",
+      "categories": [
+        "Neural Information Processing Systems"
+      ],
+      "venue": "Neural Information Processing Systems",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 9.0,
+      "justification": "MusicGen提出单阶段Transformer语言模型与高效令牌交织模式，实现高质量可控音乐生成，成为领域经典基线，与音乐信息检索与表示高度相关。",
+      "citation_count": 735,
+      "date_added": "2026-07-15",
+      "chinese_summary": {
+        "problem": "解决条件音乐生成任务，即根据文本描述或旋律特征生成高质量音乐。",
+        "method": "MusicGen采用单阶段Transformer语言模型处理多流压缩离散音乐令牌，通过高效令牌交织模式生成音乐，避免级联多个模型。",
+        "innovation": "提出了单阶段语言模型直接建模音乐生成，无需分层或上采样级联架构；同时支持文本描述和旋律特征作为条件输入，实现更灵活的控制。",
+        "evidence": "摘要中通过自动评估和人类研究证明MusicGen在文本到音乐基准上优于基线模型；消融实验验证了各组件的贡献；代码和模型已开源。",
+        "limitations": "摘要未提及对长序列建模的效果、生成多样性、复杂音乐结构控制能力以及计算效率等潜在限制。",
+        "why_relevant": "匹配研究方向中的music generation关键词，且离散表示与音频表征学习相关，但侧重生成而非检索或表示学习。"
       }
     }
   ]
