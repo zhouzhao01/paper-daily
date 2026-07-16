@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-15T04:19:06.363782+00:00",
+  "updated_at_iso": "2026-07-16T04:28:42.975685+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -1927,6 +1927,181 @@
         "evidence": "摘要中通过自动评估和人类研究证明MusicGen在文本到音乐基准上优于基线模型；消融实验验证了各组件的贡献；代码和模型已开源。",
         "limitations": "摘要未提及对长序列建模的效果、生成多样性、复杂音乐结构控制能力以及计算效率等潜在限制。",
         "why_relevant": "匹配研究方向中的music generation关键词，且离散表示与音频表征学习相关，但侧重生成而非检索或表示学习。"
+      }
+    },
+    {
+      "id": "arxiv:2607.13903",
+      "arxiv_id": "2607.13903",
+      "title": "Genre Bias or Aesthetic Perception? Identifying and Mitigating Shortcut Learning in Music Evaluation",
+      "authors": [
+        "Yizhou Zhang",
+        "Wangjin Zhou",
+        "Yi Zhao",
+        "Wei Tan",
+        "Keisuke Imoto",
+        "Zhi Gong"
+      ],
+      "published": "2026-07-15T14:44:50Z",
+      "summary": "Music aesthetics scoring plays a critical role in applications such as dataset curation, generative model evaluation, and reward modeling for music generation. Recent approaches rely on deep neural networks trained on human-annotated ratings, but these models may exploit spurious correlations rather than capturing perceptually meaningful aesthetics. In this work, we identify a previously underexplored failure mode in music evaluation models: genre-induced shortcut learning. Through a systematic analysis of SongEval, we show that biases in training data lead to strong correlations between genre-related features and predicted scores, causing the model to use them as a proxy for aesthetics. This results in systematic overestimation of pop music and undervaluation of high-quality samples from other genres, leading to predictions that are inconsistent with human preferences. To address this issue, we propose a training objective that jointly reweights hard samples and regularizes group-level performance, encouraging the model to learn genre-invariant representations of musicality. Experimental results demonstrate that our method reduces genre-dependent bias and improves alignment with human preferences, as reflected by gains in both cross-genre and within-genre preference alignment.",
+      "paper_url": "http://arxiv.org/abs/2607.13903v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.13903v1",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "该文识别并缓解音乐美学评估中的流派捷径学习，属于音乐信息检索，提出重加权与正则化方法提升跨流派偏好对齐，方向高度相关且方法新颖。",
+      "citation_count": null,
+      "date_added": "2026-07-16",
+      "chinese_summary": {
+        "problem": "音乐美学评估模型存在类型诱导的捷径学习（genre-induced shortcut learning）问题，即模型利用训练数据中与音乐类型相关的伪相关特征来预测美学评分，而非学习真正感知上有意义的音乐性，导致对流行音乐的高估和其他类型高质量样本的低估，损害评估的公正性和与人类偏好的一致性。",
+        "method": "提出联合训练目标，通过重加权困难样本（hard sample reweighting）和正则化组级性能（group-level regularization）来迫使模型学习类型不变的音乐性表征。在SongEval模型上进行系统分析，验证训练数据中的偏见来源，并对比所提方法在减少类型偏见和改善偏好对齐方面的效果。",
+        "innovation": "首次明确识别并系统分析音乐评估模型中的类型捷径学习现象；提出样本级重加权与组级正则化相结合的简单有效训练策略，无需额外标签或模型架构改动；针对类型偏见进行针对性缓解，提升模型在跨类型和类型内评价中的公平性与一致性。",
+        "evidence": "摘要中明确指出：实验减少了类型依赖偏见，并通过跨类型和类型内偏好对齐指标的提升验证了方法有效性，但未提供具体数值或对比基准。",
+        "limitations": "仅以SongEval作为分析对象，方法对其他音乐评估模型或音频评估任务的泛化性有待验证；未讨论重加权策略的超参数敏感性和计算开销；音乐领域的结论是否直接适用于语音或其他声音领域需要进一步研究。",
+        "why_relevant": "研究方向为生成式语音技术，涉及生成模型评估与应用。论文探讨了生成模型评价中的偏见问题，与生成模型评估（generative model evaluation）这一关键词匹配，对构建更鲁棒的语音生成评估体系有潜在启发。但论文聚焦音乐美学和类型偏见，非语音场景，匹配领域存在差异，因此相关性较低，建议阅读前先确认其方法在语音评估中的可迁移性。"
+      }
+    },
+    {
+      "id": "arxiv:2607.11157",
+      "arxiv_id": "2607.11157",
+      "title": "Where Speech Enhancement Hurts Recognition: An Inference Time Polar Projection Diagnosis",
+      "authors": [
+        "Mingyue Huo",
+        "Yuheng Zhang",
+        "Hao Zhang"
+      ],
+      "published": "2026-07-13T06:51:12Z",
+      "summary": "Speech enhancement (SE) can substantially improve perceptual quality, yet enhanced speech does not necessarily improve automatic speech recognition (ASR). Existing remedies, such as retraining the enhancer jointly with recognizer or interpolating enhanced speech with the noisy input, can mitigate this mismatch, but common explanations such as artifacts and over-suppression remain qualitative and do not localize which enhancement component harms recognition. We propose inference time polar projection, a diagnosis for STFT domain enhancement. Given a mask $M=Ae^{jφ}$, polar projection forms $M_{α,γ}=A^αe^{jγφ}$, where $α$ controls magnitude strength and $γ$ controls phase correction. Sweeping these controls on frozen SE and ASR models turns ASR degradation into measurable magnitude and phase effects. Our projection analysis shows that magnitude strength is the operative axis, while estimated phase correction provides no recognition benefit. The optimal magnitude strength is recognizer dependent: waveform-input wav2vec2.0 favors strong correction, whereas log-Mel-input, noise-robust Whisper prefers weaker correction. Finally, the projection provides a simple mitigation for any SE front end in the STFT mask domain, without retraining either the enhancer or the recognizer, making it directly useful for voice assistants and agents that rely on enhanced speech.",
+      "paper_url": "http://arxiv.org/abs/2607.11157v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.11157v1",
+      "categories": [
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "提出推理时极坐标投影诊断，揭示语音增强影响ASR的关键在于幅度强度，并提供无需重训练的缓解方法，与语音增强方向高度相关且新颖实用。",
+      "citation_count": null,
+      "date_added": "2026-07-16",
+      "chinese_summary": {
+        "problem": "增强语音有时会降低自动语音识别性能，现有解释无法定位是增强的哪个组件（如幅度或相位）造成了损害。论文旨在通过诊断方法量化STFT域增强中幅度和相位对ASR退化的影响。",
+        "method": "提出推理时极投影诊断方法。对于STFT增强掩码 \\(M = A e^{j\\phi}\\)，通过极投影构造 \\(M_{\\alpha,\\gamma} = A^\\alpha e^{j\\gamma\\phi}\\)，其中 \\(\\alpha\\) 控制幅度强度，\\(\\gamma\\) 控制相位校正量。在冻结的语音增强和ASR模型上扫描这两个参数，将ASR性能变化直接归因于幅度或相位的调节效应。",
+        "innovation": "提出一种无需重新训练的轻量级诊断工具，首次将增强对ASR的损害分解为可独立控制的幅度和相位维度；发现幅度强度是影响识别的主要因素，而相位校正几乎不带来识别收益；揭示了最佳幅度强度因ASR模型而异（波形输入的wav2vec2.0偏好强校正，log-Mel输入的噪声鲁棒Whisper偏好弱校正），并且该方法可直接作为任意STFT掩码增强前端的即插即用缓解方案。",
+        "evidence": "摘要给出了明确的实验发现：幅度强度是主导因素，相位校正无效；不同识别器（wav2vec2.0和Whisper）的最佳幅度强度相反。但摘要未提供量化指标，仅作为定性结论。",
+        "limitations": "仅适用于STFT域掩码增强器，对时域或直接波形增强方法不适用；诊断结论来自冻结模型，未与其他缓解方法（如联合训练）比较；相位校正无效的结论可能受限于当前的相位估计方法；未展示具体识别率提升数值。",
+        "why_relevant": "论文直接研究语音增强处理对下游ASR任务的影响，并提出一种改进增强掩码的方法以提升识别性能，属于语音前端处理的范畴，与我的研究方向“Speech Enhancement and Audio Frontend”中的神经掩码、去噪等核心问题高度契合，有助于理解增强与识别之间的深层关系并优化实际系统。"
+      }
+    },
+    {
+      "id": "arxiv:2406.06185",
+      "arxiv_id": "2406.06185",
+      "title": "EARS: An Anechoic Fullband Speech Dataset Benchmarked for Speech Enhancement and Dereverberation",
+      "authors": [
+        "Julius Richter",
+        "Yi-Chiao Wu",
+        "Steven Krenn",
+        "Simon Welker",
+        "Bunlong Lay",
+        "Shinji Watanabe",
+        "Alexander Richard",
+        "Timo Gerkmann"
+      ],
+      "published": "2024-06-10T00:00:00+00:00",
+      "summary": "We release the EARS (Expressive Anechoic Recordings of Speech) dataset, a high-quality speech dataset comprising 107 speakers from diverse backgrounds, totaling in 100 hours of clean, anechoic speech data. The dataset covers a large range of different speaking styles, including emotional speech, different reading styles, non-verbal sounds, and conversational freeform speech. We benchmark various methods for speech enhancement and dereverberation on the dataset and evaluate their performance through a set of instrumental metrics. In addition, we conduct a listening test with 20 participants for the speech enhancement task, where a generative method is preferred. We introduce a blind test set that allows for automatic online evaluation of uploaded data. Dataset download links and automatic evaluation server can be found online.",
+      "paper_url": "https://arxiv.org/abs/2406.06185",
+      "pdf_url": "https://arxiv.org/pdf/2406.06185",
+      "categories": [
+        "Interspeech"
+      ],
+      "venue": "Interspeech",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "EARS 提供了高质量的全频带无回声语音数据集，覆盖多种说话风格，并建立增强与去混响基准，与语音增强及前端处理方向高度相关，是该领域的基础性参考资源，引用数较高，属于必读数据工作。",
+      "citation_count": 134,
+      "date_added": "2026-07-16",
+      "chinese_summary": {
+        "problem": "现有语音增强和去混响研究缺乏高质量消声、全频带、多风格语音数据集，限制了模型在不同说话风格和真实场景下的性能评估与泛化能力。",
+        "method": "发布EARS数据集，包含107位说话者、100小时干净消声语音，覆盖情感、朗读、非语言声音和即兴对话等多风格；选取多种语音增强和去混响方法进行基准测试，采用客观指标与20人主观听音评估，并引入盲测集和自动在线评估平台。",
+        "innovation": "提供首个大规模、全频带、消声且涵盖丰富说话风格的数据集，填补了现有资源中消声条件与风格多样性的不足；通过主观听音测试揭示生成式方法在感知质量上的优势，为后续方法选择提供依据；构建自动化盲测与在线排行榜，促进可复现和公平的模型对比。",
+        "evidence": "摘要明确提及数据集规模、说话人数量及风格覆盖；使用了客观指标和20人听音测试；提供了盲测集和在线评估服务器。",
+        "limitations": "仅提供数据集和基准结果，无新型增强或去混响算法；消声环境与真实场景存在域差异，可能限制在其上训练的模型直接泛化；基准方法细节和对比结果未在摘要中展开，需阅读全文确认代表性和完整性。",
+        "why_relevant": "研究方向聚焦语音增强与去混响，该数据集可直接用于训练和评估去噪、去混响模型，其多风格特性有助于提升模型泛化能力；基准测试结果可参考现有方法在该数据上的表现，但论文本身属于数据资源类贡献，非算法创新，需结合自身任务需求判断是否采用。"
+      }
+    },
+    {
+      "id": "s2:ed6b910c45a0ab819c98b5fd4f9b8e4ca2ac7482",
+      "arxiv_id": "",
+      "title": "Genhancer: High-Fidelity Speech Enhancement via Generative Modeling on Discrete Codec Tokens",
+      "authors": [
+        "Haici Yang",
+        "Jiaqi Su",
+        "Minje Kim",
+        "Zeyu Jin"
+      ],
+      "published": "2024-09-01T00:00:00+00:00",
+      "summary": "We present a high-fidelity generative speech enhancement model, Genhancer, which generates clean speech as discrete codec tokens while conditioning on the input speech features. Discrete codec tokens provide an efficient latent domain in place of the conventional time or time-frequency domain of signals, so as to enable complex modeling of speech and allow generative modeling to enforce speaker consistency and content continuity. We provide insights into the best-fit generation scheme for enhancement among parallel prediction, auto-regression, and masking to demonstrate the benefits of conditioning on both pre-trained and jointly learned speech features. Subjective and objective tests show that Genhancer significantly improves audio quality and speaker-identity retention over the SOTA baselines, including conventional and generative ones while preserving content accuracy. Audio samples and supplement materials are available at https://minjekim.com/",
+      "paper_url": "https://www.semanticscholar.org/paper/ed6b910c45a0ab819c98b5fd4f9b8e4ca2ac7482",
+      "pdf_url": "",
+      "categories": [
+        "Interspeech"
+      ],
+      "venue": "Interspeech",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "将离散编解码标记与生成式建模结合用于语音增强，高度相关于生成式语音技术方向，方法新颖且性能优越，是近期必读工作。",
+      "citation_count": 52,
+      "date_added": "2026-07-16",
+      "chinese_summary": {
+        "problem": "如何在语音增强中生成高保真且保持说话人一致性和内容连续性的干净语音。",
+        "method": "将语音增强转化为以离散神经编解码令牌为生成目标的生成式建模，条件于输入语音特征；离散令牌替代传统时域或时频域，便于复杂建模和生成一致性控制；探索了并行预测、自回归和掩码三种生成方案，并融合预训练和联合学习的语音特征。",
+        "innovation": "首次将离散语音编解码令牌用于生成式语音增强，在离散潜在空间进行高保真生成；系统比较了不同生成范式并验证了联合使用预训练与可学习特征的有效性；生成建模专门针对说话人一致性和内容连续性优化。",
+        "evidence": "主观和客观实验表明，在音频质量和说话人身份保留上显著优于最先进的传统和生成式基线，同时保持内容准确度（具体指标见原文）。",
+        "limitations": "未指明生成模型的具体类型（如自回归、扩散或流匹配），离散令牌编解码器的结构及预训练方式需查看全文；生成方案比较仅在论文中详细，泛化性待验证。",
+        "why_relevant": "该论文直接属于生成式语音增强，与您的研究方向关键词'generative speech enhancement'高度吻合。其生成建模、离散令牌设计以及对说话人一致性的关注，可为您的研究提供新思路，即使在摘要中未明确提及扩散或流匹配，但同为生成式方法，属于核心范畴。"
+      }
+    },
+    {
+      "id": "arxiv:2406.12194",
+      "arxiv_id": "2406.12194",
+      "title": "Universal Score-based Speech Enhancement with High Content Preservation",
+      "authors": [
+        "Robin Scheibler",
+        "Yusuke Fujita",
+        "Yuma Shirahata",
+        "Tatsuya Komatsu"
+      ],
+      "published": "2024-06-18T00:00:00+00:00",
+      "summary": "We propose UNIVERSE++, a universal speech enhancement method based on score-based diffusion and adversarial training. Specifically, we improve the existing UNIVERSE model that decouples clean speech feature extraction and diffusion. Our contributions are three-fold. First, we make several modifications to the network architecture, improving training stability and final performance. Second, we introduce an adversarial loss to promote learning high quality speech features. Third, we propose a low-rank adaptation scheme with a phoneme fidelity loss to improve content preservation in the enhanced speech. In the experiments, we train a universal enhancement model on a large scale dataset of speech degraded by noise, reverberation, and various distortions. The results on multiple public benchmark datasets demonstrate that UNIVERSE++ compares favorably to both discriminative and generative baselines for a wide range of qualitative and intelligibility metrics.",
+      "paper_url": "https://arxiv.org/abs/2406.12194",
+      "pdf_url": "https://arxiv.org/pdf/2406.12194",
+      "categories": [
+        "Interspeech"
+      ],
+      "venue": "Interspeech",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出基于扩散模型和对抗训练的通用语音增强方法，通过架构改进、低秩适应与音素保真度损失提升内容保留，与语音增强和生成式语音方向高度相关，方法有效且具影响力。",
+      "citation_count": 51,
+      "date_added": "2026-07-16",
+      "chinese_summary": {
+        "problem": "开发一种在多种噪声和失真条件下既能提高语音质量又可懂度，又能保持语音内容的通用语音增强方法。",
+        "method": "基于分数匹配的扩散模型与对抗训练相结合。改进网络架构以稳定训练并提升性能；引入对抗损失促使学习高质量语音特征；使用低秩适配与音素保真度损失来增强内容保留。",
+        "innovation": "将对抗训练引入分数扩散语音增强框架，通过低秩适配和音素保真度损失专门优化内容保留。",
+        "evidence": "摘要仅提及在大规模包含噪声、混响及各种失真的数据集上训练，在多个公共基准数据集上取得优于判别和生成基线的结果，但未给出具体指标数值。",
+        "limitations": "未报告具体指标提升幅度；未说明扩散模型采样速度是否实用；未涉及多说话人场景下的性能。",
+        "why_relevant": "研究方向为语音分离，该论文聚焦语音增强，但所用基于扩散和对抗的生成方法可能对分离任务中的掩蔽估计或重建提供参考，需要人工确认细节是否可迁移。"
       }
     }
   ]
