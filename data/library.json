@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-16T04:28:42.975685+00:00",
+  "updated_at_iso": "2026-07-17T04:29:37.161465+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -2102,6 +2102,185 @@
         "evidence": "摘要仅提及在大规模包含噪声、混响及各种失真的数据集上训练，在多个公共基准数据集上取得优于判别和生成基线的结果，但未给出具体指标数值。",
         "limitations": "未报告具体指标提升幅度；未说明扩散模型采样速度是否实用；未涉及多说话人场景下的性能。",
         "why_relevant": "研究方向为语音分离，该论文聚焦语音增强，但所用基于扩散和对抗的生成方法可能对分离任务中的掩蔽估计或重建提供参考，需要人工确认细节是否可迁移。"
+      }
+    },
+    {
+      "id": "arxiv:2607.14537",
+      "arxiv_id": "2607.14537",
+      "title": "MIDI-RAE-JEPA: Hierarchical Representation Learning and Generation for Symbolic Music",
+      "authors": [
+        "Scott H. Hawley"
+      ],
+      "published": "2026-07-16T03:42:35Z",
+      "summary": "Rich internal representations of musical structure are essential for music understanding tasks such as machine-assisted music co-writing, yet self-supervised approaches for symbolic music representation remain underexplored, particularly those that encode the hierarchical multiscale nature of musical structures. We present MIDI-RAE-JEPA, combining a pitch- and time-shift equivariance objective with LeJEPA and a Swin Transformer V2 encoder to learn such hierarchical representations of symbolic music encoded as piano roll images. The time-shift equivariance objective encourages the model to internalize temporal musical relationships. The encoder is trained purely on self-supervised objectives -- including a masked embedding predictor (MEP) -- with collapse prevented via SIGReg. A separate decoder trained on the frozen encoder embeddings achieves reconstruction F1 of 0.995, and a flow matching generative model conditioned on those embeddings produces generations that closely match the pitch register and rhythmic density of the conditioning excerpt, while mismatched conditioning yields unrelated but musically plausible output. Learned representations outperform a Haar scattering transform baseline on a downstream emotion classification task, and embedding distances increase monotonically with pitch and time shift magnitude, confirming measurable equivariance. These results suggest that equivariance-based SSL objectives, combined with sufficient fine-level encoder capacity, provide a viable path toward semantically rich, generatively useful representations of symbolic music.",
+      "paper_url": "http://arxiv.org/abs/2607.14537v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.14537v1",
+      "categories": [
+        "cs.SD",
+        "cs.LG",
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 9.0,
+      "justification": "提出结合等变性目标与Swin Transformer的符号音乐层次表示学习框架MIDI-RAE-JEPA，在情感分类和条件生成上表现突出，与音乐信息检索与表示方向高度相关。",
+      "citation_count": null,
+      "date_added": "2026-07-17",
+      "chinese_summary": {
+        "problem": "针对符号音乐的自监督表示学习，尤其是如何有效编码音乐结构中的分层多尺度特性，以服务于音乐理解与辅助创作任务。",
+        "method": "提出MIDI-RAE-JEPA，将钢琴卷帘图像化的符号音乐输入Swin Transformer V2编码器，结合音高与时移等变性目标和LeJEPA框架进行自监督训练；引入掩码嵌入预测(MEP)和SIGReg正则化防止坍缩；冻结编码器后训练解码器重构和流匹配生成模型。",
+        "innovation": "1) 首次将对音高、时移的等变性约束引入符号音乐的自监督表示学习；2) 通过Swin Transformer的分层结构与JEPA类目标实现多尺度音乐特征提取；3) 验证了所学表示在下游情感分类任务上优于传统散射变换，并可直接支撑条件生成。",
+        "evidence": "摘要给出具体可核验结果：重构F1达0.995；生成模型能够根据条件生成音区、节奏密度匹配的音乐，失配条件则产出无关但通顺的作品；情感分类任务表现优于Haar散射变换基线；嵌入距离随音高/时移幅度单调增加，证实了等变性。",
+        "limitations": "仅基于钢琴卷帘图像，可能未考虑更多样的符号音乐表示；生成质量仅有定性描述，缺乏客观评估指标；情感分类任务的数据集和详细指标未提及；等变性收益的实际下游影响需进一步验证。",
+        "why_relevant": "论文聚焦音乐表示学习与自监督方法，与研究方向中的music representation learning和self-supervised范式直接相关；虽然针对的是符号音乐而非音频，但其设计的等变性和分层编码机制对音频表示学习有启发意义，尤其是基础音乐结构建模的思路。"
+      }
+    },
+    {
+      "id": "arxiv:2607.15198",
+      "arxiv_id": "2607.15198",
+      "title": "SLT 2026 REAL-TSE Challenge: Real-world Target Speaker Extraction from Conversational Recordings",
+      "authors": [
+        "Shuai Wang",
+        "Zihan Qian",
+        "Ke Zhang",
+        "Jiangyu Han",
+        "Zikai Liu",
+        "Xiaoyang Yu",
+        "Haoyu Li",
+        "Marc Delcroix",
+        "Kai Yu",
+        "Lei Xie",
+        "Ming Li",
+        "Haizhou Li"
+      ],
+      "published": "2026-07-16T16:57:05Z",
+      "summary": "We introduce the REAL-TSE Challenge, an IEEE SLT 2026 satellite challenge on target speaker extraction~(TSE) from real conversational recordings. Given a multi-speaker mixture and one or more enrollment utterances from a target speaker, participating systems must recover only the target speech. Unlike simulated read-speech benchmarks, REAL-TSE evaluates Mandarin and English recordings that contain natural overlap, reverberation, noise, channel mismatch, and conversational dynamics. The challenge defines two complementary tracks: an Online track for low-latency streaming extraction and an Offline track for full-context processing. Systems are evaluated with Token Error Rate (TER), Speaker Similarity (SpkSim), DNSMOS, and target-speaker activity F1. This overview paper describes the task definition, datasets, baselines, evaluation protocol, submitted systems, condition-wise findings, and lessons for future real-world TSE benchmarks.",
+      "paper_url": "http://arxiv.org/abs/2607.15198v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.15198v1",
+      "categories": [
+        "eess.AS",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "该论文组织了真实对话录音中的目标说话人提取挑战赛，直接匹配研究方向'Speech Separation and Target Speaker Extraction'，提供了实际场景的基准、数据和评估，但作为挑战概述，方法新颖性有限。",
+      "citation_count": null,
+      "date_added": "2026-07-17",
+      "chinese_summary": {
+        "problem": "定义并组织一个面向真实对话录音的目标说话人提取（TSE）挑战赛，提供标准化评测框架以推动实用化TSE技术的进步。",
+        "method": "本文不涉及具体的提取算法，而是围绕挑战赛构建任务体系：给定多说话人混合音频与目标说话人的注册语音，系统需提取目标人声。设置了在线（低延迟流式）和离线（全上下文）两个赛道，采用Token Error Rate (TER)、说话人相似度（SpkSim）、DNSMOS和说话人活动F1等指标进行多维度评估。",
+        "innovation": "首次在真实对话录音上举办TSE竞赛，数据包含自然交叠、混响、噪声、信道差异和动态对话等复杂因素，贴近实际应用；同时设立在线与离线赛道，兼顾流式与全处理场景；评估引入多种指标，从可懂度、感知质量、说话人相似度和活动检测多方面衡量性能。",
+        "evidence": "摘要明确给出了任务定义、数据集、基线、评估协议、提交系统分析和条件性发现等基本要素，但未提供具体实验结果或数值。",
+        "limitations": "未知数据集规模、基线系统的具体架构及性能、提交系统的方法细节和最终结果排名；需要阅读全文才能评估挑战的实际难度和现有技术水平。",
+        "why_relevant": "论文直接聚焦目标说话人提取（speaker extraction），与研究方向完全一致；提供了真实场景下的最新基准和评估思路，可帮助理解当前技术瓶颈和实用化需求，但本身不提供新算法。"
+      }
+    },
+    {
+      "id": "arxiv:2607.11630",
+      "arxiv_id": "2607.11630",
+      "title": "Teaching Speech Enhancement Models to Sing: Domain Adaptation from Speech Enhancement to Singing Voice Separation",
+      "authors": [
+        "Paul A. Bereuter",
+        "Mark D. Plumbley",
+        "Alois Sontacchi"
+      ],
+      "published": "2026-07-13T14:48:09Z",
+      "summary": "State-of-the-art speech enhancement models benefit from large-scale labeled datasets, whereas singing voice separation models suffer from limited available training data. To address this limitation, we formulate singing voice separation as domain adaptation from speech enhancement to singing voice separation. We investigate two fine-tuning strategies: full fine-tuning and parameter-efficient fine-tuning using Low-Rank Adaptation (LoRA) on a discriminative and a generative model. Models with either adaptation strategy outperform the same architectures trained from scratch by 0.29-1.8 dB in Signal-to-Distortion-Ratio. Full fine-tuning yields the highest singing voice separation performance, but catastrophic forgetting degrades speech enhancement performance. LoRA fine-tuning achieves competitive singing voice separation performance while preserving the original speech enhancement capability with only 6-12% additional parameters compared to the base speech enhancement model. Furthermore, the generative model shows improved generalization to an unseen test set. The results demonstrate that adapting pretrained speech enhancement models is an effective strategy for training singing voice separation models in data-scarce scenarios.",
+      "paper_url": "http://arxiv.org/abs/2607.11630v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.11630v1",
+      "categories": [
+        "cs.SD",
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "将预训练语音增强模型域适应到歌声分离，通过LoRA微调平衡性能与灾难性遗忘，对语音分离方向有参考价值。",
+      "citation_count": null,
+      "date_added": "2026-07-17",
+      "chinese_summary": {
+        "problem": "未配置模型 API，当前仅基于标题、摘要和关键词生成基础摘要。",
+        "method": "State-of-the-art speech enhancement models benefit from large-scale labeled datasets, whereas singing voice separation models suffer from limited available training data.",
+        "innovation": "需要接入模型 API 后自动抽取更精确的中文创新点。",
+        "evidence": "来源摘要可在论文原文中核验。",
+        "limitations": "基础模式不会阅读全文，也不会进行深度技术对比。",
+        "why_relevant": "arXiv 分类重合：cs.SD、eess.AS"
+      }
+    },
+    {
+      "id": "arxiv:2607.11083",
+      "arxiv_id": "2607.11083",
+      "title": "The SonicAGI System for the REAL-TSE Challenge",
+      "authors": [
+        "Kai Li",
+        "Wendi Sang",
+        "Jintao Cheng",
+        "Xiaolin Hu"
+      ],
+      "published": "2026-07-13T04:53:15Z",
+      "summary": "Real-world target speaker extraction (TSE) remains challenging because target speech, interference, and enrollment are recorded under mismatched acoustic conditions with reverberation, noise, and irregular conversational overlap. This paper describes the SonicAGI submission to the REAL-TSE Challenge (IEEE SLT 2026). We take a data-centric approach that combines fully simulated mixtures from clean speech with real meeting overlaps, and use a frozen offline enhancer to provide a denoised mirror of real targets for auxiliary supervision. For the online track, we introduce SwiftNet-Lookahead, which inserts a single bounded-lookahead module before a strictly causal iterative separator and keeps the total system latency at 96 ms. For the offline track, we use a frame-level enrollment cross-attention USEF-TFGridNet with a magnitude-domain fusion stage that trades off perceptual quality and speaker fidelity. In the official evaluation, SwiftNet-Lookahead ranks second in Track~1 and USEF-TFGridNet ranks fifth in Track~2, both exceeding the challenge baselines. These results suggest that real-data-oriented training and track-specific modeling are effective for conversational TSE.",
+      "paper_url": "http://arxiv.org/abs/2607.11083v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.11083v1",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 7.0,
+      "justification": "方向高度相关，提出面向真实场景的目标说话人提取系统，结合混合数据训练和特定赛道建模，在REAL-TSE挑战赛中取得优异成绩，工作扎实但以系统设计为主，新颖性一般。",
+      "citation_count": null,
+      "date_added": "2026-07-17",
+      "chinese_summary": {
+        "problem": "解决真实场景下目标说话人提取（TSE）因声学条件不匹配、混响、噪声及不规则对话重叠导致的性能劣化问题。",
+        "method": "以数据为中心，混合全模拟干净语音与真实会议重叠片段构建训练数据；利用冻结的离线增强器为真实目标提供去噪镜像以辅助监督。在线轨道提出SwiftNet-Lookahead，在严格因果的迭代分离器前插入有限前瞻模块，总延迟控制在96 ms；离线轨道使用帧级注册交叉注意力的USEF-TFGridNet，并通过幅度域融合权衡感知质量与说话人保真度。",
+        "innovation": "提出真实数据驱动的训练策略：将模拟与真实重叠数据结合，并引入去噪增强信号作为辅助目标。在线系统中，通过可控制的前瞻设计平衡低延迟与性能；离线系统引入帧级注册交叉注意力机制，并设计感知与保真度的显式融合策略。",
+        "evidence": "官方评估中，SwiftNet-Lookahead获得Track 1第二名，USEF-TFGridNet获得Track 2第五名，均优于挑战基线系统。",
+        "limitations": "仅给出排名，缺少绝对性能指标及与近年先进方法的额外对比；数据混合策略与辅助监督的消融效果未披露；系统对真实数据的泛化性可能依赖于挑战所提供的特定数据分布。",
+        "why_relevant": "直接针对目标说话人提取任务，采用端到端时域分离网络（TFGridNet）和掩码机制，覆盖数据增强及在线/离线架构设计，与研究方向关键词高度重合。"
+      }
+    },
+    {
+      "id": "arxiv:2607.14749",
+      "arxiv_id": "2607.14749",
+      "title": "WanSong v1.0 Technical Report",
+      "authors": [
+        "Binghui Chen",
+        "Pandeng Li",
+        "Yu Liu",
+        "Jingren Zhou"
+      ],
+      "published": "2026-07-16T09:34:59Z",
+      "summary": "Music generation foundation models have recently attracted significant industry attention. However, achieving efficient generation and high-fidelity long-form audio while supporting controllability remains challenging. To address these needs, we present \\textbf{WanSong}, a simple yet powerful approach for long-form, commercial-grade song generation. Unlike autoregressive (AR) and cascaded multi-stage pipelines (\\eg, AR followed by diffusion), \\textbf{WanSong} is a pure diffusion-based model that directly generates high-fidelity, multilingual songs up to 5 minutes and outputs dual stems (vocals and background music) in a single run. In addition, our diffusion framework enables faster inference through step-distillation, and offers an efficient pathway for fine-tuning and customization to support downstream editing tasks.",
+      "paper_url": "http://arxiv.org/abs/2607.14749v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.14749v1",
+      "categories": [
+        "eess.AS",
+        "cs.CV"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 7.0,
+      "justification": "该论文提出了纯扩散的音乐生成模型，支持长形式多轨歌曲生成，与音乐生成研究方向相关，但作为技术报告新颖性一般。",
+      "citation_count": null,
+      "date_added": "2026-07-17",
+      "chinese_summary": {
+        "problem": "实现高效、高保真的长音频歌曲生成，同时支持可控性与快速推理，克服自回归及级联式流水线在生成长序列时的效率和质量瓶颈。",
+        "method": "采用纯扩散模型直接生成长达5分钟的多语言歌曲，单次运行即可输出人声和背景音乐双轨音频；通过步长蒸馏技术加速推理，并提供微调与定制化流程以支持下游编辑任务。",
+        "innovation": "摒弃自回归或级联结构，以纯粹扩散框架一次生成长音频；单模型直接产生多轨输出（人声+背景），简化生产流程；引入步长蒸馏实现高效推理，并支持轻量微调以适应定制化生成与编辑。",
+        "evidence": "证据不足：摘要未提供定量指标、对比基线或消融实验，仅描述性能特征（高保真、5分钟、多语言、双轨）和推理加速策略。",
+        "limitations": "缺少具体模型规模、训练数据、可控性机制细节；未验证长音频的时序一致性与音质；实际生成速度与蒸馏代价不明；商业化程度及版权合规性有待阅读全文确认。",
+        "why_relevant": "仅关键词“music generation”匹配，且研究重心偏向生成而非信息检索或表示学习；文中的扩散框架可能涉及音频表示，但摘要未体现，与MIR、自监督表征的核心目标关联较弱，需人工复核是否对音乐理解或编码器设计有借鉴意义。"
       }
     }
   ]
