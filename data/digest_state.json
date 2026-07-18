@@ -10,7 +10,7 @@
     "2026-07-17": 5,
     "2026-07-18": 5
   },
-  "last_run_iso": "2026-07-18T04:16:56.665691+00:00",
-  "last_run_status": "ok",
+  "last_run_iso": "2026-07-18T09:10:22.457711+00:00",
+  "last_run_status": "ok-cap-reached",
   "foundation_last_topic": "speech_separation_extraction"
 }
