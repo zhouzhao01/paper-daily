@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-17T04:29:37.161465+00:00",
+  "updated_at_iso": "2026-07-18T04:16:56.665691+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -2281,6 +2281,181 @@
         "evidence": "证据不足：摘要未提供定量指标、对比基线或消融实验，仅描述性能特征（高保真、5分钟、多语言、双轨）和推理加速策略。",
         "limitations": "缺少具体模型规模、训练数据、可控性机制细节；未验证长音频的时序一致性与音质；实际生成速度与蒸馏代价不明；商业化程度及版权合规性有待阅读全文确认。",
         "why_relevant": "仅关键词“music generation”匹配，且研究重心偏向生成而非信息检索或表示学习；文中的扩散框架可能涉及音频表示，但摘要未体现，与MIR、自监督表征的核心目标关联较弱，需人工复核是否对音乐理解或编码器设计有借鉴意义。"
+      }
+    },
+    {
+      "id": "arxiv:2408.03440",
+      "arxiv_id": "2408.03440",
+      "title": "TF-Locoformer: Transformer with Local Modeling by Convolution for Speech Separation and Enhancement",
+      "authors": [
+        "Kohei Saijo",
+        "G. Wichern",
+        "François G. Germain",
+        "Zexu Pan",
+        "Jonathan Le Roux"
+      ],
+      "published": "2024-08-06T00:00:00+00:00",
+      "summary": "Time-frequency (TF) domain dual-path models achieve high-fidelity speech separation. While some previous state-of-the-art (SoTA) models rely on RNNs, this reliance means they lack the paralleliz-ability, scalability, and versatility of Transformer blocks. Given the wide-ranging success of pure Transformer-based architectures in other fields, in this work we focus on removing the RNN from TF-domain dual-path models, while maintaining SoTA performance. This work presents TF-Locoformer, a Transformer-based model with LOcal-modeling by COnvolution. The model uses feed-forward networks (FFNs) with convolution layers, instead of linear layers, to capture local information, letting the self-attention focus on capturing global patterns. We place two such FFNs before and after self-attention to enhance the local-modeling capability. We also introduce a novel normalization for TF-domain dual-path models. Experiments on separation and enhancement datasets show that the proposed model meets or exceeds SoTA in multiple benchmarks with an RNN-free architecture.",
+      "paper_url": "https://arxiv.org/abs/2408.03440",
+      "pdf_url": "https://arxiv.org/pdf/2408.03440",
+      "categories": [
+        "International Workshop on Acoustic Signal Enhancement"
+      ],
+      "venue": "International Workshop on Acoustic Signal Enhancement",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "该工作针对TF域双路径语音分离/增强提出纯Transformer架构TF-Locoformer，通过卷积局部建模替代RNN，实现可并行化并达到SoTA，与语音分离和增强方向高度相关，是基础性突破。",
+      "citation_count": 49,
+      "date_added": "2026-07-18",
+      "chinese_summary": {
+        "problem": "如何在时频域双路径模型中去除RNN，同时保持语音分离与增强的高性能，并解决并行化、可扩展性不足的问题。",
+        "method": "提出TF-Locoformer，基于Transformer架构，通过在前馈网络（FFN）中引入卷积层替代线性层来捕获局部信息，使自注意力专注全局模式；在自注意力前后各放置一个卷积FFN以增强局部建模；并引入针对时频域双路径模型的新型归一化方案。",
+        "innovation": "首次在时频域双路径模型中完全移除RNN，采用卷积增强的FFN实现局部建模，使Transformer能同时高效捕捉局部与全局依赖；提出将两个卷积FFN分别置于自注意力前后的设计，以及新的归一化方法，提升了模型性能。",
+        "evidence": "实验表明，在语音分离与增强多个基准数据集上，所提无RNN架构达到或超越了现有最优性能。",
+        "limitations": "摘要未提及计算复杂度、参数量对比、实时性表现，以及对目标说话人提取任务的适应性，需阅读全文确认。",
+        "why_relevant": "直接针对语音分离任务，与研究方向高度匹配，涉及关键词：speech separation、time-frequency domain、dual-path model、masking model、和end-to-end分离方法，并解决了时域/时频域分离中的架构并行化瓶颈。"
+      }
+    },
+    {
+      "id": "arxiv:2303.05023",
+      "arxiv_id": "2303.05023",
+      "title": "X-SEPFORMER: End-To-End Speaker Extraction Network with Explicit Optimization on Speaker Confusion",
+      "authors": [
+        "Kai Liu",
+        "Z.C. Du",
+        "Xucheng Wan",
+        "Huan Zhou"
+      ],
+      "published": "2023-03-09T00:00:00+00:00",
+      "summary": "Target speech extraction (TSE) systems are designed to extract target speech from a multi-talker mixture. The popular training objective for most prior TSE networks is to enhance reconstruction performance of extracted speech waveform. However, it has been reported that a TSE system delivers high reconstruction performance may still suffer low-quality experience problems in practice. One such experience problem is wrong speaker extraction (called speaker confusion, SC), which leads to strong negative experience and hampers effective conversations. To mitigate the imperative SC issue, we reformulate the training objective and propose two novel loss schemes that explore the metric of reconstruction improvement performance defined at small chunk-level and leverage the metric associated distribution information. Both loss schemes aim to encourage a TSE network to pay attention to those SC chunks based on the said distribution information. On this basis, we present X-SepFormer, an end-to-end TSE model with proposed loss schemes and a backbone of SepFormer. Experimental results on the benchmark WSJ0-2mix dataset validate the effectiveness of our proposals, showing consistent improvements on SC errors (by 14.8% relative). Moreover, with SI-SDRi of 19.4 dB and PESQ of 3.81, our best system significantly outperforms the current SOTA systems and offers the top TSE results reported till date on the WSJ0-2mix.",
+      "paper_url": "https://arxiv.org/abs/2303.05023",
+      "pdf_url": "https://arxiv.org/pdf/2303.05023",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出针对说话人混淆的显式优化损失函数，提升目标说话人提取性能，在WSJ0-2mix上取得当时最优结果，与Speech Separation and Target Speaker Extraction方向高度相关。",
+      "citation_count": 46,
+      "date_added": "2026-07-18",
+      "chinese_summary": {
+        "problem": "目标说话人提取系统在训练时侧重重建性能，但实际应用中仍存在错误提取目标说话人的说话人混淆问题，严重影响用户体验。",
+        "method": "提出两种基于小片段级重建改善性能指标的新损失方案，利用该指标的分布信息鼓励网络重点关注易混淆片段；以SepFormer为骨干构建端到端模型X-SepFormer，直接优化说话人混淆。",
+        "innovation": "首次在目标说话人提取中显式建模并优化说话人混淆问题；提出两种基于小片段重建改善性能分布的新损失方案，替代传统仅优化重建误差的训练目标；在SepFormer基础上结合新损失形成端到端系统，无需额外模块。",
+        "evidence": "在WSJ0-2mix数据集上，SC错误相对减少14.8%，SI-SDRi达19.4 dB，PESQ达3.81，声称优于现有最优系统。",
+        "limitations": "损失方案的具体实现细节未在摘要中披露；仅在WSJ0-2mix上验证，泛化性待确认；未讨论计算开销和与其他主流骨干网络的兼容性。",
+        "why_relevant": "论文直接针对目标说话人提取任务，提出解决说话人混淆的损失方案，与我研究方向的关键问题（speaker extraction, source separation）完全吻合，且涉及端到端方法和时间域网络。"
+      }
+    },
+    {
+      "id": "arxiv:2306.13734",
+      "arxiv_id": "2306.13734",
+      "title": "The CHiME-7 DASR Challenge: Distant Meeting Transcription with Multiple Devices in Diverse Scenarios",
+      "authors": [
+        "Samuele Cornell",
+        "Matthew Wiesner",
+        "Shinji Watanabe",
+        "Desh Raj",
+        "Xuankai Chang",
+        "Paola García",
+        "Yoshiki Masuyama",
+        "Zhong-Qiu Wang",
+        "S. Squartini",
+        "S. Khudanpur"
+      ],
+      "published": "2023-06-23T00:00:00+00:00",
+      "summary": "The CHiME challenges have played a significant role in the development and evaluation of robust automatic speech recognition (ASR) systems. We introduce the CHiME-7 distant ASR (DASR) task, within the 7th CHiME challenge. This task comprises joint ASR and diarization in far-field settings with multiple, and possibly heterogeneous, recording devices. Different from previous challenges, we evaluate systems on 3 diverse scenarios: CHiME-6, DiPCo, and Mixer 6. The goal is for participants to devise a single system that can generalize across different array geometries and use cases with no a-priori information. Another departure from earlier CHiME iterations is that participants are allowed to use open-source pre-trained models and datasets. In this paper, we describe the challenge design, motivation, and fundamental research questions in detail. We also present the baseline system, which is fully array-topology agnostic and features multi-channel diarization, channel selection, guided source separation and a robust ASR model that leverages self-supervised speech representations (SSLR).",
+      "paper_url": "https://arxiv.org/abs/2306.13734",
+      "pdf_url": "https://arxiv.org/pdf/2306.13734",
+      "categories": [
+        "7th International Workshop on Speech Processing in Everyday Environments (CHiME 2023)"
+      ],
+      "venue": "7th International Workshop on Speech Processing in Everyday Environments (CHiME 2023)",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "论文概述了CHiME-7远场多设备ASR和说话人分离挑战，引入阵列拓扑无关的多通道分离与自监督表征，与语音分离和麦克风阵列处理方向高度相关，是重要竞赛基准。",
+      "citation_count": 87,
+      "date_added": "2026-07-18",
+      "chinese_summary": {
+        "problem": "CHiME-7 DASR挑战旨在解决远场会议转录中，如何构建单一模型在不同异构设备及无先验阵列信息下，联合进行自动语音识别和说话人日志的问题。",
+        "method": "基线系统流程包括：阵列拓扑无关的多通道说话人日志模块、通道选择模块、引导源分离模块，以及基于自监督语音表示（SSLR）的鲁棒ASR模型。",
+        "innovation": "挑战设计强调跨场景（CHiME-6、DiPCo、Mixer 6）和设备泛化，不依赖阵列几何先验；首次允许使用开源预训练模型和数据集；基线系统实现完全阵列拓扑无关的端到端处理。",
+        "evidence": "摘要中未提供具体实验结果或性能数据，仅描述了挑战规则和基线系统架构，证据不足。",
+        "limitations": "引导源分离的具体方法未阐明，系统整体性能及泛化能力需看论文实验部分；分离模块仅是辅助ASR的组件，不是独立研究目标。",
+        "why_relevant": "论文中直接出现“引导源分离”（guided source separation），匹配研究方向的关键词“source separation”，但分离仅为整个多通道ASR和说话人日志系统中的一部分，非论文核心贡献，需全文确认是否在分离方法上有具体创新。"
+      }
+    },
+    {
+      "id": "arxiv:2403.18257",
+      "arxiv_id": "2403.18257",
+      "title": "Dual-path Mamba: Short and Long-term Bidirectional Selective Structured State Space Models for Speech Separation",
+      "authors": [
+        "Xilin Jiang",
+        "Cong Han",
+        "N. Mesgarani"
+      ],
+      "published": "2024-03-27T00:00:00+00:00",
+      "summary": "Transformers have been the most successful architecture for various speech modeling tasks, including speech separation. However, the self-attention mechanism in transformers with quadratic complexity is inefficient in computation and memory. Recent models incorporate new layers and modules along with transformers for better performance but also introduce extra model complexity. In this work, we replace transformers with Mamba, a selective state space model, for speech separation. We propose dual-path Mamba, which models short-term and long-term forward and backward dependency of speech signals using selective state spaces. Our experimental results on the WSJ0-2mix data show that our dual-path Mamba models of comparably smaller sizes outperform state-of-the-art RNN model DPRNN, CNN model WaveSplit, and transformer model Sepformer. Our largest model reaches an SI-SNRi of 23.4 dB. Code available: https://github.com/xi-j/Mamba-TasNet",
+      "paper_url": "https://arxiv.org/abs/2403.18257",
+      "pdf_url": "https://arxiv.org/pdf/2403.18257",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出双路径Mamba模型，利用选择性状态空间替代Transformer进行语音分离，在WSJ0-2mix上达到23.4dB SI-SNRi，为语音分离提供高效新范式，与语音分离方向高度相关且已成为代表性基线。",
+      "citation_count": 86,
+      "date_added": "2026-07-18",
+      "chinese_summary": {
+        "problem": "自注意力机制的Transformer模型在语音分离中计算和内存效率低，而现有改进方法引入额外复杂度。本文旨在用更高效的选择性状态空间模型替代Transformer，解决语音分离的计算效率问题。",
+        "method": "提出双路径Mamba模型，利用Mamba（选择性状态空间模型）对语音信号的短期和长期前向与后向依赖进行建模。该双路径结构分别处理局部和全局信息，通过选择性状态空间机制捕获时序依赖。",
+        "innovation": "首次将Mamba引入语音分离任务，并设计双路径结构以同时建模短长期双向依赖；在更小的模型尺寸下，性能超越了基于RNN的DPRNN、CNN的WaveSplit和Transformer的Sepformer。",
+        "evidence": "在WSJ0-2mix数据集上，最大模型达到SI-SNRi 23.4 dB，且较现有最优模型参数量更小；代码已开源。",
+        "limitations": "摘要仅针对标准语音分离（WSJ0-2mix），未涉及目标说话人提取或多通道等扩展场景；泛化性和更多数据集上的表现需阅读全文确认。",
+        "why_relevant": "精准匹配研究方向中的语音分离、双路径网络（dual-path）、时域分离方法，且涉及掩蔽模型（masking model）的常见架构，因研究方向名称为Speech Separation and Target Speaker Extraction，该工作直接解决核心任务之一。"
+      }
+    },
+    {
+      "id": "arxiv:2308.03987",
+      "arxiv_id": "2308.03987",
+      "title": "Target Speech Extraction with Conditional Diffusion Model",
+      "authors": [
+        "Naoyuki Kamo",
+        "Marc Delcroix",
+        "Tomohiro Nakatan"
+      ],
+      "published": "2023-08-08T00:00:00+00:00",
+      "summary": "Diffusion model-based speech enhancement has received increased attention since it can generate very natural enhanced signals and generalizes well to unseen conditions. Diffusion models have been explored for several sub-tasks of speech enhancement, such as speech denoising, dereverberation, and source separation. In this paper, we investigate their use for target speech extraction (TSE), which consists of estimating the clean speech signal of a target speaker in a mixture of multi-talkers. TSE is realized by conditioning the extraction process on a clue identifying the target speaker. We show we can realize TSE using a conditional diffusion model conditioned on the clue. Besides, we introduce ensemble inference to reduce potential extraction errors caused by the diffusion process. In experiments on Libri2mix corpus, we show that the proposed diffusion model-based TSE combined with ensemble inference outperforms a comparable TSE system trained discriminatively.",
+      "paper_url": "https://arxiv.org/abs/2308.03987",
+      "pdf_url": "http://arxiv.org/pdf/2308.03987",
+      "categories": [
+        "Interspeech"
+      ],
+      "venue": "Interspeech",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 8.0,
+      "justification": "论文提出条件扩散模型用于目标说话人提取并引入集成推理，与语音分离和目标说话人提取方向高度相关，方法创新且实验验证有效，但引用数尚未达到经典基线级别。",
+      "citation_count": 33,
+      "date_added": "2026-07-18",
+      "chinese_summary": {
+        "problem": "论文解决目标说话人提取（TSE）问题，即从多说话人混合信号中分离出特定目标说话人的干净语音。",
+        "method": "使用条件扩散模型，以目标说话人线索（如说话人嵌入）作为条件引导扩散过程，生成目标语音。同时引入集成推理，通过组合多次推理结果来减少扩散过程的随机误差，提升提取质量。",
+        "innovation": "首次将条件扩散模型应用于目标说话人提取；提出集成推理策略，有效缓解扩散模型生成过程中的不稳定性，提升提取精度。",
+        "evidence": "在Libri2mix数据集上进行实验，所提扩散模型结合集成推理优于可比判别式TSE系统，但摘要未报告具体性能数值。",
+        "limitations": "未提及计算复杂度、实时性、对线索准确性的敏感性以及集成推理带来的额外开销。",
+        "why_relevant": "目标说话人提取可看作语音增强的特例，涉及从噪声（其他说话人）中增强目标语音，与我的研究中的去噪、去混响有共通之处；文中扩散模型已用于这些子任务，可能提供新的建模思路。但本文重点在TSE而非通用语音增强，需人工确认具体方法对前端处理的迁移性。"
       }
     }
   ]
