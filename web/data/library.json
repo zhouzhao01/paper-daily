@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-18T04:16:56.665691+00:00",
+  "updated_at_iso": "2026-07-19T04:39:25.929430+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -2456,6 +2456,213 @@
         "evidence": "在Libri2mix数据集上进行实验，所提扩散模型结合集成推理优于可比判别式TSE系统，但摘要未报告具体性能数值。",
         "limitations": "未提及计算复杂度、实时性、对线索准确性的敏感性以及集成推理带来的额外开销。",
         "why_relevant": "目标说话人提取可看作语音增强的特例，涉及从噪声（其他说话人）中增强目标语音，与我的研究中的去噪、去混响有共通之处；文中扩散模型已用于这些子任务，可能提供新的建模思路。但本文重点在TSE而非通用语音增强，需人工确认具体方法对前端处理的迁移性。"
+      }
+    },
+    {
+      "id": "arxiv:2407.05407",
+      "arxiv_id": "2407.05407",
+      "title": "CosyVoice: A Scalable Multilingual Zero-shot Text-to-speech Synthesizer based on Supervised Semantic Tokens",
+      "authors": [
+        "Zhihao Du",
+        "Qian Chen",
+        "Shiliang Zhang",
+        "Kai Hu",
+        "Heng Lu",
+        "Yexin Yang",
+        "Hangrui Hu",
+        "Siqi Zheng",
+        "Yue Gu",
+        "Ziyang Ma",
+        "Zhifu Gao",
+        "Zhijie Yan"
+      ],
+      "published": "2024-07-07T00:00:00+00:00",
+      "summary": "Recent years have witnessed a trend that large language model (LLM) based text-to-speech (TTS) emerges into the mainstream due to their high naturalness and zero-shot capacity. In this paradigm, speech signals are discretized into token sequences, which are modeled by an LLM with text as prompts and reconstructed by a token-based vocoder to waveforms. Obviously, speech tokens play a critical role in LLM-based TTS models. Current speech tokens are learned in an unsupervised manner, which lacks explicit semantic information and alignment to the text. In this paper, we propose to represent speech with supervised semantic tokens, which are derived from a multilingual speech recognition model by inserting vector quantization into the encoder. Based on the tokens, we further propose a scalable zero-shot TTS synthesizer, CosyVoice, which consists of an LLM for text-to-token generation and a conditional flow matching model for token-to-speech synthesis. Experimental results show that supervised semantic tokens significantly outperform existing unsupervised tokens in terms of content consistency and speaker similarity for zero-shot voice cloning. Moreover, we find that utilizing large-scale data further improves the synthesis performance, indicating the scalable capacity of CosyVoice. To the best of our knowledge, this is the first attempt to involve supervised speech tokens into TTS models.",
+      "paper_url": "https://arxiv.org/abs/2407.05407",
+      "pdf_url": "https://arxiv.org/pdf/2407.05407",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "高度相关生成语音技术（TTS），提出基于多语言ASR监督语义标记的零样本语音合成，结合LLM与条件流匹配模型，在零样本语音克隆的内容一致性和说话人相似度上显著优于无监督方法，具有可扩展性，是必读工作。",
+      "citation_count": 479,
+      "date_added": "2026-07-19",
+      "chinese_summary": {
+        "problem": "当前基于LLM的TTS模型中，语音令牌通常以无监督方式学习，缺乏与文本的语义对齐和显式信息，制约了零样本语音克隆的内容一致性和说话人相似度。",
+        "method": "提出使用监督语义令牌，通过在多语言语音识别模型的编码器中插入向量量化获得；基于此构建CosyVoice，包含一个用于文本到令牌生成的LLM和一个基于条件流匹配的令牌到语音合成模型。",
+        "innovation": "首次将监督语音令牌引入TTS模型；利用从多语言ASR模型提取的监督语义令牌，增强了文本-语音的对齐；采用条件流匹配模型实现令牌到波形的高质量合成，并且系统具备可扩展性，大规模数据能进一步提升性能。",
+        "evidence": "实验结果表明，监督语义令牌在零样本语音克隆上，内容一致性和说话人相似度显著优于无监督令牌；使用大规模数据后合成性能进一步提高。",
+        "limitations": "摘要未提供实验的具体数据集、对比基线和评估指标细节；多语言支持的实际语种范围和效果未知；未提及计算复杂度和实时性；令牌到语音合成部分虽用到流匹配，但整体方法对生成语音增强等任务的适用性待验证。",
+        "why_relevant": "论文属于文本到语音合成，与研究方向的关键词'speech synthesis'和'text-to-speech'直接匹配；核心组件使用了条件流匹配模型，这正是研究方向中关注的生成方法（flow matching applied to speech）；所提方法涉及神经声码器，对生成式语音合成和潜在修复拓展有参考意义。"
+      }
+    },
+    {
+      "id": "arxiv:2306.12925",
+      "arxiv_id": "2306.12925",
+      "title": "AudioPaLM: A Large Language Model That Can Speak and Listen",
+      "authors": [
+        "Paul K. Rubenstein",
+        "Chulayuth Asawaroengchai",
+        "D. Nguyen",
+        "Ankur Bapna",
+        "Zalán Borsos",
+        "F. D. C. Quitry",
+        "Peter Chen",
+        "D. Badawy",
+        "Wei Han",
+        "E. Kharitonov",
+        "Hannah Muckenhirn",
+        "D. Padfield"
+      ],
+      "published": "2023-06-22T00:00:00+00:00",
+      "summary": "We introduce AudioPaLM, a large language model for speech understanding and generation. AudioPaLM fuses text-based and speech-based language models, PaLM-2 [Anil et al., 2023] and AudioLM [Borsos et al., 2022], into a unified multimodal architecture that can process and generate text and speech with applications including speech recognition and speech-to-speech translation. AudioPaLM inherits the capability to preserve paralinguistic information such as speaker identity and intonation from AudioLM and the linguistic knowledge present only in text large language models such as PaLM-2. We demonstrate that initializing AudioPaLM with the weights of a text-only large language model improves speech processing, successfully leveraging the larger quantity of text training data used in pretraining to assist with the speech tasks. The resulting model significantly outperforms existing systems for speech translation tasks and has the ability to perform zero-shot speech-to-text translation for many languages for which input/target language combinations were not seen in training. AudioPaLM also demonstrates features of audio language models, such as transferring a voice across languages based on a short spoken prompt. We release examples of our method at https://google-research.github.io/seanet/audiopalm/examples",
+      "paper_url": "https://arxiv.org/abs/2306.12925",
+      "pdf_url": "http://arxiv.org/pdf/2306.12925",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "AudioPaLM是统一语音理解与生成的里程碑式大语言模型，与生成式语音技术方向高度相关，影响力显著，为必读基础工作。",
+      "citation_count": 484,
+      "date_added": "2026-07-19",
+      "chinese_summary": {
+        "problem": "构建一个统一的多模态语言模型，使其能同时理解和生成语音与文本，解决现有分离式系统在语音识别和翻译中难以保留副语言信息、跨模态知识迁移不足的问题。",
+        "method": "将文本大语言模型PaLM-2与音频生成模型AudioLM进行权重融合，形成单一的解码器架构；模型初始化自PaLM-2权重，借助文本预训练知识提升语音处理性能，同时保留AudioLM对说话人身份、语调等副语言信息的建模能力。",
+        "innovation": "首次将仅文本的LLM与音频LM深度融合为语音-文本双重生成的统一架构，实现了语音识别、翻译中的零样本多语言泛化；利用文本训练数据辅助语音任务，显著超越现有系统；展示了从简短语音提示进行跨语言说话人音色迁移的新能力。",
+        "evidence": "证据不足：摘要仅声称在语音翻译任务上显著优于现有系统，可实现零样本语音到文本翻译及跨语言声音迁移，但未给出任何量化指标、实验设置或数据集信息。",
+        "limitations": "生成能力主要集中在翻译输出的语音，未提及用于通用语音合成或增强任务；模型规模、推理效率及对训练数据的依赖程度未知；零样本翻译和音色迁移的可靠性与限制未说明。",
+        "why_relevant": "论文中的跨语言声音迁移功能与生成式语音技术中的零样本语音克隆和语音合成间接相关，但核心贡献在多模态语言模型，而非生成式增强、TTS或神经声码器，整体匹配度低，需人工复核是否具备参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2407.05361",
+      "arxiv_id": "2407.05361",
+      "title": "Emilia: An Extensive, Multilingual, and Diverse Speech Dataset For Large-Scale Speech Generation",
+      "authors": [
+        "Haorui He",
+        "Zengqiang Shang",
+        "Chaoren Wang",
+        "Xuyuan Li",
+        "Yicheng Gu",
+        "Hua Hua",
+        "Liwei Liu",
+        "Chen Yang",
+        "Jiaqi Li",
+        "Peiyang Shi",
+        "Yuancheng Wang",
+        "Kai Chen"
+      ],
+      "published": "2024-07-07T00:00:00+00:00",
+      "summary": "Recent advancements in speech generation models have been significantly driven by the use of large-scale training data. However, producing highly spontaneous, human-like speech remains a challenge due to the scarcity of large, diverse, and spontaneous speech datasets. In response, we introduce Emilia, the first large-scale, multilingual, and diverse speech generation dataset. Emilia starts with over 101k hours of speech across six languages, covering a wide range of speaking styles to enable more natural and spontaneous speech generation. To facilitate the scale-up of Emilia, we also present Emilia-Pipe, the first open-source preprocessing pipeline designed to efficiently transform raw, in-the-wild speech data into high-quality training data with speech annotations. Experimental results demonstrate the effectiveness of both Emilia and Emilia-Pipe. Demos are available at: https://emilia-dataset.github.io/Emilia-Demo-Page/.",
+      "paper_url": "https://arxiv.org/abs/2407.05361",
+      "pdf_url": "https://arxiv.org/pdf/2407.05361",
+      "categories": [
+        "Spoken Language Technology Workshop"
+      ],
+      "venue": "Spoken Language Technology Workshop",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "该论文提出了Emilia，首个大规模多语言多样化语音生成数据集，并配套开源预处理管线，直接推动生成式语音技术发展，引用高，是语音生成领域的基础资源。",
+      "citation_count": 274,
+      "date_added": "2026-07-19",
+      "chinese_summary": {
+        "problem": "大规模语音生成模型缺乏足够自然、自发且多样化的训练数据，限制了生成语音的人类相似度。",
+        "method": "提出Emilia数据集，包含超过10.1万小时、6种语言的大规模多风格语音数据；同时发布开源预处理管道Emilia-Pipe，能够高效将野外原始语音转换为带标注的高质量训练数据。",
+        "innovation": "首个大规模、多语言、多样化的语音生成数据集，涵盖广域说话风格以支持自然自发语音生成；首个面向语音生成的开源预处理管道，实现从原始数据到训练数据的自动化清洗与标注；通过数据和管道双重贡献，推动语音生成模型向更拟人化方向发展。",
+        "evidence": "摘要称实验证明了Emilia和Emilia-Pipe的有效性，但未给出具体指标，需阅读正文获取定量结果。",
+        "limitations": "数据质量和风格细粒度未知；管道处理的效率和准确性未在摘要中验证；数据集的实际使用对语音增强和声码器任务的适用性待确认。",
+        "why_relevant": "该数据集可直接用于训练生成式语音模型，如语音合成、语音增强、神经声码器等，匹配研究方向中的speech generation和生成模型数据需求，尤其适合扩散模型和flow matching的训练数据要求。"
+      }
+    },
+    {
+      "id": "arxiv:2412.10117",
+      "arxiv_id": "2412.10117",
+      "title": "CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models",
+      "authors": [
+        "Zhihao Du",
+        "Yuxuan Wang",
+        "Qian Chen",
+        "Xian Shi",
+        "Xiang Lv",
+        "Tianyu Zhao",
+        "Zhifu Gao",
+        "Yexin Yang",
+        "Changfeng Gao",
+        "Hui Wang",
+        "Fan Yu",
+        "Huadai Liu"
+      ],
+      "published": "2024-12-13T00:00:00+00:00",
+      "summary": "In our previous work, we introduced CosyVoice, a multilingual speech synthesis model based on supervised discrete speech tokens. By employing progressive semantic decoding with two popular generative models, language models (LMs) and Flow Matching, CosyVoice demonstrated high prosody naturalness, content consistency, and speaker similarity in speech in-context learning. Recently, significant progress has been made in multi-modal large language models (LLMs), where the response latency and real-time factor of speech synthesis play a crucial role in the interactive experience. Therefore, in this report, we present an improved streaming speech synthesis model, CosyVoice 2, which incorporates comprehensive and systematic optimizations. Specifically, we introduce finite-scalar quantization to improve the codebook utilization of speech tokens. For the text-speech LM, we streamline the model architecture to allow direct use of a pre-trained LLM as the backbone. In addition, we develop a chunk-aware causal flow matching model to support various synthesis scenarios, enabling both streaming and non-streaming synthesis within a single model. By training on a large-scale multilingual dataset, CosyVoice 2 achieves human-parity naturalness, minimal response latency, and virtually lossless synthesis quality in the streaming mode. We invite readers to listen to the demos at https://funaudiollm.github.io/cosyvoice2.",
+      "paper_url": "https://arxiv.org/abs/2412.10117",
+      "pdf_url": "https://arxiv.org/pdf/2412.10117",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "高度相关于生成式语音技术（语音合成与TTS），提出流式大规模语言模型CosyVoice 2，结合有限标量量化与块感知因果流匹配，实现流式零失真合成，是必读的近期经典工作。",
+      "citation_count": 401,
+      "date_added": "2026-07-19",
+      "chinese_summary": {
+        "problem": "现有流式语音合成模型在面向交互场景时，响应延迟与实时因子成为关键瓶颈，CosyVoice 2 旨在实现流式合成的高自然度、低延迟及无损质量，并统一流式与非流式范式。",
+        "method": "在 CosyVoice 框架基础上，引入有限标量量化（FSQ）提升语音离散标记的码本利用率；精简文本-语音语言模型架构，直接采用预训练大语言模型作为骨干；开发分块感知的因果流匹配模型，使单一模型同时支持流式与非流式合成；利用大规模多语言数据集训练。",
+        "innovation": "提出有限标量量化以优化语音标记的表示效率与码本使用；将预训练 LLM 直接作为文本-语音 LM 骨干，简化系统设计；采用分块感知的因果流匹配统一流式与非流式合成，实现流式模式下人类水平自然度与极低延迟。",
+        "evidence": "摘要称在流式模式下达到人类水平自然度、近乎无损的合成质量及最低响应延迟，但未提供具体实验数据或对比基准，证据强度有限，需阅读全文验证。",
+        "limitations": "未提及模型规模、计算开销、多语言覆盖度、在噪声等实际环境下的表现，以及该方法能否泛化至语音增强或修复等任务。",
+        "why_relevant": "与我的研究高度相关：论文聚焦流匹配（flow matching）与语言模型驱动的语音合成（TTS），属于生成式语音技术；强调流式合成与低延迟，契合实时交互场景；涉及神经声码器相关的生成建模优化；匹配关键词：speech synthesis, flow matching speech, text-to-speech。"
+      }
+    },
+    {
+      "id": "arxiv:2406.05370",
+      "arxiv_id": "2406.05370",
+      "title": "VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text to Speech Synthesizers",
+      "authors": [
+        "Sanyuan Chen",
+        "Shujie Liu",
+        "Long Zhou",
+        "Yanqing Liu",
+        "Xu Tan",
+        "Jinyu Li",
+        "Sheng Zhao",
+        "Yao Qian",
+        "Furu Wei"
+      ],
+      "published": "2024-06-08T00:00:00+00:00",
+      "summary": "This paper introduces VALL-E 2, the latest advancement in neural codec language models that marks a milestone in zero-shot text-to-speech synthesis (TTS), achieving human parity for the first time. Based on its predecessor, VALL-E, the new iteration introduces two significant enhancements: Repetition Aware Sampling refines the original nucleus sampling process by accounting for token repetition in the decoding history. It not only stabilizes the decoding but also circumvents the infinite loop issue. Grouped Code Modeling organizes codec codes into groups to effectively shorten the sequence length, which not only boosts inference speed but also addresses the challenges of long sequence modeling. Our experiments on the LibriSpeech and VCTK datasets show that VALL-E 2 surpasses previous systems in speech robustness, naturalness, and speaker similarity. It is the first of its kind to reach human parity on these benchmarks. Moreover, VALL-E 2 consistently synthesizes high-quality speech, even for sentences that are traditionally challenging due to their complexity or repetitive phrases. The advantages of this work could contribute to valuable endeavors, such as generating speech for individuals with aphasia or people with amyotrophic lateral sclerosis. See https://aka.ms/valle2 for demos of VALL-E 2.",
+      "paper_url": "https://arxiv.org/abs/2406.05370",
+      "pdf_url": "https://arxiv.org/pdf/2406.05370",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "在零样本文本到语音合成中首次达到人类水平，提出的重复感知采样和分组编码建模有效提升了稳定性、自然度和推理速度，与生成式语音技术高度相关，是必读的里程碑工作。",
+      "citation_count": 206,
+      "date_added": "2026-07-19",
+      "chinese_summary": {
+        "problem": "零样本文本到语音合成中，如何生成自然且与说话人高度相似的高质量语音，并达到人类水平。",
+        "method": "基于神经编解码语言模型的 VALL-E 2，引入重复感知采样以稳定解码并避免无限循环，采用分组编解码建模缩短序列长度，从而加速推理并改善长序列建模。",
+        "innovation": "重复感知采样通过考虑解码历史中的标记重复来改进核采样，解决了无限循环问题；分组编解码建模将编解码器码本分组，有效缩短序列长度，提升推理速度并缓解长序列建模挑战。",
+        "evidence": "在 LibriSpeech 和 VCTK 数据集上的实验表明，VALL-E 2 在语音鲁棒性、自然度和说话人相似度上超越先前系统，首次达到人类水平。",
+        "limitations": "摘要未提供生成速度量化对比、模型大小、对未见说话人的泛化细节以及是否开源代码。",
+        "why_relevant": "论文属于生成式语音技术中的零样本文本到语音合成，直接匹配研究方向中的 speech synthesis 和 text-to-speech，并采用生成式语言模型方法，与研究方向高度相关。"
       }
     }
   ]
