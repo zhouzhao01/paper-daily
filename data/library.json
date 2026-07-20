@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-19T04:39:25.929430+00:00",
+  "updated_at_iso": "2026-07-20T04:56:09.181347+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -2663,6 +2663,188 @@
         "evidence": "在 LibriSpeech 和 VCTK 数据集上的实验表明，VALL-E 2 在语音鲁棒性、自然度和说话人相似度上超越先前系统，首次达到人类水平。",
         "limitations": "摘要未提供生成速度量化对比、模型大小、对未见说话人的泛化细节以及是否开源代码。",
         "why_relevant": "论文属于生成式语音技术中的零样本文本到语音合成，直接匹配研究方向中的 speech synthesis 和 text-to-speech，并采用生成式语言模型方法，与研究方向高度相关。"
+      }
+    },
+    {
+      "id": "arxiv:2401.12179",
+      "arxiv_id": "2401.12179",
+      "title": "DITTO: Diffusion Inference-Time T-Optimization for Music Generation",
+      "authors": [
+        "Zachary Novack",
+        "Julian McAuley",
+        "Taylor Berg-Kirkpatrick",
+        "Nicholas J. Bryan"
+      ],
+      "published": "2024-01-22T00:00:00+00:00",
+      "summary": "We propose Diffusion Inference-Time T-Optimization (DITTO), a general-purpose frame-work for controlling pre-trained text-to-music diffusion models at inference-time via optimizing initial noise latents. Our method can be used to optimize through any differentiable feature matching loss to achieve a target (stylized) output and leverages gradient checkpointing for memory efficiency. We demonstrate a surprisingly wide-range of applications for music generation including inpainting, outpainting, and looping as well as intensity, melody, and musical structure control - all without ever fine-tuning the underlying model. When we compare our approach against related training, guidance, and optimization-based methods, we find DITTO achieves state-of-the-art performance on nearly all tasks, including outperforming comparable approaches on controllability, audio quality, and computational efficiency, thus opening the door for high-quality, flexible, training-free control of diffusion models. Sound examples can be found at https://DITTO-Music.github.io/web/.",
+      "paper_url": "https://arxiv.org/abs/2401.12179",
+      "pdf_url": "https://arxiv.org/pdf/2401.12179",
+      "categories": [
+        "International Conference on Machine Learning"
+      ],
+      "venue": "International Conference on Machine Learning",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出扩散推理时优化方法实现可控音乐生成，与音乐信息检索与生成方向高度相关，方法新颖且性能领先。",
+      "citation_count": 90,
+      "date_added": "2026-07-20",
+      "chinese_summary": {
+        "problem": "如何在推理时实现预训练文本到音乐扩散模型的灵活、无微调控制，以生成具有特定风格或结构的音乐。",
+        "method": "DITTO 是一种推理时优化方法，通过从随机噪声开始，优化初始噪声潜变量以最小化可微分特征匹配损失，从而引导模型生成符合目标条件的音乐。利用梯度检查点策略降低内存消耗，无需修改或微调预训练模型。",
+        "innovation": "提出首个用于音乐扩散模型的通用推理时优化框架，可处理多种控制任务；完全无需微调，仅通过优化初始噪声即实现强度、旋律、结构等控制；在多个音乐生成控制任务上达到最优性能，在可控性、音频质量和计算效率上超越训练、引导和现有优化方法。",
+        "evidence": "摘要列举了 inpainting、outpainting、looping、强度、旋律和音乐结构控制等应用场景，并声称在与训练、引导和优化方法的对比中取得最先进的性能，包括在可控性、音频质量和计算效率上的优势。具体实验数据未在摘要中给出。",
+        "limitations": "方法仅展示了音乐领域的应用，迁移至语音扩散模型的效果未知；控制效果依赖预定义的可微分特征损失函数；对非可微的控制目标可能无效；实际应用需结合特定预训练音乐生成模型。",
+        "why_relevant": "研究方向为生成式语音技术，包含扩散模型在语音增强、合成等任务的应用。DITTO 提出的推理时优化控制方法在原理上具有跨领域通用性，可能被用于语音扩散模型（如 TTS、神经声码器、语音修复）的无微调控制，例如实现语音修补或风格强度调节。但摘要完全未涉及语音，且实验仅在音乐生成中完成，因此匹配度低，需人工复核以确认迁移可行性。"
+      }
+    },
+    {
+      "id": "arxiv:2607.15755",
+      "arxiv_id": "2607.15755",
+      "title": "AuEmoChat: Authentic Emotion Understanding and Rendering for Conversational Speech Synthesis",
+      "authors": [
+        "Zhenqi Jia",
+        "Yuan Zhao",
+        "Aruukhan",
+        "Rui Liu",
+        "Haizhou Li"
+      ],
+      "published": "2026-07-17T08:47:58Z",
+      "summary": "Conversational Speech Synthesis (CSS) aims to synthesize speech with human-like emotional expression and contextual consistency in user-agent interactions. Existing CSS methods struggle to render authentic human emotions due to limited predefined emotion label spaces (e.g., seven emotion categories), while redundant multimodal tokens in multi-turn dialogue history interfere with context understanding. To address these issues, we propose AuEmoChat, a CSS framework for authentic emotion understanding and rendering. First, we develop AuEmoCodec, which learns a discrete authentic emotion token space from large-scale emotional speech via finite scalar quantization, enabling a more authentic emotion representation than limited basic emotion categories. We further propose AuEmoToMe, an authentic-emotion-guided token merging algorithm that merges redundant tokens in multimodal dialogue history while preserving emotion-relevant context. We integrate it into an autoregressive text-speech model to predict the target authentic emotion token and speech tokens. Finally, we propose Authentic Emotion Flow Matching, which renders speech by jointly conditioning on merged dialogue context, target authentic emotion, and acoustic priors. Extensive experiments on the NCSSD-EmCap dataset demonstrate that AuEmoChat outperforms state-of-the-art CSS baselines and generates more expressive and authentic emotional speech.",
+      "paper_url": "http://arxiv.org/abs/2607.15755v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.15755v1",
+      "categories": [
+        "cs.SD",
+        "cs.AI"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "该论文提出基于离散情感令牌和流匹配的情感会话语音合成框架，属于生成式语音技术方向，与研究方向高度相关且质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-07-20",
+      "chinese_summary": {
+        "problem": "对话语音合成中，预定义情感标签空间有限，难以表达丰富、真实的人类情感，且多轮对话历史中的冗余多模态token干扰上下文理解。",
+        "method": "提出AuEmoChat框架：1) 设计AuEmoCodec，从大规模情感语音中学习离散的真实情感token空间，突破传统有限情感类别；2) 开发AuEmoToMe情感引导的token合并算法，在多模态对话历史中保留情感相关上下文并去除冗余；3) 将两者集成到自回归文本-语音模型，预测目标情感token和语音token；4) 采用Authentic Emotion Flow Matching，以合并的对话上下文、目标情感token和声学先验为条件生成语音。",
+        "innovation": "提出离散的真实情感token表示学习（AuEmoCodec），代替预定义情感标签，增强情感表达的丰富性；设计情感感知的token合并机制（AuEmoToMe），降低对话历史冗余，提升上下文利用效率；将自回归建模与Flow Matching结合，在对话语音合成中实现情感可控的高质量生成。",
+        "evidence": "在NCSSD-EmCap数据集上进行了实验，结果表明AuEmoChat优于现有SOTA对话语音合成基线，生成的语音更具表现力和情感真实性。",
+        "limitations": "实验仅基于NCSSD-EmCap数据集，对其他对话场景的泛化性待验证；离散情感token空间可能在细粒度情感表达上存在量化损失；自回归生成可能导致推理速度较慢，需要全文查阅效率分析。",
+        "why_relevant": "论文聚焦于对话语音合成，使用Flow Matching作为生成模型，直接匹配研究方向中的‘flow matching speech’和‘speech synthesis’关键词；涉及情感语音的生成式建模，与生成式语音技术高度一致。"
+      }
+    },
+    {
+      "id": "arxiv:2311.08355",
+      "arxiv_id": "2311.08355",
+      "title": "Mustango: Toward Controllable Text-to-Music Generation",
+      "authors": [
+        "J. Melechovský",
+        "Zixun Guo",
+        "Deepanway Ghosal",
+        "Navonil Majumder",
+        "Dorien Herremans",
+        "Soujanya Poria"
+      ],
+      "published": "2023-11-14T00:00:00+00:00",
+      "summary": "The quality of the text-to-music models has reached new heights due to recent advancements in diffusion models. The controllability of various musical aspects, however, has barely been explored. In this paper, we propose Mustango: a music-domain-knowledge-inspired text-to-music system based on diffusion. Mustango aims to control the generated music, not only with general text captions, but with more rich captions that can include specific instructions related to chords, beats, tempo, and key. At the core of Mustango is MuNet, a Music-Domain-Knowledge-Informed UNet guidance module that steers the generated music to include the music-specific conditions, which we predict from the text prompt, as well as the general text embedding, during the reverse diffusion process. To overcome the limited availability of open datasets of music with text captions, we propose a novel data augmentation method that includes altering the harmonic, rhythmic, and dynamic aspects of music audio and using state-of-the-art Music Information Retrieval methods to extract the music features which will then be appended to the existing descriptions in text format. We release the resulting MusicBench dataset which contains over 52K instances and includes music-theory-based descriptions in the caption text. Through extensive experiments, we show that the quality of the music generated by Mustango is state-of-the-art, and the controllability through music-specific text prompts greatly outperforms other models such as MusicGen and AudioLDM2.",
+      "paper_url": "https://arxiv.org/abs/2311.08355",
+      "pdf_url": "https://doi.org/10.18653/v1/2024.naacl-long.459",
+      "categories": [
+        "North American Chapter of the Association for Computational Linguistics"
+      ],
+      "venue": "North American Chapter of the Association for Computational Linguistics",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 8.0,
+      "justification": "论文提出可控文本到音乐生成的扩散模型Mustango，引入和弦、节拍等音乐知识控制生成，并贡献MusicBench数据集，与音乐信息检索与表示方向高度相关，工作质量扎实，有一定影响力（148引用）。",
+      "citation_count": 148,
+      "date_added": "2026-07-20",
+      "chinese_summary": {
+        "problem": "现有文本到音乐生成模型缺乏对音乐特定属性（如和弦、节拍、节奏、调性）的细粒度控制，导致生成结果难以精确符合领域需求。",
+        "method": "提出Mustango，一种基于扩散的文本到音乐生成系统。核心是MuNet模块，将音乐领域条件（和弦、节拍、节奏、调性）的预测与文本嵌入融合，指导逆向扩散过程。通过数据增强方法，利用MIR技术提取音频的音乐特征并转化为文本描述，构建MusicBench数据集。",
+        "innovation": "首次将和弦、节拍等多种音乐领域知识显式融入扩散模型实现细粒度控制；设计MuNet条件模块，将音乐特征预测与文本嵌入协同调节生成；提出结合MIR特征提取的数据增强策略，构建大规模含音乐理论描述的数据集。",
+        "evidence": "摘要提及广泛实验表明Mustango生成质量达到最优，且在音乐特定文本提示的 controllability 上大幅超越MusicGen和AudioLDM2。发布了包含52000多个实例的MusicBench数据集。",
+        "limitations": "未说明音乐特征的具体表示形式及其对生成质量的影响是否可泛化到其他音乐风格；未提及模型是否适用于其他MIR任务（如标注、检索）；数据集构建细节与MIR方法的选用准则需阅读全文确认。",
+        "why_relevant": "论文匹配研究方向中的“music generation”关键词；使用了MIR技术提取音乐特征，为MIR在下游生成任务的应用提供示例。但核心贡献在于生成的可控性而非音乐表示学习或检索，建议人工复核是否关注生成控制与音乐领域知识的结合方式。"
+      }
+    },
+    {
+      "id": "arxiv:2503.08638",
+      "arxiv_id": "2503.08638",
+      "title": "YuE: Scaling Open Foundation Models for Long-Form Music Generation",
+      "authors": [
+        "Ruibin Yuan",
+        "Hanfeng Lin",
+        "Shuyue Guo",
+        "Ge Zhang",
+        "Jiahao Pan",
+        "Yongyi Zang",
+        "Haohe Liu",
+        "Yiming Liang",
+        "Wenye Ma",
+        "Xingjian Du",
+        "Xinrun Du",
+        "Zhen Ye"
+      ],
+      "published": "2025-03-11T00:00:00+00:00",
+      "summary": "We tackle the task of long-form music generation--particularly the challenging \\textbf{lyrics-to-song} problem--by introducing YuE, a family of open foundation models based on the LLaMA2 architecture. Specifically, YuE scales to trillions of tokens and generates up to five minutes of music while maintaining lyrical alignment, coherent musical structure, and engaging vocal melodies with appropriate accompaniment. It achieves this through (1) track-decoupled next-token prediction to overcome dense mixture signals, (2) structural progressive conditioning for long-context lyrical alignment, and (3) a multitask, multiphase pre-training recipe to converge and generalize. In addition, we redesign the in-context learning technique for music generation, enabling versatile style transfer (e.g., converting Japanese city pop into an English rap while preserving the original accompaniment) and bidirectional generation. Through extensive evaluation, we demonstrate that YuE matches or even surpasses some of the proprietary systems in musicality and vocal agility. In addition, fine-tuning YuE enables additional controls and enhanced support for tail languages. Furthermore, beyond generation, we show that YuE's learned representations can perform well on music understanding tasks, where the results of YuE match or exceed state-of-the-art methods on the MARBLE benchmark. Keywords: lyrics2song, song generation, long-form, foundation model, music generation",
+      "paper_url": "https://arxiv.org/abs/2503.08638",
+      "pdf_url": "https://arxiv.org/pdf/2503.08638",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 8.0,
+      "justification": "该工作提出了面向长时音乐生成的开源基础模型YuE，在歌词对齐与音乐结构上表现突出，其学习到的表征在音乐理解任务（MARBLE）上达到先进水平，与音乐信息检索与表示方向高度相关且质量扎实。",
+      "citation_count": 90,
+      "date_added": "2026-07-20",
+      "chinese_summary": {
+        "problem": "解决长格式音乐生成中的歌词到歌曲（lyrics-to-song）任务，尤其是生成最长五分钟、保持歌词对齐、音乐结构连贯和高表现力人声的歌曲。",
+        "method": "基于LLaMA2架构，采用轨道解耦的下一步令牌预测处理混合信号，通过结构渐进式条件化实现长上下文歌词对齐，并使用多任务、多阶段预训练策略进行训练；同时引入上下文学习方法支持风格迁移和双向生成。",
+        "innovation": "提出轨道解耦的下一步令牌预测，有效克服密集混合信号问题；设计结构渐进式条件化机制，实现长文本歌词的对齐；开发多任务多阶段预训练配方，提升模型收敛和泛化能力；首次将上下文学习应用于音乐生成，支持灵活的创作控制。",
+        "evidence": "摘要中提及生成最长五分钟的音乐并保持歌词对齐和结构连贯；评估结果显示在音乐性和人声敏捷性上匹配或超越部分商业系统；在MARBLE基准上，学到的表示在音乐理解任务中达到或超过先进方法。",
+        "limitations": "未提供具体定量指标（如MOS、FAD等）的详细数值；长格式生成的客观评估难度大，人工评估细节待确认；模型规模和训练成本未说明，可能限制普通研究者复现；对尾部语言的支持仅通过微调提及，泛化性需验证。",
+        "why_relevant": "直接匹配研究方向中的music generation和music understanding；论文提出的音乐表示在MARBLE基准上表现优异，与music representation learning和audio foundation model高度相关；上下文学习和多任务预训练对self-supervised audio representation有借鉴意义。"
+      }
+    },
+    {
+      "id": "arxiv:2308.11276",
+      "arxiv_id": "2308.11276",
+      "title": "Music Understanding LLaMA: Advancing Text-to-Music Generation with Question Answering and Captioning",
+      "authors": [
+        "Shansong Liu",
+        "Atin Sakkeer Hussain",
+        "Chenshuo Sun",
+        "Yin Shan"
+      ],
+      "published": "2023-08-22T00:00:00+00:00",
+      "summary": "Text-to-music generation (T2M-Gen) faces a major obstacle due to the scarcity of large-scale publicly available music datasets with natural language captions. To address this, we propose the Music Understanding LLaMA (MU-LLaMA), capable of answering music-related questions and generating captions for music files. Our model utilizes audio representations from a pretrained MERT model to extract music features. However, obtaining a suitable dataset for training the MU-LLaMA model remains challenging, as existing publicly accessible audio question answering datasets lack the necessary depth for open-ended music question answering. To fill this gap, we present a methodology for generating question-answer pairs from existing audio captioning datasets and introduce the MusicQA Dataset designed for answering open-ended music-related questions. The experiments demonstrate that the proposed MU-LLaMA model, trained on our designed MusicQA dataset, achieves outstanding performance in both music question answering and music caption generation across various metrics, outperforming current state-of-the-art (SOTA) models in both fields and offering a promising advancement in the T2M-Gen research field.",
+      "paper_url": "https://arxiv.org/abs/2308.11276",
+      "pdf_url": "http://arxiv.org/pdf/2308.11276",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 8.0,
+      "justification": "提出将LLaMA用于音乐理解（问答与字幕生成），贡献MusicQA数据集，是音乐信息检索与表示学习领域的重要进展，与研究方向高度相关且质量扎实。",
+      "citation_count": 121,
+      "date_added": "2026-07-20",
+      "chinese_summary": {
+        "problem": "文本到音乐生成面临大规模带自然语言描述的音乐数据集稀缺的瓶颈，同时现有音乐问答数据集缺乏深度，难以支持开放式音乐理解。",
+        "method": "提出 MU-LLaMA 模型，利用预训练音乐特征提取器 MERT 获取音频表征，并借助 LLaMA 语言模型实现音乐问答与描述生成；通过从现有音频描述数据集自动生成问答对，构建了 MusicQA 数据集用于训练。",
+        "innovation": "首次将音乐问答与描述生成统一到一个模型中，以增强音乐理解能力并服务文本到音乐生成；专门构建了面向开放式音乐问答的 MusicQA 数据集，填补了相关资源空白；模型在音乐问答和描述生成两个任务上均取得优于现有 SOTA 的表现。",
+        "evidence": "摘要中声明实验表明 MU-LLaMA 在音乐问答和音乐描述生成的多个评估指标上超越了当前 SOTA 模型，但未列出具体指标名称或对比模型。",
+        "limitations": "摘要未直接验证模型对文本到音乐生成任务的提升效果；MusicQA 数据集的构造质量和多样性需要阅读全文确认；模型在多样化音乐场景下的泛化能力和训练细节尚未披露。",
+        "why_relevant": "论文聚焦音乐信息检索中的理解任务（问答和描述），采用了自监督音频表征模型 MERT，与我的研究方向“音乐信息检索与表征学习”“自监督音频表征”等关键词直接匹配，其利用音乐编码器进行下游任务的思路具有参考价值。"
       }
     }
   ]
