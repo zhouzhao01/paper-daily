@@ -1,16 +1,16 @@
 {
-  "foundation_rotation_index": 5,
+  "foundation_rotation_index": 1,
   "added_by_day": {
-    "2026-07-13": 5,
     "2026-07-14": 5,
     "2026-07-15": 5,
     "2026-07-16": 5,
     "2026-07-17": 5,
     "2026-07-18": 5,
     "2026-07-19": 5,
-    "2026-07-20": 5
+    "2026-07-20": 5,
+    "2026-07-21": 5
   },
-  "last_run_iso": "2026-07-20T10:27:41.103377+00:00",
-  "last_run_status": "ok-cap-reached",
-  "foundation_last_topic": "music_mir_representation"
+  "last_run_iso": "2026-07-21T04:36:26.296155+00:00",
+  "last_run_status": "ok",
+  "foundation_last_topic": "speech_enhancement_frontend"
 }

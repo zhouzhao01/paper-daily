@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-20T04:56:09.181347+00:00",
+  "updated_at_iso": "2026-07-21T04:36:26.296155+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -2845,6 +2845,190 @@
         "evidence": "摘要中声明实验表明 MU-LLaMA 在音乐问答和音乐描述生成的多个评估指标上超越了当前 SOTA 模型，但未列出具体指标名称或对比模型。",
         "limitations": "摘要未直接验证模型对文本到音乐生成任务的提升效果；MusicQA 数据集的构造质量和多样性需要阅读全文确认；模型在多样化音乐场景下的泛化能力和训练细节尚未披露。",
         "why_relevant": "论文聚焦音乐信息检索中的理解任务（问答和描述），采用了自监督音频表征模型 MERT，与我的研究方向“音乐信息检索与表征学习”“自监督音频表征”等关键词直接匹配，其利用音乐编码器进行下游任务的思路具有参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2303.13336",
+      "arxiv_id": "2303.13336",
+      "title": "A Survey on Audio Diffusion Models: Text To Speech Synthesis and Enhancement in Generative AI",
+      "authors": [
+        "Chenshuang Zhang",
+        "Chaoning Zhang",
+        "Sheng Zheng",
+        "Mengchun Zhang",
+        "Maryam Qamar",
+        "S. Bae",
+        "In-So Kweon"
+      ],
+      "published": "2023-03-23T00:00:00+00:00",
+      "summary": "Generative AI has demonstrated impressive performance in various fields, among which speech synthesis is an interesting direction. With the diffusion model as the most popular generative model, numerous works have attempted two active tasks: text to speech and speech enhancement. This work conducts a survey on audio diffusion model, which is complementary to existing surveys that either lack the recent progress of diffusion-based speech synthesis or highlight an overall picture of applying diffusion model in multiple fields. Specifically, this work first briefly introduces the background of audio and diffusion model. As for the text-to-speech task, we divide the methods into three categories based on the stage where diffusion model is adopted: acoustic model, vocoder and end-to-end framework. Moreover, we categorize various speech enhancement tasks by either certain signals are removed or added into the input speech. Comparisons of experimental results and discussions are also covered in this survey.",
+      "paper_url": "https://arxiv.org/abs/2303.13336",
+      "pdf_url": "http://arxiv.org/pdf/2303.13336",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "全面综述扩散模型在TTS和语音增强中的应用，对生成式语音技术研究者具有重要参考价值，是了解该领域的必读文献之一。",
+      "citation_count": 118,
+      "date_added": "2026-07-21",
+      "chinese_summary": {
+        "problem": "该综述旨在系统整理扩散模型在文本到语音和语音增强中的最新应用，弥补现有综述在扩散语音合成上的进展缺失。",
+        "method": "采用分类综述框架：将文本到语音方法按扩散模型使用阶段分为声学模型、声码器和端到端框架；将语音增强按去除或添加特定信号分类；同时收集并比较各方法的实验结果。",
+        "innovation": "区别于已有跨领域或较早的综述，本文专注于扩散模型在语音合成与增强两大核心任务上的应用，提供了面向TTS流水线各阶段的细粒度分类，并整合了最新的实验对比。",
+        "evidence": "摘要中明确提及包含实验结果的比较与讨论，但未列出具体指标或方法。",
+        "limitations": "综述范围限于TTS和语音增强，未涵盖其他生成式语音任务（如语音转换、带宽扩展）；分类粒度可能较粗；具体技术实现细节需阅读全文进一步确认。",
+        "why_relevant": "研究方向聚焦生成式语音技术，关键词包括语音合成、TTS、神经声码器、生成式语音增强、扩散模型语音；本文直接覆盖这些主题，提供领域全面概览，有助于快速定位相关工作和评估方法进展。"
+      }
+    },
+    {
+      "id": "arxiv:2405.06573",
+      "arxiv_id": "2405.06573",
+      "title": "An Investigation of Incorporating Mamba For Speech Enhancement",
+      "authors": [
+        "Rong-Yu Chao",
+        "Wen-Huang Cheng",
+        "Moreno La Quatra",
+        "Sabato Marco Siniscalchi",
+        "C. Yang",
+        "Szu-Wei Fu",
+        "Yu Tsao"
+      ],
+      "published": "2024-05-10T00:00:00+00:00",
+      "summary": "This work aims to investigate the use of a recently proposed, attention-free, scalable state-space model (SSM), Mamba, for the speech enhancement (SE) task. In particular, we employ Mamba to deploy different regression-based SE models (SEMamba) with different configurations, namely basic, advanced, causal, and non-causal. Furthermore, loss functions either based on signal-level distances or metric-oriented are considered. Experimental evidence shows that SEMamba attains a competitive PESQ of 3.55 on the VoiceBank-DEMAND dataset with the advanced, non-causal configuration. A new state-of-the-art PESQ of 3.69 is also reported when SEMamba is combined with Perceptual Contrast Stretching (PCS). Compared against Transformed-based equivalent SE solutions, a noticeable FLOPs reduction up to $\\sim 12 \\%$ is observed with the advanced non-causal configurations. Finally, SEMamba can be used as a pre-processing step before automatic speech recognition (ASR), showing competitive performance against recent SE solutions.",
+      "paper_url": "https://arxiv.org/abs/2405.06573",
+      "pdf_url": "http://arxiv.org/pdf/2405.06573",
+      "categories": [
+        "Spoken Language Technology Workshop"
+      ],
+      "venue": "Spoken Language Technology Workshop",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "该工作首次将Mamba状态空间模型引入语音增强，提出SEMamba架构，在VoiceBank-DEMAND上取得先进PESQ且比Transformer降低计算量，与语音增强方向高度相关，具备成为基础性方法的潜力，引用数较高，是值得关注的重要工作。",
+      "citation_count": 129,
+      "date_added": "2026-07-21",
+      "chinese_summary": {
+        "problem": "探索如何将无注意力机制的状态空间模型 Mamba 应用于语音增强任务，并评估不同配置下的性能。",
+        "method": "采用 Mamba 构建回归式语音增强模型 SEMamba，包含基础、高级及因果/非因果等多种配置，配合信号级距离损失和度量导向损失进行训练。",
+        "innovation": "首次将 Mamba 引入语音增强领域；在 VoiceBank-DEMAND 数据集上，非因果高级配置取得竞争性 PESQ 3.55，结合感知对比拉伸后达到 3.69 的新高水平；相比 Transformer 方法，计算量（FLOPs）减少约 12%。",
+        "evidence": "实验证据：在 VoiceBank-DEMAND 上，先进非因果配置 PESQ 3.55，结合 PCS 后 PESQ 3.69；FLOPs 较 Transformer 方案降低约 12%；作为 ASR 预处理步骤表现具有竞争力。",
+        "limitations": "仅在 VoiceBank-DEMAND 数据集上验证，泛化性未知；因果配置的实时性能未详细给出；与多种前沿增强方法的全面对比尚不充分。",
+        "why_relevant": "研究方向为语音增强与音频前端，该论文直接针对语音增强任务，所提方法可用于去噪、降噪等场景，且采用神经网络模型，与研究方向中的关键词 speech enhancement、noise reduction、neural masking 等高度匹配。"
+      }
+    },
+    {
+      "id": "arxiv:2301.12686",
+      "arxiv_id": "2301.12686",
+      "title": "GibbsDDRM: A Partially Collapsed Gibbs Sampler for Solving Blind Inverse Problems with Denoising Diffusion Restoration",
+      "authors": [
+        "N. Murata",
+        "Koichi Saito",
+        "Chieh-Hsin Lai",
+        "Yuhta Takida",
+        "Toshimitsu Uesaka",
+        "Yuki Mitsufuji",
+        "Stefano Ermon"
+      ],
+      "published": "2023-01-30T00:00:00+00:00",
+      "summary": "Pre-trained diffusion models have been successfully used as priors in a variety of linear inverse problems, where the goal is to reconstruct a signal from noisy linear measurements. However, existing approaches require knowledge of the linear operator. In this paper, we propose GibbsDDRM, an extension of Denoising Diffusion Restoration Models (DDRM) to a blind setting in which the linear measurement operator is unknown. GibbsDDRM constructs a joint distribution of the data, measurements, and linear operator by using a pre-trained diffusion model for the data prior, and it solves the problem by posterior sampling with an efficient variant of a Gibbs sampler. The proposed method is problem-agnostic, meaning that a pre-trained diffusion model can be applied to various inverse problems without fine-tuning. In experiments, it achieved high performance on both blind image deblurring and vocal dereverberation tasks, despite the use of simple generic priors for the underlying linear operators.",
+      "paper_url": "https://arxiv.org/abs/2301.12686",
+      "pdf_url": "http://arxiv.org/pdf/2301.12686",
+      "categories": [
+        "International Conference on Machine Learning"
+      ],
+      "venue": "International Conference on Machine Learning",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出GibbsDDRM，将扩散先验扩展至盲逆问题，成功用于语音去混响，对生成式语音增强方向具有重要基础性和影响力。",
+      "citation_count": 82,
+      "date_added": "2026-07-21",
+      "chinese_summary": {
+        "problem": "解决盲线性逆问题，即在测量算子未知的情况下，利用预训练扩散模型作为先验，从噪声线性测量中重建信号（如图像去模糊、语音解混响）。",
+        "method": "提出GibbsDDRM，将去噪扩散恢复模型（DDRM）扩展到盲设置。通过构建数据、测量和线性算子的联合分布，使用预训练扩散模型作为数据先验，并采用一种高效的部分塌陷Gibbs采样器进行后验采样，从而实现问题无关的求解。",
+        "innovation": "首次将DDRM框架扩展至盲逆问题，无需已知线性算子；采用部分塌陷Gibbs采样策略，有效进行联合后验推断；方法具有通用性，同一预训练扩散模型可直接应用于不同逆问题而无需微调。",
+        "evidence": "摘要在盲图像去模糊和语音解混响两个任务上报告了高性能表现，且仅使用了简单的通用算子先验。",
+        "limitations": "仅验证了两种任务，对更复杂的退化类型（如非高斯噪声或高度非结构化算子）的有效性未知；未提及计算效率或采样步数；需要阅读全文确认Gibbs采样的稳定性和与现有盲逆求解器的对比细节。",
+        "why_relevant": "论文将扩散模型应用于语音解混响，属于生成式语音增强/恢复的范畴，与研究方向中的‘diffusion model speech’、‘speech restoration’和‘generative speech enhancement’直接匹配。尽管方法通用，但语音任务是主要验证场景之一，可为扩散模型在语音逆问题中的应用提供参考。"
+      }
+    },
+    {
+      "id": "arxiv:2607.18189",
+      "arxiv_id": "2607.18189",
+      "title": "Dense-Sparse Dynamic Time Warping for Customizing Piano Concerto Accompaniments",
+      "authors": [
+        "TJ Tsai",
+        "Kavi Dey",
+        "Yigitcan Ozer",
+        "Meinard Muller"
+      ],
+      "published": "2026-07-20T17:29:10Z",
+      "summary": "In this study, we explore how pianists can customize Music Minus One (MMO) concerto accompaniments to match their playing style. Bypassing the need for a symbolic score, often not available digitally, we use three types of audio data: solo piano recordings, MMO orchestra-only recordings, and mixed recordings of both piano and orchestra (e.g., from YouTube). The mixed recording serves as an intermediary reference to align the solo and orchestra parts, with only the orchestral part being adjusted through time-scale modification to synchronize with the user's playing. The main challenge with estimating these alignments is the spectral mismatch between recordings containing different musical parts. Motivated by this application scenario, we introduce Dense-Sparse DTW, a variant of Dynamic Time Warping (DTW) that is designed to improve robustness of alignments to spectral mismatch by focusing on aligning a selected subset of audio frames containing prominent timing cues. We collect and annotate data from four piano concerto movements and establish a framework for generating and evaluating customized accompaniment recordings. On this benchmark, we show that Dense-Sparse DTW has better or comparable performance than more complex approaches based on source separation and spectral subtraction techniques.",
+      "paper_url": "http://arxiv.org/abs/2607.18189v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.18189v1",
+      "categories": [
+        "cs.SD",
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "该论文提出Dense-Sparse DTW解决钢琴协奏曲音频对齐中的频谱不匹配问题，属于音乐信息检索与对齐，与我的MIR方向高度相关，在四个乐章上验证性能优于源分离等复杂方法，质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-07-21",
+      "chinese_summary": {
+        "problem": "如何在缺少数字乐谱的情况下，使钢琴家能够根据个人演奏风格定制管弦乐伴奏，通过音频对齐实现时间同步。",
+        "method": "提出 Dense-Sparse DTW 算法，一种动态时间规整变体，通过仅选择包含显著时间线索的音频帧子集进行对齐，减少因不同声部录音造成的频谱不匹配影响；利用混合录音作为中介参考，对管弦乐部分进行时间尺度修改以匹配用户独奏。",
+        "innovation": "引入 Dense-Sparse DTW，避免对整个序列进行全对齐，仅关注关键时间帧，提升频谱不匹配下的对齐鲁棒性；无需依赖源分离或频谱减法等复杂预处理；利用易于获取的混合录音（如 YouTube 音频）作为对齐参照，简化定制流程。",
+        "evidence": "收集并标注四个钢琴协奏曲乐章数据，建立评估框架，实验表明 Dense-Sparse DTW 性能优于或可比基于源分离和频谱减法的方法。",
+        "limitations": "仅在钢琴协奏曲上验证，泛化到其他乐器或场景需确认；依赖用户提供的独奏录音和对应的混合录音，实际获取可能不便；关键帧选择策略可能影响对齐效果。",
+        "why_relevant": "关键词命中“source separation”，但论文仅将其作为对比方法，自身不研究源分离；核心是音频对齐和时间规整，与语音分离、目标说话人提取方向差异显著，匹配度低。"
+      }
+    },
+    {
+      "id": "arxiv:2607.17900",
+      "arxiv_id": "2607.17900",
+      "title": "Harness TTS: Towards Context-Aware Expressive Speech Synthesis with Harness Layer",
+      "authors": [
+        "Shengfan Shen",
+        "Di Wu",
+        "Xingchen Song",
+        "Dinghao Zhou",
+        "Pengyu Cheng",
+        "Sixiang Lyu",
+        "Jian Luan",
+        "Shuai Wang"
+      ],
+      "published": "2026-07-20T12:48:02Z",
+      "summary": "Expressive speech synthesis for voice assistants requires flexible style control that adapts to explicit requests and broader interaction context. We propose Harness TTS, a lightweight control layer that wraps around a TTS engine to externalize and govern its expressive behavior. It reformulates style control as closed-set prompt-tool routing: offline, a compact registry of stylistic prompt tools is constructed with structured metadata; online, an LLM planner selects the appropriate tool based on a priority-aware observation schema, and the TTS executor synthesizes speech using the corresponding prompt audio. We evaluate Harness TTS on both routing and synthesis tasks. In routing, Qwen3-4B achieves Top-1 accuracies of 74.3%, 43.0%, and 64.6% on explicit, implicit, and conflict subsets. For synthesis, experiments on CosyVoice3 and VoxCPM2 show that Harness TTS outperforms instruction-only control, achieving higher instruction-following win rates (margins of 23.1-35.6 points on CosyVoice3 and 13.8-20.0 points on VoxCPM2) and improving UTMOSv2 scores by 0.11-0.38. Moreover, the 4B planner delivers its first tool recommendation in under 50 ms in standard mode, introducing negligible latency for real-time interaction. These results demonstrate that equipping TTS engines with a dedicated Harness layer offers a practical, auditable, and context-aware solution for voice assistant expression control.",
+      "paper_url": "http://arxiv.org/abs/2607.17900v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.17900v1",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "提出Harness层实现上下文感知的TTS表现力控制，通过LLM路由选择提示工具，在语音合成质量与指令遵循上取得提升，与生成语音技术方向高度相关，工作扎实。",
+      "citation_count": null,
+      "date_added": "2026-07-21",
+      "chinese_summary": {
+        "problem": "语音助手中的表达性语音合成需要根据显式指令和交互上下文灵活调整风格，但现有TTS引擎缺乏轻量级、可审计的上下文感知风格控制机制。",
+        "method": "提出Harness TTS，一个包裹在TTS引擎外的轻量级控制层。将风格控制转化为闭集提示工具路由：离线构建带有结构化元数据的风格工具注册表，在线由LLM规划器根据优先感知观察模式选择工具，TTS执行器使用对应提示音频进行合成。",
+        "innovation": "将表达控制外部化为可审计的Harness层，无需修改TTS内核；将风格选择建模为闭集工具路由问题，结合LLM规划器实现上下文感知决策；以<50ms延迟实现实时交互，适用于语音助手实际场景。",
+        "evidence": "路由实验：Qwen3-4B在显式、隐式、冲突子集上Top-1准确率分别为74.3%、43.0%、64.6%。合成实验：在CosyVoice3和VoxCPM2上，指令遵循胜率领先23.1-35.6和13.8-20.0个百分点，UTMOSv2提高0.11-0.38。延迟：首次工具推荐<50ms。",
+        "limitations": "隐式上下文子集准确率仅43.0%，复杂场景理解可能不足；依赖预定义的风格工具注册表，不支持开放集风格；未验证对多种TTS引擎的通用性，以及长对话历史下的延迟和效果。",
+        "why_relevant": "论文直接研究TTS系统的表达性风格控制，与研究方向中的语音合成、文本转语音密切匹配，提供了一种结合LLM与TTS的实用框架，对生成式语音技术应用开发有参考价值。但侧重控制层面而非生成模型算法，需读者判断是否深入。"
       }
     }
   ]
