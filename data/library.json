@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-21T04:36:26.296155+00:00",
+  "updated_at_iso": "2026-07-22T04:37:58.291389+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -3029,6 +3029,110 @@
         "evidence": "路由实验：Qwen3-4B在显式、隐式、冲突子集上Top-1准确率分别为74.3%、43.0%、64.6%。合成实验：在CosyVoice3和VoxCPM2上，指令遵循胜率领先23.1-35.6和13.8-20.0个百分点，UTMOSv2提高0.11-0.38。延迟：首次工具推荐<50ms。",
         "limitations": "隐式上下文子集准确率仅43.0%，复杂场景理解可能不足；依赖预定义的风格工具注册表，不支持开放集风格；未验证对多种TTS引擎的通用性，以及长对话历史下的延迟和效果。",
         "why_relevant": "论文直接研究TTS系统的表达性风格控制，与研究方向中的语音合成、文本转语音密切匹配，提供了一种结合LLM与TTS的实用框架，对生成式语音技术应用开发有参考价值。但侧重控制层面而非生成模型算法，需读者判断是否深入。"
+      }
+    },
+    {
+      "id": "arxiv:2607.18658",
+      "arxiv_id": "2607.18658",
+      "title": "Towards Array-Invariant Speech Enhancement via Geometry-Aware Dynamic Convolution",
+      "authors": [
+        "Zhenglong Liu",
+        "Wangyou Zhang",
+        "Chenda Li",
+        "Yanmin Qian"
+      ],
+      "published": "2026-07-21T03:02:57Z",
+      "summary": "Multi-channel speech enhancement (SE) systems exhibit superior performance over single-channel methods but are constrained to fixed microphone array configurations. This restricts their real-world deployment across devices with diverse array geometries. While recent array-agnostic SE methods address variable microphone numbers and permutations, they largely fail to exploit explicit array geometry priors when available, missing a crucial cue for optimal spatial filtering. A Geometry-Aware Dynamic Convolution (Geo-DConv) framework is proposed, which explicitly leverages microphone coordinates to transform standard fixed-array SE models into robust array-invariant systems. Experiments are conducted on the recent real-recorded RealMAN multi-channel speech dataset. Results demonstrate that the proposed architecture enables two widely used fixed-array models to adapt to array-invariant settings, with consistent performance improvements across diverse array topologies.",
+      "paper_url": "http://arxiv.org/abs/2607.18658v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.18658v1",
+      "categories": [
+        "eess.AS",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 9.0,
+      "justification": "提出几何感知动态卷积实现阵列不变语音增强，充分利用麦克风坐标先验改进空间滤波，与麦克风阵列与波束形成方向高度相关，质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-07-22",
+      "chinese_summary": {
+        "problem": "多通道语音增强系统受限于固定麦克风阵列配置，难以跨不同阵列几何的设备部署；现有阵列无关方法未充分利用阵列几何先验，导致空间滤波最优性缺失。",
+        "method": "提出几何感知动态卷积（Geo-DConv）框架，以麦克风坐标为显式输入，通过动态卷积生成自适应权重，将标准固定阵列语音增强模型转换为阵列不变系统，使其能够泛化至任意阵列拓扑。",
+        "innovation": "首次显式利用麦克风几何坐标作为空间先验，弥补了阵列无关方法在最优空间滤波上的短板；通过动态卷积实现模型参数随阵列配置的动态调整，无需重新训练即可适配新阵列；在真实录音数据集上验证了将固定阵列模型改造为阵列不变系统的可行性与有效性。",
+        "evidence": "在RealMAN真实多通道语音数据集上进行实验，两个广泛使用的固定阵列模型采用所提架构后，在不同阵列拓扑上均取得一致性能提升；摘要未提供具体数值指标或消融实验细节。",
+        "limitations": "仅验证两个固定阵列模型，泛化性有待更多模型检验；依赖精确麦克风坐标，实际应用中坐标标定误差的影响未讨论；动态卷积的计算开销和实现细节未提及；仅在单一数据集上评估，复杂声学场景下的鲁棒性未知。",
+        "why_relevant": "论文聚焦多通道语音增强中的空间滤波，利用阵列几何信息提升阵列不变性，与我的研究方向“麦克风阵列与波束形成”高度契合，尤其在神经波束形成、空间特征利用和多通道语音增强方面有直接交集，其动态卷积方法为可学习空间滤波提供新思路。"
+      }
+    },
+    {
+      "id": "arxiv:2607.18662",
+      "arxiv_id": "2607.18662",
+      "title": "Staged Depth-Pruning Distillation of a Flow-Matching Text-to-Speech Teacher: A Compact Hindi Speech Synthesizer",
+      "authors": [
+        "Sivateja Trikutam"
+      ],
+      "published": "2026-07-19T11:20:25Z",
+      "summary": "We present a practical recipe for building a compact Hindi text-to-speech (TTS) model by distilling a large flow-matching teacher (IndicF5, 337M-parameter DiT) under a severe data budget (~17.6 hours). Training a small model from scratch on this much data fails outright. Instead we warm-start the student from the teacher by pruning depth only: keeping the teacher's width, text dimension, attention heads, and mel/text I/O fixed so all non-block tensors copy one-to-one, and retaining an evenly-spaced subset of transformer blocks. We first measure how much depth the teacher tolerates (it remains near-functional at -27% blocks but collapses past -50%), then descend gradually (22 -> 16 -> 12 -> 8 -> 6 blocks), re-fine-tuning after each prune, with each step gated by an objective ASR word-error-rate (WER) check. The resulting students reach WER 0.00 on unseen sentences at 249M and 190M parameters, and remain robust down to 131M; at 102M we observe a clear capacity cliff that we attribute to the data budget rather than the recipe. We also document two train/inference feature- and library-parity failures (mel filterbank and rotary-embedding library versions) that silently degrade audio, and a version-independent fix. The method yields a high-quality Hindi voice that runs in real time on a 6 GB laptop GPU. An independent 50-sentence FLEURS benchmark compares the released 190M student against its teacher and MMS-TTS-hin.",
+      "paper_url": "http://arxiv.org/abs/2607.18662v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.18662v1",
+      "categories": [
+        "cs.SD",
+        "cs.CL",
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 7.0,
+      "justification": "该工作使用深度剪枝蒸馏紧凑化流匹配TTS模型，属于生成式语音技术，与研究方向相关，在数据受限下获得实用合成器，质量扎实但方法新颖性一般。",
+      "citation_count": null,
+      "date_added": "2026-07-22",
+      "chinese_summary": {
+        "problem": "在数据极度受限（约17.6小时）下构建紧凑的印地语TTS模型，解决从头训练小模型会失败的问题。",
+        "method": "分阶段深度剪枝蒸馏：以流匹配大模型（IndicF5, 337M参数DiT）为教师，通过仅剪枝Transformer块深度（保留宽度和所有非块张量一对一复制）初始化学生模型；逐步减少块数（22→16→12→8→6），每次剪枝后微调，并以ASR词错误率（WER）为门控指标；同时发现并修复了因mel滤波器组和旋转嵌入库版本不匹配导致的音频质量退化。",
+        "innovation": "（1）在极低数据预算下，利用深度剪枝蒸馏成功压缩流匹配TTS模型，避免从头训练失败；（2）采用渐进式剪枝与WER检查，确定容量悬崖（102M参数时退化归因于数据量而非方法）；（3）识别并提供了库版本不匹配导致音频质量下降的通用修复方案。",
+        "evidence": "实验显示学生模型在未见句子上达到WER 0.00（249M和190M参数），131M保持鲁棒，102M出现性能悬崖；发布的190M模型在6GB笔记本GPU上实时运行，并在FLEURS基准上与教师模型和MMS-TTS-hin对比。",
+        "limitations": "仅针对印地语，数据规模小，泛化性未验证；依赖ASR WER而缺乏主观音质评价；容量悬崖的界限可能与特定数据分布相关。",
+        "why_relevant": "论文核心为流匹配文本到语音生成，直接匹配研究方向中的“text-to-speech”、“flow matching speech”和“speech synthesis”。但侧重于模型压缩而非生成模型创新或增强/恢复应用，与生成式语音增强、语音恢复等关联较弱，建议人工复核以确定对生成技术本身的参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2607.18629",
+      "arxiv_id": "2607.18629",
+      "title": "CS-ETS: Chaos-Inspired Samba-Based EMG-To-Speech Synthesis with Nonlinear Chaotic Losses",
+      "authors": [
+        "Sajid Fardin Dipto",
+        "Tarikul Islam Tamiti",
+        "David Vergano",
+        "Luke Baja-Ricketts",
+        "Anomadarshi Barua"
+      ],
+      "published": "2026-07-21T01:54:51Z",
+      "summary": "We propose a chaos-inspired new architecture for EMG-to-Speech (ETS) synthesis called CS-ETS, which combines a Samba-based encoder with two novel chaos-inspired loss functions -- Lyapunov Exponent Regularization (LER) and Multi-Scale Detrended Fluctuation Analysis (MSDFA). LER is designed based on Lyapunov exponents to capture nonlinear fluctuations and sensitivity to initial conditions. MSDFA exploits detrended fluctuation analysis to quantify fractal-like, long-range temporal chaotic correlation. CS-ETS surpasses prior work with a 40.79\\% lower parameter count (32M vs 54.1M) and introduces a new Post-Vocoder Alignment approach that improves LSD by 2.1x, STOI by 4.7x, and SI-SDR by 1.25x. CS-ETS reduces computation by 13.33\\% while maintaining improved performance. To the best of our knowledge, for the first time, we show how ETS can be supervised by the subtle non-linear chaotic physics with Samba attention to achieve a significantly smaller model with superior performance.",
+      "paper_url": "http://arxiv.org/abs/2607.18629v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.18629v1",
+      "categories": [
+        "cs.SD",
+        "eess.SP"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 7.0,
+      "justification": "论文提出混沌启发式损失函数的EMG-to-Speech合成方法，属于生成语音技术中的语音合成方向，方法新颖且指标提升显著，但EMG输入非主流音频前端任务，与核心语音增强/分离相关性有限。",
+      "citation_count": null,
+      "date_added": "2026-07-22",
+      "chinese_summary": {
+        "problem": "从表面肌电信号直接合成可懂语音，解决现有EMG-to-Speech模型参数量大、对非线性动力学建模不足的问题。",
+        "method": "提出CS-ETS架构，采用Samba注意力编码器提取EMG特征，并设计两个混沌启发的损失函数：李雅普诺夫指数正则化（LER）捕捉非线性波动和初值敏感性，多尺度去趋势波动分析（MSDFA）量化长程分形相关；推理时使用Post-Vocoder Alignment后处理改善合成语音的客观质量。",
+        "innovation": "首次将混沌物理约束引入EMG-to-Speech训练的损失函数，利用LER和MSDFA捕捉肌电信号的非线性动力学；采用轻量化Samba编码器并结合后声码器对齐策略，在参数量和计算量显著降低的同时提升语音质量。",
+        "evidence": "参数减少40.79%（32M vs 54.1M），LSD改善2.1倍，STOI改善4.7倍，SI-SDR改善1.25倍，计算量降低13.33%。",
+        "limitations": "未提及具体数据集、对比基线方法、混沌损失的计算开销及不同声码器的兼容性，后处理对齐的实时性待确认。",
+        "why_relevant": "涉及语音合成（EMG-to-Speech）和声码器后处理，与研究方向中的'speech synthesis'关键词直接匹配，但非典型TTS或生成式语音增强，而是生物信号到语音的跨模态生成，需要人工确认是否关注此类特殊输入方式。"
       }
     }
   ]
