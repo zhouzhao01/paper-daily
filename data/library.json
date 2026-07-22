@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-22T04:37:58.291389+00:00",
+  "updated_at_iso": "2026-07-22T10:03:38.676715+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -3133,6 +3133,77 @@
         "evidence": "参数减少40.79%（32M vs 54.1M），LSD改善2.1倍，STOI改善4.7倍，SI-SDR改善1.25倍，计算量降低13.33%。",
         "limitations": "未提及具体数据集、对比基线方法、混沌损失的计算开销及不同声码器的兼容性，后处理对齐的实时性待确认。",
         "why_relevant": "涉及语音合成（EMG-to-Speech）和声码器后处理，与研究方向中的'speech synthesis'关键词直接匹配，但非典型TTS或生成式语音增强，而是生物信号到语音的跨模态生成，需要人工确认是否关注此类特殊输入方式。"
+      }
+    },
+    {
+      "id": "arxiv:2502.03128",
+      "arxiv_id": "2502.03128",
+      "title": "Metis: A Foundation Speech Generation Model with Masked Generative Pre-training",
+      "authors": [
+        "Yuancheng Wang",
+        "Jiachen Zheng",
+        "Junan Zhang",
+        "Xueyao Zhang",
+        "Huan Liao",
+        "Zhizheng Wu"
+      ],
+      "published": "2025-02-05T00:00:00+00:00",
+      "summary": "We introduce Metis, a foundation model for unified speech generation. Unlike previous task-specific or multi-task models, Metis follows a pre-training and fine-tuning paradigm. It is pre-trained on large-scale unlabeled speech data using masked generative modeling and then fine-tuned to adapt to diverse speech generation tasks. Specifically, 1) Metis utilizes two discrete speech representations: SSL tokens derived from speech self-supervised learning (SSL) features, and acoustic tokens directly quantized from waveforms. 2) Metis performs masked generative pre-training on SSL tokens, utilizing 300K hours of diverse speech data, without any additional condition. 3) Through fine-tuning with task-specific conditions, Metis achieves efficient adaptation to various speech generation tasks while supporting multimodal input, even when using limited data and trainable parameters. Experiments demonstrate that Metis can serve as a foundation model for unified speech generation: Metis outperforms state-of-the-art task-specific or multi-task systems across five speech generation tasks, including zero-shot text-to-speech, voice conversion, target speaker extraction, speech enhancement, and lip-to-speech, even with fewer than 20M trainable parameters or 300 times less training data. Audio samples are are available at https://metis-demo.github.io/.",
+      "paper_url": "https://arxiv.org/abs/2502.03128",
+      "pdf_url": "https://arxiv.org/pdf/2502.03128",
+      "categories": [
+        "Neural Information Processing Systems"
+      ],
+      "venue": "Neural Information Processing Systems",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出统一语音生成基础模型Metis，通过掩码生成预训练实现目标说话人提取和语音增强等多任务SOTA，与生成式语音及分离增强方向高度相关。",
+      "citation_count": 24,
+      "date_added": "2026-07-22",
+      "chinese_summary": {
+        "problem": "构建统一的语音生成基础模型，通过预训练和微调范式适应多种语音生成任务，而非专门针对目标说话人提取。",
+        "method": "利用大规模无标签语音数据，对语音自监督学习（SSL）特征离散化后的SSL令牌进行掩码生成预训练；微调时结合任务特定条件（如说话人嵌入、文本、视觉等），将预训练模型高效迁移到下游语音生成任务，包括目标说话人提取。",
+        "innovation": "首次将掩码生成预训练范式应用于统一语音生成，使用离散SSL令牌作为中间表征；仅使用300K小时无标签数据预训练，并在五种语音生成任务上通过轻量微调（参数少于20M或数据量减少300倍）超过现有专门或多任务系统；支持多模态输入条件，实现高效任务切换。",
+        "evidence": "实验覆盖零样本文本到语音、语音转换、目标说话人提取、语音增强和唇语到语音五个任务，均声称性能优于已有最优系统；但摘要未提供具体指标、对比对象或实验设置细节，可核验性有限。",
+        "limitations": "掩码生成模型在语音生成中的具体架构（如是否采用非自回归生成）、目标说话人提取任务中的条件机制（如何提供说话人参考信号）未知；预训练数据域的泛化能力未讨论；生成式TSE与传统基于掩码的分离思路差异较大，可能不适用于某些分离场景。",
+        "why_relevant": "命中关键词'target speaker extraction'和'speaker extraction'，论文将其作为下游任务之一并取得声称的SOTA，但核心贡献在于生成式预训练框架，并非针对语音分离或提取的设计，且未涉及掩码、双路径网络等用户关注的方法。建议人工复核以确认生成式TSE是否契合研究方向。"
+      }
+    },
+    {
+      "id": "arxiv:2303.03849",
+      "arxiv_id": "2303.03849",
+      "title": "TS-SEP: Joint Diarization and Separation Conditioned on Estimated Speaker Embeddings",
+      "authors": [
+        "Christoph Boeddeker",
+        "A. Subramanian",
+        "G. Wichern",
+        "Reinhold Haeb-Umbach",
+        "Jonathan Le Roux"
+      ],
+      "published": "2023-03-07T00:00:00+00:00",
+      "summary": "Since diarization and source separation of meeting data are closely related tasks, we here propose an approach to perform the two objectives jointly. It builds upon the target-speaker voice activity detection (TS-VAD) diarization approach, which assumes that initial speaker embeddings are available. We replace the final combined speaker activity estimation network of TS-VAD with a network that produces speaker activity estimates at a time-frequency resolution. Those act as masks for source extraction, either via masking or via beamforming. The technique can be applied both for single-channel and multi-channel input and, in both cases, achieves a new state-of-the-art word error rate (WER) on the LibriCSS meeting data recognition task. We further compute speaker-aware and speaker-agnostic WERs to isolate the contribution of diarization errors to the overall WER performance.",
+      "paper_url": "https://arxiv.org/abs/2303.03849",
+      "pdf_url": "https://arxiv.org/pdf/2303.03849",
+      "categories": [
+        "IEEE/ACM Transactions on Audio Speech and Language Processing"
+      ],
+      "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出联合说话人日志和分离的TS-SEP方法，基于估计的说话人嵌入实现掩码或波束形成，在LibriCSS上获得SOTA WER，高度匹配目标说话人提取方向，是近期有影响力的工作。",
+      "citation_count": 40,
+      "date_added": "2026-07-22",
+      "chinese_summary": {
+        "problem": "针对会议音频中说话人分离（diarization）和源分离（separation）通常分开处理的问题，提出联合执行两项任务以提升分离和识别性能。",
+        "method": "基于 TS-VAD 框架，假设已有初始说话人嵌入，将原始 TS-VAD 末端说话人活动估计网络替换为可输出时频分辨率活动估计的网络，再将其作为掩蔽或波束成形系数进行源提取，支持单通道与多通道输入。",
+        "innovation": "首次将说话人日志和源分离进行深度联合建模，用一个网络同时输出说话人活动估计和掩蔽/波束成形系数；无需独立分离模块，直接端到端优化下游识别任务；在 LibriCSS 会议数据上取得当前最佳识别性能。",
+        "evidence": "在 LibriCSS 会议识别任务上取得新的 SOTA 词错误率（WER），并通过计算 speaker-aware 和 speaker-agnostic WER 分析了日志错误对识别的影响。",
+        "limitations": "方法依赖预先提供的说话人嵌入，嵌入质量对结果影响未阐明；仅在 LibriCSS 数据集上验证，通用性未知；联合训练的细节和计算开销未提及；作为扩展 TS-VAD 的工作，创新点侧重于架构修改而非基础分离机理。",
+        "why_relevant": "摘要中包含了 'source separation' 和 'masking' 关键词，与研究方向中的语音分离和掩蔽方法部分相关；其基于说话人嵌入的提取方式类似目标说话人提取，但论文重心在联合日志任务，分离技术仅为组成部分，实际分离方法的创新性需阅读全文确认，因此初步判定为低位相关。"
       }
     }
   ]
