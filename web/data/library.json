@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-22T10:03:38.676715+00:00",
+  "updated_at_iso": "2026-07-23T04:40:19.999761+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -3204,6 +3204,211 @@
         "evidence": "在 LibriCSS 会议识别任务上取得新的 SOTA 词错误率（WER），并通过计算 speaker-aware 和 speaker-agnostic WER 分析了日志错误对识别的影响。",
         "limitations": "方法依赖预先提供的说话人嵌入，嵌入质量对结果影响未阐明；仅在 LibriCSS 数据集上验证，通用性未知；联合训练的细节和计算开销未提及；作为扩展 TS-VAD 的工作，创新点侧重于架构修改而非基础分离机理。",
         "why_relevant": "摘要中包含了 'source separation' 和 'masking' 关键词，与研究方向中的语音分离和掩蔽方法部分相关；其基于说话人嵌入的提取方式类似目标说话人提取，但论文重心在联合日志任务，分离技术仅为组成部分，实际分离方法的创新性需阅读全文确认，因此初步判定为低位相关。"
+      }
+    },
+    {
+      "id": "arxiv:2409.00750",
+      "arxiv_id": "2409.00750",
+      "title": "MaskGCT: Zero-Shot Text-to-Speech with Masked Generative Codec Transformer",
+      "authors": [
+        "Yuancheng Wang",
+        "Haoyue Zhan",
+        "Liwei Liu",
+        "Ruihong Zeng",
+        "Haotian Guo",
+        "Jiachen Zheng",
+        "Qiang Zhang",
+        "Xueyao Zhang",
+        "Shunsi Zhang",
+        "Zhizheng Wu"
+      ],
+      "published": "2024-09-01T00:00:00+00:00",
+      "summary": "The recent large-scale text-to-speech (TTS) systems are usually grouped as autoregressive and non-autoregressive systems. The autoregressive systems implicitly model duration but exhibit certain deficiencies in robustness and lack of duration controllability. Non-autoregressive systems require explicit alignment information between text and speech during training and predict durations for linguistic units (e.g. phone), which may compromise their naturalness. In this paper, we introduce Masked Generative Codec Transformer (MaskGCT), a fully non-autoregressive TTS model that eliminates the need for explicit alignment information between text and speech supervision, as well as phone-level duration prediction. MaskGCT is a two-stage model: in the first stage, the model uses text to predict semantic tokens extracted from a speech self-supervised learning (SSL) model, and in the second stage, the model predicts acoustic tokens conditioned on these semantic tokens. MaskGCT follows the mask-and-predict learning paradigm. During training, MaskGCT learns to predict masked semantic or acoustic tokens based on given conditions and prompts. During inference, the model generates tokens of a specified length in a parallel manner. Experiments with 100K hours of in-the-wild speech demonstrate that MaskGCT outperforms the current state-of-the-art zero-shot TTS systems in terms of quality, similarity, and intelligibility. Audio samples are available at https://maskgct.github.io/. We release our code and model checkpoints at https://github.com/open-mmlab/Amphion/blob/main/models/tts/maskgct.",
+      "paper_url": "https://arxiv.org/abs/2409.00750",
+      "pdf_url": "https://arxiv.org/pdf/2409.00750",
+      "categories": [
+        "International Conference on Learning Representations"
+      ],
+      "venue": "International Conference on Learning Representations",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "该工作提出MaskGCT，一个无需显式对齐的全非自回归零样本TTS模型，采用掩码预测范式，在10万小时数据上达到领先性能，是生成式语音技术领域的必读基础工作。",
+      "citation_count": 243,
+      "date_added": "2026-07-23",
+      "chinese_summary": {
+        "problem": "现有TTS系统分为自回归和非自回归两类：自回归模型缺乏时长可控性和鲁棒性，非自回归模型需要显式文本-语音对齐和音素级时长预测，可能影响自然度。本文旨在解决零样本TTS中无需显式对齐和时长预测的问题。",
+        "method": "提出MaskGCT，一种完全非自回归的两阶段掩码生成式编解码器Transformer。第一阶段根据文本预测语音自监督模型提取的语义令牌，第二阶段以语义令牌为条件预测声学令牌。整个模型采用掩码预测范式训练，推理时并行生成指定长度的令牌序列。",
+        "innovation": "首次在零样本TTS中完全移除对显式文本-语音对齐和音素时长预测的依赖；使用掩码生成式Transformer直接在语音令牌上建模，无需自回归或并行时长预估；在10万小时野生语音数据上训练，达到SOTA性能。",
+        "evidence": "实验基于100K小时in-the-wild语音，在质量、相似度和清晰度指标上均超过现有最先进零样本TTS系统。提供了音频样本和开源代码。",
+        "limitations": "摘要未提及模型对长文本、噪声数据、多说话人场景的鲁棒性，也未与扩散/流匹配等生成式方法比较，需要阅读全文确认这些方面。",
+        "why_relevant": "研究方向包含语音合成（TTS）和生成式方法，MaskGCT是一种前沿的生成式TTS模型，采用codec和掩码生成机制，与研究方向中的“speech synthesis and TTS”、“neural vocoder”（codec相关）及“generative methods”直接相关。尽管未使用扩散或流匹配，但其非自回归生成策略值得生成式语音技术研究者关注，建议人工复核是否需要深入阅读。"
+      }
+    },
+    {
+      "id": "arxiv:2312.15821",
+      "arxiv_id": "2312.15821",
+      "title": "Audiobox: Unified Audio Generation with Natural Language Prompts",
+      "authors": [
+        "Apoorv Vyas",
+        "Bowen Shi",
+        "Matt Le",
+        "Andros Tjandra",
+        "Yi-Chiao Wu",
+        "Baishan Guo",
+        "Jiemin Zhang",
+        "Xinyue Zhang",
+        "Robert H. Adkins",
+        "W.K.F. Ngan",
+        "Jeff Wang",
+        "Ivan Cruz"
+      ],
+      "published": "2023-12-25T00:00:00+00:00",
+      "summary": "Audio is an essential part of our life, but creating it often requires expertise and is time-consuming. Research communities have made great progress over the past year advancing the performance of large scale audio generative models for a single modality (speech, sound, or music) through adopting more powerful generative models and scaling data. However, these models lack controllability in several aspects: speech generation models cannot synthesize novel styles based on text description and are limited on domain coverage such as outdoor environments; sound generation models only provide coarse-grained control based on descriptions like\"a person speaking\"and would only generate mumbling human voices. This paper presents Audiobox, a unified model based on flow-matching that is capable of generating various audio modalities. We design description-based and example-based prompting to enhance controllability and unify speech and sound generation paradigms. We allow transcript, vocal, and other audio styles to be controlled independently when generating speech. To improve model generalization with limited labels, we adapt a self-supervised infilling objective to pre-train on large quantities of unlabeled audio. Audiobox sets new benchmarks on speech and sound generation (0.745 similarity on Librispeech for zero-shot TTS; 0.77 FAD on AudioCaps for text-to-sound) and unlocks new methods for generating audio with novel vocal and acoustic styles. We further integrate Bespoke Solvers, which speeds up generation by over 25 times compared to the default ODE solver for flow-matching, without loss of performance on several tasks. Our demo is available at https://audiobox.metademolab.com/",
+      "paper_url": "https://arxiv.org/abs/2312.15821",
+      "pdf_url": "https://arxiv.org/pdf/2312.15821",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "统一音频生成的基础性工作，结合流匹配与提示控制，在语音生成方向具有高度相关性和开创性，成为重要基线。",
+      "citation_count": 175,
+      "date_added": "2026-07-23",
+      "chinese_summary": {
+        "problem": "现有音频生成模型在可控性上不足：语音生成无法根据文本描述合成新风格且场景覆盖有限，声音生成仅提供粗粒度控制（如“人说话”仅生成喃喃声）。论文旨在统一语音、声音和音乐的生成，并通过自然语言提示增强细粒度控制。",
+        "method": "提出Audiobox，基于流匹配的统一音频生成模型。通过描述式提示和示例式提示增强可控性，将语音和声音生成范式统一；在语音生成中允许独立控制文本内容、音色和其他音频风格；引入自监督填空预训练目标，利用大量无标签音频提升泛化能力；集成Bespoke Solver加速推理。",
+        "innovation": "1）首次将语音、声音和音乐生成统一于单一流匹配模型，支持灵活的多模态生成；2）设计描述和示例双提示机制，实现细粒度的风格和场景控制；3）通过自监督填空任务利用海量无标注音频预训练，缓解标签依赖；4）提出专用求解器，在保证性能的同时将生成长度提升超过25倍。",
+        "evidence": "零样本TTS在LibriSpeech上达到0.745相似度；文本到声音在AudioCaps上FAD为0.77；推理速度相对流匹配默认ODE求解器提升超25倍，且性能无损失。",
+        "limitations": "摘要未提及语音增强、恢复或带宽扩展等任务，生成质量在复杂真实场景下的表现未验证；大规模预训练和推理资源需求可能较高；音乐生成的结果未量化展示。",
+        "why_relevant": "论文直接涉及语音合成（TTS）、神经声码器相关的生成技术，并应用流匹配（flow matching）这一研究方向关键词。其统一生成范式和高可控性语音生成可为生成式语音技术提供新思路，虽然未覆盖语音增强/恢复，但对语音生成子方向高度相关。"
+      }
+    },
+    {
+      "id": "arxiv:2402.08093",
+      "arxiv_id": "2402.08093",
+      "title": "BASE TTS: Lessons from building a billion-parameter Text-to-Speech model on 100K hours of data",
+      "authors": [
+        "Mateusz Lajszczak",
+        "Guillermo Cámbara",
+        "Yang Li",
+        "Fatih Beyhan",
+        "Arent van Korlaar",
+        "Fan Yang",
+        "Arnaud Joly",
+        "Álvaro Martín-Cortinas",
+        "Ammar Abbas",
+        "Adam Michalski",
+        "A. Moinet",
+        "S. Karlapati"
+      ],
+      "published": "2024-02-12T00:00:00+00:00",
+      "summary": "We introduce a text-to-speech (TTS) model called BASE TTS, which stands for $\\textbf{B}$ig $\\textbf{A}$daptive $\\textbf{S}$treamable TTS with $\\textbf{E}$mergent abilities. BASE TTS is the largest TTS model to-date, trained on 100K hours of public domain speech data, achieving a new state-of-the-art in speech naturalness. It deploys a 1-billion-parameter autoregressive Transformer that converts raw texts into discrete codes (\"speechcodes\") followed by a convolution-based decoder which converts these speechcodes into waveforms in an incremental, streamable manner. Further, our speechcodes are built using a novel speech tokenization technique that features speaker ID disentanglement and compression with byte-pair encoding. Echoing the widely-reported\"emergent abilities\"of large language models when trained on increasing volume of data, we show that BASE TTS variants built with 10K+ hours and 500M+ parameters begin to demonstrate natural prosody on textually complex sentences. We design and share a specialized dataset to measure these emergent abilities for text-to-speech. We showcase state-of-the-art naturalness of BASE TTS by evaluating against baselines that include publicly available large-scale text-to-speech systems: YourTTS, Bark and TortoiseTTS. Audio samples generated by the model can be heard at https://amazon-ltts-paper.com/.",
+      "paper_url": "https://arxiv.org/abs/2402.08093",
+      "pdf_url": "https://arxiv.org/pdf/2402.08093",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "该论文提出了最大的TTS模型BASE TTS，引入新颖的语音分词技术，在10万小时数据上训练，实现了最先进的自然度，并展示了涌现能力，是生成式语音技术方向的里程碑工作，高度相关。",
+      "citation_count": 125,
+      "date_added": "2026-07-23",
+      "chinese_summary": {
+        "problem": "如何构建一个基于大规模数据训练的高自然度文本到语音模型，使其能够处理复杂文本并生成流式音频，同时展示涌现能力。",
+        "method": "采用10亿参数的自回归Transformer将原始文本转换为离散语音码（speechcodes），再通过基于卷积的增量解码器将语音码实时解码为波形；提出了一种新型语音分词技术，实现说话人身份解耦，并通过字节对编码进行压缩。",
+        "innovation": "首次将TTS模型参数规模提升至十亿级，并在10万小时公开语音数据上训练，达到了自然度的新水平；实现了自适应流式解码，支持增量生成；通过扩大数据量和模型容量，展示了类似大语言模型的涌现能力，在复杂长句上获得自然韵律，并为此设计了专门的评估数据集。",
+        "evidence": "与公开的大规模TTS系统YourTTS、Bark和TortoiseTTS进行对比，评估了自然度并达到最优；展示了当数据量超过1万小时、模型参数超过5亿时，模型在复杂句子上开始呈现自然韵律的涌现现象。",
+        "limitations": "未提供具体的客观评价指标和数值对比结果；自回归生成可能限制推理速度；卷积解码器的流式质量仍需验证；说话人解耦和语音分词的消融实验未见详细说明。",
+        "why_relevant": "直接对应研究方向中的‘语音合成’和‘文本到语音’，采用大规模生成式模型，属于生成式语音技术的前沿进展，对相关研究有重要参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2607.19859",
+      "arxiv_id": "2607.19859",
+      "title": "StellarTTS: Sparse Temporal Embedding for Low-Latency and Robust Speech Synthesis",
+      "authors": [
+        "Kaicheng Luo",
+        "Xuefei Gong",
+        "Yutao Sun",
+        "Jinling He",
+        "Yujie Hou",
+        "Xiaoyang Xing",
+        "Huiyan Li",
+        "Bing Han",
+        "Yanmin Qian"
+      ],
+      "published": "2026-07-22T07:48:37Z",
+      "summary": "The trade-off between robustness, latency, and prosody critically challenges text-to-speech (TTS) systems. Autoregressive models, despite fidelity, are slow and error-prone; non-autoregressive (NAR) alternatives, while fast, often sacrifice prosodic naturalness via rigid alignments. This paper introduces StellarTTS, a novel mobile-optimized NAR TTS framework based on a sparse temporal embedding strategy, enabling granular control of phoneme duration, pronunciation, and prosody. Furthermore, we propose a semantic-aware codec that facilitates efficient single-stage decoding. Conditioned on the sparse temporal embedding, our 83M-parameter lightweight masked generative transformer achieves a real-time factor (RTF) of 0.08. Experiments demonstrate that StellarTTS attains lower latency and stronger robustness compared to state-of-the-art TTS systems, while maintaining competitive performance in audio quality, prosodic naturalness, and speaker similarity.",
+      "paper_url": "http://arxiv.org/abs/2607.19859v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.19859v1",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "论文提出移动端优化的非自回归TTS框架，通过稀疏时间嵌入和语义感知编解码器实现低延迟（RTF 0.08）及高鲁棒性，直接匹配生成式语音技术方向，工作新颖扎实。",
+      "citation_count": null,
+      "date_added": "2026-07-23",
+      "chinese_summary": {
+        "problem": "现有TTS系统难以在低延迟、高鲁棒性和自然韵律之间取得平衡，尤其自回归模型延迟高、易出错，非自回归模型则因僵硬对齐牺牲韵律自然度，移动端场景尤为突出。",
+        "method": "StellarTTS提出稀疏时间嵌入策略，实现对音素时长、发音和韵律的细粒度控制；设计语义感知编解码器，支持高效单阶段解码；基于此嵌入，使用83M参数的轻量掩码生成Transformer，实时因子达0.08。",
+        "innovation": "提出稀疏时间嵌入避免僵硬对齐，实现韵律、时长细粒度控制；语义感知编解码器简化单阶段解码流程；轻量级模型（83M）在移动端实现低延迟（RTF 0.08）且保持高鲁棒性和自然度。",
+        "evidence": "摘要指出实验证明StellarTTS相比最先进TTS系统拥有更低延迟和更强鲁棒性，同时音质、韵律自然度和说话人相似度保持竞争力，但未给出具体数值。",
+        "limitations": "摘要未提及在多样化数据或噪声环境下的鲁棒性结果，未与扩散模型、流匹配等新生代方法对比，轻量级设计的具体资源占用需阅读全文确认。",
+        "why_relevant": "研究方向包含语音合成与TTS，该论文正是提出一种新的TTS框架，直接匹配关键词‘speech synthesis’、‘text-to-speech’，且关注低延迟与鲁棒性，与生成式语音技术的实际应用场景高度吻合。"
+      }
+    },
+    {
+      "id": "arxiv:2505.17589",
+      "arxiv_id": "2505.17589",
+      "title": "CosyVoice 3: Towards In-the-wild Speech Generation via Scaling-up and Post-training",
+      "authors": [
+        "Zhihao Du",
+        "Changfeng Gao",
+        "Yuxuan Wang",
+        "Fan Yu",
+        "Tianyu Zhao",
+        "Hao Wang",
+        "Xiang Lv",
+        "Hui Wang",
+        "Chongjia Ni",
+        "Xian Shi",
+        "Keyu An",
+        "Guanrou Yang"
+      ],
+      "published": "2025-05-23T00:00:00+00:00",
+      "summary": "In our prior works, we introduced a scalable streaming speech synthesis model, CosyVoice 2, which integrates a large language model (LLM) and a chunk-aware flow matching (FM) model, and achieves low-latency bi-streaming speech synthesis and human-parity quality. Despite these advancements, CosyVoice 2 exhibits limitations in language coverage, domain diversity, data volume, text formats, and post-training techniques. In this paper, we present CosyVoice 3, an improved model designed for zero-shot multilingual speech synthesis in the wild, surpassing its predecessor in content consistency, speaker similarity, and prosody naturalness. Key features of CosyVoice 3 include: 1) A novel speech tokenizer to improve prosody naturalness, developed via supervised multi-task training, including automatic speech recognition, speech emotion recognition, language identification, audio event detection, and speaker analysis. 2) A new differentiable reward model for post-training applicable not only to CosyVoice 3 but also to other LLM-based speech synthesis models. 3) Dataset Size Scaling: Training data is expanded from ten thousand hours to one million hours, encompassing 9 languages and 18 Chinese dialects across various domains and text formats. 4) Model Size Scaling: Model parameters are increased from 0.5 billion to 1.5 billion, resulting in enhanced performance on our multilingual benchmark due to the larger model capacity. These advancements contribute significantly to the progress of speech synthesis in the wild. We encourage readers to listen to the demo at https://funaudiollm.github.io/cosyvoice3.",
+      "paper_url": "https://arxiv.org/abs/2505.17589",
+      "pdf_url": "https://arxiv.org/pdf/2505.17589",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "高度相关生成语音技术，提出零样本多语言语音合成，通过扩大数据和模型规模、改进语音标记器与奖励模型，提升自然度和一致性，是必读的先进工作。",
+      "citation_count": 176,
+      "date_added": "2026-07-23",
+      "chinese_summary": {
+        "problem": "CosyVoice 2在语言覆盖、领域多样性、数据量与格式、后训练技术方面存在局限，导致零样本多语言语音合成在内容一致性、说话人相似度和韵律自然度上不足，本文旨在实现更优的“in-the-wild”多语言语音合成。",
+        "method": "基于LLM与块感知流匹配框架，引入新语音分词器，通过ASR、情感识别、语言识别、音频事件检测、说话人分析等监督多任务训练增强韵律自然度；设计可微奖励模型用于后训练；训练数据扩展至百万小时、9语种及18种中文方言，模型参数扩至15亿。",
+        "innovation": "提出韵律增强的多任务语音分词器；设计通用可微奖励建模实现后训练优化，适用于各类LLM语音合成模型；通过数据与模型规模扩展（1000K小时数据，1.5B参数）大幅提升零样本多语言合成性能。",
+        "evidence": "摘要仅提及在内部多语言基准上取得性能提升，未提供具体定量指标或对比实验，证据不足。",
+        "limitations": "未报告计算开销、实时性、方言覆盖充分性及具体评估指标，需阅读全文确认。",
+        "why_relevant": "直接匹配研究方向中的语音合成与TTS，采用流匹配方法，关注多语言零样本生成，符合生成式语音技术范畴。"
       }
     }
   ]
