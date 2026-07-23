@@ -10,7 +10,7 @@
     "2026-07-22": 5,
     "2026-07-23": 5
   },
-  "last_run_iso": "2026-07-23T04:40:19.999761+00:00",
-  "last_run_status": "ok",
+  "last_run_iso": "2026-07-23T10:02:13.931053+00:00",
+  "last_run_status": "ok-cap-reached",
   "foundation_last_topic": "generative_speech"
 }
