@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-24T04:38:56.639810+00:00",
+  "updated_at_iso": "2026-07-25T04:32:43.244980+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -3603,6 +3603,186 @@
         "evidence": "在多语言自动基准及Artificial Analysis Music with Vocals排行榜上取得竞争力结果，但摘要未给出具体量化指标。",
         "limitations": "摘要未报告消融实验或细粒度对比数据，架构各组件的实际贡献和生成质量细节需阅读全文确认。",
         "why_relevant": "论文使用流匹配（flow matching）这一生成式方法与研究方向中的‘diffusion model speech, flow matching speech’有关，但研究领域为音乐生成而非语音；未涉及语音增强、语音合成、神经声码器等具体任务，与‘generative speech technology’核心关注点不符，相关度低。"
+      }
+    },
+    {
+      "id": "arxiv:2310.04673",
+      "arxiv_id": "2310.04673",
+      "title": "LauraGPT: Listen, Attend, Understand, and Regenerate Audio with GPT",
+      "authors": [
+        "Jiaming Wang",
+        "Zhihao Du",
+        "Qian Chen",
+        "Yunfei Chu",
+        "Zhifu Gao",
+        "Zerui Li",
+        "Kai Hu",
+        "Xiaohuan Zhou",
+        "Jin Xu",
+        "Ziyang Ma",
+        "Wen Wang",
+        "Siqi Zheng"
+      ],
+      "published": "2023-10-07T00:00:00+00:00",
+      "summary": "Generative Pre-trained Transformer (GPT) models have achieved remarkable performance on various natural language processing tasks, and have shown great potential as backbones for audio-and-text large language models (LLMs). Previous mainstream audio-and-text LLMs use discrete audio tokens to represent both input and output audio; however, they suffer from performance degradation on tasks such as automatic speech recognition, speech-to-text translation, and speech enhancement over models using continuous speech features. In this paper, we propose LauraGPT, a novel unified audio-and-text GPT-based LLM for audio recognition, understanding, and generation. LauraGPT is a versatile LLM that can process both audio and text inputs and generate outputs in either modalities. We propose a novel data representation that combines continuous and discrete features for audio: LauraGPT encodes input audio into continuous representations using an audio encoder and generates output audio from discrete codec codes. We propose a one-step codec vocoder to overcome the prediction challenge caused by the multimodal distribution of codec tokens. We fine-tune LauraGPT using supervised multi-task learning. Extensive experiments show that LauraGPT consistently achieves comparable to superior performance compared to strong baselines on a wide range of audio tasks related to content, semantics, paralinguistics, and audio-signal analysis, such as automatic speech recognition, speech-to-text translation, text-to-speech synthesis, speech enhancement, automated audio captioning, speech emotion recognition, and spoken language understanding.",
+      "paper_url": "https://arxiv.org/abs/2310.04673",
+      "pdf_url": "https://arxiv.org/pdf/2310.04673",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出统一音频GPT模型LauraGPT，结合连续与离散音频表示，支持语音增强、合成等多任务，与生成式语音技术高度相关，是音频大模型的重要基石。",
+      "citation_count": 115,
+      "date_added": "2026-07-25",
+      "chinese_summary": {
+        "problem": "如何构建统一的音频-文本GPT大模型，避免离散音频token在语音识别、翻译、增强等任务上的性能下降，并实现涵盖识别、理解与生成的联合处理。",
+        "method": "LauraGPT使用音频编码器将输入音频编码为连续特征，输出音频则通过离散的神经编解码器码生成；针对离散码的多模态预测难题，提出一步式编解码器声码器（one-step codec vocoder）直接将连续表示映射为音频波形；利用有监督多任务学习在多个语音与文本任务上微调模型。",
+        "innovation": "提出连续输入与离散输出相结合的音频表示方法，兼顾任务性能与生成灵活性；设计一步式编解码器声码器，避免自回归逐码预测，克服多模态分布挑战；实现单一模型同时处理语音识别、合成、增强、情感分析等多类任务，统一音频-文本任务框架。",
+        "evidence": "摘要中明确描述‘Extensive experiments show that LauraGPT consistently achieves comparable to superior performance compared to strong baselines on a wide range of audio tasks’，并列举了自动语音识别、语音翻译、文本转语音、语音增强、自动音频描述、情感识别、口语理解等具体任务。",
+        "limitations": "未提及计算复杂度或实时性能；离散码本对语音细节保真度的影响未知；一步式声码器的生成质量上限需与自回归声码器对比；多任务学习中的任务干扰问题未讨论。",
+        "why_relevant": "研究方向聚焦生成式语音技术，LauraGPT直接涉及语音合成、语音增强、神经声码器等核心子领域。其中的一步式编解码器声码器属于神经声码器范畴，且模型在语音增强和TTS上的应用直接匹配生成式语音增强和语音合成的目标。尽管采用GPT而非扩散或流匹配，但仍属生成式模型，对统一语音生成框架具有参考价值。"
+      }
+    },
+    {
+      "id": "s2:a41cb677f935e375d51366a01a15a8a21b15331c",
+      "arxiv_id": "",
+      "title": "A Time-Frequency Attention Module for Neural Speech Enhancement",
+      "authors": [
+        "Qiquan Zhang",
+        "Xinyuan Qian",
+        "Zhaoheng Ni",
+        "Aaron Nicolson",
+        "E. Ambikairajah",
+        "Haizhou Li"
+      ],
+      "published": "2023-01-01T00:00:00+00:00",
+      "summary": "Speech enhancement plays an essential role in a wide range of speech processing applications. Recent studies on speech enhancement tend to investigate how to effectively capture the long-term contextual dependencies of speech signals to boost performance. However, these studies generally neglect the time-frequency (T-F) distribution information of speech spectral components, which is equally important for speech enhancement. In this paper, we propose a simple yet very effective network module, which we term the T-F attention (TFA) module, that uses two parallel attention branches, i.e., time-frame attention and frequency-channel attention, to explicitly exploit position information to generate a 2-D attention map to characterise the salient T-F speech distribution. We validate our TFA module as part of two widely used backbone networks (residual temporal convolution network and Transformer) and conduct speech enhancement with four most popular training objectives. Our extensive experiments demonstrate that our proposed TFA module consistently leads to substantial enhancement performance improvements in terms of the five most widely used objective metrics, with negligible parameter overheads. In addition, we further evaluate the efficacy of speech enhancement as a front-end for a downstream speech recognition task. Our evaluation results show that the TFA module significantly improves the robustness of the system to noisy conditions.",
+      "paper_url": "https://www.semanticscholar.org/paper/a41cb677f935e375d51366a01a15a8a21b15331c",
+      "pdf_url": "https://doi.org/10.1109/taslp.2022.3225649",
+      "categories": [
+        "IEEE/ACM Transactions on Audio Speech and Language Processing"
+      ],
+      "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "提出时频注意力模块，有效捕捉语音时频分布，显著提升神经语音增强性能，已成为该领域常用基线，与语音增强方向高度匹配，属于必读工作。",
+      "citation_count": 70,
+      "date_added": "2026-07-25",
+      "chinese_summary": {
+        "problem": "现有神经语音增强方法主要关注捕获长时上下文依赖，而忽略了语音信号的时频分布信息，限制了性能提升。",
+        "method": "提出时频注意力（TFA）模块，包含时间帧注意力和频率通道注意力两个并行分支，利用位置信息生成二维注意力图来表征显著的时频语音分布。该模块可嵌入残差时间卷积网络和Transformer等骨干网络，结合多种训练目标进行语音增强。",
+        "innovation": "首次显式利用时频位置信息生成二维注意力图，弥补了现有方法忽视时频分布信息的不足；TFA模块轻量级，以可忽略的参数开销在两个主流骨干网络上实现了一致的性能提升；验证了语音增强作为下游语音识别任务前端的有效性，展示了系统在噪声条件下的鲁棒性提升。",
+        "evidence": "在两类骨干网络和四种训练目标上进行了大量实验，五个广泛使用的客观指标表明性能显著提升，且参数开销可忽略；下游语音识别任务显示系统在噪声条件下的鲁棒性提高。",
+        "limitations": "未提及在真实噪声环境或复杂声学场景（如混响、回声）下的性能；未讨论与最新前沿方法的对比；模块是否适用于多通道语音增强未知，需阅读全文确认。",
+        "why_relevant": "论文直接聚焦于神经语音增强，提出的TFA注意力模块属于神经掩蔽和前端处理技术，可应用于单通道语音增强、去噪和噪声抑制等任务，与我的研究方向“语音增强与音频前端”高度匹配，涉及关键词如speech enhancement, neural masking, speech frontend。"
+      }
+    },
+    {
+      "id": "arxiv:2302.14748",
+      "arxiv_id": "2302.14748",
+      "title": "Reducing the Prior Mismatch of Stochastic Differential Equations for Diffusion-based Speech Enhancement",
+      "authors": [
+        "Bunlong Lay",
+        "Simon Welker",
+        "Julius Richter",
+        "Timo Gerkmann"
+      ],
+      "published": "2023-02-28T00:00:00+00:00",
+      "summary": "Recently, score-based generative models have been successfully employed for the task of speech enhancement. A stochastic differential equation is used to model the iterative forward process, where at each step environmental noise and white Gaussian noise are added to the clean speech signal. While in limit the mean of the forward process ends at the noisy mixture, in practice it stops earlier and thus only at an approximation of the noisy mixture. This results in a discrepancy between the terminating distribution of the forward process and the prior used for solving the reverse process at inference. In this paper, we address this discrepancy and propose a forward process based on a Brownian bridge. We show that such a process leads to a reduction of the mismatch compared to previous diffusion processes. More importantly, we show that our approach improves in objective metrics over the baseline process with only half of the iteration steps and having one hyperparameter less to tune.",
+      "paper_url": "https://arxiv.org/abs/2302.14748",
+      "pdf_url": "http://arxiv.org/pdf/2302.14748",
+      "categories": [
+        "Interspeech"
+      ],
+      "venue": "Interspeech",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "针对扩散语音增强的先验不匹配问题，提出基于布朗桥的前向过程，提升性能并减少迭代步数，是生成式语音增强方向的高相关前沿工作。",
+      "citation_count": 49,
+      "date_added": "2026-07-25",
+      "chinese_summary": {
+        "problem": "基于扩散模型的语音增强中，正向SDE过程在有限步数下终止于含噪语音的近似分布，导致与逆向过程先验分布不匹配。",
+        "method": "提出基于布朗桥的正向扩散过程，直接建模从干净语音到含噪混合的过渡，从而保证终止分布精确匹配带噪语音，消除了先验不匹配；该过程仅需一半迭代步数，且省去了原有一个超参数。",
+        "innovation": "首次将布朗桥引入基于SDE的扩散语音增强，解决了正向过程终止分布与先验的失配问题；相比常规扩散过程，在客观指标上有明显提升，同时迭代步数减半且无需调节额外超参数，简化了训练与推理。",
+        "evidence": "摘要提及客观指标提升与迭代减半，但未提供具体数值，实验细节需要查看全文。",
+        "limitations": "摘要缺乏数据集、基线方法、客观指标具体数值及泛化能力的说明；布朗桥过程可能对不同类型的噪声或低信噪比场景的鲁棒性有待验证。",
+        "why_relevant": "论文属于生成式语音增强，使用扩散模型改进SDE框架，直接匹配研究方向中的生成式语音增强、扩散模型语音等关键词，且解决的实际问题与现有扩散语音增强系统瓶颈（先验不匹配）高度相关。"
+      }
+    },
+    {
+      "id": "arxiv:2308.08926",
+      "arxiv_id": "2308.08926",
+      "title": "Explicit Estimation of Magnitude and Phase Spectra in Parallel for High-Quality Speech Enhancement",
+      "authors": [
+        "Ye-Xin Lu",
+        "Yang Ai",
+        "Zhenhua Ling"
+      ],
+      "published": "2023-08-17T00:00:00+00:00",
+      "summary": "Phase information has a significant impact on speech perceptual quality and intelligibility. However, existing speech enhancement methods encounter limitations in explicit phase estimation due to the non-structural nature and wrapping characteristics of the phase, leading to a bottleneck in enhanced speech quality. To overcome the above issue, in this paper, we proposed MP-SENet, a novel Speech Enhancement Network that explicitly enhances Magnitude and Phase spectra in parallel. The proposed MP-SENet comprises a Transformer-embedded encoder-decoder architecture. The encoder aims to encode the input distorted magnitude and phase spectra into time-frequency representations, which are further fed into time-frequency Transformers for alternatively capturing time and frequency dependencies. The decoder comprises a magnitude mask decoder and a phase decoder, directly enhancing magnitude and wrapped phase spectra by incorporating a magnitude masking architecture and a phase parallel estimation architecture, respectively. Multi-level loss functions explicitly defined on the magnitude spectra, wrapped phase spectra, and short-time complex spectra are adopted to jointly train the MP-SENet model. A metric discriminator is further employed to compensate for the incomplete correlation between these losses and human auditory perception. Experimental results demonstrate that our proposed MP-SENet achieves state-of-the-art performance across multiple speech enhancement tasks, including speech denoising, dereverberation, and bandwidth extension. Compared to existing phase-aware speech enhancement methods, it further mitigates the compensation effect between the magnitude and phase by explicit phase estimation, elevating the perceptual quality of enhanced speech. Remarkably, for the speech denoising task, the proposed MP-SENet yields a PESQ of 3.60 on the VoiceBank+DEMAND dataset and 3.62 on the DNS challenge dataset.",
+      "paper_url": "https://arxiv.org/abs/2308.08926",
+      "pdf_url": "https://arxiv.org/pdf/2308.08926",
+      "categories": [
+        "Neural Networks"
+      ],
+      "venue": "Neural Networks",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 8.0,
+      "justification": "提出并行幅度和相位估计网络MP-SENet，显式增强相位提升语音质量，在去噪等任务上达到SOTA，高度匹配语音增强方向，是近年重要进展，但引用数尚在积累阶段。",
+      "citation_count": 55,
+      "date_added": "2026-07-25",
+      "chinese_summary": {
+        "problem": "现有语音增强方法因相位的非结构性和卷绕特性，难以显式估计相位，导致增强语音质量受限。",
+        "method": "提出MP-SENet，采用Transformer嵌入的编码器-解码器架构，并行显式增强幅度和相位谱。编码器将失真幅度和相位谱编码为时频表示，经时频Transformer捕获时序和频率依赖；解码器包含幅度掩码解码器和相位并行估计解码器，分别直接增强幅度和包裹相位谱。训练时结合幅度谱、包裹相位谱和短时复数谱的多级损失函数，并引入度量判别器补偿损失与听觉感知的不完全相关。",
+        "innovation": "1) 首次在单一网络中并行显式估计幅度和相位谱，而非传统的仅幅度增强或隐式相位处理；2) 设计相位并行估计架构，直接处理包裹相位，避免相位非结构性问题；3) 采用多级损失和度量判别器联合优化，更贴近人耳感知评价。",
+        "evidence": "在语音去噪、去混响和带宽扩展任务上达到最先进性能。语音去噪任务：VoiceBank+DEMAND数据集PESQ达3.60，DNS挑战数据集PESQ达3.62，较现有相位感知方法显著提升感知质量。",
+        "limitations": "摘要未提及模型计算复杂度、实时性、对极低信噪比或复杂声学场景的鲁棒性，以及相位包裹处理的具体细节和可能精度损失，需阅读全文确认。",
+        "why_relevant": "论文直接针对语音增强，覆盖去噪和去混响任务，核心方法涉及神经掩码和前端处理，与我的研究方向‘Speech Enhancement and Audio Frontend’高度匹配，尤其对应关键词：speech enhancement, speech denoising, dereverberation, neural masking。"
+      }
+    },
+    {
+      "id": "arxiv:2309.17384",
+      "arxiv_id": "2309.17384",
+      "title": "Toward Universal Speech Enhancement For Diverse Input Conditions",
+      "authors": [
+        "Wangyou Zhang",
+        "Kohei Saijo",
+        "Zhong-Qiu Wang",
+        "Shinji Watanabe",
+        "Yanmin Qian"
+      ],
+      "published": "2023-09-29T00:00:00+00:00",
+      "summary": "The past decade has witnessed substantial growth of data-driven speech enhancement (SE) techniques thanks to deep learning. While existing approaches have shown impressive performance in some common datasets, most of them are designed only for a single condition (e.g., single-channel, multi-channel, or a fixed sampling frequency) or only consider a single task (e.g., denoising or dereverberation). Currently, there is no universal SE approach that can effectively handle diverse input conditions with a single model. In this paper, we make the first attempt to investigate this line of research. First, we devise a single SE model that is independent of microphone channels, signal lengths, and sampling frequencies. Second, we design a universal SE benchmark by combining existing public corpora with multiple conditions. Our experiments on a wide range of datasets show that the proposed single model can successfully handle diverse conditions with strong performance.",
+      "paper_url": "https://arxiv.org/abs/2309.17384",
+      "pdf_url": "https://arxiv.org/pdf/2309.17384",
+      "categories": [
+        "Automatic Speech Recognition & Understanding"
+      ],
+      "venue": "Automatic Speech Recognition & Understanding",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 8.0,
+      "justification": "该工作首次探索通用语音增强模型，单模型同时处理多通道、变采样率与变长输入，直接匹配语音增强与麦克风阵列方向，创新性强且质量扎实，但引用数尚不高，未达必读经典级别。",
+      "citation_count": 47,
+      "date_added": "2026-07-25",
+      "chinese_summary": {
+        "problem": "现有语音增强模型通常仅针对单一条件（如单通道、固定采样率）或单一任务（去噪或去混响）设计，缺乏能同时处理多种输入条件（不同通道数、信号长度、采样率）的通用方案。",
+        "method": "提出一种独立于麦克风通道数、信号长度和采样频率的统一语音增强模型，具体设计未在摘要中详述，但强调单一模型即可覆盖多样条件。同时，通过混合多个现有公开数据集构建了一个通用语音增强评测基准。",
+        "innovation": "首次尝试用单一模型处理多条件语音增强任务，打破传统模型针对特定条件优化的局限；设计了一个涵盖多条件、多任务的通用评测基准，为后续研究提供统一对比平台。",
+        "evidence": "摘要中提到在广泛数据集上的实验表明所提单一模型能成功处理多样条件且性能强劲，但未给出具体指标。",
+        "limitations": "摘要未透露模型架构细节及在极端条件下的性能表现；作为首次尝试，可能无法在所有条件下均达到最优；通用基准的覆盖度和平衡性需要全文验证。",
+        "why_relevant": "研究方向聚焦语音增强与音频前端，涵盖去噪、去混响、回声消除等任务以及多通道处理。该论文直接以统一模型解决这些细分问题，且强调多条件适应性，与研究方向的关键词‘speech enhancement’、‘dereverberation’、‘multi-channel’、‘noise suppression’等高度吻合。"
       }
     }
   ]
