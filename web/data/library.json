@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-26T04:46:36.964241+00:00",
+  "updated_at_iso": "2026-07-26T09:36:53.440834+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -3816,6 +3816,145 @@
         "evidence": "在Seed-TTS英文和中文测试集上，GPT部分加速5倍，端到端加速3.6倍，词错率、说话人相似度和自然度损失极小。",
         "limitations": "加速效果依赖特定GPU及TensorRT生态；流式合成对语音质量的影响需全文验证；未与非TensorRT加速方案对比，通用性待确认。",
         "why_relevant": "研究方向涵盖TTS和流匹配生成模型，本文加速的IndexTTS-2正包含流匹配扩散Transformer，其部署优化对生成式语音技术的产品化有直接参考价值，但核心贡献属于系统工程而非生成算法本身。"
+      }
+    },
+    {
+      "id": "s2:e15ff3f73330ca44dd323cdf484bdd38fb99cfb3",
+      "arxiv_id": "",
+      "title": "Polynomial Eigenvalue Decomposition for Multichannel Broadband Signal Processing: A mathematical technique offering new insights and solutions",
+      "authors": [
+        "Vincent W. Neo",
+        "Soydan Redif",
+        "J. McWhirter",
+        "Jennifer Pestana",
+        "I. Proudler",
+        "Stephan Weiss",
+        "P. Naylor"
+      ],
+      "published": "2023-11-01T00:00:00+00:00",
+      "summary": "This article is devoted to the polynomial eigenvalue decomposition (PEVD) and its applications in broadband multichannel signal processing, motivated by the optimum solutions provided by the EVD for the narrowband case <xref ref-type=\"bibr\" rid=\"ref1\">[1]</xref>, <xref ref-type=\"bibr\" rid=\"ref2\">[2]</xref>. In general, we would like to extend the utility of the EVD to also address broadband problems. Multichannel broadband signals arise at the core of many essential commercial applications, such as telecommunications, speech processing, health-care monitoring, astronomy and seismic surveillance, and military technologies, including radar, sonar, and communications <xref ref-type=\"bibr\" rid=\"ref3\">[3]</xref>. The success of these applications often depends on the performance of signal processing tasks, including data compression <xref ref-type=\"bibr\" rid=\"ref4\">[4]</xref>, source localization <xref ref-type=\"bibr\" rid=\"ref5\">[5]</xref>, channel coding <xref ref-type=\"bibr\" rid=\"ref6\">[6]</xref>, signal enhancement <xref ref-type=\"bibr\" rid=\"ref7\">[7]</xref>, beamforming <xref ref-type=\"bibr\" rid=\"ref8\">[8]</xref>, and source separation <xref ref-type=\"bibr\" rid=\"ref9\">[9]</xref>. In most cases and for narrowband signals, performing an EVD is the key to the signal processing algorithm. Therefore, this article aims to introduce the PEVD as a novel mathematical technique suitable for many broadband signal processing applications.",
+      "paper_url": "https://www.semanticscholar.org/paper/e15ff3f73330ca44dd323cdf484bdd38fb99cfb3",
+      "pdf_url": "https://strathprints.strath.ac.uk/85117/1/Neo_etal_SPM_2023_Polynomial_eigenvalue_decomposition_for_multichannel_broadband_signal_processing.pdf",
+      "categories": [
+        "IEEE Signal Processing Magazine"
+      ],
+      "venue": "IEEE Signal Processing Magazine",
+      "track": "foundation",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 9.0,
+      "justification": "该论文介绍的多项式特征值分解为宽带多通道信号处理提供了核心数学工具，直接支撑麦克风阵列波束形成、声源分离等研究方向，属于必读基础文献。",
+      "citation_count": 42,
+      "date_added": "2026-07-26",
+      "chinese_summary": {
+        "problem": "如何将适用于窄带多通道信号处理的特征值分解（EVD）最优解框架推广到宽带场景，以解决传统EVD在宽带多通道信号处理中的局限性。",
+        "method": "引入多项式特征值分解（PEVD）作为核心数学工具，将窄带EVD的效用扩展至宽带信号处理，通过对空时协方差矩阵进行多项式分解实现宽带信号的去相关、降维等操作，可支撑波束成形、源分离等多种任务。",
+        "innovation": "提出PEVD这一数学框架，突破了传统EVD仅适用于窄带信号的限制，为宽带多通道信号处理提供了一种统一的代数工具；PEVD能够同时处理频率依赖的混合和相关性，有望简化宽带波束成形、源定位等算法设计。",
+        "evidence": "摘要为概述性介绍，未提供具体实验、仿真或系统验证证据，仅从应用层面列举了潜在任务，缺少可核验的性能数据或比较结果。",
+        "limitations": "缺乏实际应用案例和定量分析，数学技巧的实用性需通过具体宽带信号处理任务验证；对麦克风阵列声学场景的针对性不强，可能需要结合物理约束进一步适配。",
+        "why_relevant": "PEVD可应用于波束成形、源定位和信号增强，这些是麦克风阵列和波束成形方向的核心任务，但本文仅为数学技术介绍，未针对声学场景或语音处理建立具体模型，相关性偏泛化，需人工复核是否涉及多通道语音增强或空间滤波的直接实现。"
+      }
+    },
+    {
+      "id": "arxiv:2409.07614",
+      "arxiv_id": "2409.07614",
+      "title": "FlowSep: Language-Queried Sound Separation with Rectified Flow Matching",
+      "authors": [
+        "Yiitan Yuan",
+        "Xubo Liu",
+        "Haohe Liu",
+        "Mark D. Plumbley",
+        "Wenwu Wang"
+      ],
+      "published": "2024-09-11T00:00:00+00:00",
+      "summary": "Language-queried audio source separation (LASS) focuses on separating sounds using textual descriptions of the desired sources. Current methods mainly use discriminative approaches, such as time-frequency masking, to separate target sounds and minimize interference from other sources. However, these models face challenges when separating overlapping sound-tracks, which may lead to artifacts such as spectral holes or incomplete separation. Rectified flow matching (RFM), a generative model that establishes linear relations between the distribution of data and noise, offers superior theoretical properties and simplicity, but has not yet been explored in sound separation. In this work, we introduce FlowSep, a new generative model based on RFM for LASS tasks. FlowSep learns linear flow trajectories from noise to target source features within the variational autoencoder (VAE) latent space. During inference, the RFM-generated latent features are reconstructed into a mel-spectrogram via the pre-trained VAE decoder, followed by a pre-trained vocoder to synthesize the waveform. Trained on 1, 680 hours of audio data, FlowSep outperforms the state-of-the-art models across multiple benchmarks, as evaluated with subjective and objective metrics. Additionally, our results show that FlowSep surpasses a diffusion-based LASS model in both separation quality and inference efficiency, highlighting its strong potential for audio source separation tasks. Code, pre-trained models and demos can be found at: https://audio-agi.github.io/FlowSep_demo/.",
+      "paper_url": "https://arxiv.org/abs/2409.07614",
+      "pdf_url": "https://arxiv.org/pdf/2409.07614",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出基于整流流匹配的生成式语言查询声源分离模型，在分离质量和推理效率上超越扩散模型，与语音分离及目标说话人提取方向高度相关，是该方向近期高质量工作。",
+      "citation_count": 35,
+      "date_added": "2026-07-26",
+      "chinese_summary": {
+        "problem": "解决语言查询的音频源分离（LASS）中，判别式模型在重叠声轨上产生频谱空洞或不完全分离的伪影问题，提升分离质量与效率。",
+        "method": "提出FlowSep，基于整流流匹配（RFM）的生成式分离模型。在VAE潜空间学习从噪声到目标源特征的线性流轨迹，推理时由RFM生成潜特征，经预训练VAE解码为梅尔谱，再用声码器合成波形。",
+        "innovation": "首次将整流流匹配引入声音分离；利用RFM的线性轨迹和理论优势，替代判别式掩蔽和扩散模型，在保证分离质量的同时提升推理效率。",
+        "evidence": "在1680小时音频数据上训练，多个基准上主观与客观指标优于现有最佳模型，且分离质量和效率均超越扩散式LASS模型。",
+        "limitations": "摘要未明确是否针对语音信号；语言查询与目标说话人提取的异同未说明；数据集构成（语音/环境声比例）未知；可能不适用于鸡尾酒会场景下的盲源分离。",
+        "why_relevant": "仅泛泛匹配‘source separation’关键词，未涉及语音分离、目标说话人提取等核心研究方向，且以文本查询而非说话人线索驱动，需人工复核是否值得阅读。"
+      }
+    },
+    {
+      "id": "arxiv:2401.12473",
+      "arxiv_id": "2401.12473",
+      "title": "Boosting Unknown-Number Speaker Separation with Transformer Decoder-Based Attractor",
+      "authors": [
+        "Younglo Lee",
+        "Shukjae Choi",
+        "Byeonghak Kim",
+        "Zhong-Qiu Wang",
+        "Shinji Watanabe"
+      ],
+      "published": "2024-01-23T00:00:00+00:00",
+      "summary": "We propose a novel speech separation model designed to separate mixtures with an unknown number of speakers. The proposed model stacks 1) a dual-path processing block that can model spectro-temporal patterns, 2) a transformer decoder-based attractor (TDA) calculation module that can deal with an unknown number of speakers, and 3) triple-path processing blocks that can model inter-speaker relations. Given a fixed, small set of learned speaker queries and the mixture embedding produced by the dual-path blocks, TDA infers the relations of these queries and generates an attractor vector for each speaker. The estimated attractors are then combined with the mixture embedding by feature-wise linear modulation conditioning, creating a speaker dimension. The mixture embedding, conditioned with speaker information produced by TDA, is fed to the final triple-path blocks, which augment the dual-path blocks with an additional pathway dedicated to inter-speaker processing. The proposed approach outperforms the previous best reported in the literature, achieving 24.0 and 23.7 dB ∆SI-SDR on WSJ0-2 and 3mix respectively, with a single model trained to separate 2-and 3-speaker mixtures. The proposed model also exhibits strong performance and generalizability at counting sources and separating mixtures with up to 5 speakers.",
+      "paper_url": "https://arxiv.org/abs/2401.12473",
+      "pdf_url": "https://arxiv.org/pdf/2401.12473",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出基于Transformer decoder吸引子的未知说话者数量分离模型，在WSJ0混合音上取得领先性能，与语音分离方向高度相关且方法具有基础性影响。",
+      "citation_count": 24,
+      "date_added": "2026-07-26",
+      "chinese_summary": {
+        "problem": "在未知说话人数量的多说话人混合语音中实现高质量语音分离。",
+        "method": "模型堆叠双路径块（建模谱时模式）、Transformer解码器吸引子（TDA）模块（基于可学习查询生成说话人特定吸引子向量）和三路径块（建模说话人间关系）。TDA利用固定查询从双路径块输出推断吸引子，通过特征线性调制与混合嵌入融合，再送三路径块处理。",
+        "innovation": "提出TDA模块，使用Transformer解码器处理未知说话人数量并生成吸引子；引入三路径网络额外处理说话人交互；单一模型在2和3说话人混合上训练，实现当时最优性能并泛化到5说话人。",
+        "evidence": "在WSJ0-2mix和3mix上分别取得24.0和23.7 dB SI-SDR，超过文献最佳；单一模型泛化到分离5说话人混合并具备源计数能力。",
+        "limitations": "摘要未提及对噪声、混响等复杂场景的鲁棒性；计算复杂度未讨论；对超过5个说话人的性能未知。",
+        "why_relevant": "论文直接针对语音分离，使用双路径网络和吸引子机制，覆盖盲源分离、时域分离及未知说话人数量场景，与研究方向的speech separation、blind source separation、dual-path network、masking model等关键词高度匹配。"
+      }
+    },
+    {
+      "id": "arxiv:2305.20054",
+      "arxiv_id": "2305.20054",
+      "title": "UNSSOR: Unsupervised Neural Speech Separation by Leveraging Over-determined Training Mixtures",
+      "authors": [
+        "Zhong-Qiu Wang",
+        "Shinji Watanabe"
+      ],
+      "published": "2023-05-31T00:00:00+00:00",
+      "summary": "In reverberant conditions with multiple concurrent speakers, each microphone acquires a mixture signal of multiple speakers at a different location. In over-determined conditions where the microphones out-number speakers, we can narrow down the solutions to speaker images and realize unsupervised speech separation by leveraging each mixture signal as a constraint (i.e., the estimated speaker images at a microphone should add up to the mixture). Equipped with this insight, we propose UNSSOR, an algorithm for $\\textbf{u}$nsupervised $\\textbf{n}$eural $\\textbf{s}$peech $\\textbf{s}$eparation by leveraging $\\textbf{o}$ver-determined training mixtu$\\textbf{r}$es. At each training step, we feed an input mixture to a deep neural network (DNN) to produce an intermediate estimate for each speaker, linearly filter the estimates, and optimize a loss so that, at each microphone, the filtered estimates of all the speakers can add up to the mixture to satisfy the above constraint. We show that this loss can promote unsupervised separation of speakers. The linear filters are computed in each sub-band based on the mixture and DNN estimates through the forward convolutive prediction (FCP) algorithm. To address the frequency permutation problem incurred by using sub-band FCP, a loss term based on minimizing intra-source magnitude scattering is proposed. Although UNSSOR requires over-determined training mixtures, we can train DNNs to achieve under-determined separation (e.g., unsupervised monaural speech separation). Evaluation results on two-speaker separation in reverberant conditions show the effectiveness and potential of UNSSOR.",
+      "paper_url": "https://arxiv.org/abs/2305.20054",
+      "pdf_url": "http://arxiv.org/pdf/2305.20054",
+      "categories": [
+        "Neural Information Processing Systems"
+      ],
+      "venue": "Neural Information Processing Systems",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出利用过定训练混合实现无监督神经语音分离，创新性地结合线性滤波与DNN，与语音分离方向高度相关，是NeurIPS高质量工作。",
+      "citation_count": 23,
+      "date_added": "2026-07-26",
+      "chinese_summary": {
+        "problem": "在混响多说话人场景下，如何利用过定训练条件（麦克风数量多于说话人）实现无监督的语音分离，突破传统有监督方法对标注数据的依赖。",
+        "method": "UNSSOR 方法通过 DNN 对输入混合信号生成各说话人的中间估计，在每个子带上用前向卷积预测（FCP）算法计算线性滤波器，再以滤波后估计之和应等于原始混合为约束优化损失函数，同时引入最小化源内幅度散射损失项以解决子带频域排列歧义，实现无监督训练。",
+        "innovation": "首次提出利用过定训练混合作为约束来实现无监督神经语音分离；将 FCP 线性滤波整合到 DNN 训练过程中，使分离目标自然涌现；设计基于最小化源内幅度散射的损失项以应对频率排列问题，无需额外置换解决步骤。",
+        "evidence": "摘要是及在混响条件下针对双说话人分离进行评估，结果表明 UNSSOR 有效且具潜力，但未给出具体指标。",
+        "limitations": "训练要求麦克风数量大于说话人数量的过定混合，获取成本高；无监督分离性能可能弱于有监督方法；仅验证了双说话人场景，面向更复杂欠定分离的泛化能力需进一步确认。",
+        "why_relevant": "匹配研究方向中的基本关键词‘speech separation’，且提出了一种新的无监督学习范式，可能为有监督分离的预训练或数据增强提供借鉴，但与研究方向侧重有监督、目标说话人提取等核心点的直接关联较弱，需人工细读判断实用性。"
       }
     }
   ]
