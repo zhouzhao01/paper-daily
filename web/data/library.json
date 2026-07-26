@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-25T04:32:43.244980+00:00",
+  "updated_at_iso": "2026-07-26T04:46:36.964241+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -3783,6 +3783,39 @@
         "evidence": "摘要中提到在广泛数据集上的实验表明所提单一模型能成功处理多样条件且性能强劲，但未给出具体指标。",
         "limitations": "摘要未透露模型架构细节及在极端条件下的性能表现；作为首次尝试，可能无法在所有条件下均达到最优；通用基准的覆盖度和平衡性需要全文验证。",
         "why_relevant": "研究方向聚焦语音增强与音频前端，涵盖去噪、去混响、回声消除等任务以及多通道处理。该论文直接以统一模型解决这些细分问题，且强调多条件适应性，与研究方向的关键词‘speech enhancement’、‘dereverberation’、‘multi-channel’、‘noise suppression’等高度吻合。"
+      }
+    },
+    {
+      "id": "arxiv:2607.21042",
+      "arxiv_id": "2607.21042",
+      "title": "Faster IndexTTS-2: Accelerating and Streaming Autoregressive Zero-Shot Text-to-Speech Synthesis on GPUs",
+      "authors": [
+        "Muyang Du",
+        "Shuang Yu",
+        "Junjie Lai"
+      ],
+      "published": "2026-07-23T08:24:21Z",
+      "summary": "Autoregressive text-to-speech models achieve strong naturalness but suffer from slow inference due to sequential token generation, limiting their deployment in production applications that require low latency. IndexTTS-2 is a state-of-the-art autoregressive TTS model consisting of a GPT, a flow-matching Diffusion Transformer, and a vocoder. Despite its high synthesis quality, its inference speed barely reaches real-time without streaming or batching support. We present Faster IndexTTS-2, which accelerates all neural network components of IndexTTS-2 for production deployment on GPUs using NVIDIA TensorRT and TensorRT-LLM. Faster IndexTTS-2 also enables streaming synthesis for latency-sensitive interactive applications, and batched inference across all components to maximize GPU utilization. Experiments on the Seed-TTS benchmark for both English and Chinese demonstrate up to 5.0$\\times$ speedup on the autoregressive GPT and 3.6$\\times$ end-to-end, with minimal degradation in word error rate, speaker similarity, and naturalness. Our methodology provides a practical reference for efficiently accelerating similar autoregressive speech models on GPUs.",
+      "paper_url": "http://arxiv.org/abs/2607.21042v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.21042v1",
+      "categories": [
+        "cs.AI"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 7.0,
+      "justification": "论文加速了IndexTTS-2的推理，支持流式与批处理，与生成语音技术方向直接相关，工作扎实，但贡献偏工程优化，新颖性有限。",
+      "citation_count": null,
+      "date_added": "2026-07-26",
+      "chinese_summary": {
+        "problem": "自回归TTS模型推理速度慢，无法满足生产环境低延迟和实时流式需求，限制了其在交互场景的部署。",
+        "method": "采用NVIDIA TensorRT和TensorRT-LLM统一加速IndexTTS-2的GPT、流匹配扩散Transformer和声码器三个组件，并引入流式合成机制和全组件批量推理以最大化GPU利用率。",
+        "innovation": "首次将TensorRT-LLM等加速框架系统性应用于包含GPT和扩散模块的自回归TTS全流程；在不显著牺牲合成质量的前提下，实现端到端流式推理和批量处理，提供了一套可复用于类似自回归语音模型的GPU加速实践方案。",
+        "evidence": "在Seed-TTS英文和中文测试集上，GPT部分加速5倍，端到端加速3.6倍，词错率、说话人相似度和自然度损失极小。",
+        "limitations": "加速效果依赖特定GPU及TensorRT生态；流式合成对语音质量的影响需全文验证；未与非TensorRT加速方案对比，通用性待确认。",
+        "why_relevant": "研究方向涵盖TTS和流匹配生成模型，本文加速的IndexTTS-2正包含流匹配扩散Transformer，其部署优化对生成式语音技术的产品化有直接参考价值，但核心贡献属于系统工程而非生成算法本身。"
       }
     }
   ]
