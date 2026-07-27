@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-26T09:36:53.440834+00:00",
+  "updated_at_iso": "2026-07-27T04:56:10.566031+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -3955,6 +3955,195 @@
         "evidence": "摘要是及在混响条件下针对双说话人分离进行评估，结果表明 UNSSOR 有效且具潜力，但未给出具体指标。",
         "limitations": "训练要求麦克风数量大于说话人数量的过定混合，获取成本高；无监督分离性能可能弱于有监督方法；仅验证了双说话人场景，面向更复杂欠定分离的泛化能力需进一步确认。",
         "why_relevant": "匹配研究方向中的基本关键词‘speech separation’，且提出了一种新的无监督学习范式，可能为有监督分离的预训练或数据增强提供借鉴，但与研究方向侧重有监督、目标说话人提取等核心点的直接关联较弱，需人工细读判断实用性。"
+      }
+    },
+    {
+      "id": "arxiv:2412.06264",
+      "arxiv_id": "2412.06264",
+      "title": "Flow Matching Guide and Code",
+      "authors": [
+        "Y. Lipman",
+        "Marton Havasi",
+        "Peter Holderrieth",
+        "Neta Shaul",
+        "Matt Le",
+        "Brian Karrer",
+        "Ricky T. Q. Chen",
+        "David Lopez-Paz",
+        "Heli Ben-Hamu",
+        "Itai Gat"
+      ],
+      "published": "2024-12-09T00:00:00+00:00",
+      "summary": "Flow Matching (FM) is a recent framework for generative modeling that has achieved state-of-the-art performance across various domains, including image, video, audio, speech, and biological structures. This guide offers a comprehensive and self-contained review of FM, covering its mathematical foundations, design choices, and extensions. By also providing a PyTorch package featuring relevant examples (e.g., image and text generation), this work aims to serve as a resource for both novice and experienced researchers interested in understanding, applying and further developing FM.",
+      "paper_url": "https://arxiv.org/abs/2412.06264",
+      "pdf_url": "https://arxiv.org/pdf/2412.06264",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "全面综述流匹配生成框架及其在语音等领域的应用，提供代码包，是生成式语音技术方向的重要基础教程与资源。",
+      "citation_count": 302,
+      "date_added": "2026-07-27",
+      "chinese_summary": {
+        "problem": "提供Flow Matching生成建模框架的全面自包含指南与代码资源，帮助研究人员理解和应用该框架。",
+        "method": "通过综述形式梳理Flow Matching的数学基础、设计选择与扩展，并给出PyTorch代码包及图像、文本生成示例，以便用户快速上手。",
+        "innovation": "整合Flow Matching的数学基础、设计选择与扩展，提供统一的教程和开源代码库；覆盖图像、视频、音频、语音、生物结构等多个应用领域，为初学者和资深研究者提供一站式资源。",
+        "evidence": "摘要提及该指南覆盖多个领域并附有PyTorch包与示例，但未给出具体实验指标或语音生成实例。",
+        "limitations": "作为指南与工具，缺乏特定领域的深入实验验证；代码示例可能不直接包含语音生成任务，需自行适配。",
+        "why_relevant": "研究方向涉及扩散模型与流匹配在语音生成中的应用，该指南提供Flow Matching的通用数学框架与代码，可为生成式语音增强、合成等任务提供理论基础与实现参考，但需确认代码对语音处理的直接支持程度。"
+      }
+    },
+    {
+      "id": "arxiv:2301.13662",
+      "arxiv_id": "2301.13662",
+      "title": "InstructTTS: Modelling Expressive TTS in Discrete Latent Space With Natural Language Style Prompt",
+      "authors": [
+        "Dongchao Yang",
+        "Songxiang Liu",
+        "Rongjie Huang",
+        "Guangzhi Lei",
+        "Chao Weng",
+        "H. Meng",
+        "Dong Yu"
+      ],
+      "published": "2023-01-31T00:00:00+00:00",
+      "summary": "Expressive text-to-speech (TTS) aims to synthesize speech with varying speaking styles to better reflect human speech patterns. In this study, we attempt to use natural language as a style prompt to control the styles in the synthetic speech, e.g., “Sigh tone in full of sad mood with some helpless feeling”. Considering that there is no existing TTS corpus that is suitable to benchmark this novel task, we first construct a speech corpus whose speech samples are annotated with not only content transcriptions but also style descriptions in natural language. Then we propose an expressive TTS model, named InstructTTS, which is novel in the sense of the following aspects: (1) We fully take advantage of self-supervised learning and cross-modal metric learning and propose a novel three-stage training procedure to obtain a robust sentence embedding model that can effectively capture semantic information from the style prompts and control the speaking style in the generated speech. (2) We propose to model acoustic features in discrete latent space and train a novel discrete diffusion probabilistic model to generate vector-quantized (VQ) acoustic tokens rather than the commonly-used mel spectrogram. (3) We jointly apply mutual information (MI) estimation and minimization during acoustic model training to minimize style-speaker and style-content MI, avoiding possible content and speaker information leakage from the style prompt. Extensive objective and subjective evaluation has been conducted to verify the effectiveness and expressiveness of InstructTTS. Experimental results show that InstructTTS can synthesize high-fidelity and natural speech with style prompts controlling the speaking style.",
+      "paper_url": "https://arxiv.org/abs/2301.13662",
+      "pdf_url": "https://arxiv.org/pdf/2301.13662",
+      "categories": [
+        "IEEE/ACM Transactions on Audio Speech and Language Processing"
+      ],
+      "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "论文提出InstructTTS，利用自然语言风格提示控制合成语音风格，在离散潜在空间建模声学特征并训练离散扩散模型，高度契合生成式语音技术方向，方法新颖、质量扎实，是必读级工作。",
+      "citation_count": 176,
+      "date_added": "2026-07-27",
+      "chinese_summary": {
+        "problem": "如何利用自然语言风格描述作为提示，控制语音合成中的说话风格，以生成具有多样风格表现力的语音。",
+        "method": "提出InstructTTS模型，首先构建带风格描述的语音数据集；然后通过三阶段训练，利用自监督学习和跨模态度量学习获得句子嵌入模型，以捕获风格语义；接着在离散潜空间中，训练离散扩散概率模型生成向量量化（VQ）声学令牌，替代传统梅尔频谱；最后在声学模型训练中联合进行互信息估计与最小化，以减少风格提示向内容和说话人信息的泄漏。",
+        "innovation": "首次构建带自然语言风格标注的TTS数据集；采用三阶段训练获得鲁棒的风格句子嵌入；创新性地在离散潜空间中用离散扩散模型建模声学特征，并引入互信息最小化防止信息泄漏。",
+        "evidence": "进行了广泛的客观指标和主观听感评估，结果显示InstructTTS能合成高保真、自然的语音，且风格提示有效控制说话风格。",
+        "limitations": "摘要未提及模型对未见过风格提示的泛化能力、生成速度、以及离散扩散模型的采样效率；需要阅读全文确认风格控制的粒度和局限性。",
+        "why_relevant": "论文研究使用离散扩散概率模型进行富有表现力的文本到语音合成，与研究方向中的语音合成、TTS、扩散模型语音、神经声码器高度匹配。离散扩散生成VQ声学令牌的方法直接关联生成式模型在语音合成中的应用。"
+      }
+    },
+    {
+      "id": "arxiv:2302.03540",
+      "arxiv_id": "2302.03540",
+      "title": "Speak, Read and Prompt: High-Fidelity Text-to-Speech with Minimal Supervision",
+      "authors": [
+        "E. Kharitonov",
+        "Damien Vincent",
+        "Zalán Borsos",
+        "Raphaël Marinier",
+        "Sertan Girgin",
+        "O. Pietquin",
+        "Matthew Sharifi",
+        "M. Tagliasacchi",
+        "Neil Zeghidour"
+      ],
+      "published": "2023-02-07T00:00:00+00:00",
+      "summary": "Abstract We introduce SPEAR-TTS, a multi-speaker text-to-speech (TTS) system that can be trained with minimal supervision. By combining two types of discrete speech representations, we cast TTS as a composition of two sequence-to-sequence tasks: from text to high-level semantic tokens (akin to “reading”) and from semantic tokens to low-level acoustic tokens (“speaking”). Decoupling these two tasks enables training of the “speaking” module using abundant audio-only data, and unlocks the highly efficient combination of pretraining and backtranslation to reduce the need for parallel data when training the “reading” component. To control the speaker identity, we adopt example prompting, which allows SPEAR-TTS to generalize to unseen speakers using only a short sample of 3 seconds, without any explicit speaker representation or speaker labels. Our experiments demonstrate that SPEAR-TTS achieves a character error rate that is competitive with state-of-the-art methods using only 15 minutes of parallel data, while matching ground-truth speech in naturalness and acoustic quality.",
+      "paper_url": "https://arxiv.org/abs/2302.03540",
+      "pdf_url": "https://direct.mit.edu/tacl/article-pdf/doi/10.1162/tacl_a_00618/2200655/tacl_a_00618.pdf",
+      "categories": [
+        "Transactions of the Association for Computational Linguistics"
+      ],
+      "venue": "Transactions of the Association for Computational Linguistics",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出解耦文本到语义和语义到声学的TTS框架，结合离散表示与提示控制，在极少平行数据下实现高保真多说话人合成，是生成式语音技术方向的代表性工作。",
+      "citation_count": 292,
+      "date_added": "2026-07-27",
+      "chinese_summary": {
+        "problem": "训练高保真多说话人TTS系统通常依赖大量对齐文本-语音数据，本文旨在以极少量监督数据（如15分钟）实现竞争性能，降低数据需求。",
+        "method": "将TTS分解为两个序列到序列任务：文本到高层语义token（“阅读”）和语义token到低层声学token（“说话”）。解耦后，“说话”模块可利用海量无文本音频训练，而“阅读”模块通过预训练和回译技术减少对平行数据的需求。说话人身份由3秒示例提示控制，无需显式说话人表征或标签。",
+        "innovation": "通过离散语义-声学两级token化，将TTS解耦为可分别优化的两个阶段，使得“说话”模块能充分利用无监督音频数据；引入回译与预训练策略，极大降低“阅读”模块对平行数据的依赖；采用示例提示实现零样本说话人适应，无需任何说话人标签。",
+        "evidence": "实验表明，仅使用15分钟平行数据，SPEAR-TTS的字符错误率与现有最佳方法相当，且在自然度和声学质量上与真实语音无显著差异。",
+        "limitations": "摘要未明确说明离散表示的来源与具体架构（如是否基于HuBERT），也未提及在噪声、多语种等复杂场景下的表现；自然度评估可能依赖主观指标，客观评估细节不足；模型规模与推理效率未知。",
+        "why_relevant": "论文直接属于语音合成（TTS）领域，与研究方向中的“语音合成和TTS”高度匹配；提出的低资源训练和说话人泛化方法，为生成式语音技术的效率提升提供了新思路，可能对语音增强、修复等任务中离散表示的应用有启发。"
+      }
+    },
+    {
+      "id": "arxiv:2406.18009",
+      "arxiv_id": "2406.18009",
+      "title": "E2 TTS: Embarrassingly Easy Fully Non-Autoregressive Zero-Shot TTS",
+      "authors": [
+        "S. Eskimez",
+        "Xiaofei Wang",
+        "Manthan Thakker",
+        "Canrun Li",
+        "Chung-Hsien Tsai",
+        "Zhen Xiao",
+        "Hemin Yang",
+        "Zirun Zhu",
+        "Min Tang",
+        "Xu Tan",
+        "Yanqing Liu",
+        "Sheng Zhao"
+      ],
+      "published": "2024-06-26T00:00:00+00:00",
+      "summary": "This paper introduces Embarrassingly Easy Text-to-Speech (E2 TTS), a fully non-autoregressive zero-shot text-to-speech system that offers human-level naturalness and state-of-the-art speaker similarity and intelligibility. In the E2 TTS framework, the text input is converted into a character sequence with filler tokens. The flow-matching-based mel spectrogram generator is then trained based on the audio infilling task. Unlike many previous works, it does not require additional components (e.g., duration model, grapheme-to-phoneme) or complex techniques (e.g., monotonic alignment search). Despite its simplicity, E2 TTS achieves state-of-the-art zero-shot TTS capabilities that are comparable to or surpass previous works, including Voicebox and NaturalSpeech 3. The simplicity of E2 TTS also allows for flexibility in the input representation. We propose several variants of E2 TTS to improve usability during inference. See https://aka.ms/e2tts/for demo samples.",
+      "paper_url": "https://arxiv.org/abs/2406.18009",
+      "pdf_url": "https://arxiv.org/pdf/2406.18009",
+      "categories": [
+        "Spoken Language Technology Workshop"
+      ],
+      "venue": "Spoken Language Technology Workshop",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "该论文提出极简的全非自回归零样本TTS，基于流匹配与音频填充，无需额外对齐模块，性能比肩或超越Voicebox等，是生成式语音方向的必读基线工作，引用数高，基础性强。",
+      "citation_count": 223,
+      "date_added": "2026-07-27",
+      "chinese_summary": {
+        "problem": "如何设计一个简单而有效的完全非自回归零样本文本到语音系统，无需额外的时长模型、音素转换或单调对齐搜索等复杂组件。",
+        "method": "E2 TTS 将文本输入转换为带填充标记的字符序列，并使用基于流匹配的梅尔频谱生成器，通过音频填充任务进行训练，直接生成梅尔频谱，再通过声码器合成语音。系统完全非自回归，无需时长预测和音素对齐。",
+        "innovation": "1) 首次提出完全基于字符和填充标记的输入表示，摒弃了音素转换和显式时长建模；2) 利用流匹配在音频填充任务上训练，避免单调对齐搜索等复杂技巧；3) 框架极致简单，却达到与复杂系统相当的性能，且推理时输入表示可灵活调整。",
+        "evidence": "摘要声称达到人类水平自然度、最先进的说话人相似度和可懂度，性能与 Voicebox 和 NaturalSpeech 3 可比或超越；提供了演示样例链接。",
+        "limitations": "未提供定量指标和对比细节，仅定性声明；需阅读全文确认数据集、模型规模、训练资源和泛化能力；推理效率未提及。",
+        "why_relevant": "直接属于我的研究方向中的 text-to-speech 和 flow matching speech 部分，论文核心方法基于流匹配生成梅尔频谱，适合关注零样本 TTS 和简化生成式语音合成模型。"
+      }
+    },
+    {
+      "id": "arxiv:2305.07243",
+      "arxiv_id": "2305.07243",
+      "title": "Better speech synthesis through scaling",
+      "authors": [
+        "James Betker"
+      ],
+      "published": "2023-05-12T00:00:00+00:00",
+      "summary": "In recent years, the field of image generation has been revolutionized by the application of autoregressive transformers and DDPMs. These approaches model the process of image generation as a step-wise probabilistic processes and leverage large amounts of compute and data to learn the image distribution. This methodology of improving performance need not be confined to images. This paper describes a way to apply advances in the image generative domain to speech synthesis. The result is TorToise -- an expressive, multi-voice text-to-speech system. All model code and trained weights have been open-sourced at https://github.com/neonbjb/tortoise-tts.",
+      "paper_url": "https://arxiv.org/abs/2305.07243",
+      "pdf_url": "http://arxiv.org/pdf/2305.07243",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "该论文提出TorToise TTS，将自回归与扩散模型应用于语音合成，是生成式语音方向的重要基线，高度相关且具影响力。",
+      "citation_count": 128,
+      "date_added": "2026-07-27",
+      "chinese_summary": {
+        "problem": "如何将图像生成领域基于自回归Transformer和扩散模型（DDPMs）的大规模计算与数据范式应用于语音合成，以提升语音合成质量与表现力。",
+        "method": "采用自回归Transformer与去噪扩散概率模型（DDPMs）相结合的步进式概率生成过程，利用大规模计算资源与数据学习语音分布，构建多音色文本到语音系统TorToise。",
+        "innovation": "将图像生成中成功的缩放定律（scaling）和概率生成范式迁移至语音合成，实现了表现力强、多音色的语音生成；开源了完整模型代码与预训练权重。",
+        "evidence": "原文提供了开源系统TorToise的具体实现，包括模型代码与训练权重（GitHub链接），但摘要中未给出听觉或定量实验指标。",
+        "limitations": "摘要未提供客观评估指标（如MOS）或与现有TTS系统的对比；扩散模型的采样速度及自回归结构的推理效率需阅读全文确认。",
+        "why_relevant": "论文直接属于语音合成（TTS）和生成式语音技术，明确采用了扩散模型（DDPMs）这一研究方向的核心方法，与“generative speech synthesis”“diffusion model speech”“text-to-speech”等关键词高度匹配。"
       }
     }
   ]

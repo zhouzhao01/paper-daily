@@ -1,16 +1,16 @@
 {
-  "foundation_rotation_index": 3,
+  "foundation_rotation_index": 4,
   "added_by_day": {
-    "2026-07-19": 5,
     "2026-07-20": 5,
     "2026-07-21": 5,
     "2026-07-22": 5,
     "2026-07-23": 5,
     "2026-07-24": 5,
     "2026-07-25": 5,
-    "2026-07-26": 5
+    "2026-07-26": 5,
+    "2026-07-27": 5
   },
-  "last_run_iso": "2026-07-26T09:36:53.440834+00:00",
+  "last_run_iso": "2026-07-27T04:56:10.566031+00:00",
   "last_run_status": "ok",
-  "foundation_last_topic": "speech_separation_extraction"
+  "foundation_last_topic": "generative_speech"
 }
