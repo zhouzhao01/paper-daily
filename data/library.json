@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-28T04:31:07.854043+00:00",
+  "updated_at_iso": "2026-07-28T10:11:53.727846+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -4223,6 +4223,132 @@
         "evidence": "实验证据不足：摘要仅提及在三个任务上基准测试了流行模型，未给出具体性能指标或对比结果。",
         "limitations": "数据集规模较小（仅1.1k描述），可能影响评估的统计显著性；未提出新的评估指标或模型改进；依赖众包质量，描述的主观性可能引入噪声。",
         "why_relevant": "数据集可用于评估音乐表示学习模型在下游任务（如音乐字幕、检索）的性能，与研究方向中的音乐信息检索、音乐理解和自监督音频表示的应用评估相关，但论文自身未贡献新的表示学习方法或编码器。"
+      }
+    },
+    {
+      "id": "arxiv:2607.23811",
+      "arxiv_id": "2607.23811",
+      "title": "Memory Efficient Audio Synthesis with Decoupled Temporal Depth Diffusion Transformers",
+      "authors": [
+        "Dongseong Hwang",
+        "Prasanth Yadla",
+        "Kaan Elgin",
+        "Shifas Padinjaru Veettil",
+        "Sivanand Achanta",
+        "Dipjyoti Paul",
+        "Ramya Rasipuram",
+        "Tyler Johnson",
+        "Emad Soroush",
+        "Chung-Cheng Chiu",
+        "Zhifeng Chen"
+      ],
+      "published": "2026-07-26T19:20:01Z",
+      "summary": "Siri Expressive Voices synthesize rich, configurable speech in real time and entirely on device, powered by AFM 3 Core Advanced, Apple's most powerful on-device foundation model. This work presents the memory-efficient audio synthesis architecture behind that capability: a detokenizer that converts the semantic audio tokens emitted by the foundation model into high-fidelity audio within the tight compute and memory budget of the Apple Matrix Coprocessor (AMX). We convert semantic audio tokens to a residual vector quantization (RVQ) representation with a three-component design, a streaming encoder, a temporal decoder, and a depth decoder, that systematically decouples temporal and depth processing. A single reusable depth decoder with Diffusion Transformer (DiT)-style stage conditioning generates all RVQ levels autoregressively, replacing the dedicated per-level decoders of prior multi-decoder architectures, while causal sliding window attention with fixed-window key-value caching yields constant memory complexity independent of sequence length. Deployed on the AMX, the detokenizer sustains roughly 10 ms per generation step, about 16x faster than real time, with a peak runtime memory of only 21 MB and 329 MB of on-device assets, enabling continuous streaming synthesis of 20-320 seconds of audio. This constant, small footprint replaces the linear and quadratic memory scaling of conventional transformer- and GAN-based approaches. Ablation studies validate the key architectural components, and audio quality assessment confirms that the architecture maintains synthesis fidelity while achieving efficiency gains over existing methods. Operating at a 1-billion-parameter activation size within AFM 3 Core Advanced, it improves Mean Opinion Score by +0.28 overall (4.15 vs. 3.87) and by +0.42 on conversational speech (4.24 vs. 3.82) over the prior on-device text-to-speech system.",
+      "paper_url": "http://arxiv.org/abs/2607.23811v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.23811v1",
+      "categories": [
+        "cs.SD",
+        "cs.CL"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "提出解耦时间深度扩散变换器，在设备端以极低内存实现实时高质量语音合成，属于生成式语音技术必读前沿工作。",
+      "citation_count": null,
+      "date_added": "2026-07-28",
+      "chinese_summary": {
+        "problem": "在设备端资源严格受限下，实现从语义音频令牌到高保真语音的实时合成，克服传统模型内存随序列长度线性或二次增长的问题。",
+        "method": "提出一种三组件架构：流式编码器、时间解码器和深度解码器，将语义令牌转为残差矢量量化（RVQ）表示。通过解耦时间和深度处理，使用单个可重用的深度解码器（基于扩散变换器DiT，带阶段条件化）自回归生成所有RVQ层级，替代传统的每层级独立解码器。采用因果滑动窗口注意力与固定窗口键值缓存，实现恒定的O(1)内存复杂度，不随序列长度增长。整体部署在Apple矩阵协处理器上。",
+        "innovation": "创新地解耦时间与深度维度，用一个带阶段条件的扩散变换器统一完成所有RVQ层级的生成，大幅减少模型参数和内存；通过因果滑动窗口注意力与固定窗口缓存，首次在语音合成降码器上实现恒定内存占用，突破了传统Transformer和GAN的线性/二次内存增长瓶颈；在设备端实现实时流式合成，兼顾高合成质量与极低资源消耗。",
+        "evidence": "系统在Apple AMX上每生成步骤约10ms，比实时快16倍，峰值运行时内存仅21MB，资产329MB，可连续流式合成20-320秒音频。消融实验验证了关键架构组件的有效性，音频质量评估显示MOS总分提升0.28（4.15 vs. 3.87），对话语音MOS提升0.42（4.24 vs. 3.82），均优于上一代设备端TTS系统。",
+        "limitations": "摘要未提及模型在不同语言、说话人风格或噪声环境下的泛化性能；未知是否适用于除Apple AMX外的其他硬件平台；语义令牌的生成依赖上游基础模型，完整流水线的端到端表现未说明；可能需要阅读全文确认扩散步骤数、训练策略及对非语音音频的适用性。",
+        "why_relevant": "研究方向聚焦生成式语音技术，包括语音合成、TTS、神经声码器、扩散模型语音生成等。该论文直接提出一种基于扩散变换器的神经声码器/降码器架构，用于从令牌到波形的合成，属于设备端TTS系统的核心组件，与关键词“speech synthesis, text-to-speech, neural vocoder, diffusion model speech”精确匹配，且解决了实践中的内存效率瓶颈，对实际部署有重要参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2607.23938",
+      "arxiv_id": "2607.23938",
+      "title": "Qwen-Audio-3.0-TTS: Freely Controllable and Highly Robust Speech Synthesis with Multi-Stage Training Paradigm",
+      "authors": [
+        "Bajian Xiang",
+        "Cheng Wen",
+        "Han Zhao",
+        "Hao Wang",
+        "Haoxu Wang",
+        "Jiawei Jin",
+        "Jiayan Cui",
+        "Jie Chen",
+        "Mengxi Nie",
+        "Tianyu Zhao",
+        "Weiqin Li",
+        "Xiang Lv",
+        "Xiangang Li",
+        "Yang Xiang",
+        "Yang Zhou"
+      ],
+      "published": "2026-07-27T02:30:15Z",
+      "summary": "In this report, we present Qwen-Audio-3.0-TTS, a production-oriented speech synthesis system that jointly advances content consistency, speaker similarity, prosodic naturalness, audio quality, controllability, multilingual coverage, efficiency, and robustness. It combines a 12.5~Hz low-frame-rate speech tokenizer for reduced inference latency with a five-stage progressive training paradigm for coordinated language model (LM) and flow-matching model (FM) optimization. The model provides production-level control through free-style natural-language instructions and fine-grained inline tags, while supporting 16 languages, 20 Chinese dialect regions, one-pass long-form synthesis up to 3 minutes, and robust generation from noisy, reverberant, or unclear reference speech. Across SEED-TTS-Eval, CV3-Eval, instruction-following, long-form, and acoustic-robustness evaluations, Qwen-Audio-3.0-TTS achieves state-of-the-art performance on many reported dimensions or the strongest aggregate results. It also ranks first on the independent Artificial Analysis Text-to-Speech Leaderboard. These results establish Qwen-Audio-3.0-TTS as a strong foundation for production-level speech synthesis.",
+      "paper_url": "http://arxiv.org/abs/2607.23938v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.23938v1",
+      "categories": [
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "该工作直接对应生成式语音技术方向，提出多阶段训练范式实现高度可控、鲁棒的多语言语音合成，性能达到SOTA，属前沿必读。",
+      "citation_count": null,
+      "date_added": "2026-07-28",
+      "chinese_summary": {
+        "problem": "论文旨在构建一个生产级语音合成系统，联合提升内容一致性、说话人相似度、韵律自然度、音频质量、可控性、多语言覆盖、推理效率和声学鲁棒性，以解决现有TTS系统在实际部署中面临的多维度性能不足。",
+        "method": "系统采用12.5 Hz低帧率语音分词器降低推理延迟，并设计五阶段渐进训练范式协同优化语言模型和流匹配模型。支持自由形式自然语言指令和细粒度标签实现灵活控制，覆盖16种语言、20种汉语方言，并支持最长3分钟的长文本一次性合成，同时从噪声、混响或不清晰参考语音中鲁棒生成。",
+        "innovation": "1. 提出了五阶段渐进训练范式，有效协调语言模型和流匹配模型的联合学习；2. 采用极低帧率（12.5 Hz）语音分词器，显著提升推理效率；3. 结合自然语言指令和细粒度标签提供生产级可控性，并在多语言、长语音和强噪声场景下实现SOTA性能。",
+        "evidence": "在SEED-TTS-Eval、CV3-Eval、指令跟随、长形式合成和声学鲁棒性等多项评估中达到最优或综合最强结果，并在独立机构Artificial Analysis的TTS排行榜上排名第一。",
+        "limitations": "摘要未提供各评测维度的详细数值，无法判断是否所有维度均有提升；多阶段训练的实际收敛性和资源消耗未说明；低帧率分词器对音质的影响需全文确认。",
+        "why_relevant": "论文直接属于语音合成（TTS）领域，核心使用流匹配生成模型，匹配您的研究关键词‘speech synthesis’、‘text-to-speech’、‘flow matching speech’和‘generative model audio’。其系统级设计亦涉及效率和鲁棒性，与生成式语音增强的瓶颈相关。"
+      }
+    },
+    {
+      "id": "arxiv:2405.12609",
+      "arxiv_id": "2405.12609",
+      "title": "Mamba in Speech: Towards an Alternative to Self-Attention",
+      "authors": [
+        "Xiangyu Zhang",
+        "Qiquan Zhang",
+        "Hexin Liu",
+        "Tianyi Xiao",
+        "Xinyuan Qian",
+        "Beena Ahmed",
+        "E. Ambikairajah",
+        "Haizhou Li",
+        "Julien Epps"
+      ],
+      "published": "2024-05-21T00:00:00+00:00",
+      "summary": "Transformer and its derivatives have achieved success in diverse tasks across computer vision, natural language processing, and speech processing. To reduce the complexity of computations within the multi-head self-attention mechanism in Transformer, Selective State Space Models (i.e., Mamba) were proposed as an alternative. Mamba exhibited its effectiveness in natural language processing and computer vision tasks, but its superiority has rarely been investigated in speech signal processing. This paper explores solutions for applying Mamba to speech processing by discussing two typical speech processing tasks: speech recognition, which requires semantic and sequential information, and speech enhancement, which focuses primarily on sequential patterns. The experimental results confirm that bidirectional Mamba (BiMamba) consistently outperforms vanilla Mamba, highlighting the advantages of a bidirectional design for speech processing. Moreover, experiments demonstrate the effectiveness of BiMamba as an alternative to the self-attention module in the Transformer model and its derivates, particularly for the semantic-aware task. The crucial technologies for transferring Mamba to speech are then summarized in ablation studies and the discussion section, offering insights for extending this research to a broader scope of tasks.",
+      "paper_url": "https://arxiv.org/abs/2405.12609",
+      "pdf_url": "http://arxiv.org/pdf/2405.12609",
+      "categories": [
+        "IEEE Transactions on Audio, Speech, and Language Processing"
+      ],
+      "venue": "IEEE Transactions on Audio, Speech, and Language Processing",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "该论文系统性地将Mamba结构引入语音处理领域，验证双向Mamba可替代自注意力机制，在语音增强等任务中表现优异，与语音增强研究方向高度相关，且具有开创性，是必读级别的基础性工作。",
+      "citation_count": 128,
+      "date_added": "2026-07-28",
+      "chinese_summary": {
+        "problem": "探索如何将选择性状态空间模型Mamba应用于语音处理，以替代Transformer中的自注意力机制，降低计算复杂度。",
+        "method": "采用双向Mamba（BiMamba）替换Transformer中的自注意力模块，在语音识别（需语义和序列信息）和语音增强（需序列模式）两个典型任务上验证，并通过消融研究总结Mamba迁移至语音的关键技术。",
+        "innovation": "首次系统研究Mamba在语音信号处理中的应用，验证双向Mamba优于单向Mamba；证明BiMamba可作为自注意力模块的有效替代，尤其在语义感知任务上；通过消融实验提供将Mamba扩展到更广泛语音任务的指导。",
+        "evidence": "摘要提及实验确认双向Mamba优于vanilla Mamba，且作为自注意力替代有效，但未给出具体指标数据。",
+        "limitations": "仅涉及语音识别和语音增强两个任务，缺乏更广泛语音处理任务的验证；未提供量化性能对比；语音增强任务可能仅为序列模式应用的简单验证，深度和效果未知。",
+        "why_relevant": "论文包含语音增强任务，使用BiMamba替代自注意力模块，可能为语音增强模型架构设计提供新思路，但文章重点在Mamba替代自注意力且更关注语义任务，语音增强贡献有限，需人工复核具体增强性能。"
       }
     }
   ]
