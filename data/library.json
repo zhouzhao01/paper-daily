@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-27T04:56:10.566031+00:00",
+  "updated_at_iso": "2026-07-28T04:31:07.854043+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -4144,6 +4144,85 @@
         "evidence": "原文提供了开源系统TorToise的具体实现，包括模型代码与训练权重（GitHub链接），但摘要中未给出听觉或定量实验指标。",
         "limitations": "摘要未提供客观评估指标（如MOS）或与现有TTS系统的对比；扩散模型的采样速度及自回归结构的推理效率需阅读全文确认。",
         "why_relevant": "论文直接属于语音合成（TTS）和生成式语音技术，明确采用了扩散模型（DDPMs）这一研究方向的核心方法，与“generative speech synthesis”“diffusion model speech”“text-to-speech”等关键词高度匹配。"
+      }
+    },
+    {
+      "id": "arxiv:2306.00110",
+      "arxiv_id": "2306.00110",
+      "title": "MuseCoco: Generating Symbolic Music from Text",
+      "authors": [
+        "Peiling Lu",
+        "Xin Xu",
+        "C. Kang",
+        "Botao Yu",
+        "Chengyi Xing",
+        "Xuejiao Tan",
+        "Jiang Bian"
+      ],
+      "published": "2023-05-31T00:00:00+00:00",
+      "summary": "Generating music from text descriptions is a user-friendly mode since the text is a relatively easy interface for user engagement. While some approaches utilize texts to control music audio generation, editing musical elements in generated audio is challenging for users. In contrast, symbolic music offers ease of editing, making it more accessible for users to manipulate specific musical elements. In this paper, we propose MuseCoco, which generates symbolic music from text descriptions with musical attributes as the bridge to break down the task into text-to-attribute understanding and attribute-to-music generation stages. MuseCoCo stands for Music Composition Copilot that empowers musicians to generate music directly from given text descriptions, offering a significant improvement in efficiency compared to creating music entirely from scratch. The system has two main advantages: Firstly, it is data efficient. In the attribute-to-music generation stage, the attributes can be directly extracted from music sequences, making the model training self-supervised. In the text-to-attribute understanding stage, the text is synthesized and refined by ChatGPT based on the defined attribute templates. Secondly, the system can achieve precise control with specific attributes in text descriptions and offers multiple control options through attribute-conditioned or text-conditioned approaches. MuseCoco outperforms baseline systems in terms of musicality, controllability, and overall score by at least 1.27, 1.08, and 1.32 respectively. Besides, there is a notable enhancement of about 20% in objective control accuracy. In addition, we have developed a robust large-scale model with 1.2 billion parameters, showcasing exceptional controllability and musicality.",
+      "paper_url": "https://arxiv.org/abs/2306.00110",
+      "pdf_url": "http://arxiv.org/pdf/2306.00110",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 7.0,
+      "justification": "针对文本到符号音乐生成，符合音乐理解与生成方向，但引用数一般，尚未成为广泛应用的基线，非必读经典基础工作",
+      "citation_count": 74,
+      "date_added": "2026-07-28",
+      "chinese_summary": {
+        "problem": "如何从文本描述生成可编辑的符号音乐，以便用户更灵活地操控音乐元素。",
+        "method": "MuseCoco将任务分解为文本到属性理解和属性到音乐生成两个阶段：首先利用ChatGPT基于预定义模板合成文本并提取属性，然后在自监督设置下直接从音乐序列中提取属性训练生成模型。",
+        "innovation": "无需人工标注的数据高效设计，属性可直接从音乐中提取实现自监督学习；通过属性桥接实现文本到音乐的精确控制，并支持属性条件或文本条件多种控制方式。",
+        "evidence": "在音乐性、可控性、总体得分上分别比基线高至少1.27、1.08、1.32分，客观控制精度提升约20%，并训练了一个12亿参数的大规模模型展示了出色的可控性和音乐性。",
+        "limitations": "摘要未明确实验中使用的基线系统名称；生成的符号音乐的具体格式（如MIDI）和评估细节需阅读全文；对于复杂文本描述的泛化能力未提及。",
+        "why_relevant": "匹配研究方向中的音乐生成（music generation）和自监督音频（self-supervised）在属性到音乐阶段的自监督学习，但论文聚焦于符号音乐而非音频表示学习，与音乐信息检索的核心任务关联较弱。"
+      }
+    },
+    {
+      "id": "arxiv:2311.10057",
+      "arxiv_id": "2311.10057",
+      "title": "The Song Describer Dataset: a Corpus of Audio Captions for Music-and-Language Evaluation",
+      "authors": [
+        "Ilaria Manco",
+        "Benno Weck",
+        "Seungheon Doh",
+        "Minz Won",
+        "Yixiao Zhang",
+        "Dmitry Bodganov",
+        "Yusong Wu",
+        "Ke Chen",
+        "Philip Tovstogan",
+        "Emmanouil Benetos",
+        "Elio Quinton",
+        "György Fazekas"
+      ],
+      "published": "2023-11-16T00:00:00+00:00",
+      "summary": "We introduce the Song Describer dataset (SDD), a new crowdsourced corpus of high-quality audio-caption pairs, designed for the evaluation of music-and-language models. The dataset consists of 1.1k human-written natural language descriptions of 706 music recordings, all publicly accessible and released under Creative Common licenses. To showcase the use of our dataset, we benchmark popular models on three key music-and-language tasks (music captioning, text-to-music generation and music-language retrieval). Our experiments highlight the importance of cross-dataset evaluation and offer insights into how researchers can use SDD to gain a broader understanding of model performance.",
+      "paper_url": "https://arxiv.org/abs/2311.10057",
+      "pdf_url": "https://arxiv.org/pdf/2311.10057",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 7.0,
+      "justification": "该论文构建了音乐音频-文本描述数据集SDD，用于音乐-语言模型评估，属于音乐信息检索与表示领域，质量扎实但非核心必读。",
+      "citation_count": 83,
+      "date_added": "2026-07-28",
+      "chinese_summary": {
+        "problem": "论文解决音乐-语言模型评估中缺乏高质量人工标注音乐描述数据集的问题。",
+        "method": "通过众包方式收集706段音乐录音的1.1k条自然语言描述，构建Song Describer数据集；使用该数据集在音乐字幕、文本生成音乐和音乐-语言检索三个任务上对流行模型进行基准测试，以展示跨数据集评估的重要性。",
+        "innovation": "提出了一个公开可用的高质量音乐描述数据集，所有音频均采用Creative Commons许可；通过跨数据集评估揭示了现有模型在不同数据分布下的性能差异，为音乐-语言任务的标准化评估提供了新基准。",
+        "evidence": "实验证据不足：摘要仅提及在三个任务上基准测试了流行模型，未给出具体性能指标或对比结果。",
+        "limitations": "数据集规模较小（仅1.1k描述），可能影响评估的统计显著性；未提出新的评估指标或模型改进；依赖众包质量，描述的主观性可能引入噪声。",
+        "why_relevant": "数据集可用于评估音乐表示学习模型在下游任务（如音乐字幕、检索）的性能，与研究方向中的音乐信息检索、音乐理解和自监督音频表示的应用评估相关，但论文自身未贡献新的表示学习方法或编码器。"
       }
     }
   ]
