@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-29T04:35:39.906176+00:00",
+  "updated_at_iso": "2026-07-29T10:14:18.143307+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -4449,6 +4449,75 @@
         "evidence": "实验显示Apple M2单核实时因子0.069（fp32 ONNX Runtime为0.230），Galaxy S23+为0.096，加速达3.3倍；在824条VoiceBank-DEMAND测试中，PESQ损失仅0.006，SNR损失0.08 dB；节奏控制使每帧成本增加4.2倍，但节省49%能耗，最便宜核心放置无法满足截止时间；同一架构不同SIMD层级输出字节完全一致。",
         "limitations": "仅针对FastEnhancer-Medium模型，通用性未验证；量化恢复精度仅在VoiceBank-DEMAND上测试，其他噪声环境未评估；未探讨多通道或自适应场景下的性能。",
         "why_relevant": "仅与‘speech enhancement’关键词外围相关，研究方向侧重生成式方法（扩散模型、流匹配等），本文不涉及生成式技术，而是传统增强模型的工程加速，匹配度低。如有部署需求可参考其优化技巧，但与生成式语音无直接联系。"
+      }
+    },
+    {
+      "id": "arxiv:2409.02615",
+      "arxiv_id": "2409.02615",
+      "title": "USEF-TSE: Universal Speaker Embedding Free Target Speaker Extraction",
+      "authors": [
+        "Bang Zeng",
+        "Ming Li"
+      ],
+      "published": "2024-09-04T00:00:00+00:00",
+      "summary": "Target speaker extraction aims to separate the voice of a specific speaker from mixed speech. Traditionally, this process has relied on extracting a speaker embedding from a reference speech, in which a speaker recognition model is required. However, identifying an appropriate speaker recognition model can be challenging, and using the target speaker embedding as reference information may not be optimal for target speaker extraction tasks. This paper introduces a Universal Speaker Embedding-Free Target Speaker Extraction (USEF-TSE) framework that operates without relying on speaker embeddings. USEF-TSE utilizes a multi-head cross-attention mechanism as a frame-level target speaker feature extractor. This innovative approach allows mainstream speaker extraction solutions to bypass the dependency on speaker recognition models and better leverage the information available in the enrollment speech, including speaker characteristics and contextual details. Additionally, USEF-TSE can seamlessly integrate with other time-domain or time-frequency domain speech separation models to achieve effective speaker extraction. Experimental results show that our proposed method achieves state-of-the-art (SOTA) performance in terms of Scale-Invariant Signal-to-Distortion Ratio (SI-SDR) on the WSJ0-2mix, WHAM!, and WHAMR! datasets, which are standard benchmarks for monaural anechoic, noisy and noisy-reverberant two-speaker speech separation and speaker extraction. The results on the LibriMix and the blind test set of the ICASSP2023 DNS Challenge demonstrate that the model performs well on more diverse and out-of-domain data.",
+      "paper_url": "https://arxiv.org/abs/2409.02615",
+      "pdf_url": "https://arxiv.org/pdf/2409.02615",
+      "categories": [
+        "IEEE Transactions on Audio, Speech, and Language Processing"
+      ],
+      "venue": "IEEE Transactions on Audio, Speech, and Language Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "该论文提出无需说话人嵌入的目标说话人提取框架USEF-TSE，采用多头交叉注意力提取帧级特征，在多个基准上达到SOTA，与语音分离和目标说话人提取研究方向高度相关，方法新颖且性能优异，属于必读级别工作。",
+      "citation_count": 24,
+      "date_added": "2026-07-29",
+      "chinese_summary": {
+        "problem": "传统目标说话人提取依赖说话人识别模型提取说话人嵌入，但选择合适模型困难，且嵌入可能非最优。本文解决如何在不使用说话人嵌入的情况下，有效利用注册语音信息进行目标说话人提取。",
+        "method": "提出USEF-TSE框架，采用多头交叉注意力机制作为帧级目标说话人特征提取器，直接从注册语音中提取说话人特征和上下文细节，并能与时域或时频域语音分离模型无缝集成。",
+        "innovation": "提出无说话人嵌入的目标说话人提取框架，摆脱对说话人识别模型的依赖；使用多头交叉注意力直接建模注册语音与混合语音的交互，更充分利用注册语音信息；可灵活嵌入现有分离模型。",
+        "evidence": "在WSJ0-2mix、WHAM!、WHAMR!上达到SOTA SI-SDR，并在LibriMix和DNS Challenge盲测上表现良好，证明有效性和泛化性。",
+        "limitations": "摘要未提及模型复杂度、实时性、对注册语音长度的要求、在更多说话人场景下的表现，以及注意力机制可能引入的计算开销。",
+        "why_relevant": "直接属于目标说话人提取研究，匹配关键词target speaker extraction、speaker extraction、speech separation；提出的方法与我的研究方向紧密相关，可避免依赖外部说话人识别系统，有潜在应用价值。"
+      }
+    },
+    {
+      "id": "arxiv:2305.07447",
+      "arxiv_id": "2305.07447",
+      "title": "Universal Source Separation with Weakly Labelled Data",
+      "authors": [
+        "Qiuqiang Kong",
+        "K. Chen",
+        "Haohe Liu",
+        "Xingjian Du",
+        "Taylor Berg-Kirkpatrick",
+        "S. Dubnov",
+        "Mark D. Plumbley"
+      ],
+      "published": "2023-05-11T00:00:00+00:00",
+      "summary": "Universal source separation (USS) is a fundamental research task for computational auditory scene analysis, which aims to separate mono recordings into individual source tracks. There are three potential challenges awaiting the solution to the audio source separation task. First, previous audio source separation systems mainly focus on separating one or a limited number of specific sources. There is a lack of research on building a unified system that can separate arbitrary sources via a single model. Second, most previous systems require clean source data to train a separator, while clean source data are scarce. Third, there is a lack of USS system that can automatically detect and separate active sound classes in a hierarchical level. To use large-scale weakly labeled/unlabeled audio data for audio source separation, we propose a universal audio source separation framework containing: 1) an audio tagging model trained on weakly labeled data as a query net; and 2) a conditional source separation model that takes query net outputs as conditions to separate arbitrary sound sources. We investigate various query nets, source separation models, and training strategies and propose a hierarchical USS strategy to automatically detect and separate sound classes from the AudioSet ontology. By solely leveraging the weakly labelled AudioSet, our USS system is successful in separating a wide variety of sound classes, including sound event separation, music source separation, and speech enhancement. The USS system achieves an average signal-to-distortion ratio improvement (SDRi) of 5.57 dB over 527 sound classes of AudioSet; 10.57 dB on the DCASE 2018 Task 2 dataset; 8.12 dB on the MUSDB18 dataset; an SDRi of 7.28 dB on the Slakh2100 dataset; and an SSNR of 9.00 dB on the voicebank-demand dataset. We release the source code at https://github.com/bytedance/uss",
+      "paper_url": "https://arxiv.org/abs/2305.07447",
+      "pdf_url": "http://arxiv.org/pdf/2305.07447",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "提出了基于弱标签的通用源分离框架，可统一处理语音增强、音乐分离等任务，与语音增强和语音分离方向高度相关，方法新颖且具有基础性影响。",
+      "citation_count": 44,
+      "date_added": "2026-07-29",
+      "chinese_summary": {
+        "problem": "论文解决的是通用音源分离问题：利用大规模弱标签或无标签音频数据，训练一个统一模型来分离任意数量的声源，并自动检测和分层分离活动声源类别。",
+        "method": "提出一个通用音源分离框架，包含：1) 基于弱标签数据训练的音频标记模型作为查询网络，提供声源条件信息；2) 条件源分离模型，以查询网络输出为条件，分离任意声源。框架支持分层分离策略，从 AudioSet 本体中自动检测并分离声源类别。",
+        "innovation": "首次构建了利用弱标签数据实现通用源分离的统一系统，可处理包括声音事件、音乐和语音在内的多种声源类型；提出了层次化分离策略，能自动检测并按层次分离活跃声类；仅使用 AudioSet 弱标签数据即达到在多个基准上的竞争性能。",
+        "evidence": "在多个数据集上报告了定量结果：AudioSet 527类平均 SDRi 5.57 dB；DCASE 2018 Task 2 上 10.57 dB；MUSDB18 上 8.12 dB；Slakh2100 上 SDRi 7.28 dB；Voicebank-Demand 上 SSNR 9.00 dB。语音增强结果来自 Voicebank-Demand 数据集，证明系统具备语音增强能力。",
+        "limitations": "摘要未说明语音增强场景下的具体性能细节（如各类噪声、混响等条件下的表现），也未与专门语音增强方法对比；框架通用性强但可能在特定语音任务上未做优化；弱标签训练可能导致分离精度下降或源混淆；需阅读全文确认对语音前端瓶颈（如去混响、回声消除）的覆盖程度。",
+        "why_relevant": "论文提出的通用框架包含语音增强功能，在 Voicebank-Demand 数据集上取得了客观指标（SSNR 9.00 dB），可直接应用于降噪任务；条件源分离模型可作为语音增强前端组件；研究方向中的“神经掩蔽”、“U-Net 语音增强”与该框架中可能的条件分离网络结构有潜在关联。"
       }
     }
   ]
