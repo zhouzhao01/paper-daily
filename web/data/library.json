@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-28T10:11:53.727846+00:00",
+  "updated_at_iso": "2026-07-29T04:35:39.906176+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -4349,6 +4349,106 @@
         "evidence": "摘要提及实验确认双向Mamba优于vanilla Mamba，且作为自注意力替代有效，但未给出具体指标数据。",
         "limitations": "仅涉及语音识别和语音增强两个任务，缺乏更广泛语音处理任务的验证；未提供量化性能对比；语音增强任务可能仅为序列模式应用的简单验证，深度和效果未知。",
         "why_relevant": "论文包含语音增强任务，使用BiMamba替代自注意力模块，可能为语音增强模型架构设计提供新思路，但文章重点在Mamba替代自注意力且更关注语义任务，语音增强贡献有限，需人工复核具体增强性能。"
+      }
+    },
+    {
+      "id": "arxiv:2607.25351",
+      "arxiv_id": "2607.25351",
+      "title": "Extracting Voice Styles from Frozen TTS Models via Gradient-Based Inverse Optimization",
+      "authors": [
+        "Gyeongmin Kim"
+      ],
+      "published": "2026-07-28T06:54:59Z",
+      "summary": "Some text-to-speech systems ship a synthesis model and preset style vectors but not the reference encoder that turns audio into such a vector. The model still accepts a style vector; a user with a voice of their own cannot produce one. We solve for that input directly, inverting the released pipeline by gradient descent: every weight stays frozen and only the style vector is optimized, against time-pooled WavLM statistics of one recording. Because the objective discards the time axis, the synthesized text may differ from the recording, so no transcript and no alignment are needed. On 154 speakers from two corpora, ECAPA-TDNN similarity rises from 0.132 to 0.413 and ResNet from 0.099 to 0.401, improving for every speaker; a verifier at its equal-error point accepts 53% of the recovered voices as the target, against 1% for the presets they start from.",
+      "paper_url": "http://arxiv.org/abs/2607.25351v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.25351v1",
+      "categories": [
+        "eess.AS",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "提出通过梯度优化从冻结TTS模型中反向提取声音风格向量的新方法，无需参考编码器或对齐，与生成语音技术高度相关，质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-07-29",
+      "chinese_summary": {
+        "problem": "部分TTS系统虽提供合成模型与预设风格向量，却未附带可从用户语音中提取风格向量的编码器，导致用户无法将自己的声音转换为风格向量来驱动合成。",
+        "method": "将TTS合成模型冻结，仅优化输入风格向量，利用梯度下降最小化合成语音与目标录音在WavLM时间池化后统计量之间的差异。由于目标函数丢弃时间轴，合成文本可与录音内容不同，从而无需对齐和转录。",
+        "innovation": "首次提出通过梯度逆优化直接从冻结TTS模型中恢复风格向量，无需依赖参考编码器；利用WavLM的时间池化特征定义损失，解除了对文本和音素对齐的要求，使方案具有录音内容无关性。",
+        "evidence": "在154名说话人上进行验证，ECAPA-TDNN说话人相似度从0.132提升至0.413，ResNet相似度从0.099提升至0.401，每名说话人均有改善；等错误点验证器对恢复声音的接受率为53%，而预设风格仅1%。",
+        "limitations": "实验仅报告了说话人相似度指标，未评估合成语音自然度或可懂度；梯度优化过程的计算开销未讨论；方法对特定TTS架构的泛化性需进一步验证。",
+        "why_relevant": "直接命中研究方向关键词“text-to-speech”，论文涉及TTS模型下的风格向量提取，可为生成式语音合成中的个性化风格控制提供技术参考。但主要解决提取而非生成问题，故相关程度中等。"
+      }
+    },
+    {
+      "id": "arxiv:2607.24430",
+      "arxiv_id": "2607.24430",
+      "title": "Let Me Look at You: Advanced Facial Expression Modeling for Conversational Speech Synthesis",
+      "authors": [
+        "Yifan Hu",
+        "Shuwei He",
+        "Rui Liu",
+        "Haizhou Li"
+      ],
+      "published": "2026-07-27T13:42:37Z",
+      "summary": "Conversational Speech Synthesis is a fundamental component of human-computer interaction, aiming to generate contextually appropriate, expressive, and empathetic speech. However, facial expressions encode subtle and rich affective cues that are crucial for empathetic speech interaction, whereas existing approaches often overlook this important modality. In addition, the lack of large-scale natural conversational datasets with both speech and visual modalities also limits the development of visual affect understanding in conversational settings.To address these limitations, we propose FacialTalker, a facial-expression-aware CSS framework built upon a large language model backbone. To efficiently encode facial expressions, we propose AUTokenizer, a single-codebook visual tokenizer that discretizes each frame-level facial expression into a compact token, trained with supervision from combinations of facial Action Units. We further introduce a dual direct preference optimization (DualDPO) strategy, which extends the DPO by jointly imposing preference constraints on both visual and speech token sequences, to enhance the model's understanding of facial expressions and speech semantics in multimodal conversational contexts. Moreover, we construct VSDD-1K, a large-scale multimodal dialogue dataset collected through a fully automated pipeline from real-world Internet conversations, comprising over 1,033 hours of synchronized speaker videos and speech, with more than 85\\% of frames containing valid faces. Extensive objective and subjective experiments demonstrate that FacialTalker consistently outperforms strong baselines in facial-expression perception and speech synthesis quality, generating speech that is more natural, expressive, and better aligned with the conversational context. The results also validate the effectiveness of our training strategy and dataset construction pipeline.",
+      "paper_url": "http://arxiv.org/abs/2607.24430v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.24430v1",
+      "categories": [
+        "cs.HC",
+        "cs.CL",
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "该论文提出融合面部表情的对话语音合成框架，引入AUTokenizer和DualDPO策略，构建大规模多模态数据集，生成更自然、富有表现力的语音，与生成式语音技术方向高度相关，质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-07-29",
+      "chinese_summary": {
+        "problem": "在对话语音合成中，现有方法忽视面部表情这一重要情感模态，且缺乏大规模多模态对话数据集，导致生成的语音缺乏表现力和上下文对齐。",
+        "method": "提出FacialTalker框架，以大型语言模型为骨干，利用AUTokenizer将帧级面部表情离散化为紧凑视觉标记（受面部动作单元监督训练），并通过双直接偏好优化（DualDPO）联合约束视觉和语音标记序列，增强多模态语义理解。同时构建了大规模同步视频-语音对话数据集VSDD-1K。",
+        "innovation": "1) 设计AUTokenizer，将面部表情高效编码为单一码本标记，并用面部动作单元信号监督，实现表情的紧凑离散化。2) 引入DualDPO策略，同时对视觉和语音标记序列施加偏好约束，提升模型对表情和语音的多模态感知能力。3) 构建超过1033小时、85%以上帧含有效面部的大规模多模态对话数据集VSDD-1K，推动视觉情感理解在对话场景的研究。",
+        "evidence": "进行了客观和主观实验，结果显示 FacialTalker 在面部表情感知和语音合成质量上持续优于强基线，生成了更自然、更富表现力且与对话上下文对齐更佳的语音，从而验证了方法和数据集的有效性。摘要未提供具体指标数值。",
+        "limitations": "摘要未说明 LLM 骨干的具体选择与集成方式；数据集收集的全自动流程可能存在噪声和偏差；方法依赖面部视频输入，限制了对纯语音场景的适用性；DualDPO 的训练效果和泛化能力需全文验证。",
+        "why_relevant": "该论文属于语音合成领域，与您研究方向的 speech synthesis 和 TTS 部分表面相关，但核心方法基于 LLM 和标记化，并非扩散模型或流匹配等生成模型；此外，其重点在多模态融入和对话场景，而非生成式增强或声码器。建议人工复核，以判断其技术思想是否可迁移。"
+      }
+    },
+    {
+      "id": "arxiv:2607.25350",
+      "arxiv_id": "2607.25350",
+      "title": "faster-enhancer.c: A Dependency-Free int8 Runtime for Streaming Speech Enhancement on Commodity CPUs",
+      "authors": [
+        "Gyeongmin Kim"
+      ],
+      "published": "2026-07-28T06:54:37Z",
+      "summary": "This is an implementation and measurement study of what it costs to run a streaming speech enhancer on a CPU. We port FastEnhancer-Medium at 48 kHz to faster-enhancer.c, a C runtime with six int8 GEMM tiers selected at initialization, leaving architecture and weights untouched. One Apple M2 core reaches 0.069 real-time factor, against 0.230 for the fp32 ONNX Runtime graph on the same machine, a 3.3x speedup. A Galaxy S23+ (Snapdragon 8 Gen 2) reaches 0.096. The speedup comes from specializing every layer of the runtime around one fixed model. Activation ranges are recomputed per frame, so no calibration set is needed; the k=3 convolutions use Winograd F(2,3); cross-stage state is fp16; the GRU and the dequantization epilogues are fused; and nothing is allocated after startup. Over 824 VoiceBank-DEMAND utterances the engine tracks fp32 to within -0.006 PESQ and -0.08 dB SNR. Speed alone does not settle deployment cost. The enhancer holds a fraction of a core for as long as the microphone is open, so its real-time factor is a duty cycle. A benchmark races through a file; an audio callback does not. Pacing to the 6.67 ms deadline costs 4.2x per frame, saves 49% of the energy, and leaves the cheapest core placement missing 96% of its deadlines. All SIMD tiers within an architecture family emit byte-identical output. The runtime is released as a dependency-free library.",
+      "paper_url": "http://arxiv.org/abs/2607.25350v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.25350v1",
+      "categories": [
+        "eess.AS",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 7.0,
+      "justification": "提出针对FastEnhancer-Medium的高效int8推理运行时，实现实时流式语音增强，与语音增强方向相关，工程优化扎实，但核心贡献在于系统实现而非增强算法本身的创新。",
+      "citation_count": null,
+      "date_added": "2026-07-29",
+      "chinese_summary": {
+        "problem": "如何在消费级CPU上以极低实时因子和能耗部署流式语音增强模型，同时保持与浮点模型相当的语音质量。",
+        "method": "设计无依赖的C运行时faster-enhancer.c，将预训练的FastEnhancer-Medium模型转换为int8 GEMM，通过每帧动态计算激活范围避免校准集，采用Winograd F(2,3)加速3×3卷积，跨阶段状态保持fp16，融合GRU与反量化尾声，启动后零内存分配。初始化时从六个SIMD层级中选择最优配置，并通过音频回调节奏控制（pacing）将处理对齐到6.67 ms窗口，牺牲部分吞吐以换取低占空比和节能。",
+        "innovation": "1) 无需校准数据集的在线量化方法，每帧独立计算激活范围，保证量化精度；2) 针对单一模型极度特化的运行时设计，层间融合、固定内存与Winograd卷积共同实现显著加速；3) 引入面向占空比的调度策略，以节能和满足截止时间为目标，而非单纯追求高吞吐，为实际部署提供新视角。",
+        "evidence": "实验显示Apple M2单核实时因子0.069（fp32 ONNX Runtime为0.230），Galaxy S23+为0.096，加速达3.3倍；在824条VoiceBank-DEMAND测试中，PESQ损失仅0.006，SNR损失0.08 dB；节奏控制使每帧成本增加4.2倍，但节省49%能耗，最便宜核心放置无法满足截止时间；同一架构不同SIMD层级输出字节完全一致。",
+        "limitations": "仅针对FastEnhancer-Medium模型，通用性未验证；量化恢复精度仅在VoiceBank-DEMAND上测试，其他噪声环境未评估；未探讨多通道或自适应场景下的性能。",
+        "why_relevant": "仅与‘speech enhancement’关键词外围相关，研究方向侧重生成式方法（扩散模型、流匹配等），本文不涉及生成式技术，而是传统增强模型的工程加速，匹配度低。如有部署需求可参考其优化技巧，但与生成式语音无直接联系。"
       }
     }
   ]

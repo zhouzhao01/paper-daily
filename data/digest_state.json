@@ -1,16 +1,16 @@
 {
-  "foundation_rotation_index": 1,
+  "foundation_rotation_index": 2,
   "added_by_day": {
-    "2026-07-21": 5,
     "2026-07-22": 5,
     "2026-07-23": 5,
     "2026-07-24": 5,
     "2026-07-25": 5,
     "2026-07-26": 5,
     "2026-07-27": 5,
-    "2026-07-28": 5
+    "2026-07-28": 5,
+    "2026-07-29": 3
   },
-  "last_run_iso": "2026-07-28T10:11:53.727846+00:00",
+  "last_run_iso": "2026-07-29T04:35:39.906176+00:00",
   "last_run_status": "ok",
-  "foundation_last_topic": "speech_enhancement_frontend"
+  "foundation_last_topic": "microphone_array_beamforming"
 }
