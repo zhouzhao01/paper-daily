@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-29T10:14:18.143307+00:00",
+  "updated_at_iso": "2026-07-30T04:23:51.984463+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -4518,6 +4518,199 @@
         "evidence": "在多个数据集上报告了定量结果：AudioSet 527类平均 SDRi 5.57 dB；DCASE 2018 Task 2 上 10.57 dB；MUSDB18 上 8.12 dB；Slakh2100 上 SDRi 7.28 dB；Voicebank-Demand 上 SSNR 9.00 dB。语音增强结果来自 Voicebank-Demand 数据集，证明系统具备语音增强能力。",
         "limitations": "摘要未说明语音增强场景下的具体性能细节（如各类噪声、混响等条件下的表现），也未与专门语音增强方法对比；框架通用性强但可能在特定语音任务上未做优化；弱标签训练可能导致分离精度下降或源混淆；需阅读全文确认对语音前端瓶颈（如去混响、回声消除）的覆盖程度。",
         "why_relevant": "论文提出的通用框架包含语音增强功能，在 Voicebank-Demand 数据集上取得了客观指标（SSNR 9.00 dB），可直接应用于降噪任务；条件源分离模型可作为语音增强前端组件；研究方向中的“神经掩蔽”、“U-Net 语音增强”与该框架中可能的条件分离网络结构有潜在关联。"
+      }
+    },
+    {
+      "id": "arxiv:2502.04128",
+      "arxiv_id": "2502.04128",
+      "title": "Llasa: Scaling Train-Time and Inference-Time Compute for Llama-based Speech Synthesis",
+      "authors": [
+        "Zhen Ye",
+        "Xinfa Zhu",
+        "Chi-Min Chan",
+        "Xinsheng Wang",
+        "Xu Tan",
+        "Jiahe Lei",
+        "Yi Peng",
+        "Haohe Liu",
+        "Yizhu Jin",
+        "Zheqi Dai",
+        "Hongzhan Lin",
+        "Jianyi Chen"
+      ],
+      "published": "2025-02-06T00:00:00+00:00",
+      "summary": "Recent advances in text-based large language models (LLMs), particularly in the GPT series and the o1 model, have demonstrated the effectiveness of scaling both training-time and inference-time compute. However, current state-of-the-art TTS systems leveraging LLMs are often multi-stage, requiring separate models (e.g., diffusion models after LLM), complicating the decision of whether to scale a particular model during training or testing. This work makes the following contributions: First, we explore the scaling of train-time and inference-time compute for speech synthesis. Second, we propose a simple framework Llasa for speech synthesis that employs a single-layer vector quantizer (VQ) codec and a single Transformer architecture to fully align with standard LLMs such as Llama. Our experiments reveal that scaling train-time compute for Llasa consistently improves the naturalness of synthesized speech and enables the generation of more complex and accurate prosody patterns. Furthermore, from the perspective of scaling inference-time compute, we employ speech understanding models as verifiers during the search, finding that scaling inference-time compute shifts the sampling modes toward the preferences of specific verifiers, thereby improving emotional expressiveness, timbre consistency, and content accuracy. In addition, we released the checkpoint and training code for our TTS model (1B, 3B, 8B) and codec model publicly available.",
+      "paper_url": "https://arxiv.org/abs/2502.04128",
+      "pdf_url": "https://arxiv.org/pdf/2502.04128",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "该论文直接对应生成式语音技术，提出了基于LLaMA的单阶段语音合成框架Llasa，系统探索训练与推理阶段的计算扩展，显著提升语音自然度、韵律和情感表达，并公开模型与代码，是必读级别的工作。",
+      "citation_count": 108,
+      "date_added": "2026-07-30",
+      "chinese_summary": {
+        "problem": "当前基于LLM的TTS系统多为多阶段架构，需在LLM后级联扩散模型等独立模块，导致训练与推理时难以决定对哪个模型进行缩放，限制了计算效率与合成质量的最优平衡。",
+        "method": "提出Llasa框架：采用单层向量量化编解码器和单一Transformer架构，完全对齐Llama等标准LLM，无需额外扩散模型。训练时缩放计算量（如模型大小、数据量）直接提升语音自然度和韵律复杂度；推理时引入语音理解模型作为验证器，通过搜索缩放推理计算，使采样偏好对齐验证器目标，增强情感表达、音色一致性与内容准确度。",
+        "innovation": "将训练和推理计算缩放策略统一应用于单阶段TTS系统，消除了多模型级联的复杂性；通过验证器引导推理时搜索，实现了情感、音色、内容的可控优化；验证了纯LLM架构在语音合成任务上的缩放规律，为后续大模型设计提供参考。",
+        "evidence": "实验表明，缩放训练计算持续改善合成语音的自然度，并生成更复杂准确的韵律模式；缩放推理计算通过特定验证器搜索，提升了情感表现力、音色一致性和内容准确性。公开了1B、3B、8B的TTS模型和编解码器。",
+        "limitations": "摘要未涉及多语种、零样本说话人适应等泛化能力；单层VQ编解码器的重建质量可能影响最终合成保真度；推理阶段依赖验证器，其偏好可能引入偏差，需进一步验证鲁棒性。",
+        "why_relevant": "研究方向包含speech synthesis、TTS和neural vocoder，该论文提出的Llasa属于先进的基于LLM的语音合成方法，与生成式语音合成高度相关，其训练与推理缩放策略对模型设计与优化有直接参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2406.04904",
+      "arxiv_id": "2406.04904",
+      "title": "XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model",
+      "authors": [
+        "Edresson Casanova",
+        "Kelly Davis",
+        "E. Gölge",
+        "Görkem Göknar",
+        "Iulian Gulea",
+        "Logan Hart",
+        "Aya Aljafari",
+        "Joshua Meyer",
+        "Reuben Morais",
+        "Samuel Olayemi",
+        "Julian Weber"
+      ],
+      "published": "2024-06-07T00:00:00+00:00",
+      "summary": "Most Zero-shot Multi-speaker TTS (ZS-TTS) systems support only a single language. Although models like YourTTS, VALL-E X, Mega-TTS 2, and Voicebox explored Multilingual ZS-TTS they are limited to just a few high/medium resource languages, limiting the applications of these models in most of the low/medium resource languages. In this paper, we aim to alleviate this issue by proposing and making publicly available the XTTS system. Our method builds upon the Tortoise model and adds several novel modifications to enable multilingual training, improve voice cloning, and enable faster training and inference. XTTS was trained in 16 languages and achieved state-of-the-art (SOTA) results in most of them.",
+      "paper_url": "https://arxiv.org/abs/2406.04904",
+      "pdf_url": "https://arxiv.org/pdf/2406.04904",
+      "categories": [
+        "Interspeech"
+      ],
+      "venue": "Interspeech",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出大规模多语言零样本文语转换模型XTTS，在16种语言上达到SOTA，是生成式语音合成方向的重要基础工作，与零样本多语言TTS高度相关，引用数高，有望成为经典基线。",
+      "citation_count": 310,
+      "date_added": "2026-07-30",
+      "chinese_summary": {
+        "problem": "现有零样本多说话人TTS系统大多仅支持单语言，多语言系统则局限于少数高资源语言，无法覆盖低中资源语言。本文旨在解决这一限制，实现支持16种语言的零样本文本转语音。",
+        "method": "在Tortoise模型基础上进行多项改进，包括新增模块以实现多语言训练、增强声音克隆能力，并优化训练和推理速度。具体技术细节未在摘要中披露。",
+        "innovation": "将单语言Tortoise模型扩展为多语言训练框架；改进了声音克隆技术，提升多说话人零样本合成质量；通过架构优化显著加快训练和推理效率。",
+        "evidence": "摘要中声明训练了16种语言，并且在大多数语言上取得了最先进的结果，但未提供具体评估指标或数据集。",
+        "limitations": "摘要未说明具体的模型结构修改、训练数据来源、评测基准及对比细节，需要阅读全文才能评估实际性能和创新性。",
+        "why_relevant": "论文聚焦于零样本多语言TTS，直接匹配我的研究方向中的“text-to-speech”和“speech synthesis”，且与生成式语音技术紧密相关。"
+      }
+    },
+    {
+      "id": "arxiv:2402.01912",
+      "arxiv_id": "2402.01912",
+      "title": "Natural language guidance of high-fidelity text-to-speech with synthetic annotations",
+      "authors": [
+        "Daniel Lyth",
+        "Simon King"
+      ],
+      "published": "2024-02-02T00:00:00+00:00",
+      "summary": "Text-to-speech models trained on large-scale datasets have demonstrated impressive in-context learning capabilities and naturalness. However, control of speaker identity and style in these models typically requires conditioning on reference speech recordings, limiting creative applications. Alternatively, natural language prompting of speaker identity and style has demonstrated promising results and provides an intuitive method of control. However, reliance on human-labeled descriptions prevents scaling to large datasets. Our work bridges the gap between these two approaches. We propose a scalable method for labeling various aspects of speaker identity, style, and recording conditions. We then apply this method to a 45k hour dataset, which we use to train a speech language model. Furthermore, we propose simple methods for increasing audio fidelity, significantly outperforming recent work despite relying entirely on found data. Our results demonstrate high-fidelity speech generation in a diverse range of accents, prosodic styles, channel conditions, and acoustic conditions, all accomplished with a single model and intuitive natural language conditioning. Audio samples can be heard at https://text-description-to-speech.com/.",
+      "paper_url": "https://arxiv.org/abs/2402.01912",
+      "pdf_url": "https://arxiv.org/pdf/2402.01912",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出可扩展的合成标注方法，实现基于自然语言提示的高保真语音合成，工作质量高，与生成式语音技术方向高度相关。",
+      "citation_count": 133,
+      "date_added": "2026-07-30",
+      "chinese_summary": {
+        "problem": "如何在大规模文本到语音合成中实现基于自然语言的说话人风格控制，同时避免对昂贵人工标注的依赖。",
+        "method": "提出一种可扩展的自动标注方法，对说话人身份、风格、录音条件等多种属性进行合成标注；利用该方法处理一个4.5万小时的数据集，并训练一个语音语言模型；同时引入简单技巧提高生成音频的保真度，仅使用现有数据。",
+        "innovation": "构建了无需人工、可大规模扩展的语音属性标注流程，解决了自然语言提示在TTS中依赖人工标签的瓶颈；将自动标注与语音语言模型结合，在单一模型中实现多口音、多风格、多声学条件的高保真生成；完全基于现存数据训练，性能显著超越近期工作。",
+        "evidence": "摘要称在多种口音、韵律风格、信道和声学条件下实现了高保真生成，并提供了音频样本网站，但未给出具体实验指标，需要查阅全文验证。",
+        "limitations": "自动标注的质量和覆盖度未经验证；无定量结果，难以评估真实提升幅度；自然语言提示的细粒度控制能力、对参考音频的替代程度尚不明确。",
+        "why_relevant": "直接属于研究方向中的text-to-speech和speech generation，并涉及高保真生成技术，与神经声码器、生成式语音模型紧密相关。"
+      }
+    },
+    {
+      "id": "arxiv:2309.07937",
+      "arxiv_id": "2309.07937",
+      "title": "VoxtLM: Unified Decoder-Only Models for Consolidating Speech Recognition, Synthesis and Speech, Text Continuation Tasks",
+      "authors": [
+        "Soumi Maiti",
+        "Yifan Peng",
+        "Shukjae Choi",
+        "Jee-weon Jung",
+        "Xuankai Chang",
+        "Shinji Watanabe"
+      ],
+      "published": "2023-09-14T00:00:00+00:00",
+      "summary": "We propose a decoder-only language model, VoxtLM, that can perform four tasks: speech recognition, speech synthesis, text generation, and speech continuation. VoxtLM integrates text vocabulary with discrete speech tokens from self-supervised speech features and uses special tokens to enable multitask learning. Compared to a single-task model, VoxtLM exhibits a significant improvement in speech synthesis, with improvements in both speech intelligibility from 28.9 to 5.6 and objective quality from 2.68 to 3.90. VoxtLM also improves speech generation and speech recognition performance over the single-task counterpart. Further, VoxtLM is trained with publicly available data and training recipes and model checkpoints are open-sourced to make fully reproducible work.",
+      "paper_url": "https://arxiv.org/abs/2309.07937",
+      "pdf_url": "https://arxiv.org/pdf/2309.07937",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "论文提出统一解码器模型整合语音识别、合成与文本生成，与生成式语音技术高度相关，使用离散语音标记实现多任务学习，质量扎实且开源，但作为2023年工作尚未成为长期基础基线。",
+      "citation_count": 99,
+      "date_added": "2026-07-30",
+      "chinese_summary": {
+        "problem": "如何用一个统一的decoder-only语言模型同时执行语音识别、语音合成、文本生成和语音延续多任务，以提升各任务性能并简化系统设计。",
+        "method": "VoxtLM采用decoder-only架构，将文本词汇与从自监督语音特征（如HuBERT）提取的离散语音token融合为统一词汇表，通过插入特殊任务token指示任务类型，实现多任务联合训练。",
+        "innovation": "首次在decoder-only语言模型中整合语音识别、合成、文本生成和语音延续四项任务；利用多任务学习，语音合成和识别性能均超越单任务模型，尤其语音合成可懂度和质量提升显著；模型基于公开数据训练并完全开源。",
+        "evidence": "摘要给出语音合成可懂度指标从28.9降至5.6（可能是词错误率），客观质量从2.68升至3.90（可能是MOS）；语音生成和识别性能也有改善；训练食谱和模型检查点已开源，可复现。",
+        "limitations": "自回归生成可能延迟较高；离散语音token的语义与声学质量权衡需更多分析；多任务训练平衡及语音延续任务的实用效果未详述。",
+        "why_relevant": "匹配研究方向中的“语音合成”和“语音生成”，VoxtLM是一个生成式语音模型；但其核心是离散token的自回归语言模型，未涉及扩散模型或流匹配，也不包含语音增强或恢复，因此相关性中等，建议阅读全文以确认对语言模型方法是否感兴趣。"
+      }
+    },
+    {
+      "id": "arxiv:2501.06282",
+      "arxiv_id": "2501.06282",
+      "title": "MinMo: A Multimodal Large Language Model for Seamless Voice Interaction",
+      "authors": [
+        "Qian Chen",
+        "Yafeng Chen",
+        "Yanni Chen",
+        "Mengzhe Chen",
+        "Yingda Chen",
+        "Chong Deng",
+        "Zhihao Du",
+        "Ruize Gao",
+        "Changfeng Gao",
+        "Zhifu Gao",
+        "Yabin Li",
+        "Xiang Lv"
+      ],
+      "published": "2025-01-10T00:00:00+00:00",
+      "summary": "Recent advancements in large language models (LLMs) and multimodal speech-text models have laid the groundwork for seamless voice interactions, enabling real-time, natural, and human-like conversations. Previous models for voice interactions are categorized as native and aligned. Native models integrate speech and text processing in one framework but struggle with issues like differing sequence lengths and insufficient pre-training. Aligned models maintain text LLM capabilities but are often limited by small datasets and a narrow focus on speech tasks. In this work, we introduce MinMo, a Multimodal Large Language Model with approximately 8B parameters for seamless voice interaction. We address the main limitations of prior aligned multimodal models. We train MinMo through multiple stages of speech-to-text alignment, text-to-speech alignment, speech-to-speech alignment, and duplex interaction alignment, on 1.4 million hours of diverse speech data and a broad range of speech tasks. After the multi-stage training, MinMo achieves state-of-the-art performance across various benchmarks for voice comprehension and generation while maintaining the capabilities of text LLMs, and also facilitates full-duplex conversation, that is, simultaneous two-way communication between the user and the system. Moreover, we propose a novel and simple voice decoder that outperforms prior models in voice generation. The enhanced instruction-following capabilities of MinMo supports controlling speech generation based on user instructions, with various nuances including emotions, dialects, and speaking rates, and mimicking specific voices. For MinMo, the speech-to-text latency is approximately 100ms, full-duplex latency is approximately 600ms in theory and 800ms in practice. The MinMo project web page is https://funaudiollm.github.io/minmo, and the code and models will be released soon.",
+      "paper_url": "https://arxiv.org/abs/2501.06282",
+      "pdf_url": "https://arxiv.org/pdf/2501.06282",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出多模态大语言模型MinMo实现全双工语音交互，包含创新的语音解码器和多阶段对齐训练，在语音生成与理解多项基准达到SOTA，与生成式语音技术方向高度匹配且具基础影响力。",
+      "citation_count": 99,
+      "date_added": "2026-07-30",
+      "chinese_summary": {
+        "problem": "现有对齐式多模态语音模型受限于小规模数据集和单一语音任务，缺乏全面的语音交互能力。",
+        "method": "MinMo是一个约80亿参数的多模态大语言模型，通过语音到文本对齐、文本到语音对齐、语音到语音对齐和双工交互对齐等多阶段训练，使用140万小时多样化语音数据覆盖广泛语音任务，并提出新型语音解码器实现全双工对话。",
+        "innovation": "提出多阶段对齐训练框架，在保持文本大语言模型能力的同时实现语音理解和生成的全方位集成；设计新颖的语音解码器，在语音生成上超越之前模型；支持通过指令控制语音生成的情感、方言、语速和声音模仿等细粒度属性。",
+        "evidence": "摘要声称在全双工对话、语音理解和生成的多项基准测试上达到最先进性能，语音转文本延迟约100ms，全双工理论延迟约600ms，实际800ms，但未给出具体基准名称或对比数值。",
+        "limitations": "未说明语音生成的自然度、鲁棒性具体指标；未提及在噪声环境或远场条件下的性能；未透露模型是否开源及具体推理效率。",
+        "why_relevant": "论文涉及语音生成、文本到语音合成和神经声码器相关技术，与研究方向中的语音合成、TTS和神经声码器匹配；可能使用生成式方法（如扩散模型或流匹配）但摘要未明确说明，需人工确认生成模型细节。"
       }
     }
   ]
