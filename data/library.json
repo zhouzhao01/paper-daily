@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-30T04:23:51.984463+00:00",
+  "updated_at_iso": "2026-07-31T04:46:47.959640+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -4711,6 +4711,179 @@
         "evidence": "摘要声称在全双工对话、语音理解和生成的多项基准测试上达到最先进性能，语音转文本延迟约100ms，全双工理论延迟约600ms，实际800ms，但未给出具体基准名称或对比数值。",
         "limitations": "未说明语音生成的自然度、鲁棒性具体指标；未提及在噪声环境或远场条件下的性能；未透露模型是否开源及具体推理效率。",
         "why_relevant": "论文涉及语音生成、文本到语音合成和神经声码器相关技术，与研究方向中的语音合成、TTS和神经声码器匹配；可能使用生成式方法（如扩散模型或流匹配）但摘要未明确说明，需人工确认生成模型细节。"
+      }
+    },
+    {
+      "id": "arxiv:2607.27436",
+      "arxiv_id": "2607.27436",
+      "title": "WeSep: A Modular and Cue-Composable Framework for Target Speaker Extraction",
+      "authors": [
+        "Ke Zhang",
+        "Xiaoyang Yu",
+        "Haoyu Li",
+        "Shuai Wang",
+        "Shuhan Zhang",
+        "Haizhou Li"
+      ],
+      "published": "2026-07-29T20:05:39Z",
+      "summary": "The study of Target Speaker Extraction (TSE) aims to isolate a desired speaker from overlapping speech mixture given auxiliary cues. Existing systems are typically designed for specific cue types, limiting flexibility when cue availability varies across scenarios. We present WeSep, a unified framework that reformulates TSE as a heterogeneous cue-conditioned learning problem. In WeSep, cue modules and separator backbones are decoupled through standardized interfaces, enabling configurable cue injection and flexible integration of diverse modalities. The design enables systematic study of cue structure, intra- and cross-modal interaction, and dynamic cue availability within a shared optimization framework, facilitating adaptation to real-world conditions. Experiments across enrollment, spatial, visual, and textual cues reveal modality-dependent characteristics and demonstrate stable optimization under heterogeneous cue availability. The toolkit will be publicly available.",
+      "paper_url": "http://arxiv.org/abs/2607.27436v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.27436v1",
+      "categories": [
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 10.0,
+      "justification": "提出模块化、可组合线索的统一目标说话人提取框架，支持多模态线索，直接对应语音分离与目标说话人提取方向，工作新颖，必读。",
+      "citation_count": null,
+      "date_added": "2026-07-31",
+      "chinese_summary": {
+        "problem": "目标说话人提取系统通常针对特定辅助线索设计，缺乏灵活性，难以适应不同场景下线索可用性的变化。",
+        "method": "WeSep 将目标说话人提取重新表述为异构线索条件学习问题，通过标准化接口解耦线索模块和分离器骨干，支持可配置的线索注入和多种模态（注册、空间、视觉、文本）的灵活集成。",
+        "innovation": "提出统一框架，将目标说话人提取建模为异构线索条件学习而非单一线索定制；模块化解耦设计实现线索模块与分离器的即插即用；能够系统性研究线索结构、模态交互和动态线索可用性，增强真实世界适应性。",
+        "evidence": "摘要提及实验涉及注册、空间、视觉、文本四种线索，揭示了模态依赖特性，并演示了异构线索可用性下的稳定优化；但未提供具体性能指标或比较对象。",
+        "limitations": "摘要未给出定量结果和与现有特定线索系统的对比；需阅读全文确认泛化能力是否以性能损失为代价，以及工具包的实际可用性。",
+        "why_relevant": "论文直接研究目标说话人提取，与我的研究方向“Speech Separation and Target Speaker Extraction”高度契合，关键词完全匹配，且框架支持多模态辅助线索，属于我关注的核心领域。"
+      }
+    },
+    {
+      "id": "arxiv:2607.26623",
+      "arxiv_id": "2607.26623",
+      "title": "A Study on Online Mask-based Beamforming Using Per-channel Masking for Spatially Distributed Microphones",
+      "authors": [
+        "Wiebke Middelberg",
+        "Svantje Voit",
+        "Simon Doclo",
+        "Ryan Corey"
+      ],
+      "published": "2026-07-29T08:49:22Z",
+      "summary": "Mask-based beamforming is a popular geometry-agnostic approach for speech enhancement, typically applying a single mask across all microphones to estimate the required covariance matrices. While effective for compact arrays, this strategy may be suboptimal for spatially distributed microphones, where signal characteristics may vary strongly across microphones. To effectively capture the spatial diversity across microphones, we extend the mask-based beamformer to a multi-channel formulation, where each microphone is pre-filtered by a separate mask before covariance estimation. To address time-varying acoustic scenes, caused by spectro-temporal nonstationarity, we adopt a frame-causal online implementation with a sliding window. Experiments with simulated compact arrays and distributed microphones show that multi-channel masking yields a benefit over using a single mask when microphone signals differ substantially, while retaining similar performance in compact arrays. We further demonstrate the robustness of the multi-channel masking approach by comparing oracle ideal ratio masks to blind DNN-based mask estimation.",
+      "paper_url": "http://arxiv.org/abs/2607.26623v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.26623v1",
+      "categories": [
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 8.0,
+      "justification": "论文将掩模波束形成扩展为每通道掩模，有效处理空间分布式麦克风场景下的信号差异，并提出在线实现方案，与麦克风阵列与波束形成方向高度相关，工作扎实新颖。",
+      "citation_count": null,
+      "date_added": "2026-07-31",
+      "chinese_summary": {
+        "problem": "针对空间分布麦克风场景，传统单掩蔽波束成形未充分考虑通道间信号差异，导致性能次优，需要有效捕获各麦克风空间多样性的增强方法。",
+        "method": "将掩蔽波束成形扩展为每通道独立掩蔽，各麦克风信号在协方差估计前由单独掩蔽预滤波，并采用滑动窗口的帧因果在线实现以适应时变声学场景。",
+        "innovation": "提出每通道掩蔽替代全局单掩蔽，以更好建模分布式麦克风间的信号差异；设计帧因果在线处理流程，保证实时性与非平稳环境适应性；通过模拟验证在信号差异大时性能提升且紧凑阵列下无退化。",
+        "evidence": "模拟实验对比了紧凑阵列与分布式麦克风场景，显示多通道掩蔽在麦克风信号显著不同时优于单掩蔽，且与理想比率掩蔽和盲DNN估计掩蔽的比较证明了鲁棒性。",
+        "limitations": "摘要未提供实验数据集、噪声条件及具体评价指标细节；在线滑窗参数选择及计算代价需查阅全文；盲DNN掩蔽估计方法未说明，泛化性待验证。",
+        "why_relevant": "匹配研究方向中的波束成形、多通道语音增强和空间滤波，特别是将掩蔽策略用于增强，但侧重分布式麦克风，与常见紧凑阵列的神经波束成形细节有差异，需人工复核方法通用性。"
+      }
+    },
+    {
+      "id": "arxiv:2311.03318",
+      "arxiv_id": "2311.03318",
+      "title": "A Foundation Model for Music Informatics",
+      "authors": [
+        "Minz Won",
+        "Yun-Ning Hung",
+        "Duc Le"
+      ],
+      "published": "2023-11-06T00:00:00+00:00",
+      "summary": "This paper investigates foundation models tailored for music informatics, a domain currently challenged by the scarcity of labeled data and generalization issues. To this end, we conduct an in-depth comparative study among various foundation model variants, examining key determinants such as model architectures, tokenization methods, temporal resolution, data, and model scalability. This research aims to bridge the existing knowledge gap by elucidating how these individual factors contribute to the success of foundation models in music informatics. Employing a careful evaluation frame-work, we assess the performance of these models across diverse downstream tasks in music information retrieval, with a particular focus on frame-level and sequence-level classification. Our results reveal that our model demonstrates robust performance, surpassing existing models in specific key metrics. These findings contribute to the understanding of self-supervised learning in music informatics and pave the way for developing more effective and versatile foundation models in the field. A pretrained version of our model is publicly available to foster reproducibility and future research.",
+      "paper_url": "https://arxiv.org/abs/2311.03318",
+      "pdf_url": "https://arxiv.org/pdf/2311.03318",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 8.0,
+      "justification": "该论文提出音乐信息学基础模型，系统比较架构、标记化、时域分辨率等关键因素，在多个MIR任务上表现优异，与Music Information Retrieval and Representation方向高度相关，具有扎实的参考价值。",
+      "citation_count": 65,
+      "date_added": "2026-07-31",
+      "chinese_summary": {
+        "problem": "解决音乐信息学领域标注数据稀缺和模型泛化困难的问题，探索构建适用于音乐任务的基础模型。",
+        "method": "对多种基础模型变体进行系统的对比研究，分析模型架构、分词方法、时间分辨率、数据规模和可扩展性等关键因素的影响；模型在下游音乐信息检索任务（帧级和序列级分类）上评估。",
+        "innovation": "首次对音乐基础模型的关键设计要素（架构、分词、时间粒度、数据等）进行全面消融和对比，揭示各因素贡献；提出一个在关键指标上超越现有工作的强基线模型，并公开预训练模型以促进复现。",
+        "evidence": "摘要有明确实验证据：采用评估框架在下游MIR任务上测试，模型在特定关键指标上超越现有模型，并且预训练模型已公开。但未列出具体任务、指标数值和对比对象。",
+        "limitations": "摘要未说明具体下游任务类型（如标签、和弦识别等）、性能提升幅度和对比的基准模型；仅提及分类任务，未涉及其它MIR任务（如生成、旋律提取）；数据集细节缺失，泛化性能待全文验证。",
+        "why_relevant": "论文直接聚焦音乐基础模型，针对音乐信息检索（MIR）下游任务，涉及自监督音频表征学习、音乐编码器架构等核心问题，与研究方向中的 music information retrieval, music representation learning, music encoder, self-supervised audio 等关键词高度匹配，且模型公开发布有利于后续研究。"
+      }
+    },
+    {
+      "id": "arxiv:2309.11500",
+      "arxiv_id": "2309.11500",
+      "title": "Auto-ACD: A Large-scale Dataset for Audio-Language Representation Learning",
+      "authors": [
+        "Luoyi Sun",
+        "Xuenan Xu",
+        "Mengyue Wu",
+        "Weidi Xie"
+      ],
+      "published": "2023-09-20T00:00:00+00:00",
+      "summary": "Recently, the AI community has made significant strides in developing powerful foundation models, driven by large-scale multimodal datasets. However, for audio representation learning, existing datasets suffer from limitations in the following aspects: insufficient volume, simplistic content, and arduous collection procedures. To establish an audio dataset with high-quality captions, we propose an innovative, automatic approach leveraging multimodal inputs, such as video frames, audio streams. Specifically, we construct a large-scale, high-quality, audio-language dataset, named as Auto-ACD, comprising over 1.5M audio-text pairs. We exploit a series of pre-trained models or APIs, to determine audio-visual synchronisation, generate image captions, object detection, or audio tags for specific videos. Subsequently, we employ LLM to paraphrase a congruent caption for each audio, guided by the extracted multi-modality clues. To demonstrate the effectiveness of the proposed dataset, we train widely used models on our dataset and show performance improvement on various downstream tasks, for example, audio-language retrieval, audio captioning, zero-shot classification. In addition, we establish a novel benchmark with environmental information and provide a benchmark for audio-text tasks.",
+      "paper_url": "https://arxiv.org/abs/2309.11500",
+      "pdf_url": "http://arxiv.org/pdf/2309.11500",
+      "categories": [
+        "ACM Multimedia"
+      ],
+      "venue": "ACM Multimedia",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 8.0,
+      "justification": "提出自动构建大规模高质量音频-文本数据集Auto-ACD，显著提升音频语言表示学习，与音乐信息检索与表示方向高度相关，质量扎实。",
+      "citation_count": 67,
+      "date_added": "2026-07-31",
+      "chinese_summary": {
+        "problem": "现有音频表示学习数据集存在数量不足、内容简化和收集过程繁琐等问题，论文旨在构建大规模高质量音频-语言数据集以推动音频表示学习。",
+        "method": "提出自动构建方法，利用视频帧、音频流等多模态输入，通过预训练模型或API进行音画同步检测、图像描述生成、目标检测和音频标签提取，再用大语言模型将多模态线索改写为一致描述，最终构建包含超过150万音频-文本对的Auto-ACD数据集。",
+        "innovation": "1) 提出自动构建音频-语言数据集的流程，避免昂贵人工标注；2) 利用多模态信息增强描述质量；3) 构建了迄今最大规模的高质量音频-语言数据集，并验证其有效性。",
+        "evidence": "在Auto-ACD上训练的模型在音频-语言检索、音频字幕、零样本分类等下游任务上性能提升，但摘要未提供具体模型、量化结果和细节。",
+        "limitations": "数据集内容偏向通用音频，音乐覆盖度未知；自动生成描述可能存在噪声；未与音乐数据集对比；需人工确认音乐样本数量和质量。",
+        "why_relevant": "该数据集涉及音频表示学习，与我的研究方向中音频表示学习、自监督音频和音频基础模型相关，但因未明确包含音乐内容且主要针对通用音频，对音乐信息检索和理解的直接适用性需人工复核。"
+      }
+    },
+    {
+      "id": "arxiv:2408.01337",
+      "arxiv_id": "2408.01337",
+      "title": "MuChoMusic: Evaluating Music Understanding in Multimodal Audio-Language Models",
+      "authors": [
+        "Benno Weck",
+        "Ilaria Manco",
+        "Emmanouil Benetos",
+        "Elio Quinton",
+        "George Fazekas",
+        "Dmitry Bogdanov"
+      ],
+      "published": "2024-08-02T00:00:00+00:00",
+      "summary": "Multimodal models that jointly process audio and language hold great promise in audio understanding and are increasingly being adopted in the music domain. By allowing users to query via text and obtain information about a given audio input, these models have the potential to enable a variety of music understanding tasks via language-based interfaces. However, their evaluation poses considerable challenges, and it remains unclear how to effectively assess their ability to correctly interpret music-related inputs with current methods. Motivated by this, we introduce MuChoMusic, a benchmark for evaluating music understanding in multimodal language models focused on audio. MuChoMusic comprises 1,187 multiple-choice questions, all validated by human annotators, on 644 music tracks sourced from two publicly available music datasets, and covering a wide variety of genres. Questions in the benchmark are crafted to assess knowledge and reasoning abilities across several dimensions that cover fundamental musical concepts and their relation to cultural and functional contexts. Through the holistic analysis afforded by the benchmark, we evaluate five open-source models and identify several pitfalls, including an over-reliance on the language modality, pointing to a need for better multimodal integration. Data and code are open-sourced.",
+      "paper_url": "https://arxiv.org/abs/2408.01337",
+      "pdf_url": "https://arxiv.org/pdf/2408.01337",
+      "categories": [
+        "International Society for Music Information Retrieval Conference"
+      ],
+      "venue": "International Society for Music Information Retrieval Conference",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 8.0,
+      "justification": "该工作提出了首个面向音频-语言多模态模型的音乐理解评测基准MuChoMusic，与音乐信息检索与表示方向高度相关，评测设计扎实，对于推动多模态音乐理解研究具有基础性价值，已获一定引用。",
+      "citation_count": 68,
+      "date_added": "2026-07-31",
+      "chinese_summary": {
+        "problem": "当前缺乏有效评估多模态音频语言模型在音乐理解方面能力的方法，难以判断模型是否正确解释音乐相关输入。",
+        "method": "构建了 MuChoMusic 基准，包含 1,187 道人工验证的多选题，覆盖 644 首不同流派的音乐曲目，问题设计旨在评估模型在基本音乐概念及文化、功能背景等多维度的知识和推理能力，并使用该基准对五个开源模型进行整体分析。",
+        "innovation": "提出了首个专门针对多模态音频-语言模型音乐理解能力的综合性评估基准；以多选题形式系统评估模型的知识和推理能力，涵盖了音乐概念与文化功能维度的结合；通过人工注释保证题目质量，并揭示了模型过度依赖语言模态的缺陷，为多模态整合提供了指导。",
+        "evidence": "评估了五个开源模型并识别了多个陷阱，如过度依赖语言模态；基准构建基于 644 首音乐曲目和 1,187 道人工验证问题；数据和代码已开源。",
+        "limitations": "基准仅包含多选题，可能无法全面评估生成能力或更深层次音乐理解；数据集来源有限，可能影响泛化性；摘要未提供模型改进的具体建议，需阅读全文获取详细分析。",
+        "why_relevant": "高度匹配音乐信息检索与表示学习方向：音乐理解是 MIR 核心任务，该基准可直接用于评估音乐编码器、音频基础模型和自监督表示模型的多模态理解能力，提供量化指标并揭示模型缺陷。"
       }
     }
   ]
