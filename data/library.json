@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-07-31T04:46:47.959640+00:00",
+  "updated_at_iso": "2026-08-01T04:41:31.935737+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -4884,6 +4884,186 @@
         "evidence": "评估了五个开源模型并识别了多个陷阱，如过度依赖语言模态；基准构建基于 644 首音乐曲目和 1,187 道人工验证问题；数据和代码已开源。",
         "limitations": "基准仅包含多选题，可能无法全面评估生成能力或更深层次音乐理解；数据集来源有限，可能影响泛化性；摘要未提供模型改进的具体建议，需阅读全文获取详细分析。",
         "why_relevant": "高度匹配音乐信息检索与表示学习方向：音乐理解是 MIR 核心任务，该基准可直接用于评估音乐编码器、音频基础模型和自监督表示模型的多模态理解能力，提供量化指标并揭示模型缺陷。"
+      }
+    },
+    {
+      "id": "arxiv:2309.12553",
+      "arxiv_id": "2309.12553",
+      "title": "ICASSP 2023 Acoustic Echo Cancellation Challenge",
+      "authors": [
+        "Ross Cutler",
+        "Ando Saabas",
+        "Tanel Pärnamaa",
+        "Marju Purin",
+        "Evgenii Indenbom",
+        "Nicolae-Cătălin Ristea",
+        "Jegor Guzvin",
+        "H. Gamper",
+        "Sebastian Braun",
+        "R. Aichner"
+      ],
+      "published": "2023-09-22T00:00:00+00:00",
+      "summary": "The ICASSP 2023 Acoustic Echo Cancellation Challenge is intended to stimulate research in acoustic echo cancellation (AEC), which is an important area of speech enhancement and is still a top issue in audio communication. This is the fourth AEC challenge and it is enhanced by adding a second track for personalized acoustic echo cancellation, reducing the algorithmic + buffering latency to 20 ms, as well as including a full-band version of AECMOS (Purin et al., 2020). We open source two large datasets to train AEC models under both single talk and double talk scenarios. These datasets consist of recordings from more than 10,000 real audio devices and human speakers in real environments, as well as a synthetic dataset. We open source an online subjective test framework and provide an objective metric for researchers to quickly test their results. The winners of this challenge were selected based on the average mean opinion score (MOS) achieved across all scenarios and the word accuracy (WAcc) rate.",
+      "paper_url": "https://arxiv.org/abs/2309.12553",
+      "pdf_url": "https://ieeexplore.ieee.org/ielx7/8782710/9006934/10472289.pdf",
+      "categories": [
+        "IEEE Open Journal of Signal Processing"
+      ],
+      "venue": "IEEE Open Journal of Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "该论文是AEC挑战赛的总结，开源了大规模真实场景数据集与评估框架，为语音增强和音频前端领域的回声消除研究提供了重要基准和公共测试平台，高度相关且具基础性影响力。",
+      "citation_count": 42,
+      "date_added": "2026-08-01",
+      "chinese_summary": {
+        "problem": "该论文概述了ICASSP 2023声学回声消除挑战赛的设置，旨在通过提供标准化的数据集、评估框架和竞赛平台，推动声学回声消除（AEC）领域的研究，尤其是在低延迟和个性化场景下的算法发展。",
+        "method": "挑战赛引入了双轨制：通用AEC和个性化AEC，并将算法加缓冲延迟降至20ms；发布了包含超过10,000个真实音频设备录制的大型数据集（涵盖单讲和双讲场景）和合成数据集；开源了在线主观测试框架，并采用全频带AECMOS客观指标与单词准确率（WAcc）结合平均意见分（MOS）进行综合评估。",
+        "innovation": "相较于往届，本届挑战赛新增个性化AEC赛道，以满足不同说话人的回声消除需求；首次将延迟要求降低至20ms，更贴近实时通信需求；引入了全频带AECMOS作为客观评价指标，丰富了评估手段。",
+        "evidence": "摘要中明确给出了可验证的证据：开源了来自10,000多个真实设备的大规模数据集和在线主观测试框架；提供了客观评价指标（全频带AECMOS）；获胜团队基于所有场景的平均MOS和WAcc综合评定选出。",
+        "limitations": "本文仅为挑战赛概述，未涉及具体AEC算法的技术细节或性能比较，需要查阅获奖方案论文才能了解前沿方法；数据集的具体特性（如混响、噪声条件）未详述，可能影响其通用性。",
+        "why_relevant": "直接命中研究方向关键词‘acoustic echo cancellation’和‘speech enhancement’；挑战赛提供的低延迟、个性化AEC场景与实际音频前端系统瓶颈高度吻合；开源数据集和评估工具对开发AEC模型具有直接实用价值。但需注意本文是竞赛总结而非技术论文，阅读后需进一步追踪获胜方案以获取具体方法。"
+      }
+    },
+    {
+      "id": "s2:dd8e57ae8b25c67536d099e13756fc83c489843d",
+      "arxiv_id": "",
+      "title": "Robust Widely Linear Affine Projection M-Estimate Adaptive Algorithm: Performance Analysis and Application",
+      "authors": [
+        "Shaohui Lv",
+        "Haiquan Zhao",
+        "Wenjing Xu"
+      ],
+      "published": "2023-01-01T00:00:00+00:00",
+      "summary": "The widely-linear affine projection algorithm (WL-APA) based on the orthogonal affine projection principle and the WL model utilizes the past multiple input signal vectors for updating the tap weights of the adaptive filter and achieves fast convergence with colored noncircular input signals while maintaining a certain steady-state estimation accuracy. However, the WL-APA suffers from significant performance degradation under impulsive interference. In this article, we propose a WL affine projection M-estimate (WL-APM) algorithm to enhance the robustness of the WL-APA against impulsive noise, which is obtained by solving a robust constrained minimization problem based on the complex-valued modified Huber (MH) function using the Lagrange multiplier method and Wirtinger Calculus (or called CR calculus). To achieve a reduction in the computational complexity of the WL-APM algorithm to facilitate its hardware implementation, a low-complexity variant based on fast recursive filtering and complex-valued leading dichotomous coordinate descent (DCD) iteration, namely DCD-WL-APM, is proposed. Then, the convergence behavior of the WL-APM algorithm is characterized by mean and mean-square stability, transient and steady-state mean-square deviation (MSD), and the stability step size conditions and MSD expressions are derived. The advantages of the proposed DCD-WL-APM algorithm in terms of computational complexity are also demonstrated in the form of picture and table. Finally, the accuracy of the theoretical analysis results and the superiority of our proposed WL-APM algorithm and its low-complexity version are verified by extensive simulations, including system identification and stereo acoustic echo cancellation (SAEC).",
+      "paper_url": "https://www.semanticscholar.org/paper/dd8e57ae8b25c67536d099e13756fc83c489843d",
+      "pdf_url": "",
+      "categories": [
+        "IEEE Transactions on Signal Processing"
+      ],
+      "venue": "IEEE Transactions on Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "该论文提出鲁棒的宽线性仿射投影M估计算法（WL-APM）及其低复杂度版本，直接应用于立体声回声消除（SAEC），高度匹配音频前端处理中的回声消除方向，理论分析扎实，发表在顶级期刊，可作为相关研究的基础基线。",
+      "citation_count": 40,
+      "date_added": "2026-08-01",
+      "chinese_summary": {
+        "problem": "广泛线性仿射投影算法（WL-APA）在脉冲干扰下性能严重下降，难以用于实际声学回声消除等场景。",
+        "method": "提出广泛线性仿射投影M估计算法（WL-APM），通过求解基于复值修正Huber函数的鲁棒约束最小化问题，使用拉格朗日乘子法和Wirtinger微积分推导。进一步采用快速递归滤波和复数引导二分坐标下降迭代，设计低复杂度变体DCD-WL-APM。",
+        "innovation": "引入修正Huber函数增强对脉冲噪声的鲁棒性；推导了均值与均方意义下的收敛行为、稳态均方偏差及步长条件；提出DCD迭代的快速实现，显著降低计算复杂度。",
+        "evidence": "摘要提及通过系统识别和立体声回声消除（SAEC）仿真验证了理论分析的准确性和算法的优越性，但未给出具体指标。有复杂度对比图表。",
+        "limitations": "摘要未说明在真实声学环境或语音质量、可懂度方面的评估，应用局限于二入二出SAEC，且缺少与深度学习方法的比较。",
+        "why_relevant": "关键词命中'acoustic echo cancellation'，且仿真中涉及立体声回声消除，与研究方向中的声学回声消除直接相关，但论文侧重于自适应滤波算法的鲁棒性和理论分析，并非针对语音增强或前端处理的整体系统，偏重信号处理理论。"
+      }
+    },
+    {
+      "id": "s2:d45c99c687e17881860863227919e553942b38ec",
+      "arxiv_id": "",
+      "title": "Speech Enhancement—A Review of Modern Methods",
+      "authors": [
+        "Douglas O’Shaughnessy"
+      ],
+      "published": "2024-02-01T00:00:00+00:00",
+      "summary": "A review of techniques to improve distorted speech is presented, noting the strengths and weaknesses of common methods. Speech signals are discussed from the point of view of which features should be preserved to retain both naturalness and intelligibility. Enhancement methods range from classical spectral subtraction and Wiener filtering to recent deep neural network approaches. The difficulty of finding objective acoustic measures that approximate perceptual speech quality is discussed. Suggestions to improve these methods are made.",
+      "paper_url": "https://www.semanticscholar.org/paper/d45c99c687e17881860863227919e553942b38ec",
+      "pdf_url": "",
+      "categories": [
+        "IEEE Transactions on Human-Machine Systems"
+      ],
+      "venue": "IEEE Transactions on Human-Machine Systems",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "该综述系统梳理了从经典谱减法、维纳滤波到深度学习的语音增强现代方法，并讨论了客观指标与感知质量的关系，是语音增强方向研究者必读的基础性综述。",
+      "citation_count": 43,
+      "date_added": "2026-08-01",
+      "chinese_summary": {
+        "problem": "综述现代语音增强方法，评估其优缺点，并探讨如何保留语音的自然度和可懂度。",
+        "method": "系统回顾从经典谱减法和维纳滤波到深度神经网络的语音增强方法，分析语音信号应保留的声学特征，并讨论客观质量评价指标的局限性。",
+        "innovation": "本文作为一篇综述，没有提出具体新算法，但其创新在于全面比较了各类方法的优劣，并针对客观评价指标与主观感知的差异提出了改进思路，为后续研究提供了方向性建议。",
+        "evidence": "摘要未提供具体实验数据或理论证明，仅提及讨论了客观声学测量的困难，并给出改进建议，需阅读全文核实具体内容。",
+        "limitations": "缺乏新算法贡献；改进建议可能停留在宏观层面；覆盖的方法范围需全文确认是否包含多通道、去混响等子领域。",
+        "why_relevant": "论文直接覆盖我的研究方向“语音增强与音频前端”，内容涉及语音降噪、经典与神经网络方法，并讨论特征保留和评价指标，与我研究的关键词（speech enhancement, speech denoising, neural masking等）高度匹配。"
+      }
+    },
+    {
+      "id": "arxiv:2607.27296",
+      "arxiv_id": "2607.27296",
+      "title": "SKY-Piano: A Multimodal Piano Performance Dataset",
+      "authors": [
+        "Joonhyung Bae",
+        "Dawon Park",
+        "Taegyun Kwon",
+        "Yoon-Seok Choi",
+        "Hyeon Hur",
+        "Satoshi Obata",
+        "Shigeru Kai",
+        "Yohei Wada",
+        "Yu Takahashi",
+        "Akira Maezawa",
+        "Jaebum Park",
+        "Jonghwa Park",
+        "Juhan Nam"
+      ],
+      "published": "2026-07-29T16:06:02Z",
+      "summary": "Music information retrieval research on piano performance increasingly involves diverse modalities of data and annotations beyond audio and MIDI. We present SKY-Piano, a multimodal piano performance dataset that includes 11 hours of performance recordings of motion, multi-view video, audio, MIDI from 7 professional and 12 amateur pianists along with MusicXML scores. The performance pieces were selected considering playing technique, difficulty, and performer expertise on a shared core repertoire. The motion data include both hand and body motion, released in both flagged form, where samples lost to marker occlusion are marked as unreliable, and imputed form, where those gaps are reconstructed, together with Visual3D body-segment kinematics and other time-synchronized modalities. To easily browse different modalities of data at a glance, we provide an interactive web browser. In addition, we developed a fingering annotation model and tool for deriving pseudo fingering annotations from the MIDI and motion data. Lastly, we present MIDI-to-motion generation through a fine-tuning experiment as a use case of the dataset.",
+      "paper_url": "http://arxiv.org/abs/2607.27296v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.27296v1",
+      "categories": [
+        "cs.SD",
+        "cs.MM"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 8.0,
+      "justification": "该论文构建了多模态钢琴演奏数据集，包含音频、MIDI、运动等多模式数据及标注工具，直接服务于音乐信息检索与表示方向，工作扎实且具实用性，但作为数据集其新颖性中等，适合作为相关方向的研究资源。",
+      "citation_count": null,
+      "date_added": "2026-08-01",
+      "chinese_summary": {
+        "problem": "钢琴演奏MIR研究需要多模态数据支撑，但现有数据集多局限于音频和MIDI，缺乏运动、多视角视频等同步模态和演奏者多样性。",
+        "method": "构建SKY-Piano数据集，采集11小时的专业与业余钢琴家演奏，同步记录手部和身体运动捕捉、多视角视频、音频、MIDI和MusicXML乐谱；提供遮挡标记的原始运动数据与插补后的完整数据，并导出Visual3D运动学变量；开发交互式网页浏览器便于浏览各模态，同时设计指法标注模型从MIDI和运动数据推测伪指法标签。",
+        "innovation": "首次公开发布包含手部和全身运动数据、多视角视频和乐谱的钢琴演奏数据集，并提供遮挡标记与插补两种运动数据处理方式；开发了基于MIDI和运动数据的自动指法标注工具，可生成大规模弱监督指法信息；通过专业与业余演奏者的对比覆盖不同技巧水平，增强数据多样性。",
+        "evidence": "摘要明确给出11小时录音规模、19名演奏者（7专业12业余）、运动数据含手部和身体、交互式浏览器、指法标注模型以及MIDI-to-motion生成实验，但未提供模型性能指标。",
+        "limitations": "数据集规模相对较小（11小时），运动捕捉遮挡问题可能影响部分数据质量；指法标注为伪标签，需人工验证可靠性；生成实验仅为微调示例，未与原方法对比。",
+        "why_relevant": "数据集适用于音乐生成（MIDI到运动生成）、音乐理解（演奏技巧、指法分析）和多模态表示学习（融合音频、视频、运动），与我的研究方向中音乐生成、音乐理解和自监督表示学习高度相关，可直接作为训练或评估资源，并可能扩展为音乐编码器预训练的多模态监督信号。"
+      }
+    },
+    {
+      "id": "arxiv:2403.07675",
+      "arxiv_id": "2403.07675",
+      "title": "Multichannel Long-Term Streaming Neural Speech Enhancement for Static and Moving Speakers",
+      "authors": [
+        "Changsheng Quan",
+        "Xiaofei Li"
+      ],
+      "published": "2024-03-12T00:00:00+00:00",
+      "summary": "In this work, we extend our previously proposed offline SpatialNet for long-term streaming multichannel speech enhancement in both static and moving speaker scenarios. SpatialNet exploits spatial information, such as the spatial/steering direction of speech, for discriminating between target speech and interferences, and achieved outstanding performance. The core of SpatialNet is a narrow-band self-attention module used for learning the temporal dynamic of spatial vectors. Towards long-term streaming speech enhancement, we propose to replace the offline self-attention network with online networks that have linear inference complexity w.r.t signal length and meanwhile maintain the capability of learning long-term information. Three variants are developed based on i) masked self-attention, ii) Retention, a self-attention variant with linear inference complexity, and iii) Mamba, a structured-state-space-based RNN-like network. Moreover, we investigate the length extrapolation ability of different networks, namely test on signals that are much longer than training signals, and propose a short-signal training plus long-signal fine-tuning strategy, which largely improves the length extrapolation ability of the networks within limited training time. Overall, the proposed online SpatialNet achieves outstanding speech enhancement performance for long audio streams, and for both static and moving speakers.",
+      "paper_url": "https://arxiv.org/abs/2403.07675",
+      "pdf_url": "https://arxiv.org/pdf/2403.07675",
+      "categories": [
+        "IEEE Signal Processing Letters"
+      ],
+      "venue": "IEEE Signal Processing Letters",
+      "track": "foundation",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 8.0,
+      "justification": "该论文将离线SpatialNet扩展为流式多通道语音增强，提出三种低复杂度在线网络，并针对移动说话人验证，与麦克风阵列和波束成形高度相关，方法扎实。",
+      "citation_count": 54,
+      "date_added": "2026-08-01",
+      "chinese_summary": {
+        "problem": "在静态和移动说话人场景下，实现面向长音频流的在线多通道语音增强，解决传统离线方法无法实时处理长信号的问题",
+        "method": "将离线SpatialNet中的窄带自注意力替换为在线网络，包括掩码自注意力、Retention和Mamba三种变体，并通过短信号训练加长信号微调策略提升网络对长序列的外推能力",
+        "innovation": "提出三种线性推理复杂度的在线网络替代方案，突破离线自注意力对长信号的计算瓶颈；首次研究长度外推能力并设计短训练+长微调策略，在不显著增加训练时间下大幅增强处理长音频流的能力",
+        "evidence": "摘要声称在线SpatialNet在长音频流和静/动态说话人场景下均取得出色的语音增强性能，但未提供具体指标或对比基线",
+        "limitations": "未提及实时处理的计算延迟和资源消耗；长信号场景下的性能提升缺乏定量结果；三种在线变体的性能差异和适用场景不明",
+        "why_relevant": "论文直接聚焦多通道语音增强，涉及波束成形和空间信息利用，与我的研究方向“麦克风阵列与波束成形”中的多通道语音增强、空间滤波高度匹配，且在线处理方法适用于实际阵列系统"
       }
     }
   ]
