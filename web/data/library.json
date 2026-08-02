@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-01T04:41:31.935737+00:00",
+  "updated_at_iso": "2026-08-02T04:43:31.980154+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -5064,6 +5064,76 @@
         "evidence": "摘要声称在线SpatialNet在长音频流和静/动态说话人场景下均取得出色的语音增强性能，但未提供具体指标或对比基线",
         "limitations": "未提及实时处理的计算延迟和资源消耗；长信号场景下的性能提升缺乏定量结果；三种在线变体的性能差异和适用场景不明",
         "why_relevant": "论文直接聚焦多通道语音增强，涉及波束成形和空间信息利用，与我的研究方向“麦克风阵列与波束成形”中的多通道语音增强、空间滤波高度匹配，且在线处理方法适用于实际阵列系统"
+      }
+    },
+    {
+      "id": "arxiv:2607.26742",
+      "arxiv_id": "2607.26742",
+      "title": "Zero-Shot Face-to-Speech Synthesis via Latent Space Adaptation of a Style-Diffusion TTS Model",
+      "authors": [
+        "Carlos Muñoz-Romero",
+        "Jose A. Gonzalez-Lopez"
+      ],
+      "published": "2026-07-29T10:33:56Z",
+      "summary": "Zero-shot text-to-speech (TTS) clones a voice from a short audio prompt, but this reliance on reference audio is a barrier when only visual information is available, e.g. for historical figures or video-game characters. In this work, we propose a Face-to-Speech (F2S) framework that predicts a plausible voice from a static facial image. A lightweight Face Adapter, together with soft-tuning of the face encoder's upper blocks, aligns face-recognition features with the style space of a frozen StyleTTS 2 model, kept frozen during training. We evaluate on held-out identities from LRS3, a large-scale audiovisual corpus of English TED-talk videos. The synthesized speech is highly natural (UTMOS 3.7-4.0, matching or exceeding the 3.61 of ground truth), face-to-voice retrieval is consistently above chance, and the generated voice is consistent with the target speaker. Without any retraining, an English-trained adapter also produces fluent Spanish speech, indicating that the face-to-style mapping is largely language-agnostic.",
+      "paper_url": "http://arxiv.org/abs/2607.26742v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.26742v1",
+      "categories": [
+        "eess.AS",
+        "cs.AI",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "论文提出基于人脸图像的零样本语音合成框架，通过适配StyleTTS 2风格空间实现跨模态映射，与生成语音技术方向高度相关，工作质量扎实，跨语言迁移特性具新颖性。",
+      "citation_count": null,
+      "date_added": "2026-08-02",
+      "chinese_summary": {
+        "problem": "在仅有人脸图像、无声参考语音的条件下，零样本生成与之匹配的说话声音。",
+        "method": "提出一个面部到语音（F2S）框架，通过轻量级面部适配器将人脸识别特征对齐到冻结的StyleTTS 2扩散语音合成模型的风格空间；训练时仅软调面部编码器上层块，保持TTS模型参数不变。",
+        "innovation": "首次结合人脸识别与预训练扩散TTS模型实现零样本面部到语音合成，无需任何参考音频；仅需微调少量适配器参数，保留原TTS模型的高自然度；展示了跨语言泛化能力，英语训练的适配器可直接生成西班牙语语音。",
+        "evidence": "在LRS3英文TED演讲视频上的评估显示，合成语音UTMOS得分3.7-4.0，达到或超过真实语音的3.61；人脸到语音检索准确率高于随机水平；英语训练的适配器可在不加训的情况下生成流利的西班牙语语音。",
+        "limitations": "评估仅在LRS3数据集上进行，未见更复杂噪声环境或非英语母语说话人验证；依赖特定TTS架构（StyleTTS 2），泛化性存疑；未讨论生成语音的可懂度、语速等因素。",
+        "why_relevant": "涉及语音合成和扩散模型，与您研究方向中的speech synthesis、TTS及diffusion model speech有交集，但核心为跨模态视觉到语音生成，非生成式增强或神经声码器，需人工确认是否完全符合当前聚焦点。"
+      }
+    },
+    {
+      "id": "s2:387332c7a9657fb554b25d7e6d5fee00d9655aa2",
+      "arxiv_id": "",
+      "title": "A Comprehensive Review of Direction-of-Arrival Estimation and Localization Approaches in Mixed-Field Sources Scenario",
+      "authors": [
+        "A. Molaei",
+        "B. Zakeri",
+        "S. Andargoli",
+        "M. A. B. Abbasi",
+        "V. Fusco",
+        "O. Yurduseven"
+      ],
+      "published": "2024-01-01T00:00:00+00:00",
+      "summary": "Direction-of-arrival (DOA) estimation plays a crucial role in array signal processing across various domains, including radar, sonar, wireless communications, and seismic exploration. However, traditional DOA techniques often assume either far-field (FF) or near-field (NF) propagation, limiting their applicability in scenarios involving mixed-field sources. DOA estimation and localization in scenarios involving mixed NF and FF sources is a complex and dynamic field that has garnered significant research attention in recent years. This multifaceted and evolving area holds promise for addressing challenges in radar, wireless communications, and acoustic sensing applications. This review paper provides a comprehensive overview of the methodologies, techniques, and advancements in this domain. We categorize existing methodologies, discussing their advantages and limitations. Furthermore, we delve into the mathematical modeling of mixed-field sources and essential signal processing techniques for parameter estimation. Special attention is given to technical issues such as aperture loss, computational complexity, and hardware considerations. The paper discusses the various sources of noise in the mentioned scenario and highlights the importance of modeling noise accurately for effective estimation. It also explores different scenarios and assumptions considered in the literature, ranging from non-Gaussian and non-stationary noise environments to scenarios involving multipath propagation and unknown mutual coupling effects. A detailed examination of the statistical approaches used in DOA estimation and localization reveals a diverse range of methods, including higher-order statistics and second-order statistics, each with its own advantages and applications. A comparative evaluation of various approaches highlights their performance in terms of estimation accuracy, resolution, aperture loss and computational efficiency. This provides insights into the trade-offs involved in choosing between different approaches. The review also identifies promising future research directions, such as the exploration of advanced signal processing techniques like compressive sensing and deep learning, exact NF modeling, estimation based on one-bit measurements, the integration of polarization diversity, employing metasurface antennas, tracking parameters, and the utilization of full-wave or experimental data for a more realistic representation of the challenges. By reviewing advances in methodologies and techniques, as well as outlining future research directions aimed at addressing the complexities of mixed-field scenarios, this paper paves the way for the development of more robust and reliable localization systems capable of handling real-world complexities.",
+      "paper_url": "https://www.semanticscholar.org/paper/387332c7a9657fb554b25d7e6d5fee00d9655aa2",
+      "pdf_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/10522654.pdf",
+      "categories": [
+        "IEEE Access"
+      ],
+      "venue": "IEEE Access",
+      "track": "foundation",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 7.0,
+      "justification": "综述了混合场源的DOA估计方法，覆盖雷达、声纳等领域，与麦克风阵列研究方向部分相关，但非语音前端核心基础，且引用数与影响力尚待积累。",
+      "citation_count": 59,
+      "date_added": "2026-08-02",
+      "chinese_summary": {
+        "problem": "混合场源（近场与远场混合）场景下，传统DOA估计方法因单一传播模型假设而性能受限，缺乏对该场景下现有方法的系统分类、性能比较及未来研究方向的整体梳理。",
+        "method": "本文对混合场源DOA估计与定位方法进行系统综述，分类讨论各类方法的数学模型、优缺点，重点分析高阶与二阶统计量等统计方法，从估计精度、分辨率、孔径损失、计算效率等维度进行性能比较，并探索噪声建模、多径传播、互耦效应等实际问题。",
+        "innovation": "首次针对混合场源DOA估计进行全面综述，系统建立了方法分类体系，从多种性能指标量化比较不同方法，明确指出了该领域的核心挑战和未来方向，如压缩感知、深度学习、超表面天线、单比特测量等新兴技术的整合。",
+        "evidence": "证据不足，本文为综述性质，未提出新的实验或系统验证，结论基于对已有文献的梳理与横向对比。",
+        "limitations": "作为综述，未提供新算法或实验数据；对麦克风阵列特有的声学场景（如宽带信号、混响、语音增强）覆盖可能有限；未来方向的可行性有待验证，需阅读全文确认讨论深度。",
+        "why_relevant": "综述直接围绕DOA估计与声源定位，是‘麦克风阵列与波束形成’方向的核心问题，涵盖了阵列信号处理、空间滤波、深度学习方法等子话题，与研究方向关键词‘direction of arrival, sound source localization, array signal processing’高度匹配，对理解现有方法和选择技术路线具有直接参考价值。"
       }
     }
   ]
