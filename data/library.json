@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-02T04:43:31.980154+00:00",
+  "updated_at_iso": "2026-08-02T09:35:47.999720+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -5134,6 +5134,123 @@
         "evidence": "证据不足，本文为综述性质，未提出新的实验或系统验证，结论基于对已有文献的梳理与横向对比。",
         "limitations": "作为综述，未提供新算法或实验数据；对麦克风阵列特有的声学场景（如宽带信号、混响、语音增强）覆盖可能有限；未来方向的可行性有待验证，需阅读全文确认讨论深度。",
         "why_relevant": "综述直接围绕DOA估计与声源定位，是‘麦克风阵列与波束形成’方向的核心问题，涵盖了阵列信号处理、空间滤波、深度学习方法等子话题，与研究方向关键词‘direction of arrival, sound source localization, array signal processing’高度匹配，对理解现有方法和选择技术路线具有直接参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2501.11837",
+      "arxiv_id": "2501.11837",
+      "title": "30+ Years of Source Separation Research: Achievements and Future Challenges",
+      "authors": [
+        "Shoko Araki",
+        "N. Ito",
+        "Reinhold Häb-Umbach",
+        "G. Wichern",
+        "Zhong-Qiu Wang",
+        "Yuki Mitsufuji"
+      ],
+      "published": "2025-01-21T00:00:00+00:00",
+      "summary": "Source separation (SS) of acoustic signals is a research field that emerged in the mid-1990s and has flourished ever since. On the occasion of ICASSP’s 50th anniversary, we review the major contributions and advancements in the past three decades in the speech, audio, and music SS research field. We will cover both single- and multi-channel SS approaches. We will also look back on key efforts to foster a culture of scientific evaluation in the research field, including challenges, performance metrics, and datasets. We will conclude by discussing current trends and future research directions.",
+      "paper_url": "https://arxiv.org/abs/2501.11837",
+      "pdf_url": "https://arxiv.org/pdf/2501.11837",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 10.0,
+      "justification": "在ICASSP 50周年之际全面回顾语音/音频/音乐源分离三十年进展，覆盖单通道与多通道方法、数据集与评测基准，与研究方向中的语音分离、目标说话人提取高度相关，是必读级综述。",
+      "citation_count": 22,
+      "date_added": "2026-08-02",
+      "chinese_summary": {
+        "problem": "回顾并总结过去30年声源分离领域的主要贡献与进展，涵盖语音、音频和音乐信号的单通道及多通道分离方法。",
+        "method": "本文为综述性论文，没有提出新的算法或系统，而是系统梳理了声源分离领域的发展历程、关键方法、评价体系（包括挑战赛、性能指标、数据集）以及当前趋势与未来方向。",
+        "innovation": "全面梳理了30年来声源分离研究的里程碑；系统总结了科学评价文化（如SiSEC等挑战赛）的建立与演进；指出了当前研究热点和未来的挑战。",
+        "evidence": "摘要仅提及回顾了‘挑战、性能指标和数据集’，但未给出具体的实验数据或定量结果，可核验证据不足。",
+        "limitations": "作为综述，不包含原创方法或实验；具体涵盖的方法细节和趋势判断需要阅读全文才能确定；与语音增强的直接关联性可能有限。",
+        "why_relevant": "声源分离与语音增强在单多通道处理、基于深度学习的掩蔽估计等方面存在技术交叉（如beamforming、mask estimation），但该综述聚焦于分离而非去噪、去混响等前端增强任务，且可能不专门讨论回声消除或残差抑制，匹配较弱。"
+      }
+    },
+    {
+      "id": "arxiv:2512.18099",
+      "arxiv_id": "2512.18099",
+      "title": "SAM Audio: Segment Anything in Audio",
+      "authors": [
+        "Bowen Shi",
+        "Andros Tjandra",
+        "John Hoffman",
+        "Helin Wang",
+        "Yi-Chiao Wu",
+        "Luya Gao",
+        "Julius Richter",
+        "Matt Le",
+        "Apoorv Vyas",
+        "Sanyuan Chen",
+        "Christoph Feichtenhofer",
+        "Piotr Doll'ar"
+      ],
+      "published": "2025-12-19T00:00:00+00:00",
+      "summary": "General audio source separation is a key capability for multimodal AI systems that can perceive and reason about sound. Despite substantial progress in recent years, existing separation models are either domain-specific, designed for fixed categories such as speech or music, or limited in controllability, supporting only a single prompting modality such as text. In this work, we present SAM Audio, a foundation model for general audio separation that unifies text, visual, and temporal span prompting within a single framework. Built on a diffusion transformer architecture, SAM Audio is trained with flow matching on large-scale audio data spanning speech, music, and general sounds, and can flexibly separate target sources described by language, visual masks, or temporal spans. The model achieves state-of-the-art performance across a diverse suite of benchmarks, including general sound, speech, music, and musical instrument separation in both in-the-wild and professionally produced audios, substantially outperforming prior general-purpose and specialized systems. Furthermore, we introduce a new real-world separation benchmark with human-labeled multimodal prompts and a reference-free evaluation model that correlates strongly with human judgment.",
+      "paper_url": "https://arxiv.org/abs/2512.18099",
+      "pdf_url": "https://arxiv.org/pdf/2512.18099",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "论文提出了SAM Audio，一个统一文本、视觉和时间提示的通用音频源分离基础模型，基于扩散变换器，覆盖语音、音乐等，在多个基准达到最优，与语音分离和提取方向高度相关，且是该领域潜在的必读工作。",
+      "citation_count": 32,
+      "date_added": "2026-08-02",
+      "chinese_summary": {
+        "problem": "构建统一多模态提示的通用音频分离基础模型，解决现有模型只能处理固定类别或单一提示方式、缺乏跨域和可控性的问题。",
+        "method": "提出SAM Audio，基于扩散Transformer架构，使用流匹配在大规模包含语音、音乐和通用声音的数据上训练，支持通过文本、视觉掩码或时间段提示灵活分离目标声源。",
+        "innovation": "首次在单一框架中统一文本、视觉和时间段三种提示模态；采用扩散Transformer和流匹配实现生成式分离；在多个领域基准上显著超越通用和专用系统。",
+        "evidence": "在通用声音、语音、音乐和乐器分离等多个基准上达到最先进性能；引入新真实世界分离基准和与人判断高度相关的参考无关评估模型。",
+        "limitations": "摘要未提及对语音分离任务中典型挑战（如置换不变训练）的专门设计；通用模型可能在特定语音场景下效果不如专业方法；计算复杂度未说明。",
+        "why_relevant": "论文涉及通用音频源分离，包含语音成分，理论上可用于语音分离，但非聚焦目标说话人提取或盲源分离专门技术，与笔者研究方向仅存在较宽泛的‘源分离’关联，需人工复核具体语音分离性能。"
+      }
+    },
+    {
+      "id": "arxiv:2409.15799",
+      "arxiv_id": "2409.15799",
+      "title": "WeSep: A Scalable and Flexible Toolkit Towards Generalizable Target Speaker Extraction",
+      "authors": [
+        "Shuai Wang",
+        "Ke Zhang",
+        "Shaoxiong Lin",
+        "Junjie Li",
+        "Xuefei Wang",
+        "Meng Ge",
+        "Jianwei Yu",
+        "Yan-min Qian",
+        "Haizhou Li"
+      ],
+      "published": "2024-09-01T00:00:00+00:00",
+      "summary": "Target speaker extraction (TSE) focuses on isolating the speech of a specific target speaker from overlapped multi-talker speech, which is a typical setup in the cocktail party problem. In recent years, TSE draws increasing attention due to its potential for various applications such as user-customized interfaces and hearing aids, or as a crutial front-end processing technologies for subsequential tasks such as speech recognition and speaker recongtion. However, there are currently few open-source toolkits or available pre-trained models for off-the-shelf usage. In this work, we introduce WeSep, a toolkit designed for research and practical applications in TSE. WeSep is featured with flexible target speaker modeling, scalable data management, effective on-the-fly data simulation, structured recipes and deployment support. The toolkit is publicly avaliable at \\url{https://github.com/wenet-e2e/WeSep.}",
+      "paper_url": "https://arxiv.org/abs/2409.15799",
+      "pdf_url": "https://arxiv.org/pdf/2409.15799",
+      "categories": [
+        "Interspeech"
+      ],
+      "venue": "Interspeech",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "与目标说话人提取方向高度相关，提供了一个功能灵活、可扩展的开源工具包，对社区有实际贡献，但方法本身新颖性一般。",
+      "citation_count": 30,
+      "date_added": "2026-08-02",
+      "chinese_summary": {
+        "problem": "论文旨在解决目标说话人提取（TSE）领域缺乏开源工具包和预训练模型的问题，以促进研究和实际应用。",
+        "method": "提出WeSep工具包，提供灵活的目标说话人建模机制、可扩展的数据管理、在线数据模拟模块、标准化的实验配方以及模型部署支持。",
+        "innovation": "首次构建面向通用目标说话人提取的开源工具包，整合了灵活的说话人建模（支持多种提取网络）、可扩展数据管理（便于自定义数据集）和在线数据增强，并提供从训练到部署的完整流程，弥补了当前TSE领域工具链的空白。",
+        "evidence": "摘要中仅声称工具包已开源在GitHub上，但未提供任何实验性能数据、基准对比或系统评估结果。",
+        "limitations": "摘要未报告WeSep在标准评测集上的性能，也未与现有TSE方法进行比较，其效果和通用性需阅读全文验证；可能缺乏对特定分离架构（如时域双路径网络）的深度支持说明。",
+        "why_relevant": "该论文直接对应我的研究方向“目标说话人提取”，工具包提供的功能覆盖了关键词如target speaker extraction、speaker extraction，并涉及鸡尾酒会问题场景，可作为实验平台加速我的模型开发与评估。"
       }
     }
   ]
