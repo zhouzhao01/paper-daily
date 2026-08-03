@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-02T09:35:47.999720+00:00",
+  "updated_at_iso": "2026-08-03T04:51:50.367626+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -5251,6 +5251,184 @@
         "evidence": "摘要中仅声称工具包已开源在GitHub上，但未提供任何实验性能数据、基准对比或系统评估结果。",
         "limitations": "摘要未报告WeSep在标准评测集上的性能，也未与现有TSE方法进行比较，其效果和通用性需阅读全文验证；可能缺乏对特定分离架构（如时域双路径网络）的深度支持说明。",
         "why_relevant": "该论文直接对应我的研究方向“目标说话人提取”，工具包提供的功能覆盖了关键词如target speaker extraction、speaker extraction，并涉及鸡尾酒会问题场景，可作为实验平台加速我的模型开发与评估。"
+      }
+    },
+    {
+      "id": "arxiv:2403.16973",
+      "arxiv_id": "2403.16973",
+      "title": "VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild",
+      "authors": [
+        "Puyuan Peng",
+        "Po-Yao (Bernie) Huang",
+        "Shang-Wen Li",
+        "Abdelrahman Mohamed",
+        "David Harwath"
+      ],
+      "published": "2024-03-25T00:00:00+00:00",
+      "summary": "We introduce VoiceCraft, a token infilling neural codec language model, that achieves state-of-the-art performance on both speech editing and zero-shot text-to-speech (TTS) on audiobooks, internet videos, and podcasts. VoiceCraft employs a Transformer decoder architecture and introduces a token rearrangement procedure that combines causal masking and delayed stacking to enable generation within an existing sequence. On speech editing tasks, VoiceCraft produces edited speech that is nearly indistinguishable from unedited recordings in terms of naturalness, as evaluated by humans; for zero-shot TTS, our model outperforms prior SotA models including VALLE and the popular commercial model XTTS-v2. Crucially, the models are evaluated on challenging and realistic datasets, that consist of diverse accents, speaking styles, recording conditions, and background noise and music, and our model performs consistently well compared to other models and real recordings. In particular, for speech editing evaluation, we introduce a high quality, challenging, and realistic dataset named RealEdit. We encourage readers to listen to the demos at https://jasonppy.github.io/VoiceCraft_web.",
+      "paper_url": "https://arxiv.org/abs/2403.16973",
+      "pdf_url": "https://arxiv.org/pdf/2403.16973",
+      "categories": [
+        "Annual Meeting of the Association for Computational Linguistics"
+      ],
+      "venue": "Annual Meeting of the Association for Computational Linguistics",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 10.0,
+      "justification": "该工作提出了VoiceCraft，一种基于token填充的神经编解码语言模型，在零样本语音编辑和TTS任务上达到SOTA，引入的token重排机制和因果掩码技术具有创新性，且评估数据集真实多样，与生成式语音技术方向高度相关，是必读级工作。",
+      "citation_count": 193,
+      "date_added": "2026-08-03",
+      "chinese_summary": {
+        "problem": "在真实世界多样化数据（如口音、噪声、音乐等）中，实现高质量的零样本语音编辑（插入、替换词语）和零样本文本到语音合成，并统一为单一模型。",
+        "method": "基于神经编解码器语言模型的token填充方法，采用Transformer解码器架构，提出token重排过程结合因果掩码和延迟堆叠，使模型能在现有语音序列中间生成连贯片段。",
+        "innovation": "首次将零样本语音编辑和零样本TTS统一到同一token填充框架中；设计了token重排机制以支持序列内生成；在真实挑战数据集上验证性能，并贡献了RealEdit评估集。",
+        "evidence": "人工评估显示编辑后语音自然度接近未编辑录音；零样本TTS指标优于VALLE和XTTS-v2；在多种数据集（有声书、互联网视频、播客）上表现一致且鲁棒。",
+        "limitations": "摘要未提及模型规模、推理速度或计算资源需求；未说明是否支持语音增强或恢复功能；零样本TTS的交互式评估细节需进一步查看。",
+        "why_relevant": "研究方向的文本到语音合成（TTS）是论文的直接应用领域，零样本能力符合生成式语音合成目标，但未涉及语音增强、神经声码器或扩散模型，属于窄相关，需确认编辑功能是否可迁移至语音恢复场景。"
+      }
+    },
+    {
+      "id": "arxiv:2607.29363",
+      "arxiv_id": "2607.29363",
+      "title": "Stable Autoregressive Speech Generation with Low-Frame-Rate High-Dimensional Continuous Tokens",
+      "authors": [
+        "Yi Luo",
+        "Rongzhi Gu",
+        "Jixun Yao"
+      ],
+      "published": "2026-07-31T12:51:24Z",
+      "summary": "Balancing sequence length, representational capacity, and long-horizon stability is a central problem in autoregressive (AR) speech and audio generation. Representations with higher frame rates or greater capacity can preserve more signal detail, but they also make streaming generation more vulnerable to distribution drift and AR error accumulation. Conversely, shorter and more compressed representations simplify AR modeling, but their limited bandwidth may discard important components and constrain the upper bound of reconstruction fidelity and generation quality. We ask whether a low-frame-rate, high-dimensional, high-bandwidth continuous representation can be co-designed with a streaming generation framework to support robust high-fidelity reconstruction, strong single-token predictability, and superior long-horizon stability. We decompose this goal into two coupled problems: what geometric and statistical properties a high-dimensional representation space should have, and how an AR continuous-token generator should be structured to resist error accumulation. Accordingly, we propose Locodec, a locally encoded codec that shapes its representation space to improve the interpolatability of a lower-dimensional core manifold and the identifiability of the native high-dimensional coordinates, thereby improving the predictability of high-dimensional high-bandwidth tokens. We also propose MP-ELD, a single-token AR flow-matching framework that uses multi-path information routing and residual classifier-free guidance to mitigate error accumulation. Experiments with 8-Hz, 768-dimensional tokens show that our design preserves reconstruction quality, improves single-token predictability, achieves competitive WER, and maintains stable long-form synthesis, without using external SSL/ASR models, pretrained text language models, or post-training stages.",
+      "paper_url": "http://arxiv.org/abs/2607.29363v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.29363v1",
+      "categories": [
+        "eess.AS",
+        "cs.AI",
+        "cs.LG",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "论文提出低帧率高维连续token的自回归语音生成框架，通过Locodec和MP-ELD提升长时稳定性与保真度，与生成式语音技术高度相关，属于前沿高质量工作。",
+      "citation_count": null,
+      "date_added": "2026-08-03",
+      "chinese_summary": {
+        "problem": "自回归语音生成中，高帧率或高容量表征虽保留细节但易导致长时生成分布漂移和误差累积，而低帧率压缩表征会丢失重要成分、限制重建保真度，难以同时平衡序列长度、表征容量和稳定性。",
+        "method": "提出Locodec与MP-ELD协同框架：Locodec通过局部编码构造高维连续表征空间，提升低维核心流形的可插值性和原生高维坐标的可辨识性，增强高带宽token的可预测性；MP-ELD作为单token自回归流匹配生成器，采用多路径信息路由与残差无分类器引导，抑制误差累积，实现8Hz帧率、768维token的稳定长序列生成。",
+        "innovation": "设计低帧率高维连续表征与流式生成框架的协同机制，在极低帧率下保持高带宽信息；Locodec针对性塑造表征空间的几何统计特性以提升token可预测性，区别于传统瓶颈层压缩；MP-ELD引入多路径路由和残差CFG改进AR流匹配的稳定性，无需外部SSL/ASR或预训练语言模型。",
+        "evidence": "实验采用8Hz、768维token，验证了重建质量不降、单token可预测性提升、词错误率（WER）有竞争力，并实现稳定长文本合成，未依赖外部模型或后训练阶段。",
+        "limitations": "未明确是否支持文本条件控制；流式实时性及计算代价未量化；泛化到多语种或噪声环境需验证；低帧率重建的感知质量上限待确认。",
+        "why_relevant": "论文直接对应研究方向中的generative speech generation与flow matching speech，核心方法涉及自回归生成、连续高维表征及流匹配框架，与生成式语音合成、神经声码器及扩散/流模型应用高度一致，关键词命中的speech generation、flow matching speech均紧密匹配。"
+      }
+    },
+    {
+      "id": "arxiv:2408.16725",
+      "arxiv_id": "2408.16725",
+      "title": "Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming",
+      "authors": [
+        "Zhifei Xie",
+        "Changqiao Wu"
+      ],
+      "published": "2024-08-29T00:00:00+00:00",
+      "summary": "Recent advances in language models have achieved significant progress. GPT-4o, as a new milestone, has enabled real-time conversations with humans, demonstrating near-human natural fluency. Such human-computer interaction necessitates models with the capability to perform reasoning directly with the audio modality and generate output in streaming. However, this remains beyond the reach of current academic models, as they typically depend on extra TTS systems for speech synthesis, resulting in undesirable latency. This paper introduces the Mini-Omni, an audio-based end-to-end conversational model, capable of real-time speech interaction. To achieve this capability, we propose a text-instructed speech generation method, along with batch-parallel strategies during inference to further boost the performance. Our method also helps to retain the original model's language capabilities with minimal degradation, enabling other works to establish real-time interaction capabilities. We call this training method\"Any Model Can Talk\". We also introduce the VoiceAssistant-400K dataset to fine-tune models optimized for speech output. To our best knowledge, Mini-Omni is the first fully end-to-end, open-source model for real-time speech interaction, offering valuable potential for future research.",
+      "paper_url": "https://arxiv.org/abs/2408.16725",
+      "pdf_url": "https://arxiv.org/pdf/2408.16725",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出首个开源端到端实时语音交互模型，为生成式语音技术提供新范式。",
+      "citation_count": 244,
+      "date_added": "2026-08-03",
+      "chinese_summary": {
+        "problem": "实现端到端实时语音交互模型，消除级联语音合成系统带来的延迟。",
+        "method": "提出Mini-Omni模型，采用文本指导的语音生成方法直接输出语音；利用批并行推理策略加速解码；通过“Any Model Can Talk”训练方法在保持语言能力的同时赋予模型说话能力，并使用VoiceAssistant-400K数据集进行微调。",
+        "innovation": "首次实现完全端到端、开源的实时语音交互模型，无需外部TTS；提出文本指导的语音生成和批并行推理，降低延迟并提升效率；设计通用训练方案使任何语言模型具备语音输出能力。",
+        "evidence": "摘要未提供具体实验数据或系统评测指标，仅声称“据我们所知是首个”，证据不足。",
+        "limitations": "缺乏定量性能评估；实时交互时的语音自然度、鲁棒性或推理效率未知；数据集VoiceAssistant-400K的规模与覆盖范围需要确认；方法可能更侧重系统集成而非生成模型的创新。",
+        "why_relevant": "论文涉及语音生成（speech generation）和语音合成（speech synthesis），匹配研究方向中的泛语音生成技术，但侧重对话系统集成，与生成方法（如扩散模型、声码器）的直接关联较弱，需人工确认其对生成式语音质量提升的具体贡献。"
+      }
+    },
+    {
+      "id": "arxiv:2412.02612",
+      "arxiv_id": "2412.02612",
+      "title": "GLM-4-Voice: Towards Intelligent and Human-Like End-to-End Spoken Chatbot",
+      "authors": [
+        "Aohan Zeng",
+        "Zhengxiao Du",
+        "Mingdao Liu",
+        "Kedong Wang",
+        "Shengmin Jiang",
+        "Lei Zhao",
+        "Yuxiao Dong",
+        "Jie Tang"
+      ],
+      "published": "2024-12-03T00:00:00+00:00",
+      "summary": "We introduce GLM-4-Voice, an intelligent and human-like end-to-end spoken chatbot. It supports both Chinese and English, engages in real-time voice conversations, and varies vocal nuances such as emotion, intonation, speech rate, and dialect according to user instructions. GLM-4-Voice uses an ultra-low bitrate (175bps), single-codebook speech tokenizer with 12.5Hz frame rate derived from an automatic speech recognition (ASR) model by incorporating a vector-quantized bottleneck into the encoder. To efficiently transfer knowledge from text to speech modalities, we synthesize speech-text interleaved data from existing text pre-training corpora using a text-to-token model. We continue pre-training from the pre-trained text language model GLM-4-9B with a combination of unsupervised speech data, interleaved speech-text data, and supervised speech-text data, scaling up to 1 trillion tokens, achieving state-of-the-art performance in both speech language modeling and spoken question answering. We then fine-tune the pre-trained model with high-quality conversational speech data, achieving superior performance compared to existing baselines in both conversational ability and speech quality. The open models can be accessed through https://github.com/THUDM/GLM-4-Voice and https://huggingface.co/THUDM/glm-4-voice-9b.",
+      "paper_url": "https://arxiv.org/abs/2412.02612",
+      "pdf_url": "https://arxiv.org/pdf/2412.02612",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出端到端语音对话系统GLM-4-Voice，结合单码本语音分词器与预训练文本语言模型，在语音语言建模和口语问答上达到最优，与生成式语音技术方向高度相关，是必读级工作。",
+      "citation_count": 276,
+      "date_added": "2026-08-03",
+      "chinese_summary": {
+        "problem": "论文旨在构建一种智能且拟人化的端到端口语对话系统，能够实时进行中英文语音交流，并根据用户指令调整情感、语调、语速和方言等副语言特征。",
+        "method": "核心方法包括：利用基于ASR编码器引入向量量化瓶颈的超低码率（175 bps）单码本语音分词器，帧率12.5Hz；通过文本到标记模型将文本预训练语料转化为语音-文本交错数据；基于预训练文本语言模型GLM-4-9B，使用无监督语音数据、交错数据和监督数据继续预训练至1万亿令牌；最后在高品质对话语音数据上微调。",
+        "innovation": "提出一种超低码率、单码本的语音分词器，在极低帧率下保持语音质量；设计了语音-文本交错数据生成流程，有效将文本知识迁移至语音模态；实现了在大规模多模态数据下继续预训练文本LLM，达到语音语言建模和口语问答的领先性能。",
+        "evidence": "摘要中提及模型在语音语言建模和口语问答任务上达到state-of-the-art性能，并在对话能力和语音质量上超越现有基线；开源模型已发布。但未提供具体实验数据。",
+        "limitations": "摘要未明确语音合成或增强的分辨率限制，也未提及多说话人泛化性；低码率分词器可能丢失重要声学细节，影响生成语音的自然度；需阅读全文以确认其在语音生成质量上的客观指标。",
+        "why_relevant": "论文涉及语音生成模型和神经语音编解码，与研究方向中的语音合成、神经声码器和生成模型存在一定技术交叉，但其核心是对话系统而非语音增强或复原，相关性较弱。"
+      }
+    },
+    {
+      "id": "arxiv:2506.21619",
+      "arxiv_id": "2506.21619",
+      "title": "IndexTTS2: A Breakthrough in Emotionally Expressive and Duration-Controlled Auto-Regressive Zero-Shot Text-to-Speech",
+      "authors": [
+        "Siyi Zhou",
+        "Yiquan Zhou",
+        "Yi He",
+        "Xun Zhou",
+        "Jinchao Wang",
+        "Wei Deng",
+        "Jingchen Shu"
+      ],
+      "published": "2025-06-23T00:00:00+00:00",
+      "summary": "Existing autoregressive large-scale text-to-speech (TTS) models have advantages in speech naturalness, but their token-by-token generation mechanism makes it difficult to precisely control the duration of synthesized speech. This becomes a significant limitation in applications requiring strict audio-visual synchronization, such as video dubbing. This paper introduces IndexTTS2, which proposes a novel, general, and autoregressive model-friendly method for speech duration control. The method supports two generation modes: one explicitly specifies the number of generated tokens to precisely control speech duration; the other freely generates speech in an autoregressive manner without specifying the number of tokens, while faithfully reproducing the prosodic features of the input prompt. Furthermore, IndexTTS2 achieves disentanglement between emotional expression and speaker identity, enabling independent control over timbre and emotion. In the zero-shot setting, the model can accurately reconstruct the target timbre (from the timbre prompt) while perfectly reproducing the specified emotional tone (from the style prompt). To enhance speech clarity in highly emotional expressions, we incorporate GPT latent representations and design a novel three-stage training paradigm to improve the stability of the generated speech. Additionally, to lower the barrier for emotional control, we designed a soft instruction mechanism based on text descriptions by fine-tuning Qwen3, effectively guiding the generation of speech with the desired emotional orientation. Finally, experimental results on multiple datasets show that IndexTTS2 outperforms state-of-the-art zero-shot TTS models in terms of word error rate, speaker similarity, and emotional fidelity.",
+      "paper_url": "https://arxiv.org/abs/2506.21619",
+      "pdf_url": "https://arxiv.org/pdf/2506.21619",
+      "categories": [
+        "AAAI Conference on Artificial Intelligence"
+      ],
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "该工作提出新颖的自回归TTS时长控制与情感解耦方法，显著提升零样本语音合成的可控性和表现力，与生成式语音技术方向高度相关，是TTS领域的重要进展。",
+      "citation_count": 107,
+      "date_added": "2026-08-03",
+      "chinese_summary": {
+        "problem": "现有自回归TTS模型难以精确控制合成语音的时长，限制了在音视频同步等场景的应用。",
+        "method": "提出IndexTTS2，通过指定生成token数量实现精确时长控制，同时支持自由生成模式保持韵律；将情感表达与说话人身份解耦，利用独立的音色和风格提示实现零样本可控生成；融入GPT潜在表征并设计三阶段训练提升高情感语音的清晰度和稳定性；基于Qwen3微调的文本软指令机制，支持自然语言描述引导情感控制。",
+        "innovation": "提出一种通用且自回归模型友好的时长控制方法，实现精确或自由的时长生成；首次在自回归TTS中将情感与音色完全解耦，无需微调即可零样本控制两者；引入GPT潜在表征与三阶段训练提升情感语音质量；利用大语言模型实现文本软指令情感控制，降低使用门槛。",
+        "evidence": "在多个数据集上的实验表明，IndexTTS2在词错误率、说话人相似度和情感保真度上均优于当前最先进的零样本TTS模型。",
+        "limitations": "摘要未提及推理速度与计算开销，情感控制的精细度与范围需要进一步验证，时长控制的具体量化指标未给出。",
+        "why_relevant": "研究方向明确包含语音合成与TTS，本论文聚焦零样本文本到语音的生成，属于生成式语音技术范畴；论文在情感控制、时长控制上的创新可为相关研究提供参考，但方法基于自回归模型，与研究方向中强调的扩散模型、流匹配等方法有所区别，需结合自身侧重点判断参考价值。"
       }
     }
   ]
