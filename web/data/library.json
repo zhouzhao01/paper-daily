@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-03T04:51:50.367626+00:00",
+  "updated_at_iso": "2026-08-04T04:33:16.579238+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -5429,6 +5429,182 @@
         "evidence": "在多个数据集上的实验表明，IndexTTS2在词错误率、说话人相似度和情感保真度上均优于当前最先进的零样本TTS模型。",
         "limitations": "摘要未提及推理速度与计算开销，情感控制的精细度与范围需要进一步验证，时长控制的具体量化指标未给出。",
         "why_relevant": "研究方向明确包含语音合成与TTS，本论文聚焦零样本文本到语音的生成，属于生成式语音技术范畴；论文在情感控制、时长控制上的创新可为相关研究提供参考，但方法基于自回归模型，与研究方向中强调的扩散模型、流匹配等方法有所区别，需结合自身侧重点判断参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2608.00572",
+      "arxiv_id": "2608.00572",
+      "title": "AnyBand: Unified Multi-Bandwidth Speech Extension via Frequency-Aware In-Context Spectral Infilling",
+      "authors": [
+        "Junchuan Zhao",
+        "Minh Duc Vu",
+        "Bowen Zhang",
+        "Ye Wang"
+      ],
+      "published": "2026-08-01T10:14:43Z",
+      "summary": "Bandwidth extension (BWE) aims to recover missing high-frequency content from band-limited speech. Existing methods often formulate BWE as a fixed or predefined bandwidth conversion problem, potentially requiring cutoff-specific models or retraining when the input bandwidth changes. This assumption limits their applicability to practical scenarios where speech may arrive with diverse cutoff frequencies. We propose AnyBand, a unified BWE framework that recasts bandwidth extension as in-context spectral infilling. Motivated by prompt-based zero-shot speech generation, AnyBand conditions high-frequency generation on the observed low-frequency spectrum, using the available band as a frequency-domain prompt that conveys content, speaker, prosodic, and spectral-envelope cues. This formulation enables a single model to perform cutoff-conditioned generation over a continuous range of input bandwidths. AnyBand is trained with missing-band conditional flow matching and an Easy-to-Balanced cutoff curriculum over continuously sampled cutoff frequencies. To better exploit the spectral prompt, we introduce a frequency-aware Diffusion Transformer that models cross-frequency interactions and long-range temporal dependencies, followed by a physically motivated multi-view adversarial refinement stage to enhance spectral realism, envelope coherence, and harmonic consistency. Experiments on multiple datasets and bandwidth settings show that AnyBand consistently improves spectral reconstruction over existing baselines while achieving competitive perceptual quality across both standard and irregular input cutoffs. Audio samples are available.",
+      "paper_url": "http://arxiv.org/abs/2608.00572v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.00572v1",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出面向任意输入带宽的统一语音扩展框架，将带宽扩展转化为上下文频谱填充任务，结合流匹配与频率感知扩散变换器，与生成式语音增强方向高度相关，方法新颖且质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-08-04",
+      "chinese_summary": {
+        "problem": "解决任意截断频率的语音带宽扩展问题，从带限语音中恢复缺失高频，无需针对特定截止频率训练或重新训练模型。",
+        "method": "将带宽扩展重新定义为上下文频谱填充，以观测低频作为频域提示，利用缺失带条件流匹配训练，采用从易到平衡的截止频率课程，设计频率感知扩散变换器建模跨频率交互和长时依赖，并通过多视角对抗细化提升频谱真实感、包络相干性和谐波一致性。",
+        "innovation": "提出统一的 AnyBand 框架，支持连续截止频率范围的带宽扩展，不再依赖固定转换或特定模型；首次将带宽扩展形式化为频谱上下文填充，引入频域提示范式；结合条件流匹配、频率感知扩散变换器和多视角对抗细化，增强生成质量和模型泛化能力。",
+        "evidence": "在多个数据集和不同带宽设置上进行实验，AnyBand 在频谱重建指标上优于现有基线，且在标准和非标准截断下均达到有竞争力的感知质量，并提供了音频样本供听感验证。",
+        "limitations": "未明确提及模型计算复杂度、实时性、对极端低带宽或噪声数据的鲁棒性，需阅读全文确认。",
+        "why_relevant": "直接匹配研究方向中的生成式语音增强和带宽扩展，方法采用流匹配、扩散变换器、对抗训练等生成式技术，且针对通用截断频率，属于语音生成与恢复的核心问题。"
+      }
+    },
+    {
+      "id": "arxiv:2608.01623",
+      "arxiv_id": "2608.01623",
+      "title": "SAGE: Switch-Aware EEG-Guided Soft Gating for Target Speaker Extraction with In-Trial Switching",
+      "authors": [
+        "Xuefei Wang",
+        "Ximin Chen",
+        "Yuting Ding",
+        "Chunlin Li",
+        "Fei Chen"
+      ],
+      "published": "2026-08-03T02:54:53Z",
+      "summary": "EEG-guided target speaker extraction is challenging under in-trial auditory attention switching, where neural noise and intrinsic latency can delay or destabilize attention tracking. Conventional methods struggle with dynamic switches and often cause discontinuities at switching points. Therefore, we propose SAGE, a switch-aware EEG-guided soft gating framework that treats in-trial switching as dynamic selection. SAGE generates two candidate speech streams with a robust separator and uses an EEG-guided switch-aware gating module to produce smooth fusion weights and suppress transition artifacts. We further integrate latency-compensated alignment and an uncertainty-driven conservative strategy to handle latency discrepancies and fluctuating EEG reliability. SAGE outperforms baselines, achieving 8.67 dB SI-SDR and 88.24% STOI while reducing average switching latency to 2.04 s. By coupling neural decoding with speech separation, it enables robust target extraction in dynamic scenarios.",
+      "paper_url": "http://arxiv.org/abs/2608.01623v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.01623v1",
+      "categories": [
+        "eess.SP",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "论文提出EEG引导的切换感知软门控框架，解决试验内听觉注意力切换下的目标说话人提取问题，与语音分离与目标说话人提取方向高度相关，方法新颖（动态选择、延迟补偿、不确定性策略），实验有效，属前沿扎实工作。",
+      "citation_count": null,
+      "date_added": "2026-08-04",
+      "chinese_summary": {
+        "problem": "EEG引导的目标说话人提取在试验内听觉注意力动态切换时面临神经噪声和延迟导致的注意力跟踪不稳定，传统方法在切换点容易产生不连续或伪影。",
+        "method": "SAGE框架首先利用稳健分离器生成两个候选语音流，再通过EEG引导的切换感知门控模块产生平滑融合权重，同时集成延迟补偿对齐和基于不确定性的保守策略以应对EEG延迟和可靠性波动。",
+        "innovation": "将试验内切换建模为动态选择问题，引入软门控替代硬切换以抑制过渡伪影；采用延迟补偿对齐和不确定性驱动策略提升EEG引导的鲁棒性；在目标说话人提取框架中融合神经解码与语音分离，实现动态场景下的连续提取。",
+        "evidence": "在含切换的实验设置下，SAGE达到8.67 dB SI-SDR和88.24% STOI，平均切换延迟降至2.04秒，优于对比基线。",
+        "limitations": "摘要未说明基线方法具体构成、EEG数据规模和场景复杂度；仅给出整体指标，切换点附近的局部性能未知；框架依赖EEG可靠性，对信号质量不良场景的适应能力待验证。",
+        "why_relevant": "论文直接针对目标说话人提取任务，关键词高度匹配（target speaker extraction, speech separation, speaker extraction），且首次系统处理试验内切换这一实际难题，与研究方向的动态场景分离需求相关。但引入EEG信号使得方法与纯音频分离有所不同，需确认是否与个人研究路线吻合。"
+      }
+    },
+    {
+      "id": "arxiv:2608.00875",
+      "arxiv_id": "2608.00875",
+      "title": "DRONEAUDIONET: Noise Suppression for Drone Audition-based Search and Rescue",
+      "authors": [
+        "Chitralekha Gupta",
+        "Soundarya Ramesh",
+        "Yifei Luo",
+        "Suranga Nanayakkara"
+      ],
+      "published": "2026-08-01T21:31:45Z",
+      "summary": "Microphones mounted on UAVs enable aerial acoustic scene analysis applications such as search-and-rescue, wildlife monitoring, and industrial inspection. However, drone rotor noise often dominates the mixture signal at SNRs well below -10 dB, making source recovery extremely challenging. Existing enhancement and source separation methods are typically designed for near-balanced mixtures and degrade substantially in drone audition settings. In this work, we propose DRONEAUDIONET, a drone noise suppression method that reframes a source separation model as a drone noise estimator. To better model drone-dominant mixtures, we introduce a learnable mask-scaling mechanism that allows mask magnitudes beyond unity, together with an additive residual correction term for improved drone estimation and source recovery. We train and evaluate our model on a publicly available drone audition dataset and test generalizability on an out-of-domain dataset with unseen drone hardware and flight modes. Results show that DRONEAUDIONET consistently improves downstream sound classification performance, with the largest gains observed for human vocal sounds. Our findings demonstrate the importance of drone-specific modeling for robust aerial acoustic perception and highlight the potential of source separation methods for real-world drone-assisted search-and-rescue.",
+      "paper_url": "http://arxiv.org/abs/2608.00875v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.00875v1",
+      "categories": [
+        "cs.SD",
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "提出面向无人机噪声的增强方法，引入可学习掩码缩放与残差校正，与语音增强和分离方向高度相关，质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-08-04",
+      "chinese_summary": {
+        "problem": "在无人机搭载麦克风进行空中声学场景分析时，强转子噪声（SNR常低于-10 dB）淹没有用声源，传统增强与分离方法在无人机场景下性能严重退化。",
+        "method": "将源分离模型重构为无人机噪声估计器，不直接分离目标声源，而是先估计噪声再抑制；引入可学习掩蔽缩放机制，允许掩蔽幅度超过1，并附加残差校正项以提升噪声估计和声源恢复质量。",
+        "innovation": "首次针对无人机极端噪声环境，将源分离范式转化为专用噪声估计器；设计了可突破传统掩蔽界限的 learnable mask-scaling 策略；同时添加残差校正模块，共同增强对无人机噪声的建模精度。",
+        "evidence": "在公开无人机听觉数据集上训练和评估，并在未见过的无人机硬件和飞行模式上进行泛化测试，结果表明 DRONEAUDIONET 能持续提升下游声音分类准确率，对人声提升尤为显著。",
+        "limitations": "任务聚焦于无人机噪声抑制，并非多说话人分离；评估仅基于下游分类指标，缺少直接分离质量指标（如 SI-SDR）；实际部署的实时性和计算复杂度未说明。",
+        "why_relevant": "论文直接使用源分离模型并改进其掩蔽机制，所提 learnable mask-scaling 与残差校正可迁移至低信噪比语音分离任务，但方向侧重噪声估计而非多源分离，与研究主题“目标说话人提取”时部分相关。"
+      }
+    },
+    {
+      "id": "arxiv:2608.00722",
+      "arxiv_id": "2608.00722",
+      "title": "Experience-Calibrated Contrastive Decoding for Mitigating Hallucinations in LM-Based Text-to-Speech",
+      "authors": [
+        "Chenlin Liu",
+        "Minghui Fang",
+        "Zhonghao Bi",
+        "Zekai Su",
+        "Rong Wang",
+        "Jiqing Han"
+      ],
+      "published": "2026-08-01T15:41:55Z",
+      "summary": "Language model-based text-to-speech (LM-based TTS) remains vulnerable to speech hallucinations that deviate from the target text. Existing mitigation mainly relies on architectural changes or additional training, while decoding-time control remains underexplored. We present a conditional information view that distinguishes text-derived alignment information from experience information supplied by acoustic context and learned speech regularities. We hypothesize that an important class of hallucinations begins when alignment support is insufficiently reflected in the selected token at a vulnerable transition. Using predictions from the same speech LM with and without text conditions, we propose Experience-Calibrated Contrastive Decoding (ECCD), a training-free method that strengthens alignment support while preserving useful experience information. ECCD preserves the original expert distribution, applies only positive alignment enhancement, and calibrates its strength using set-level experience compatibility. Across four models, ECCD reduces WER/CER by up to 55.6% in all SeedTTS-Eval settings and 24 of 25 multilingual CV3-Eval settings. A listening test yields a CMOS gain of $+0.644$ while retaining strong speaker similarity. Further analysis shows that alignment influence and decision-level gain vary within linguistic units and are lower at first-error boundaries than at matched correct boundaries. Overall, these extensive experiments and analyses identify conditional information control as a promising decoding-time direction for mitigating speech hallucination.",
+      "paper_url": "http://arxiv.org/abs/2608.00722v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.00722v1",
+      "categories": [
+        "eess.AS",
+        "cs.LG",
+        "eess.SP"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "提出无需训练的对比解码方法缓解LM-TTS幻觉，属于语音合成前沿技术，与生成式语音技术方向高度相关，实验扎实有效。",
+      "citation_count": null,
+      "date_added": "2026-08-04",
+      "chinese_summary": {
+        "problem": "论文解决语言模型驱动的语音合成（LM-based TTS）中生成的语音偏离输入文本（即语音幻觉）的问题，尤其是在解码生成阶段由于对齐信息不足导致的幻觉。",
+        "method": "提出一种无需训练的解码时控制方法：Experience-Calibrated Contrastive Decoding (ECCD)。该方法利用同一个语音LM在有无文本条件下的预测，分离文本对齐信息和声学上下文经验信息，通过仅增强对齐支持（正对齐强化）并利用集级别的经验兼容性自动校准增强强度，从而在解码时缓解幻觉。",
+        "innovation": "创新点：1) 将语音幻觉归因于有条件信息视角下的对齐与经验信息冲突，并定位到弱势转换点；2) 提出纯解码端控制的ECCD方法，无需修改模型架构或额外训练，仅通过对比解码动态调整对齐权重；3) 引入集级别经验兼容性自动校准机制，避免手工调参。",
+        "evidence": "在4个模型上的实验显示，ECCD在SeedTTS-Eval全部设置中WER/CER最多降低55.6%，在25个多语言CV3-Eval设置中的24个取得提升；听力测试CMOS增益+0.644且保持说话人相似度；分析表明对齐影响和决策增益随语言单元变化，且在首次错误边界的增益低于正确边界。",
+        "limitations": "可能仅适用于LM-based TTS框架，且解码时的对比计算可能增加推理开销；实际扩展至其他语音生成任务的泛化性尚需验证。",
+        "why_relevant": "研究方向为语音分离与目标说话人提取，而本论文关注TTS的幻觉缓解，两者同属语音处理领域但核心任务（分离 vs. 生成）无直接关联；仅共享深度学习和语音模态的背景，无具体关键词或场景匹配，需人工复核。"
+      }
+    },
+    {
+      "id": "arxiv:2608.00998",
+      "arxiv_id": "2608.00998",
+      "title": "Beyond One-Size-Fits-All: Personalized and Culturally Adaptive Emotional TTS via Interactive Optimization of Individual Emotion Perception Spaces",
+      "authors": [
+        "Wangzixi Zhou",
+        "Bagus Tris Atmaja",
+        "Sakriani Sakti"
+      ],
+      "published": "2026-08-02T04:54:12Z",
+      "summary": "The rise of conversational AI has increased interest in emotional Text-to-Speech (TTS). Most systems rely on discrete emotion labels, which fail to capture the nuanced nature of human affect. Recent models employ dimensional representations such as Russell's arousal-valence (A-V) model, offering finer control. However, emotional perception varies across individuals and cultures, which may cause mismatches between modeled and perceived emotions. We propose a personalized and culturally adaptive emotional TTS framework that performs interactive optimization of individualized A-V perception spaces using an Interactive Genetic Algorithm. By adapting emotion representations to each listener, the system produces speech with more perceptually aligned emotional expression than models using averaged A-V values. Evaluations with Japanese, Chinese, and Indonesian participants highlight the importance of personalization and cultural adaptation for moving beyond one-size-fits-all emotional TTS.",
+      "paper_url": "http://arxiv.org/abs/2608.00998v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.00998v1",
+      "categories": [
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "提出个性化与文化适应的情感TTS框架，通过交互式遗传算法优化个体感知空间，与生成式语音技术方向高度相关，质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-08-04",
+      "chinese_summary": {
+        "problem": "传统情感TTS使用离散标签或通用维度模型，无法适应个体和文化差异导致的情感感知偏差，该论文旨在解决如何为每个听众个性化情感表达，使合成语音与听众主观感知对齐。",
+        "method": "提出一种个性化与文化自适应情感TTS框架，核心是使用交互式遗传算法动态优化每个听众的唤醒-效价感知空间，迭代调整情感表达参数，生成感知对齐的语音，而不是依赖群体平均的A-V值。",
+        "innovation": "首次将交互式遗传算法用于情感TTS的个体感知空间优化，突破全局固定的情感表示；同时整合文化适应性，通过跨文化实验证明个性化在减少感知偏差上的优势。",
+        "evidence": "摘要报告了日本、中国、印尼参与者的评估实验，显示该方法在情感表达感知对齐上优于基于平均A-V值的模型，但未给出具体性能指标。",
+        "limitations": "实验细节不足，如交互次数、收敛标准、遗传算法参数；未对比其他个性化方法；文化样本有限，泛化性待验证。",
+        "why_relevant": "论文属于text-to-speech，与研究方向中的“speech synthesis and TTS”直接相关，并涉及情感语音生成的个性化控制，可作为个性化TTS的参考，但不涉及生成模型结构或训练方法。"
       }
     }
   ]
