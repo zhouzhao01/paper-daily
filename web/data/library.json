@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-04T04:33:16.579238+00:00",
+  "updated_at_iso": "2026-08-05T04:31:41.375891+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -5605,6 +5605,193 @@
         "evidence": "摘要报告了日本、中国、印尼参与者的评估实验，显示该方法在情感表达感知对齐上优于基于平均A-V值的模型，但未给出具体性能指标。",
         "limitations": "实验细节不足，如交互次数、收敛标准、遗传算法参数；未对比其他个性化方法；文化样本有限，泛化性待验证。",
         "why_relevant": "论文属于text-to-speech，与研究方向中的“speech synthesis and TTS”直接相关，并涉及情感语音生成的个性化控制，可作为个性化TTS的参考，但不涉及生成模型结构或训练方法。"
+      }
+    },
+    {
+      "id": "arxiv:2608.03964",
+      "arxiv_id": "2608.03964",
+      "title": "Identity-Faithful Audio-Visual Target Speaker Extraction with QIANGDA and VOXBLINK2-AVSE",
+      "authors": [
+        "Peijun Yang",
+        "Zhan Jin",
+        "Juan Liu",
+        "Ming Li"
+      ],
+      "published": "2026-08-04T17:28:41Z",
+      "summary": "Audio-visual target speaker extraction should return the speaker indicated by the video, yet a separator can ignore the visual cue and repeatedly output the acoustically dominant voice. We introduce QIANGDA, a Mandarin AV-TSE benchmark of jointly recorded real two-speaker mixtures with synchronized multi-view video. Each scene also contains preceding A-only and B-only stages that provide in-scene speaker references. It contains 77 scenes and 7,598 clips (11.84 hours), including 6,042 dual-annotated mixtures. After processing there leave 6,038 evaluable mixtures and 12,076 target-speaker rows. We additionally curate VOXBLINK2-AVSE from VoxBlink2, comprising 250,828 synchronized audio--lip-ROI pairs from 28,421 identities and 766.17 hours of speech. Our extractor uses frozen, 1,280-dimensional projected AV-HuBERT features, target-conditioned training, and layer-wise feature modulation. We jointly evaluate content with Qwen3-ASR-1.7B CER and target identity with WeSpeaker ResNet34 plus Overlapped Speech Detection (OSD). On the complete manifest, the best archived checkpoint obtains 0.2261 CER, 82.22% strict output correctness, and 69.53% both-output strict success.",
+      "paper_url": "http://arxiv.org/abs/2608.03964v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.03964v1",
+      "categories": [
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "高度相关语音分离与目标说话人提取方向，提出新基准QIANGDA和数据集VOXBLINK2-AVSE，结合AV-HuBERT的视听目标说话人提取方法，评估严谨，为视听分离领域的重要工作。",
+      "citation_count": null,
+      "date_added": "2026-08-05",
+      "chinese_summary": {
+        "problem": "解决视听目标说话人提取中，分离器忽略视觉提示而重复输出声学主导话音的身份忠实性问题。",
+        "method": "提出 QIANGDA 评测基准（含真实双人混合语音与同步多视角视频，每个场景有前后单人参考段）与 VOXBLINK2-AVSE 数据集，采用冻结的 1,280 维 AV-HuBERT 特征，结合目标条件训练和逐层特征调制进行目标说话人提取。",
+        "innovation": "构建首个中文真实双人混合视听目标说话人提取基准 QIANGDA，提供场景内说话人参考；利用 VoxBlink2 构建大规模同步音频-唇动 ROI 数据集 VOXBLINK2-AVSE；引入身份忠实评估，联合 ASR 字错率与说话人识别指标衡量提取内容的正确性和输出身份一致性。",
+        "evidence": "在完整评测集上，最佳模型取得 0.2261 CER、82.22% 严格输出正确率和 69.53% 双输出严格成功率。",
+        "limitations": "中文评测集场景数有限（77 个场景）；仅提供闭集评估结果，跨数据集泛化性未验证；依赖冻结 AV-HuBERT 特征，可能限制端到端优化潜力。",
+        "why_relevant": "论文直接针对目标说话人提取任务，提出视听多模态基准与身份忠实性评估，研究方向完全匹配，关键词覆盖：target speaker extraction、speaker extraction、masking model（特征调制）"
+      }
+    },
+    {
+      "id": "arxiv:2608.03999",
+      "arxiv_id": "2608.03999",
+      "title": "Agogic: Performance-Timed Music Tokens for LLM-Native Text-to-Symbolic-Music Generation",
+      "authors": [
+        "Junhao Chen",
+        "Mingjin Chen",
+        "Jingjia Mao",
+        "Lin Chen",
+        "Saining Zhang",
+        "Minglin Chen",
+        "Ruocheng Wu",
+        "Liaoyuan Fan",
+        "Wenyi Li",
+        "Mingju Gao",
+        "Henghaofan Zhang",
+        "Zhihao Li",
+        "Hao Zhao",
+        "Yufei Wang",
+        "Ruqi Huang"
+      ],
+      "published": "2026-08-04T17:56:49Z",
+      "summary": "Text-to-music language models begin with a choice usually made by default: how to tokenize music. Normally entangled with backbone, data, and recipe, its effect has never been measured in isolation. We fix pretrained Qwen3.5 (0.8B-27B), data, budget, and decoding, and swap only the representation across seven tokenizations, anchoring texture metrics to each representation's model-free ceiling. The ordering is clean and surprising: representation, not model size, is the binding variable for distributional fidelity. Scaling the backbone 34x barely moves Frechet Music Distance (FMD), whereas switching representation halves it. PMT, a performance-resolution stream we release (10 ms timing, per-note velocity, multi-track texture; 609 symbols), reaches FMD 159 at 0.8B against 272-286 for beat grids (1.7-1.8x lower, up to 2.8x elsewhere; non-overlapping bootstrap CIs), so a 0.8B performance-resolution model beats a 27B beat grid. It reappears on a 26M from-scratch backbone and a second performance-resolution tokenizer: a property of the class, not one lucky vocabulary. Nor is it a finer-lattice artifact: snapping PMT's onsets to the beat grids' resolution still leaves it 67-129 FMD ahead of both (n=500). The effect is distributional; whether it is audible is a separate question, left open by our probe, with a human study pre-registered. Native caption adherence is weak but separable: a lightweight decode-time constraint doubles instrument-F1 (.28 to .60) and Correct-Key (.16 to .35) at no distributional cost. We release the harness, 25+ checkpoints, two corpora (86.6k aligned across caption/MIDI/ABC/audio; 6.25M captioned, the largest for music), and an imprinting diagnostic: published text-to-MIDI systems reproduce their training distribution near-invariant to the caption (72% vs. 71% chord-time on disjoint domains). The field's next representation claim can now be measured, not asserted.",
+      "paper_url": "http://arxiv.org/abs/2608.03999v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.03999v1",
+      "categories": [
+        "cs.SD",
+        "cs.CL"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出性能定时音乐tokenization并系统比较，发现表示比模型规模对生成分布保真度影响更大，对音乐表示学习和生成方法有重要贡献，高度契合MIR研究方向。",
+      "citation_count": null,
+      "date_added": "2026-08-05",
+      "chinese_summary": {
+        "problem": "研究文本到符号音乐生成中，不同音乐标记化（tokenization）方案对生成模型分布保真度的影响，并解决现有方法中标记化选择缺乏独立测量的问题。",
+        "method": "固定预训练语言模型骨架（Qwen3.5，0.8B-27B）和训练数据，仅替换七种不同的音乐标记化表示，通过比较 Frechet Music Distance (FMD) 等指标量化各表示对分布保真度的影响；提出性能时间音乐令牌（PMT），包含10ms时间精度、每个音符力度和多轨纹理（共609个符号），并提供轻量级解码约束以提升乐器一致性。",
+        "innovation": "首次独立分离并测量音乐标记化对文本到音乐语言模型分布保真度的影响，发现表示法（而非模型规模）是决定保真度的关键变量；提出PMT表示法，使0.8B模型在FMD上优于27B的节拍网格模型，证明性能分辨率表示可显著提升分布匹配；引入解码时约束，在不损失分布保真度的前提下，将乐器F1从0.28提升至0.60，Correct-Key从0.16提升至0.35。",
+        "evidence": "7种标记化方案的对比实验，PMT在0.8B模型上FMD为159，节拍网格在0.8B和27B上分别为272-286；模型规模放大34倍对FMD改善微小，而切换表示可减半FMD；PMT onset对齐到节拍网格分辨率后仍领先67-129 FMD（n=500）；解码约束实验量化提升乐器F1和Correct-Key；发布工具包、25+检查点、两个语料库（86.6k对齐数据、6.25M有标注数据）以及印记诊断。",
+        "limitations": "可听性未评估，仅关注分布指标，需后续人工研究确认实际听感；提出方法仅针对符号音乐生成，未涉及音频合成；数据集和模型为音乐领域，是否适用于其他符号序列生成尚不可知；需要阅读全文确认PMT泛化到新语言模型骨架的细节。",
+        "why_relevant": "论文属于符号音乐生成，核心为语言模型与离散标记化设计，与研究方向“Generative Speech Technology”中的语音生成、神经声码器或扩散模型无直接关联。尽管生成模型架构（如LLM）和标记化思路有间接参考价值，但研究对象、任务和评价指标（音乐分布保真度）均不匹配语音增强、合成或生成方向的关键场景。"
+      }
+    },
+    {
+      "id": "arxiv:2608.01093",
+      "arxiv_id": "2608.01093",
+      "title": "Separate-and-Detect: Unified Drum Transcription and Stem Generation via Latent Diffusion",
+      "authors": [
+        "Wei-Han Hsu",
+        "Chih-Cheng Chang",
+        "Bo-Yu Chen",
+        "Li Su",
+        "Yi-Hsuan Yang"
+      ],
+      "published": "2026-08-02T08:50:13Z",
+      "summary": "Automatic Drum Transcription (ADT) is commonly formulated as a direct mapping from a music mixture to symbolic drum events. While effective for transcription, this formulation discards the acoustic stems that are useful for editing, remixing, and production. We revisit an alternative separate-and-detect formulation, where a drum source separation front end first produces five editable drum stems, and a fixed onset detector then converts each stem into symbolic events. The separator is built on a five-stem latent diffusion model that jointly generates kick, snare, toms, hi-hats, and cymbals in a compact VAE latent space. We further study two training-only auxiliary branches--an onset branch (OB) and a timbre branch (TB)--which shape the separator during learning but are discarded at inference. Trained on synthetic drum multitracks and evaluated on MDB Drums and ENST-Drums, the proposed pipeline consistently improves over a strong U-Net-based drum separation baseline in overall transcription F1. It also outperforms a representative end-to-end ADT system on kick and snare F1 under our evaluation protocol, while additionally providing separated audio stems. The ablation results show that OB gives the most stable transcription gains, whereas TB changes the trade-off between reconstruction, acoustic stem quality, and onset detection. These results suggest that generative drum demixing can serve not only as a source separation model, but also as a practical front end for interpretable drum transcription.",
+      "paper_url": "http://arxiv.org/abs/2608.01093v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.01093v1",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "将鼓源分离与自动记谱统一在潜在扩散模型中，同时生成可编辑音频茎与符号事件，在音乐信息检索和源分离方向高度相关且方法新颖，性能突出。",
+      "citation_count": null,
+      "date_added": "2026-08-05",
+      "chinese_summary": {
+        "problem": "将鼓自动转录（ADT）重新表述为分离后检测的流程：先用鼓源分离前端从音乐混合物中生成五个可编辑鼓音轨，再用固定起音检测器将各音轨转换为符号鼓事件，以同时获得可编辑音频素材和转录结果。",
+        "method": "核心是分离后检测框架：前端分离器采用基于五音轨潜在扩散模型，在紧凑VAE潜空间联合生成kick、snare、toms、hi-hats和cymbals；后端起音检测器固定不变。训练时引入两个辅助分支：起音分支（OB）和音色分支（TB），仅在训练时塑造分离器性能，推理时丢弃。",
+        "innovation": "1. 将鼓转录重新构建为分离后检测范式，统一了音频素材生成和符号转录任务，而非常规的混合到符号直接映射。2. 首次使用潜在扩散模型进行多轨鼓声源分离，在潜空间联合建模五种鼓音轨。3. 通过仅训练时使用的辅助分支（OB、TB）改进分离器的转录相关特征，不影响推理复杂度。",
+        "evidence": "在合成鼓多轨数据上训练，在MDB Drums和ENST-Drums上评估，整体转录F1优于基于U-Net的鼓分离基线；起音和军鼓F1优于代表性端到端ADT系统；消融实验表明OB带来最稳定转录增益，TB影响重建、音质和起音检测的权衡。",
+        "limitations": "摘要未提及与现有目标说话人提取或通用语音分离方法的比较，仅限鼓声源场景；扩散模型可能计算开销较大；辅助分支对非鼓类源分离的泛化性未知；训练依赖合成数据，真实场景泛化需全文确认。",
+        "why_relevant": "该论文涉及源分离技术，命中关键词“source separation”，但研究聚焦音乐鼓声源分离与转录，并非语音分离或目标说话人提取。分离方法为潜在扩散模型，与领域主流的时域/时频掩蔽网络不同，且任务目标（生成可编辑鼓音轨）与语音分离差距较大。相关性主要在于同属源分离大范畴，但具体场景、评价指标和需求不匹配。"
+      }
+    },
+    {
+      "id": "arxiv:2608.03650",
+      "arxiv_id": "2608.03650",
+      "title": "Echo-Aware Modulation for Compact-Latent Frequency-Time Modeling in Lightweight Acoustic Echo Cancellation",
+      "authors": [
+        "Ye Ni",
+        "Ruiyu Liang",
+        "Qingyun Wang",
+        "Kai Xie",
+        "Cairong Zou",
+        "Björn W. Schuller"
+      ],
+      "published": "2026-08-04T13:33:22Z",
+      "summary": "Existing lightweight acoustic echo cancellation (AEC) systems often combine linear AEC with Bark-domain DNN-based suppression to lower the computational footprint. In such systems, downsampling layers further compress the input features into a compact bottleneck representation, but this compression weakens frequency-time modeling capacity and degrades performance. To mitigate this limitation, we propose MSA-EchoLite, a lightweight Bark-domain AEC framework with an asymmetric dual-branch encoder and an echo-aware frequency-time modulation (EAM) module. The EAM module enriches the compressed bottleneck representation by modeling discrepancy and correlation cues between the dual-branch microphone and echo-related latent features. Experimental results show that the Bark-domain variant of MSA-EchoLite offers a better performance-complexity trade-off than its frequency-domain counterpart but is more sensitive to feature compression. With only 26.1% additional FLOPs over its non-EAM Bark-domain variant, its EAM-enhanced version achieves 99.1% of the PESQ of the frequency-domain counterpart, which requires nearly twice the FLOPs, and even surpasses it in SDR. Overall, MSA-EchoLite outperforms state-of-the-art lightweight AEC models while using only 0.2 M parameters and 100 M FLOPs/s.",
+      "paper_url": "http://arxiv.org/abs/2608.03650v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.03650v1",
+      "categories": [
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "该论文提出轻量级声学回声消除框架MSA-EchoLite，通过Bark域双分支编码器与回声感知频率-时间调制模块提升压缩瓶颈特征建模，与语音增强与音频前端方向高度相关，在轻量化AEC任务上取得创新与性能突破。",
+      "citation_count": null,
+      "date_added": "2026-08-05",
+      "chinese_summary": {
+        "problem": "轻量级声学回声消除（AEC）系统中，Bark域DNN抑制通过下采样压缩特征，导致时频建模能力下降，性能受限。",
+        "method": "提出MSA-EchoLite轻量级Bark域AEC框架，采用非对称双分支编码器分别处理麦克风和回声信号，并引入回声感知时频调制（EAM）模块。EAM通过建模双分支潜在特征的差异和相关性线索，丰富压缩瓶颈表示，恢复丢失的时频信息，提升回声消除效果。",
+        "innovation": "针对下采样压缩导致的时频建模损失，设计了回声感知调制模块，利用麦克风与回声间的互信息增强瓶颈表示；在极低参数（0.2 M）和计算量（100 M FLOPs/s）下实现与频域模型可比甚至更优的性能，显著改善轻量级AEC的性能-复杂度权衡。",
+        "evidence": "实验表明，Bark域EAM增强版本相比无EAM版本仅增加26.1% FLOPs，PESQ达到频域模型（近双倍FLOPs）的99.1%，且SDR超越后者；整体优于现有轻量级AEC模型。",
+        "limitations": "Bark域变体对特征压缩更敏感，泛化至多通道、非平稳噪声等场景需进一步验证；非对称编码器和EAM模块的具体设计细节需阅读全文。",
+        "why_relevant": "论文直接针对声学回声消除（AEC），属于研究方向的核心任务，命中关键词“acoustic echo cancellation”和“residual echo suppression”；轻量级设计符合音频前端对计算效率的需求，方法涉及神经网络和特征压缩，与“neural masking, U-Net speech enhancement”等前端处理技术相关。"
+      }
+    },
+    {
+      "id": "arxiv:2502.02942",
+      "arxiv_id": "2502.02942",
+      "title": "GenSE: Generative Speech Enhancement via Language Models using Hierarchical Modeling",
+      "authors": [
+        "Jixun Yao",
+        "Hexin Liu",
+        "Chen Chen",
+        "Yuchen Hu",
+        "Chng Eng Siong",
+        "Lei Xie"
+      ],
+      "published": "2025-02-05T00:00:00+00:00",
+      "summary": "Semantic information refers to the meaning conveyed through words, phrases, and contextual relationships within a given linguistic structure. Humans can leverage semantic information, such as familiar linguistic patterns and contextual cues, to reconstruct incomplete or masked speech signals in noisy environments. However, existing speech enhancement (SE) approaches often overlook the rich semantic information embedded in speech, which is crucial for improving intelligibility, speaker consistency, and overall quality of enhanced speech signals. To enrich the SE model with semantic information, we employ language models as an efficient semantic learner and propose a comprehensive framework tailored for language model-based speech enhancement, called \\textit{GenSE}. Specifically, we approach SE as a conditional language modeling task rather than a continuous signal regression problem defined in existing works. This is achieved by tokenizing speech signals into semantic tokens using a pre-trained self-supervised model and into acoustic tokens using a custom-designed single-quantizer neural codec model. To improve the stability of language model predictions, we propose a hierarchical modeling method that decouples the generation of clean semantic tokens and clean acoustic tokens into two distinct stages. Moreover, we introduce a token chain prompting mechanism during the acoustic token generation stage to ensure timbre consistency throughout the speech enhancement process. Experimental results on benchmark datasets demonstrate that our proposed approach outperforms state-of-the-art SE systems in terms of speech quality and generalization capability.",
+      "paper_url": "https://arxiv.org/abs/2502.02942",
+      "pdf_url": "https://arxiv.org/pdf/2502.02942",
+      "categories": [
+        "International Conference on Learning Representations"
+      ],
+      "venue": "International Conference on Learning Representations",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出基于语言模型的生成式语音增强框架GenSE，通过分层建模将语义与声学解耦，显著提升语音质量与泛化性，高度契合生成式语音技术方向。",
+      "citation_count": 44,
+      "date_added": "2026-08-05",
+      "chinese_summary": {
+        "problem": "现有语音增强方法忽略语音中的语义信息，导致在噪声环境中恢复语音的可懂度和质量受限，本文旨在利用语言模型捕获语义信息来提升语音增强性能。",
+        "method": "将语音增强转化为条件语言建模任务：首先用预训练自监督模型提取语义token，用单量化器神经编解码器提取声学token；然后分两阶段分层生成，先基于噪声语音的语义和声学token预测干净语义token，再结合干净语义token和噪声声学token生成干净声学token，并通过token链提示机制保持说话人音色一致性。",
+        "innovation": "首次将语音增强视为条件语言建模问题，而非传统的信号回归；提出分层建模将语义和声学token的生成解耦，提升预测稳定性；引入token链提示机制在声学token生成过程中约束说话人特征，确保音色连贯。",
+        "evidence": "在基准数据集上实验，结果显示所提方法在语音质量和泛化能力上优于现有最先进系统。",
+        "limitations": "摘要未说明具体评估指标和数据集细节；分层建模可能增加推理延迟；对语义token提取模型的依赖可能影响鲁棒性；未提及在低资源或极端噪声下的表现。",
+        "why_relevant": "论文直接对应研究方向中的“generative speech enhancement”，采用生成式建模思路，且使用神经编解码器和语言模型，与语音合成、神经声码器等技术相通，为生成式语音处理提供新范式。"
       }
     }
   ]
