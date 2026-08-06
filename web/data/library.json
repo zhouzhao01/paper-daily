@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-05T04:31:41.375891+00:00",
+  "updated_at_iso": "2026-08-06T04:32:32.255073+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -5792,6 +5792,190 @@
         "evidence": "在基准数据集上实验，结果显示所提方法在语音质量和泛化能力上优于现有最先进系统。",
         "limitations": "摘要未说明具体评估指标和数据集细节；分层建模可能增加推理延迟；对语义token提取模型的依赖可能影响鲁棒性；未提及在低资源或极端噪声下的表现。",
         "why_relevant": "论文直接对应研究方向中的“generative speech enhancement”，采用生成式建模思路，且使用神经编解码器和语言模型，与语音合成、神经声码器等技术相通，为生成式语音处理提供新范式。"
+      }
+    },
+    {
+      "id": "arxiv:2608.03215",
+      "arxiv_id": "2608.03215",
+      "title": "GROW: Group-Relative Advantage-Weighted On-Policy Reinforcement Learning of Autoregressive-Diffusion Text-to-Speech model",
+      "authors": [
+        "Guanrou Yang",
+        "Tian Tan",
+        "Qian Chen",
+        "Ziyang Ma",
+        "Yakun Song",
+        "Zhikang Niu",
+        "Qi Chen",
+        "Wenming Tu",
+        "Haitao Li",
+        "Shan Yang",
+        "Xie Chen"
+      ],
+      "published": "2026-08-04T06:50:55Z",
+      "summary": "Reinforcement learning for flow-matching text-to-speech is complicated by deterministic ODE sampling: trajectory-level policy-gradient methods typically convert the ODE into an SDE and track per-step likelihood ratios, introducing stochastic perturbations and substantial overhead. We propose GROW, a group-relative advantage-weighted on-policy RL method that acts directly on the standard flow-matching objective. For each prompt, GROW samples a group of on-policy utterances, separately standardizes intelligibility and speaker-similarity rewards within the group, and combines them to reweight flow-matching regression. A Wasserstein-2 velocity penalty anchors the updated model to a frozen pretrained reference. A group-mean reward baseline is introduced to convert reward weighting into advantage weighting. For strong pretrained TTS models with concentrated rewards, positive exponential weighting is dominated by reward-agnostic self-imitation, whereas a zero-mean signed advantage preserves effective within-group credit assignment. Instantiated on DiTAR and evaluated on LibriSpeech and Seed-TTS EN/ZH, GROW reduces average WER from 2.016 to 1.558 and raises speaker similarity from 0.676 to 0.715 while keeping UTMOS. With 10-NFE training rollouts and 32-NFE evaluation, GROW retains comparable performance while training 2.9x faster than 32-NFE DiTAR-GRPO. We will open-source complete GROW codes, faithful DiTAR reproduction, and all model checkpoints.",
+      "paper_url": "http://arxiv.org/abs/2608.03215v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.03215v1",
+      "categories": [
+        "eess.AS",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出一种针对流匹配TTS的组相对优势加权在线策略RL方法，解决确定性ODE采样难题，显著提升合成语音智能度和说话人相似度，高度匹配生成式语音技术方向。",
+      "citation_count": null,
+      "date_added": "2026-08-06",
+      "chinese_summary": {
+        "problem": "流匹配文本到语音合成中，基于轨迹策略梯度的强化学习方法需将确定性常微分方程（ODE）转换为随机微分方程（SDE），引入随机扰动和巨大计算开销，导致训练复杂且低效。",
+        "method": "提出GROW，一种组相对优势加权的策略在线强化学习方法，直接作用于标准流匹配目标。对每个提示采样一组在线生成话语，在组内分别标准化可懂度和说话人相似度奖励，组合后重新加权流匹配回归损失；引入Wasserstein-2速度惩罚将更新模型锚定到冻结的预训练参考模型，并将组平均奖励作为基线转换奖励加权为优势加权；针对强预训练模型奖励集中的情况，使用零均值符号化优势避免正指数加权被自模仿主导，实现有效的组内信用分配。",
+        "innovation": "1) 无需将流匹配的确定性ODE转换为SDE，直接在原始流匹配目标上进行在线策略强化学习，避免随机扰动和额外开销；2) 引入组内奖励标准化和优势加权，并针对强预训练TTS模型采用零均值符号化优势，解决奖励集中时自模仿主导问题；3) 使用Wasserstein-2速度惩罚来保持生成质量，防止模型偏离预训练参考。",
+        "evidence": "在DiTAR模型上验证，LibriSpeech和Seed-TTS EN/ZH数据集上的实验结果显示，GROW将平均词错率（WER）从2.016降至1.558，说话人相似度从0.676提升至0.715，且UTMOS保持不变；训练速度比32-NFE DiTAR-GRPO快2.9倍（使用10-NFE训练rollouts和32-NFE评估）。",
+        "limitations": "实验仅基于DiTAR一种模型，泛化性未知；奖励仅考虑可懂度和说话人相似度，未涵盖自然度等维度；零均值符号优势可能仅适用于奖励集中的预训练模型；仅与GRPO对比，缺乏更多基线。",
+        "why_relevant": "该论文针对流匹配文本到语音合成提出新的强化学习方法，直接对应研究方向中的“speech synthesis and TTS”和“flow matching speech”，可提升基于流匹配的TTS模型的语音质量，属于高度相关。"
+      }
+    },
+    {
+      "id": "arxiv:2608.03011",
+      "arxiv_id": "2608.03011",
+      "title": "Towards Real-world Environment-aware Zero-shot Text-to-speech Synthesis via Disentangled Audio Infilling",
+      "authors": [
+        "Ye-Xin Lu",
+        "Xin Wang",
+        "Yang Ai",
+        "Hui-Peng Du",
+        "Zhen-Hua Ling",
+        "Junichi Yamagishi"
+      ],
+      "published": "2026-08-04T01:45:08Z",
+      "summary": "Recent zero-shot text-to-speech (TTS) systems achieve remarkable naturalness and speaker similarity but typically require high-quality speaker prompts and either strip away or entangle the acoustic environment with speaker characteristics, limiting their real-world applicability. We present an extended DAIEN-TTS, an environment-aware zero-shot TTS framework that disentangles and jointly models speech, background noise, and reverberation, enabling independent control over timbre and acoustic environment through separate speaker and environment prompts. Built upon the flow-matching-based F5-TTS, it uses a speech-environment separation module to decompose environmental speech into speech, noise, and reverberation components, which are injected into the Diffusion Transformer for environment-aware generation. Training uses simulated data constructed by mixing clean speech with noise and room impulse responses, together with a cross-speaker conditioning strategy that suppresses speaker information leakage from the environment branch. When real-world data are available, the system can be further fine-tuned to bridge the simulated-to-real domain gap.At inference, a triple classifier-free guidance mechanism enables fine-grained control over speech, noise, and reverberation, and a signal-to-noise-ratio adaptation strategy aligns the synthesized speech with the environment prompt. Experiments on simulated and real-world test sets show that DAIEN-TTS generates environmental personalized speech with high naturalness, strong speaker similarity, and faithful noise and reverberation reproduction, while offering controllability beyond prior environment-aware TTS systems.",
+      "paper_url": "http://arxiv.org/abs/2608.03011v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.03011v1",
+      "categories": [
+        "eess.AS",
+        "eess.SP"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "该论文提出环境感知的零样本文本到语音合成框架DAIEN-TTS，通过解耦语音、噪声与混响，实现独立可控的环境生成，与生成式语音技术方向高度相关，方法新颖且实验扎实，属于必读级别工作。",
+      "citation_count": null,
+      "date_added": "2026-08-06",
+      "chinese_summary": {
+        "problem": "现有零样本TTS系统通常要求高质量说话人提示且无法独立控制语音音色和声学环境（噪声、混响），将环境与说话人特征纠缠，限制了在真实环境中的应用。",
+        "method": "本文提出DAIEN-TTS，基于流匹配的F5-TTS框架，引入语音-环境分离模块，将环境语音分解为语音、噪声和混响分量，分别注入扩散变换器。训练时使用模拟数据（干净语音+噪声+房间冲激响应），并采用跨说话人条件策略，抑制环境分支中的说话人信息泄露。推理阶段结合三重无分类器引导和SNR自适应策略，实现独立的语音、噪声和混响可控生成。",
+        "innovation": "针对零样本TTS，首次实现声学环境（噪声+混响）与说话人特征的解耦建模，允许独立提示控制；设计了语音-环境分离模块和跨说话人条件机制，有效防止环境分支泄露说话人信息；引入三重无分类器引导和SNR自适应，提升生成环境语音的忠实度和可控性。",
+        "evidence": "在模拟和真实测试集上的实验表明，DAIEN-TTS生成的个性化环境语音具有高自然度、强说话人相似性，并能忠实地再现提示中的噪声和混响，同时可控性优于先前环境感知TTS系统。",
+        "limitations": "摘要提到需真实数据微调以弥合模拟域到真实域的差距，且未说明对未见环境或非训练分布的泛化能力的评价；解耦模块的分离精度和计算效率需查阅全文。",
+        "why_relevant": "该论文专注于零样本文本到语音合成，采用流匹配生成框架，与研究方向中的语音合成、TTS、神经声码器、流匹配高度匹配。同时，其环境感知生成涉及噪声和混响的建模，与生成式语音增强和修复的思路存在关联。"
+      }
+    },
+    {
+      "id": "arxiv:2608.03721",
+      "arxiv_id": "2608.03721",
+      "title": "On the Geometry of Music Bandwidth Extension in Latent Spaces of Audio Codecs",
+      "authors": [
+        "Hendrik Vincent Koops",
+        "Hao Hao Tan",
+        "Elio Quinton"
+      ],
+      "published": "2026-08-04T14:19:59Z",
+      "summary": "Recent audio restoration increasingly relies on large-scale conditional latent generative modeling, including diffusion, Schrodinger Bridges, and Flow Matching variants, to invert degradations such as bandwidth limitation or noise. We present an analysis of the performance of various state-of-the-art methods compared to simple arithmetic transformations in the latent spaces of multiple neural codecs for musical bandwidth extension. We show that estimating a single transport vector between the clean and degraded latent centroids on a reference set, and adding it to degraded latents, can yield restoration performance competitive with large diffusion models. This suggests, first, that some neural codec latent spaces exhibit structure aligned with audio bandwidth; and second, that in such cases complex conditional models may offer only limited gains over a simple vector addition. We argue that these findings reveal an interesting avenue for future research whereby models could take advantage of the latent space structure in order to offer greater training and parameter efficiency, and overall better performance. Additionally, we propose to consider this simple arithmetic transformation as a baseline for music bandwidth extension research, as it allows an assessment of the contribution of learnable parameters towards restoration performance.",
+      "paper_url": "http://arxiv.org/abs/2608.03721v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.03721v1",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "该工作揭示了神经编解码器潜在空间与音频带宽对齐的结构特性，并提出简单算术变换作为音乐带宽扩展的强基线，与音乐信息检索及生成式语音技术方向高度相关，具有较强的洞察力和新颖性，属于必读级别。",
+      "citation_count": null,
+      "date_added": "2026-08-06",
+      "chinese_summary": {
+        "problem": "研究在音频编解码器潜在空间中，音乐带宽扩展任务上复杂条件生成模型与简单算术变换的性能差异，揭示潜在空间的几何结构特性。",
+        "method": "在多种神经编解码器的潜在空间中，分别计算干净与退化音乐片段的潜在质心，获得传输向量，并直接加到退化潜在上进行带宽扩展；将该简单算术方法与扩散模型、流匹配等条件生成模型进行对比分析。",
+        "innovation": "提出一种基于潜在空间质心传输向量的极简基线用于音乐带宽扩展；实验证明该方法在特定编解码器下能达到与大型扩散模型竞争的性能，表明部分潜在空间天然具备与带宽对齐的结构；呼吁将其作为基准，以区分可学习参数的贡献。",
+        "evidence": "摘要称简单向量加法达到了与大型扩散模型竞争的性能，但未提供具体实验设置、评估指标或数值结果。",
+        "limitations": "仅分析音乐场景，未验证在语音上的适用性；依赖特定编解码器，泛化性存疑；缺少量化指标和统计检验，可能仅在有限条件下成立。",
+        "why_relevant": "匹配关键词“bandwidth extension”，但聚焦于音乐而非语音；对生成式语音增强的潜在空间结构分析有潜在启发，但直接贡献较弱，需人工核实是否可为语音带宽扩展提供基线。"
+      }
+    },
+    {
+      "id": "arxiv:2608.03050",
+      "arxiv_id": "2608.03050",
+      "title": "Learning Music Style for Piano Arrangement Through Cross-Modal Bootstrapping",
+      "authors": [
+        "Jingwei Zhao",
+        "Gus Xia",
+        "Ziyu Wang",
+        "Ye Wang"
+      ],
+      "published": "2026-08-04T03:01:54Z",
+      "summary": "What is music style? Though often described using text labels such as \"swing,\" \"classical,\" or \"emotional,\" the real style remains implicit and hidden in concrete music examples. In this paper, we introduce a cross-modal framework that learns implicit music styles from raw audio and applies them to symbolic music generation. Inspired by BLIP-2, our model leverages a Querying Transformer (Q-Former) to extract style representations from a large, pre-trained audio language model (LM), and further applies them to condition a symbolic LM for generating piano arrangements. We adopt a two-stage training strategy: contrastive learning to align auditory style with symbolic expression, followed by generative modeling for music arrangement. Our model generates piano performances jointly conditioned on a lead sheet (content) and a reference audio example (style), enabling controllable and stylistically faithful arrangement. Experiments demonstrate the effectiveness of our approach in piano cover generation, style transfer, and audio-to-MIDI retrieval, achieving substantial improvements in style-aware alignment and music quality.",
+      "paper_url": "http://arxiv.org/abs/2608.03050v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.03050v1",
+      "categories": [
+        "cs.SD",
+        "cs.AI",
+        "cs.MM",
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 8.0,
+      "justification": "通过跨模态自举学习隐式音乐风格表示并用于钢琴编曲，与音乐信息检索与表示方向高度相关，方法新颖，实验效果显著。",
+      "citation_count": null,
+      "date_added": "2026-08-06",
+      "chinese_summary": {
+        "problem": "如何从原始音频中学习隐含的音乐风格表示，并将其应用于符号音乐生成（如钢琴编曲），实现风格可控的生成与迁移。",
+        "method": "基于BLIP-2的跨模态框架，使用查询变换器（Q-Former）从预训练音频语言模型（LM）中提取风格表示，并作为条件引导符号语言模型生成钢琴编曲。训练分为两阶段：对比学习对齐听觉风格与符号表达，生成式建模进行音乐编曲。",
+        "innovation": "首次将BLIP-2风格的多模态对齐迁移到音乐领域，实现音频风格到符号生成的跨模态引导；通过对比学习与生成式两阶段训练，联合优化风格表示与生成质量；支持以参考音频为风格条件，结合主旋律内容进行可控、风格忠实的钢琴编曲。",
+        "evidence": "实验覆盖钢琴翻奏生成、风格迁移和音频到MIDI检索任务，在风格对齐和音乐质量上均有显著提升，验证了方法的有效性。",
+        "limitations": "摘要未提及量化评估指标的具体数值；风格表示的可解释性及跨音乐类型的泛化能力需阅读全文确认。",
+        "why_relevant": "直接匹配研究方向中的音乐生成（music generation）、音频表示学习（audio representation learning）和音乐编码器（music encoder）；使用预训练音频语言模型提取风格，与自监督音频表示学习相关；涉及音乐信息检索（音频到MIDI检索）和符号音乐理解。"
+      }
+    },
+    {
+      "id": "arxiv:2608.04624",
+      "arxiv_id": "2608.04624",
+      "title": "Masked diffusion enables coherent beat tracking",
+      "authors": [
+        "Francesco Foscarin",
+        "Filip Korzeniowski",
+        "Richard Vogl"
+      ],
+      "published": "2026-08-05T09:28:18Z",
+      "summary": "Current neural networks for beat tracking generate invalid outputs, such as consecutive downbeats and erratic tempo changes, even when these are not present in the training data. Heavy post-processing techniques can alleviate these problems, but the original cause of this inconsistent behaviour remains unknown. We hypothesise that it stems from inadequate modelling of multiple plausible output beat grids, resulting in an invalid mixture of competing interpretations. We propose a masked diffusion approach that properly models multiple outputs and enables the model to build coherent predictions through iterative inference. We devise three modifications to standard masked diffusion that enable its application to beat tracking: independent masking of beats and downbeats during training and inference, a balanced masking scheduler for inference, and peak-picking across inference steps. Our approach reduces erratic behaviours and improves beat-tracking performance.",
+      "paper_url": "http://arxiv.org/abs/2608.04624v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.04624v1",
+      "categories": [
+        "cs.SD",
+        "cs.AI"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "论文提出掩码扩散模型用于节拍跟踪，解决输出不一致问题，属于音乐信息检索方向，与研究方向高度相关，方法新颖，质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-08-06",
+      "chinese_summary": {
+        "problem": "解决节拍跟踪中现有神经网络输出不一致的问题，如产生连续重拍和不规则速度变化，即使训练数据无此模式。推测原因是模型未能对多个合理的节拍网格输出进行适当建模，导致混合了不一致的解释。",
+        "method": "提出掩码扩散方法，通过迭代推理逐步生成连贯的节拍预测。核心改进包括：训练和推理时独立屏蔽节拍与重拍、设计平衡的掩码调度策略、在推理步之间执行峰值拾取。",
+        "innovation": "首次将掩码扩散应用于节拍跟踪，并针对该任务定制了三种关键机制：独立掩码节拍和重拍以保持其不同语义、平衡掩码调度以控制推理节奏、跨步峰值拾取融合多步预测，从而有效建模多种输出可能性并避免混合。",
+        "evidence": "摘要声称方法减少了不稳定行为并提高了节拍跟踪性能，但未提供具体指标或消融实验，证据不足。",
+        "limitations": "性能提升幅度未知，需核实实验是否在公开数据集上与先进方法对比；掩码扩散的迭代推理可能增加计算成本，实际部署效率待考察；仅针对音乐节拍任务，泛化性未提及。",
+        "why_relevant": "论文使用扩散模型，与我的研究方向中的生成式方法有方法学共性，但应用领域（音乐节拍跟踪）与语音生成完全无关，研究方向明确聚焦语音增强、合成、码器等，因此匹配度低，仅因arXiv分类重叠而获得基础分数。"
       }
     }
   ]
