@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-06T04:32:32.255073+00:00",
+  "updated_at_iso": "2026-08-07T04:04:42.467057+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -5976,6 +5976,183 @@
         "evidence": "摘要声称方法减少了不稳定行为并提高了节拍跟踪性能，但未提供具体指标或消融实验，证据不足。",
         "limitations": "性能提升幅度未知，需核实实验是否在公开数据集上与先进方法对比；掩码扩散的迭代推理可能增加计算成本，实际部署效率待考察；仅针对音乐节拍任务，泛化性未提及。",
         "why_relevant": "论文使用扩散模型，与我的研究方向中的生成式方法有方法学共性，但应用领域（音乐节拍跟踪）与语音生成完全无关，研究方向明确聚焦语音增强、合成、码器等，因此匹配度低，仅因arXiv分类重叠而获得基础分数。"
+      }
+    },
+    {
+      "id": "arxiv:2608.05727",
+      "arxiv_id": "2608.05727",
+      "title": "LILAC: An Idempotent Neural Speech Codec",
+      "authors": [
+        "June Young Yi",
+        "Dongwook Lee",
+        "Jiheum Yeom",
+        "Sungroh Yoon"
+      ],
+      "published": "2026-08-06T08:09:48Z",
+      "summary": "Neural Audio Codecs are widely adopted in speech generation and editing. However, existing neural audio codecs are not idempotent: across the paper's twelve baseline systems, every configuration tested rewrites, on average, at least 15% of its tokens in a single decode-re-encode pass. This poses a problem for utilizing Neural Audio Codecs as token interfaces in pipelines where re-encoding decoded outputs can occur. We present LILAC, a fully convolutional 24 kHz speech codec at 9.375 Hz and 0.75 kbit/s that is codec idempotent by construction; re-encoding the decoded audio of any valid token stream returns the identical stream. LILAC achieves idempotency while maintaining competitive quality, reaching UTMOS 4.14 and 4.24 on LibriSpeech and LibriTTS-R test sets, comparable to SOTA sub-1 kbit/s Neural Audio Codecs.",
+      "paper_url": "http://arxiv.org/abs/2608.05727v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.05727v1",
+      "categories": [
+        "cs.SD",
+        "cs.LG"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "提出幂等神经语音编解码器LILAC，解决编解码令牌不一致问题，质量与SOTA低码率编解码器相当，与生成式语音技术方向高度相关。",
+      "citation_count": null,
+      "date_added": "2026-08-07",
+      "chinese_summary": {
+        "problem": "现有神经语音编解码器在解码-重编码过程中会改变令牌序列（平均至少15%令牌被改写），即不满足幂等性，这给在需要多次重编码的语音生成/编辑流水线中使用此类编解码器作为令牌接口带来问题。",
+        "method": "提出LILAC，一个结构上保证编解码器幂等性的全卷积24 kHz语音编解码器，工作在9.375 Hz帧率、0.75 kbit/s比特率；其设计使得对任意合法令牌流解码得到的音频进行重编码后，输出令牌流与原始输入完全一致。",
+        "innovation": "首次构建了在结构上保证严格幂等性的神经语音编解码器，而非依赖训练或数据去近似；在极低比特率（0.75 kbit/s）下实现与当前最先进子kbit/s编解码器相当的质量，同时完全避免令牌扰动。",
+        "evidence": "在LibriSpeech和LibriTTS-R测试集上UTMOS分别达到4.14和4.24，与SOTA子1 kbit/s神经音频编解码器质量可比，且重编码令牌一致率100%。",
+        "limitations": "摘要仅提供客观MOS指标，未提及主观听力测试；未讨论在真实语音生成/编辑流水线中的端到端效果；模型限于24 kHz采样率，对更高或更低带宽场景的适应需验证。",
+        "why_relevant": "该工作直接服务于语音生成与编辑（摘要明确指出神经音频编解码器广泛用于此类任务），编解码器作为语音合成、TTS和声码器的核心组件，其幂等性缺陷会影响生成结果的可靠性与可复现性；我的研究方向涵盖生成式语音技术中的合成、声码器等，该编解码器可作为下游模块改善生成流水线的稳定性。"
+      }
+    },
+    {
+      "id": "arxiv:2608.04142",
+      "arxiv_id": "2608.04142",
+      "title": "InvFlowFD: Reference-Free and Background-Set-Free Perceptual Music Quality Metric with Flow Matching Inversion",
+      "authors": [
+        "Alon Ziv",
+        "Harel Pogoda",
+        "Yossi Adi"
+      ],
+      "published": "2026-08-04T18:50:14Z",
+      "summary": "Existing reference-free methods for evaluating music perceptual quality alleviate the need for paired noisy-clean data, but they still rely on a background set, which is used to compute aggregated statistics of clean audio samples. In this work, we propose a novel approach that eliminates this requirement, achieving background-set-free and reference-free quality estimation using only a pre-trained Flow Matching backbone. We demonstrate that unconditional Flow Matching inversion via simple Euler integration is sufficient to detect various artificial distortions and accurately rank music generation models against human perceptual judgments. We introduce InvFlowFD, which performs flow inversion and compares a group of inverted samples to the prior distribution. We evaluate our method against prior work, quantitatively and with a thorough human study. Results suggest that InvFlowFD is highly correlated with human perception of sound distortions, as well as generative models' quality, while being more flexible and less restrictive than existing metrics.",
+      "paper_url": "http://arxiv.org/abs/2608.04142v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.04142v1",
+      "categories": [
+        "cs.SD",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "该工作提出了一种无需参考音频和背景集的音乐感知质量指标，仅使用预训练流匹配模型的反演即可准确评估失真和生成模型质量，与研究方向中的音乐信息检索和生成质量评估高度相关，方法新颖且实验扎实。",
+      "citation_count": null,
+      "date_added": "2026-08-07",
+      "chinese_summary": {
+        "problem": "现有无参考音乐质量评估仍需依赖背景集合计算干净音频统计，论文旨在完全消除背景集合依赖，实现仅基于预训练Flow Matching模型的无参考、无背景集合音乐感知质量评估。",
+        "method": "利用预训练Flow Matching模型作为主干，通过无条件Flow Matching反演（简单欧拉积分）对音频进行迭代去噪，将反演后的样本与先验分布比较以检测失真；引入InvFlowFD系统，对一组反演样本进行统计比较，输出与人类感知高度相关的质量分数。",
+        "innovation": "首次实现完全无参考且无背景集合的音乐质量指标，仅依赖单一预训练Flow Matching模型；证明简单的无条件流匹配反演足以区分人工失真并准确反映生成模型感知质量；无需成对数据或额外干净音频集，部署更灵活。",
+        "evidence": "定量实验与详尽人类主观研究证明InvFlowFD与人类对音频失真及生成质量感知高度相关，且在灵活性上优于现有指标。",
+        "limitations": "评估仅限于音乐领域，未验证对语音等其它音频的泛化能力；反演步数和先验分布的具体选择可能影响结果；与不同流匹配模型结构的耦合程度需进一步确认。",
+        "why_relevant": "工作涉及流匹配（Flow Matching）生成模型在音频质量评估的应用，流匹配模型也是您研究方向中的生成式语音方法之一，但论文核心是音乐质量度量，并非语音生成或增强技术；虽分类重合（cs.SD, cs.LG），但直接关联较弱，需人工确认是否将此类质量评估用于生成语音的客观评价。"
+      }
+    },
+    {
+      "id": "arxiv:2608.01920",
+      "arxiv_id": "2608.01920",
+      "title": "P-MUSE: Prompt-MIDI-Optional Model for Unified Instrumental Music Synthesis and Editing",
+      "authors": [
+        "Chong Jing",
+        "Junan Zhang",
+        "Jing Yang",
+        "Yulun Wu",
+        "Fan Fan",
+        "Zhizheng Wu"
+      ],
+      "published": "2026-08-03T08:55:57Z",
+      "summary": "MIDI-to-Music system renders the melody and rhythm of a target MIDI sequence into musical segment while cloning instrument timbre from a prompt recording. Existing systems typically adopt one of two distinct paradigms: conditional generation with prompt audio alone, which remains applicable when aligned prompt MIDI is unavailable, and In-Context Learning with paired prompt audio and MIDI, which exploits cross-modal alignment for stronger control on MIDI following and timbre similarity. We introduce P-MUSE, an instrumental MIDI-to-Music framework that unifies both paradigms via a multi-stage Curriculum-Learning supporting prompt-MIDI-optional inputs. P-MUSE further unifies music generation and local editing through a shared fill-in-the-middle formulation. Grounded in theoretical analysis and empirical study, we propose a phase-aware classifier-free guidance scheduling principle for Transcription-to-Audio systems, alongside a Tail-Drop strategy. Finally, to advance research in this field, we establish the first comprehensive benchmark, covering various prompt modes, generation/editing tasks, and four representative instruments: piano, guitar, bass, and drums. Demos are available at https://p-muse.github.io/.",
+      "paper_url": "http://arxiv.org/abs/2608.01920v2",
+      "pdf_url": "https://arxiv.org/pdf/2608.01920v2",
+      "categories": [
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 8.0,
+      "justification": "论文提出统一MIDI到音乐合成与编辑的框架，提出相位感知引导策略并建立新基准，与音乐信息检索与表示方向中的音乐生成相关，质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-08-07",
+      "chinese_summary": {
+        "problem": "如何在统一的框架中支持可选的提示MIDI输入，同时实现音乐生成和局部编辑，并保证MIDI跟随准确度和音色克隆质量。",
+        "method": "P-MUSE采用多阶段课程学习，使模型能处理提示MIDI可选输入；利用统一的填充式建模将生成与编辑任务合并；提出相位感知的无分类器引导调度原则及Tail-Drop策略来优化转录到音频的合成控制。",
+        "innovation": "首次统一仅提示音频和配对提示两种范式，实现灵活的提示MIDI可选；通过填充公式统一音乐生成与局部编辑；针对转录到音频任务，提出相位感知CFG调度和Tail-Drop策略；建立首个覆盖多模式、多任务的综合评测基准。",
+        "evidence": "摘要提及理论分析和实证研究，但未给出具体实验指标；已建立基准并提供Demos可访问。",
+        "limitations": "摘要未说明计算开销、多乐器泛化能力、合成自然度等，需阅读全文确认。",
+        "why_relevant": "论文核心属于音乐生成，与研究方向明确列出的‘music generation’高度匹配；同时音频合成中的引导方法可能间接关联音频表示学习。"
+      }
+    },
+    {
+      "id": "arxiv:2608.04543",
+      "arxiv_id": "2608.04543",
+      "title": "Towards Robust Version Identification in the Wild: A Dataset, Benchmark, and Fine-Tuning Study",
+      "authors": [
+        "Simon Hachmeier",
+        "R. Oguz Araz",
+        "Dmitry Bogdanov",
+        "Robert Jäschke",
+        "Xavier Serra"
+      ],
+      "published": "2026-08-05T07:28:25Z",
+      "summary": "Existing datasets for musical version identification (VI) are primarily derived from curated metadata sources such as SecondHandSongs and Discogs, and are therefore dominated by professionally recorded tracks. This leads to a domain mismatch with real-world scenarios, where amateur and user-generated content is prevalent. To address this limitation, we introduce DiVers, a large-scale VI dataset comprising over 1.1 million musical versions, with train-validation-test splits compatible with established datasets such as Discogs-VI-YT, SHS100K, and Da-TACOS. In addition to standard version-level annotations, DiVers provides automatically assigned tags (e.g., instrumental, live) and segment-level predictions indicating the presence or absence of music. We evaluate the proposed dataset by training state-of-the-art VI systems. Our results show that models trained on DiVers achieve substantially improved robustness to acoustically diverse and noisy inputs, while maintaining a stable performance on cleaner, studio-quality benchmarks. We release the dataset metadata, code for its construction, and all experimental pipelines to support reproducibility.",
+      "paper_url": "http://arxiv.org/abs/2608.04543v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.04543v1",
+      "categories": [
+        "cs.SD",
+        "cs.IR"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "该论文直接属于Music Information Retrieval方向，提出了大规模音乐版本识别数据集DiVers，包含自动标签和分割预测，提升了在真实场景中的鲁棒性，工作扎实，对MIR领域有贡献。",
+      "citation_count": null,
+      "date_added": "2026-08-07",
+      "chinese_summary": {
+        "problem": "现有音乐版本识别数据集主要源自专业录制曲目，导致模型对现实场景中业余录音、现场表演等用户生成内容的泛化能力不足。",
+        "method": "构建大规模音乐版本识别数据集DiVers，含超过110万版本及自动标注（如器乐、现场）和音乐片段检测标签，拆分与已有基准兼容；在此基础上训练现有版本识别系统，验证其对声学多样和噪声输入的鲁棒性。",
+        "innovation": "提出首个面向真实世界场景的大规模版本识别数据集DiVers，显著缓解域不匹配问题；自动提供器乐、现场等多维标签及片段级音乐检测，降低人工标注成本；数据拆分直接兼容Discogs-VI-YT、SHS100K等标准集，便于社区复用和基准测试。",
+        "evidence": "摘要中报告了实验结论：在DiVers上训练的模型在声学多样且含噪输入下鲁棒性明显提升，同时在干净基准上性能稳定；但未给出具体指标，需查阅全文确认。",
+        "limitations": "自动标签可能引入噪声，影响评估准确性；未涉及版本识别模型本身的改进，仅从数据角度提升鲁棒性；仅关注音乐音频，未探讨语音场景的适用性。",
+        "why_relevant": "论文专注于音乐版本识别的判别式任务，与生成式语音技术（语音增强、合成、TTS、神经声码器等）无直接关联。虽然arXiv分类cs.SD与研究方向有交集，但问题域、方法、模态均不匹配，仅泛泛相关，不建议阅读。"
+      }
+    },
+    {
+      "id": "arxiv:2310.07284",
+      "arxiv_id": "2310.07284",
+      "title": "Typing to Listen at the Cocktail Party: Text-Guided Target Speaker Extraction",
+      "authors": [
+        "Xiang Hao",
+        "Jibin Wu",
+        "Jianwei Yu",
+        "Chenglin Xu",
+        "Kay Chen Tan"
+      ],
+      "published": "2023-10-11T00:00:00+00:00",
+      "summary": "Humans can easily isolate a single speaker from a complex acoustic environment, a capability referred to as the “cocktail party effect.” However, replicating this ability has been a significant challenge in the field of target speaker extraction (TSE). Traditional TSE approaches predominantly rely on voiceprints, which raise privacy concerns and face issues related to the quality and availability of enrollment samples, as well as intra-speaker variability. To address these issues, this work introduces a novel text-guided TSE paradigm named large language model (LLM)-TSE. In this paradigm, a state-of-the-art (SOTA) LLM, LLaMA 2, processes typed text input from users to extract semantic cues. We demonstrate that textual descriptions alone can effectively serve as cues for extraction, thus addressing privacy concerns and reducing dependency on voiceprints. Furthermore, our approach offers flexibility by allowing the user to specify the extraction or suppression of a speaker and enhances robustness against intra-speaker variability by incorporating context-dependent textual information. Experimental results show competitive performance with text-based cues alone and demonstrate the effectiveness of using text as a task selector. Additionally, they achieve a new SOTA when combining text-based cues with preregistered cues. This work represents the first integration of LLMs with TSE, potentially establishing a new benchmark in solving the cocktail party problem and expanding the scope of TSE applications by providing a versatile, privacy-conscious solution.",
+      "paper_url": "https://arxiv.org/abs/2310.07284",
+      "pdf_url": "https://arxiv.org/pdf/2310.07284",
+      "categories": [
+        "IEEE Transactions on Cognitive and Developmental Systems"
+      ],
+      "venue": "IEEE Transactions on Cognitive and Developmental Systems",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "论文提出文本引导的目标说话人提取范式，首次将LLM引入TSE，与说话人分离方向高度相关，方法新颖且性能有竞争力，但引用数尚低，尚未成为广泛基线。",
+      "citation_count": 23,
+      "date_added": "2026-08-07",
+      "chinese_summary": {
+        "problem": "传统目标说话人提取依赖声纹，面临隐私泄露、注册样本质量与可用性受限以及说话人内部变异等问题，本工作探索基于文本语义线索的替代方案。",
+        "method": "提出 LLM-TSE 框架，利用预训练大语言模型 LLaMA 2 处理用户输入的文本描述，提取高层语义线索作为提取指导；该线索支持灵活指定提取或抑制某一说话人，并通过上下文文本信息增强对同一说话人不同发声的鲁棒性。",
+        "innovation": "首次将大语言模型与目标说话人提取集成，实现文本引导的提取范式；无需注册声纹，仅用文本描述解决隐私问题，并提供提取与抑制的双向控制；利用上下文文本建模缓解说话人内部变异，与预注册线索结合时达到最优性能。",
+        "evidence": "摘要表明仅文本线索即可取得竞争性表现，并验证文本作为任务选择器的有效性；与预注册线索结合时达到新 SOTA 性能。",
+        "limitations": "摘要未给出实验数据集、评价指标和消融分析细节；依赖大语言模型可能引入额外延时，文本描述的歧义性可能影响提取精度，需阅读全文评估实际上限和实用性。",
+        "why_relevant": "论文直接解决目标说话人提取问题，与研究方向中的“target speaker extraction”“speaker extraction”及“cocktail party”关键词强相关，但通过文本引导替代声纹，非传统分离模型改进，属于同一任务的新输入模态探索，需人工复核是否密切关注此类方法。"
       }
     }
   ]
