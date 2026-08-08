@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-07T04:04:42.467057+00:00",
+  "updated_at_iso": "2026-08-08T03:01:15.685461+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -6153,6 +6153,205 @@
         "evidence": "摘要表明仅文本线索即可取得竞争性表现，并验证文本作为任务选择器的有效性；与预注册线索结合时达到新 SOTA 性能。",
         "limitations": "摘要未给出实验数据集、评价指标和消融分析细节；依赖大语言模型可能引入额外延时，文本描述的歧义性可能影响提取精度，需阅读全文评估实际上限和实用性。",
         "why_relevant": "论文直接解决目标说话人提取问题，与研究方向中的“target speaker extraction”“speaker extraction”及“cocktail party”关键词强相关，但通过文本引导替代声纹，非传统分离模型改进，属于同一任务的新输入模态探索，需人工复核是否密切关注此类方法。"
+      }
+    },
+    {
+      "id": "arxiv:2408.17175",
+      "arxiv_id": "2408.17175",
+      "title": "Codec Does Matter: Exploring the Semantic Shortcoming of Codec for Audio Language Model",
+      "authors": [
+        "Zhen Ye",
+        "Peiwen Sun",
+        "Jiahe Lei",
+        "Hongzhan Lin",
+        "Xu Tan",
+        "Zheqi Dai",
+        "Qiuqiang Kong",
+        "Jianyi Chen",
+        "Jiahao Pan",
+        "Qi-fei Liu",
+        "Yi-Ting Guo",
+        "Wei Xue"
+      ],
+      "published": "2024-08-30T00:00:00+00:00",
+      "summary": "Recent advancements in audio generation have been significantly propelled by the capabilities of Large Language Models (LLMs). The existing research on audio LLM has primarily focused on enhancing the architecture and scale of audio language models, as well as leveraging larger datasets, and generally, acoustic codecs, such as EnCodec, are used for audio tokenization. However, these codecs were originally designed for audio compression, which may lead to suboptimal performance in the context of audio LLM. Our research aims to address the shortcomings of current audio LLM codecs, particularly their challenges in maintaining semantic integrity in generated audio. For instance, existing methods like VALL-E, which condition acoustic token generation on text transcriptions, often suffer from content inaccuracies and elevated word error rates (WER) due to semantic misinterpretations of acoustic tokens, resulting in word skipping and errors. To overcome these issues, we propose a straightforward yet effective approach called X-Codec. X-Codec incorporates semantic features from a pre-trained semantic encoder before the Residual Vector Quantization (RVQ) stage and introduces a semantic reconstruction loss after RVQ. By enhancing the semantic ability of the codec, X-Codec significantly reduces WER in speech synthesis tasks and extends these benefits to non-speech applications, including music and sound generation. Our experiments in text-to-speech, music continuation, and text-to-sound tasks demonstrate that integrating semantic information substantially improves the overall performance of language models in audio generation.",
+      "paper_url": "https://arxiv.org/abs/2408.17175",
+      "pdf_url": "https://arxiv.org/pdf/2408.17175",
+      "categories": [
+        "AAAI Conference on Artificial Intelligence"
+      ],
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出X-Codec增强音频语言模型的语义完整性，显著降低语音合成WER并扩展至音乐生成，与生成式语音技术方向高度相关，是音频LLM编解码的重要改进，具有基础性和影响力。",
+      "citation_count": 121,
+      "date_added": "2026-08-08",
+      "chinese_summary": {
+        "problem": "现有音频语言模型使用的声学编解码器（如EnCodec）原为音频压缩设计，在生成任务中语义完整性不足，导致语音合成中出现内容错误、丢词和高词错率（WER）等问题。",
+        "method": "提出X-Codec，在残差向量量化（RVQ）之前融合预训练语义编码器的语义特征，并在RVQ后添加语义重建损失，以增强编解码器的语义保持能力。",
+        "innovation": "揭示声学编解码器的语义缺陷对音频语言模型性能的关键限制；通过在量化前后引入语义特征的简单方案，显著降低语音合成WER，并首次将类似增强有效拓展至音乐和声音生成等非语音任务。",
+        "evidence": "在文本到语音、音乐续写和文本到声音等任务上的实验表明，融入语义信息能大幅提升音频语言模型的整体生成性能。",
+        "limitations": "未说明预训练语义编码器的具体选型及跨任务泛化性；是否适用于其他生成式框架（如扩散模型）尚需验证；实验细节（如WER具体降低幅度）和推理效率影响需阅读正文。",
+        "why_relevant": "该论文直接改进语音合成（text-to-speech）的关键组件，通过语义增强编解码器降低WER，与研究方向中的“speech synthesis”“text-to-speech”强匹配，并可辅助构建更可靠的生成式语音系统。"
+      }
+    },
+    {
+      "id": "arxiv:2503.01710",
+      "arxiv_id": "2503.01710",
+      "title": "Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens",
+      "authors": [
+        "Xinsheng Wang",
+        "Mingqi Jiang",
+        "Ziyang Ma",
+        "Ziyu Zhang",
+        "Songxiang Liu",
+        "Linqin Li",
+        "Zheng Liang",
+        "Qixi Zheng",
+        "Rui Wang",
+        "Xiaoqin Feng",
+        "Weizhen Bian",
+        "Zhen Ye"
+      ],
+      "published": "2025-03-03T00:00:00+00:00",
+      "summary": "Recent advancements in large language models (LLMs) have driven significant progress in zero-shot text-to-speech (TTS) synthesis. However, existing foundation models rely on multi-stage processing or complex architectures for predicting multiple codebooks, limiting efficiency and integration flexibility. To overcome these challenges, we introduce Spark-TTS, a novel system powered by BiCodec, a single-stream speech codec that decomposes speech into two complementary token types: low-bitrate semantic tokens for linguistic content and fixed-length global tokens for speaker attributes. This disentangled representation, combined with the Qwen2.5 LLM and a chain-of-thought (CoT) generation approach, enables both coarse-grained control (e.g., gender, speaking style) and fine-grained adjustments (e.g., precise pitch values, speaking rate). To facilitate research in controllable TTS, we introduce VoxBox, a meticulously curated 100,000-hour dataset with comprehensive attribute annotations. Extensive experiments demonstrate that Spark-TTS not only achieves state-of-the-art zero-shot voice cloning but also generates highly customizable voices that surpass the limitations of reference-based synthesis. Source code, pre-trained models, and audio samples are available at https://github.com/SparkAudio/Spark-TTS.",
+      "paper_url": "https://arxiv.org/abs/2503.01710",
+      "pdf_url": "https://arxiv.org/pdf/2503.01710",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出基于LLM的高效TTS模型，通过解耦语义与声学token实现可控生成，零样本语音克隆达SOTA并构建大规模数据集，与生成式语音技术高度相关且具基础性影响力。",
+      "citation_count": 181,
+      "date_added": "2026-08-08",
+      "chinese_summary": {
+        "problem": "现有基于大语言模型的零样本文本到语音合成依赖多阶段或复杂架构预测多个码本，导致效率和集成灵活性受限。",
+        "method": "核心方法是提出 BiCodec 单流语音编解码器，将语音解耦为低比特率语义 Token（内容）和固定长度全局 Token（说话人属性），并基于 Qwen2.5 大语言模型结合链式思维（CoT）生成策略，支持粗细粒度控制。",
+        "innovation": "提出 BiCodec 解耦语音表示，仅需单流网络即可同时建模内容与说话人信息，简化了架构；引入链式思维生成，实现性别、风格等粗粒度控制与基频、语速等细粒度调节；构建了 10 万小时带丰富属性标注的数据集 VoxBox，促进可控 TTS 研究。",
+        "evidence": "摘要中提及大量实验表明 Spark-TTS 在零样本语音克隆上达到最优性能，并能生成超越参考语音合成限制的高度可定制语音。",
+        "limitations": "摘要未给出具体客观指标（如 MOS、CER）对比；链式思维生成的可解释性与鲁棒性需通过全文验证；单流编解码器在极低码率下的质量保真度需进一步确认。",
+        "why_relevant": "研究方向聚焦 TTS 与生成式语音合成，论文直接提出零样本语音克隆与可控生成方案，匹配关键词 text-to-speech、speech synthesis、neural vocoder 等，且涉及 LLM 与解耦表示，与研究方向高度相关。"
+      }
+    },
+    {
+      "id": "arxiv:2311.13443",
+      "arxiv_id": "2311.13443",
+      "title": "Guided Flows for Generative Modeling and Decision Making",
+      "authors": [
+        "Qinqing Zheng",
+        "Matt Le",
+        "Neta Shaul",
+        "Y. Lipman",
+        "Aditya Grover",
+        "Ricky T. Q. Chen"
+      ],
+      "published": "2023-11-22T00:00:00+00:00",
+      "summary": "Classifier-free guidance is a key component for enhancing the performance of conditional generative models across diverse tasks. While it has previously demonstrated remarkable improvements for the sample quality, it has only been exclusively employed for diffusion models. In this paper, we integrate classifier-free guidance into Flow Matching (FM) models, an alternative simulation-free approach that trains Continuous Normalizing Flows (CNFs) based on regressing vector fields. We explore the usage of \\emph{Guided Flows} for a variety of downstream applications. We show that Guided Flows significantly improves the sample quality in conditional image generation and zero-shot text-to-speech synthesis, boasting state-of-the-art performance. Notably, we are the first to apply flow models for plan generation in the offline reinforcement learning setting, showcasing a 10x speedup in computation compared to diffusion models while maintaining comparable performance.",
+      "paper_url": "https://arxiv.org/abs/2311.13443",
+      "pdf_url": "https://arxiv.org/pdf/2311.13443",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "首次将无分类器引导引入连续归一化流，在零样本文本到语音合成上取得最优性能，为生成式语音技术提供了新的基础方法。",
+      "citation_count": 104,
+      "date_added": "2026-08-08",
+      "chinese_summary": {
+        "problem": "将原本仅用于扩散模型的分类器自由引导机制引入流匹配模型，以提升条件生成任务的样本质量。",
+        "method": "在流匹配（Flow Matching）框架中集成分类器自由引导，通过调节引导尺度在条件向量场与无条件向量场之间插值，实现可控生成；将得到的Guided Flows应用于条件图像生成、零样本文本到语音合成以及离线强化学习中的行为规划。",
+        "innovation": "首次将分类器自由引导与流匹配相结合，打破了该技术仅限扩散模型的局面；在零样本文本到语音合成上取得最优性能，验证了引导流在音频生成中的有效性；首次将流模型用于离线强化学习规划，相比扩散模型实现了10倍速度提升。",
+        "evidence": "摘要中提到Guided Flows在条件图像生成和零样本文本到语音合成中显著提升样本质量，达到最优性能；在离线RL规划中，相比扩散模型有10倍计算加速且性能相当，但未给出具体数据集和指标数字。",
+        "limitations": "摘要未说明引导强度调节的细节和可能带来的计算开销；零样本TTS的具体实现、评估数据和基线模型未披露；流匹配在长序列或高维语音生成上的稳定性需全文验证。",
+        "why_relevant": "论文直接研究流匹配（flow matching）在零样本文本到语音合成（TTS）中的应用，与研究方向中的“speech synthesis and TTS”、“flow matching speech”、“generative model audio”高度重合，提供了将引导机制引入语音生成的新思路。"
+      }
+    },
+    {
+      "id": "arxiv:2305.15255",
+      "arxiv_id": "2305.15255",
+      "title": "Spoken Question Answering and Speech Continuation Using Spectrogram-Powered LLM",
+      "authors": [
+        "Eliya Nachmani",
+        "Alon Levkovitch",
+        "Julián Salazar",
+        "Chulayutsh Asawaroengchai",
+        "Soroosh Mariooryad",
+        "R. Skerry-Ryan",
+        "M. Ramanovich"
+      ],
+      "published": "2023-05-24T00:00:00+00:00",
+      "summary": "We present Spectron, a novel approach to adapting pre-trained large language models (LLMs) to perform spoken question answering (QA) and speech continuation. By endowing the LLM with a pre-trained speech encoder, our model becomes able to take speech inputs and generate speech outputs. The entire system is trained end-to-end and operates directly on spectrograms, simplifying our architecture. Key to our approach is a training objective that jointly supervises speech recognition, text continuation, and speech synthesis using only paired speech-text pairs, enabling a `cross-modal' chain-of-thought within a single decoding pass. Our method surpasses existing spoken language models in speaker preservation and semantic coherence. Furthermore, the proposed model improves upon direct initialization in retaining the knowledge of the original LLM as demonstrated through spoken QA datasets. We release our audio samples (https://michelleramanovich.github.io/spectron/spectron) and spoken QA dataset (https://github.com/google-research-datasets/LLAMA1-Test-Set).",
+      "paper_url": "https://arxiv.org/abs/2305.15255",
+      "pdf_url": "https://arxiv.org/pdf/2305.15255",
+      "categories": [
+        "International Conference on Learning Representations"
+      ],
+      "venue": "International Conference on Learning Representations",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "将预训练LLM与语音编码器结合实现端到端语音问答与延续，对生成式语音技术有重要贡献，高度相关。",
+      "citation_count": 106,
+      "date_added": "2026-08-08",
+      "chinese_summary": {
+        "problem": "如何扩展预训练大语言模型以直接处理口语问答和语音延续任务，实现端到端的语音输入和输出。",
+        "method": "提出 Spectron，将预训练语音编码器赋予 LLM，使模型能接受语音输入并生成语音输出；整个系统直接在声谱图上端到端训练，训练目标联合监督语音识别、文本延续和语音合成，仅需语音-文本配对数据，在单次解码中实现跨模态思维链。",
+        "innovation": "1) 首次在 LLM 中实现声谱图级别的语音输入和输出，无需显式文本中介；2) 联合训练语音识别、文本延续和语音合成，通过跨模态链式思考保持语义连贯；3) 在保留说话人身份与原始 LLM 知识上优于已有口语模型。",
+        "evidence": "摘要表明在说话人保留和语义连贯性上超越现有模型，在口语 QA 数据集上展现出更好的知识保留，并公布了音频样本和评测数据集，但未提供具体指标数值。",
+        "limitations": "未明确生成声谱图的具体方法（如是否使用神经声码器）、训练数据规模、跨领域泛化能力。",
+        "why_relevant": "研究方向包括语音合成与生成式语音技术，Spectron 的语音输出部分涉及端到端语音合成，且基于声谱图表示，与神经声码器、生成模型音频等子方向相关；但论文核心在于 LLM 的口语扩展而非生成模型本身的改进。"
+      }
+    },
+    {
+      "id": "arxiv:2306.03509",
+      "arxiv_id": "2306.03509",
+      "title": "Mega-TTS: Zero-Shot Text-to-Speech at Scale with Intrinsic Inductive Bias",
+      "authors": [
+        "Ziyue Jiang",
+        "Yi Ren",
+        "Zhe Ye",
+        "Jinglin Liu",
+        "Chen Zhang",
+        "Qiang Yang",
+        "Shengpeng Ji",
+        "Rongjie Huang",
+        "Chunfeng Wang",
+        "Xiang Yin",
+        "Zejun Ma",
+        "Zhou Zhao"
+      ],
+      "published": "2023-06-06T00:00:00+00:00",
+      "summary": "Scaling text-to-speech to a large and wild dataset has been proven to be highly effective in achieving timbre and speech style generalization, particularly in zero-shot TTS. However, previous works usually encode speech into latent using audio codec and use autoregressive language models or diffusion models to generate it, which ignores the intrinsic nature of speech and may lead to inferior or uncontrollable results. We argue that speech can be decomposed into several attributes (e.g., content, timbre, prosody, and phase) and each of them should be modeled using a module with appropriate inductive biases. From this perspective, we carefully design a novel and large zero-shot TTS system called Mega-TTS, which is trained with large-scale wild data and models different attributes in different ways: 1) Instead of using latent encoded by audio codec as the intermediate feature, we still choose spectrogram as it separates the phase and other attributes very well. Phase can be appropriately constructed by the GAN-based vocoder and does not need to be modeled by the language model. 2) We model the timbre using global vectors since timbre is a global attribute that changes slowly over time. 3) We further use a VQGAN-based acoustic model to generate the spectrogram and a latent code language model to fit the distribution of prosody, since prosody changes quickly over time in a sentence, and language models can capture both local and long-range dependencies. We scale Mega-TTS to multi-domain datasets with 20K hours of speech and evaluate its performance on unseen speakers. Experimental results demonstrate that Mega-TTS surpasses state-of-the-art TTS systems on zero-shot TTS, speech editing, and cross-lingual TTS tasks, with superior naturalness, robustness, and speaker similarity due to the proper inductive bias of each module. Audio samples are available at https://mega-tts.github.io/demo-page.",
+      "paper_url": "https://arxiv.org/abs/2306.03509",
+      "pdf_url": "http://arxiv.org/pdf/2306.03509",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出将语音属性分解建模的大规模零样本TTS系统，通过归纳偏置实现自然度与鲁棒性提升，是生成式语音合成领域的重要基础工作。",
+      "citation_count": 101,
+      "date_added": "2026-08-08",
+      "chinese_summary": {
+        "problem": "大规模零样本TTS中，现有方法将语音编码为音频编解码隐变量并用自回归/扩散模型生成，忽略了语音的固有属性分解，导致生成结果自然度不佳或可控性差。",
+        "method": "提出Mega-TTS，将语音分解为内容、音色、韵律和相位等属性，针对各属性设计异构模块：利用频谱图分离相位，由GAN声码器重构相位；使用全局向量建模缓慢变化的音色；采用VQGAN声学模型生成频谱图，并配合潜码语言模型捕获韵律的局部与长程依赖。系统在20000小时多领域野生数据上训练。",
+        "innovation": "摒弃音频编解码器隐变量，保留频谱图作为中间特征，利用GAN单独处理相位信息；显式分解语音属性并赋予各模块恰当的归纳偏置（全局音色向量、韵律语言模型）；结合VQGAN与语言模型高效建模快变的韵律。",
+        "evidence": "在零样本TTS、语音编辑和跨语言TTS任务上，Mega-TTS的自然度、鲁棒性和说话人相似度均超越SOTA系统，并提供在线音频样本。",
+        "limitations": "摘要未提及计算复杂度、推理效率及对极端音色/语言的支持；需阅读全文确认大规模训练的具体消融实验和局限性分析。",
+        "why_relevant": "研究方向涵盖TTS、神经声码器和生成式语音模型，本论文直接提出新型零样本TTS系统，采用VQGAN与语言模型联合生成，与生成式语音合成高度匹配。虽然未明确使用扩散模型，但其属性解耦与生成框架仍对研究方向有重要参考价值。"
       }
     }
   ]
