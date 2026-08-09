@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-09T03:09:17.420771+00:00",
+  "updated_at_iso": "2026-08-09T08:18:56.131664+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -6427,6 +6427,119 @@
         "evidence": "实验显示ATST-Frame在大多数片段级和帧级下游任务上取得最优性能，尤其在帧级声音事件检测上大幅超越现有模型，并且结合两个模型可进一步提升效果。",
         "limitations": "未涉及音乐特有任务，知识蒸馏的具体增益幅度未量化，训练计算开销未知，模型在长序列或实时场景的适用性待验证。",
         "why_relevant": "论文提出了一种通用的自监督音频表示方法，理论上可迁移至音乐信息检索（如音乐标记、音乐事件检测等），与研究方向中的“self-supervised audio”关键词匹配，但摘要缺乏音乐任务验证，需人工复核实际适用性。"
+      }
+    },
+    {
+      "id": "arxiv:2312.00834",
+      "arxiv_id": "2312.00834",
+      "title": "AV-RIR: Audio-Visual Room Impulse Response Estimation",
+      "authors": [
+        "Anton Ratnarajah",
+        "Sreyan Ghosh",
+        "Sonal Kumar",
+        "Purva Chiniya",
+        "Dinesh Manocha"
+      ],
+      "published": "2023-11-30T00:00:00+00:00",
+      "summary": "Accurate estimation of Room Impulse Response (RIR), which captures an environment's acoustic properties, is important for speech processing and AR/VR applications. We propose AV-RIR, a novel multi-modal multi-task learning approach to accurately estimate the RIR from a given reverberant speech signal and the visual cues of its corresponding environment. AV-RIR builds on a novel neural codec-based architecture that effectively captures environment geometry and materials properties and solves speech dereverberation as an auxiliary task by using multi-task learning. We also propose Geo-Mat features that augment material information into visual cues and CRIP that improves late reverberation components in the estimated RIR via image-to-RIR retrieval by 86%. Empirical results show that AV-RIR quantitatively outperforms previous audio-only and visual-only approaches by achieving 36% - 63% improvement across various acoustic metrics in RIR estimation. Additionally, it also achieves higher preference scores in human evaluation. As an auxiliary benefit, dereverbed speech from AV-RIR shows competitive performance with the state-of-the-art in various spoken language processing tasks and outperforms reverberation time error score in the real-world AVSpeech dataset. Qualitative examples of both synthesized reverberant speech and enhanced speech are available online11https://anton-jeran.github.io/AVRIR/.",
+      "paper_url": "https://arxiv.org/abs/2312.00834",
+      "pdf_url": "https://arxiv.org/pdf/2312.00834",
+      "categories": [
+        "Computer Vision and Pattern Recognition"
+      ],
+      "venue": "Computer Vision and Pattern Recognition",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 9.0,
+      "justification": "提出视听多模态 RIR 估计与语音去混响联合学习方法，引入 Geo-Mat 特征和 CRIP 检索改进混响尾部估计，与语音增强前端高度相关，性能显著超越纯音频方法，为该方向必读新基线",
+      "citation_count": 39,
+      "date_added": "2026-08-09",
+      "chinese_summary": {
+        "problem": "论文解决从混响语音和视觉线索中准确估计房间脉冲响应（RIR）的问题，以捕获环境声学特性。",
+        "method": "提出AV-RIR，一种多模态多任务学习方法。它利用神经编解码器架构融合混响语音和视觉信息，通过多任务学习将语音去混响作为辅助任务；设计Geo-Mat特征为视觉线索增强材料属性，并采用CRIP技术通过图像到RIR检索改善晚期混响成分。",
+        "innovation": "首次结合音频和视觉信息以多任务学习估计RIR；引入Geo-Mat特征将环境材料属性融入视觉线索；提出CRIP策略，通过图像检索大幅提升晚期混响估计精度。",
+        "evidence": "摘要中给出定量结果：AV-RIR在RIR估计的多种声学指标上比纯音频和纯视觉方法提升36%-63%，人类评估偏好分数更高；辅助任务去混响语音在口语处理任务中竞争力强，并在真实数据集AVSpeech上优于混响时间误差指标。",
+        "limitations": "依赖视觉输入，在视觉传感器不可用的场景受限；RIR估计对新环境的泛化能力未经充分验证；去混响作为辅助任务，其对纯音频前端处理的直接收益需阅读全文确认；实验基于特定数据集，实际部署性能未知。",
+        "why_relevant": "论文的辅助任务涉及语音去混响，与研究方向中的“dereverberation”匹配；估计的RIR可作为音频前端参数，间接关联“speech frontend”。但核心贡献是RIR估计且依赖视觉模态，与纯音频语音增强和前端处理的直接相关性较弱，需人工复核是否适合作为参考。"
+      }
+    },
+    {
+      "id": "s2:eeee2dcd0491857e9172c36e4f55c6eaaac77529",
+      "arxiv_id": "",
+      "title": "GTCRN: A Speech Enhancement Model Requiring Ultralow Computational Resources",
+      "authors": [
+        "Xiaobin Rong",
+        "Tianchi Sun",
+        "Xu Zhang",
+        "Yuxiang Hu",
+        "Changbao Zhu",
+        "Jing Lu"
+      ],
+      "published": "2024-04-14T00:00:00+00:00",
+      "summary": "While modern deep learning-based models have significantly outperformed traditional methods in the area of speech enhancement, they often necessitate a lot of parameters and extensive computational power, making them impractical to be deployed on edge devices in real-world applications. In this paper, we introduce Grouped Temporal Convolutional Recurrent Network (GTCRN), which incorporates grouped strategies to efficiently simplify a competitive model, DPCRN. Additionally, it leverages subband feature extraction modules and temporal recurrent attention modules to enhance its performance. Remarkably, the resulting model demands ultralow computational resources, featuring only 23.7 K parameters and 39.6 MMACs per second. Experimental results show that our proposed model not only surpasses RNNoise, a typical lightweight model with similar computational burden, but also achieves competitive performance when compared to recent baseline models with significantly higher computational resources requirements.",
+      "paper_url": "https://www.semanticscholar.org/paper/eeee2dcd0491857e9172c36e4f55c6eaaac77529",
+      "pdf_url": "",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出超低计算资源语音增强模型GTCRN，仅23.7K参数且性能超越RNNoise，是轻量级增强的基础性工作，与语音增强方向高度相关。",
+      "citation_count": 63,
+      "date_added": "2026-08-09",
+      "chinese_summary": {
+        "problem": "现有深度学习语音增强模型参数多、计算量大，难以部署在资源受限的边缘设备上。",
+        "method": "提出分组时域卷积循环网络（GTCRN），通过分组策略简化DPCRN模型，并结合子带特征提取模块与时域循环注意力模块提升性能，实现超低计算资源需求。",
+        "innovation": "采用分组策略精简模型结构；引入子带特征提取模块处理不同频带信息；设计时域循环注意力模块增强时序建模能力。",
+        "evidence": "模型仅23.7K参数，每秒39.6M乘累加运算；在同等计算量下性能超越RNNoise，且与计算量显著更大的基线模型相比具有竞争力。",
+        "limitations": "论文仅涉及语音增强任务，未验证在语音分离或目标说话人提取上的适用性；实际部署的实时性和泛化性仍需阅读全文确认。",
+        "why_relevant": "论文专注于语音增强，虽与语音分离在噪声抑制角度有浅层关联，但其核心任务、评价指标和优化目标与研究方向中的语音分离及目标说话人提取不直接匹配，技术组件（如分组时域卷积）有潜在借鉴价值，但整体相关性弱。"
+      }
+    },
+    {
+      "id": "arxiv:2503.00493",
+      "arxiv_id": "2503.00493",
+      "title": "LLaSE-G1: Incentivizing Generalization Capability for LLaMA-based Speech Enhancement",
+      "authors": [
+        "Boyi Kang",
+        "Xinfa Zhu",
+        "Zihan Zhang",
+        "Zhen Ye",
+        "Mingshuai Liu",
+        "Ziqian Wang",
+        "Yike Zhu",
+        "Guobin Ma",
+        "Jun Chen",
+        "Longshuai Xiao",
+        "Chao Weng",
+        "Wei Xue"
+      ],
+      "published": "2025-03-01T00:00:00+00:00",
+      "summary": "Recent advancements in language models (LMs) have demonstrated strong capabilities in semantic understanding and contextual modeling, which have flourished in generative speech enhancement (SE). However, many LM-based SE approaches primarily focus on semantic information, often neglecting the critical role of acoustic information, which leads to acoustic inconsistency after enhancement and limited generalization across diverse SE tasks. In this paper, we introduce LLaSE-G1, a LLaMA-based language model that incentivizes generalization capabilities for speech enhancement. LLaSE-G1 offers the following key contributions: First, to mitigate acoustic inconsistency, LLaSE-G1 employs continuous representations from WavLM as input and predicts speech tokens from X-Codec2, maximizing acoustic preservation. Second, to promote generalization capability, LLaSE-G1 introduces dual-channel inputs and outputs, unifying multiple SE tasks without requiring task-specific IDs. Third, LLaSE-G1 outperforms prior task-specific discriminative and generative SE models, demonstrating scaling effects at test time and emerging capabilities for unseen SE tasks. Additionally, we release our code and models to support further research in this area.",
+      "paper_url": "https://arxiv.org/abs/2503.00493",
+      "pdf_url": "https://arxiv.org/pdf/2503.00493",
+      "categories": [
+        "Annual Meeting of the Association for Computational Linguistics"
+      ],
+      "venue": "Annual Meeting of the Association for Computational Linguistics",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "与生成式语音增强高度相关，提出基于LLaMA的统一多任务增强框架，贡献明确且效果突出，但作为近期工作，经典性和影响力尚需时间沉淀。",
+      "citation_count": 37,
+      "date_added": "2026-08-09",
+      "chinese_summary": {
+        "problem": "现有基于语言模型的语音增强方法侧重语义而忽视声学信息，导致增强后语音声学不一致，且在不同语音增强任务上泛化能力有限。",
+        "method": "基于LLaMA构建生成式语音增强模型，使用WavLM提取的连续声学表示作为输入，预测X-Codec2的离散语音token以保持声学一致性；采用双通道输入输出统一多种语音增强任务，避免依赖任务特定标识。",
+        "innovation": "引入WavLM连续表示和X-Codec2语音token，显式保留声学细节，缓解增强后的失真；通过双通道设计将降噪、去混响等多种任务统一到同一框架，无需任务ID即可激励泛化；模型展现测试时缩放效应和对未见语音增强任务的新兴能力，性能超越任务特化的判别式和生成式模型。",
+        "evidence": "摘要声明LLaSE-G1优于先前的任务特化模型，并观察到缩放效应和新兴能力，但未提供具体实验指标或数据集。",
+        "limitations": "摘要未报告具体性能数值、对比基线细节、未见任务类型和测试时缩放的具体表现，需阅读全文确认。",
+        "why_relevant": "论文直接聚焦生成式语音增强，采用的LLaMA与离散token建模属于生成式语音技术范畴；统一多任务的方案可涵盖语音修复、带宽扩展等子任务，与我的研究方向高度匹配。"
       }
     }
   ]
