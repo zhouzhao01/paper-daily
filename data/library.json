@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-08T03:01:15.685461+00:00",
+  "updated_at_iso": "2026-08-09T03:09:17.420771+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -6352,6 +6352,81 @@
         "evidence": "在零样本TTS、语音编辑和跨语言TTS任务上，Mega-TTS的自然度、鲁棒性和说话人相似度均超越SOTA系统，并提供在线音频样本。",
         "limitations": "摘要未提及计算复杂度、推理效率及对极端音色/语言的支持；需阅读全文确认大规模训练的具体消融实验和局限性分析。",
         "why_relevant": "研究方向涵盖TTS、神经声码器和生成式语音模型，本论文直接提出新型零样本TTS系统，采用VQGAN与语言模型联合生成，与生成式语音合成高度匹配。虽然未明确使用扩散模型，但其属性解耦与生成框架仍对研究方向有重要参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2306.10548",
+      "arxiv_id": "2306.10548",
+      "title": "MARBLE: Music Audio Representation Benchmark for Universal Evaluation",
+      "authors": [
+        "Ruibin Yuan",
+        "Yi Ma",
+        "Yizhi Li",
+        "Ge Zhang",
+        "Xingran Chen",
+        "Hanzhi Yin",
+        "Le Zhuo",
+        "Yiqi Liu",
+        "Jiawen Huang",
+        "Zeyue Tian",
+        "Binyue Deng",
+        "Ningzhi Wang"
+      ],
+      "published": "2023-06-18T00:00:00+00:00",
+      "summary": "In the era of extensive intersection between art and Artificial Intelligence (AI), such as image generation and fiction co-creation, AI for music remains relatively nascent, particularly in music understanding. This is evident in the limited work on deep music representations, the scarcity of large-scale datasets, and the absence of a universal and community-driven benchmark. To address this issue, we introduce the Music Audio Representation Benchmark for universaL Evaluation, termed MARBLE. It aims to provide a benchmark for various Music Information Retrieval (MIR) tasks by defining a comprehensive taxonomy with four hierarchy levels, including acoustic, performance, score, and high-level description. We then establish a unified protocol based on 14 tasks on 8 public-available datasets, providing a fair and standard assessment of representations of all open-sourced pre-trained models developed on music recordings as baselines. Besides, MARBLE offers an easy-to-use, extendable, and reproducible suite for the community, with a clear statement on copyright issues on datasets. Results suggest recently proposed large-scale pre-trained musical language models perform the best in most tasks, with room for further improvement. The leaderboard and toolkit repository are published at https://marble-bm.shef.ac.uk to promote future music AI research.",
+      "paper_url": "https://arxiv.org/abs/2306.10548",
+      "pdf_url": "https://arxiv.org/pdf/2306.10548",
+      "categories": [
+        "Neural Information Processing Systems"
+      ],
+      "venue": "Neural Information Processing Systems",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 9.0,
+      "justification": "提出了首个全面的音乐音频表示基准MARBLE，定义多层级分类和统一评估协议，为音乐信息检索研究提供标准框架，与Music Information Retrieval and Representation方向高度相关且为基础性工作。",
+      "citation_count": 63,
+      "date_added": "2026-08-09",
+      "chinese_summary": {
+        "problem": "当前音乐理解领域缺乏通用、社区驱动的基准来公平评估各种预训练模型在多种音乐信息检索（MIR）任务上的表示能力。",
+        "method": "提出MARBLE基准，构建包含声学、演奏、乐谱、高层描述的四层级任务分类体系，基于8个公开数据集的14项MIR任务建立统一评估协议，对全部开源音乐预训练模型进行表示评估，并提供可扩展、可复现的标准化工具包。",
+        "innovation": "首次提出涵盖多层级音乐要素的全面任务分类法；建立统一协议和标准化流程，实现不同模型在相同条件下公平对比；提供开源、易于扩展的基准套件和公共排行榜，推动社区协同发展。",
+        "evidence": "摘要中提及初步实验结果表明近期大规模预训练音乐语言模型在多数任务上表现最优，但仍有提升空间；已发布在线排行榜和工具仓库，可核验。",
+        "limitations": "摘要未详述具体任务定义、评估指标和参评模型的性能细节；需阅读全文以确认基准的覆盖范围、数据版权落实以及实际公平性。",
+        "why_relevant": "论文直接聚焦音乐信息检索和音频表示学习，所涉任务、预训练模型评估与我的研究方向‘音乐表示学习、音乐编码器、自监督音频表示’高度吻合，且基准对音乐理解与生成模型的研究具有现实参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2306.04186",
+      "arxiv_id": "2306.04186",
+      "title": "Self-Supervised Audio Teacher-Student Transformer for Both Clip-Level and Frame-Level Tasks",
+      "authors": [
+        "Xian Li",
+        "Nian Shao",
+        "Xiaofei Li"
+      ],
+      "published": "2023-06-07T00:00:00+00:00",
+      "summary": "Self-supervised learning (SSL) has emerged as a popular approach for learning audio representations. One goal of audio self-supervised pre-training is to transfer knowledge to downstream audio tasks, generally including clip-level and frame-level tasks. While frame-level tasks are important for fine-grained acoustic scene/event understanding, prior studies primarily evaluate on clip-level downstream tasks. In order to tackle both clip-level and frame-level tasks, this paper proposes Audio Teacher-Student Transformer (ATST), with a clip-level version (named ATST-Clip) and a frame-level version (named ATST-Frame), responsible for learning clip-level and frame-level representations, respectively. Both methods use a Transformer encoder and a teacher-student training scheme. We have carefully designed a view creation strategy for ATST-Clip and ATST-Frame. Specifically, ATST-Clip uses segment-wise data augmentations, and ATST-Frame integrates frame-wise data augmentations and masking. Experimental results show that our ATST-Frame model obtains state-of-the-art (SOTA) performances on most of the clip-level and frame-level downstream tasks. Especially, it outperforms other models by a large margin on the frame-level sound event detection task. In addition, the performance can be further improved by combining the two models through knowledge distillation.",
+      "paper_url": "https://arxiv.org/abs/2306.04186",
+      "pdf_url": "https://arxiv.org/pdf/2306.04186",
+      "categories": [
+        "IEEE/ACM Transactions on Audio Speech and Language Processing"
+      ],
+      "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 8.0,
+      "justification": "提出ATST自监督模型，兼顾片段级和帧级音频表示，与音乐信息检索及自监督音频表示方向高度相关，工作扎实，成为该方向重要基线。",
+      "citation_count": 66,
+      "date_added": "2026-08-09",
+      "chinese_summary": {
+        "problem": "现有音频自监督预训练主要关注片段级任务，忽视帧级任务，导致模型无法同时胜任两种粒度的下游应用。",
+        "method": "提出音频师生变换器（ATST），包含ATST-Clip和ATST-Frame两个版本，分别学习片段级和帧级表示。两者均用Transformer编码器与师生训练模式，ATST-Clip采用段级数据增强，ATST-Frame采用帧级数据增强与掩码。最终可通过知识蒸馏合并两个模型。",
+        "innovation": "精心设计了适配不同粒度的视图创建策略：片段级模型使用段级增强，帧级模型使用帧级增强与掩码；ATST-Frame在帧级声音事件检测任务上取得显著领先；提出通过知识蒸馏整合两类表示以进一步提升性能。",
+        "evidence": "实验显示ATST-Frame在大多数片段级和帧级下游任务上取得最优性能，尤其在帧级声音事件检测上大幅超越现有模型，并且结合两个模型可进一步提升效果。",
+        "limitations": "未涉及音乐特有任务，知识蒸馏的具体增益幅度未量化，训练计算开销未知，模型在长序列或实时场景的适用性待验证。",
+        "why_relevant": "论文提出了一种通用的自监督音频表示方法，理论上可迁移至音乐信息检索（如音乐标记、音乐事件检测等），与研究方向中的“self-supervised audio”关键词匹配，但摘要缺乏音乐任务验证，需人工复核实际适用性。"
       }
     }
   ]
