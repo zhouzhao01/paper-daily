@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-09T08:18:56.131664+00:00",
+  "updated_at_iso": "2026-08-10T03:19:50.271114+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -6540,6 +6540,92 @@
         "evidence": "摘要声明LLaSE-G1优于先前的任务特化模型，并观察到缩放效应和新兴能力，但未提供具体实验指标或数据集。",
         "limitations": "摘要未报告具体性能数值、对比基线细节、未见任务类型和测试时缩放的具体表现，需阅读全文确认。",
         "why_relevant": "论文直接聚焦生成式语音增强，采用的LLaMA与离散token建模属于生成式语音技术范畴；统一多任务的方案可涵盖语音修复、带宽扩展等子任务，与我的研究方向高度匹配。"
+      }
+    },
+    {
+      "id": "arxiv:2608.07462",
+      "arxiv_id": "2608.07462",
+      "title": "SemBridge: Semantic Token Anchoring for Continuous-Latent Autoregressive Speech Generation",
+      "authors": [
+        "Hanke Xie",
+        "Haopeng Lin",
+        "Jiale Qian",
+        "Dake Guo",
+        "Yuepeng Jiang",
+        "Zhichao Wang",
+        "Wenxiao Cao",
+        "Jingbin Hu",
+        "Guobin Ma",
+        "Wenhao Li",
+        "Huakang Chen",
+        "Chengyou Wang",
+        "Ming Tao",
+        "Zhonghua Fu",
+        "Lei Xie",
+        "Xinsheng Wang"
+      ],
+      "published": "2026-08-07T17:57:45Z",
+      "summary": "Continuous-latent autoregressive speech generation has emerged as a promising alternative to discrete-token modeling by avoiding quantization loss and preserving richer acoustic information. However, continuous acoustic targets do not ex- pose linguistic structure as explicit token-level prediction tar- gets. Consequently, the autoregressive language model (LM) must acquire linguistic structure indirectly through acous- tic prediction, which can compromise the content fidelity of generated speech. We propose SemBridge, a training-only semantic-token anchoring framework for continuous-latent autoregressive speech generation. SemBridge uses discrete se- mantic tokens to directly supervise autoregressive LM states and employs a Semantic-Aligned Acoustic VAE to organize the continuous target space under the same semantic refer- ence. The semantic supervision is used only during train- ing, while inference remains entirely continuous. We evalu- ate SemBridge on zero-shot text-to-speech (TTS) and score- conditioned singing voice synthesis (SVS). Across multi- ple benchmarks, SemBridge improves content accuracy, as measured by word and character error rates (WER/CER), while maintaining competitive speaker similarity and percep- tual quality. Experimental results demonstrate that explicit semantic-token supervision for autoregressive state learning is an effective and general direction for continuous speech generation. Speech samples are available.1 The model code and checkpoints will be available at https://github.com/ASLP- lab/SemBridge",
+      "paper_url": "http://arxiv.org/abs/2608.07462v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.07462v1",
+      "categories": [
+        "eess.AS",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "提出SemBridge框架，通过在训练时用离散语义token锚定自回归语言模型状态，提升连续潜在语音生成的内容保真度，属于生成式语音技术的扎实工作。",
+      "citation_count": null,
+      "date_added": "2026-08-10",
+      "chinese_summary": {
+        "problem": "连续潜在自回归语音生成中，自回归语言模型需间接从声学预测中学习语言结构，导致生成内容的语言内容保真度不足。",
+        "method": "提出SemBridge框架，在训练阶段利用离散语义标记直接监督自回归语言模型的隐状态，并设计语义对齐的声学VAE在统一的语义参照下组织连续目标空间；推理阶段完全连续，不使用语义标记。",
+        "innovation": "首次在连续潜在自回归语音生成中引入离散语义标记作为显式训练监督，弥补语言结构学习不足；提出语义对齐的声学VAE，确保连续声学潜在空间与语义结构一致；实现了仅训练阶段使用语义先验、推理保持连续的高保真生成范式。",
+        "evidence": "在零样本文本到语音（TTS）和分数条件的歌唱声音合成（SVS）任务上评估，多个基准上词错误率和字错误率显著降低，同时说话人相似度和感知质量保持竞争力。",
+        "limitations": "语义标记的具体来源与对齐方式未知；训练中语义监督的权重与时序策略未明确；未提及流式场景或长序列生成中的稳定性。",
+        "why_relevant": "直接匹配研究方向中的语音合成（TTS）和生成式语音自回归建模，其核心关于自回归连续潜在生成与内容保真度，属于生成语音技术的关键进展。"
+      }
+    },
+    {
+      "id": "arxiv:2608.07423",
+      "arxiv_id": "2608.07423",
+      "title": "Cloud-Boosted Low-Compute Multi-Channel Speech Enhancement",
+      "authors": [
+        "Xulin Fan",
+        "Juan Azcarreta",
+        "Ashutosh Pandey",
+        "Jesus Alvarez",
+        "Ke Tan",
+        "Jacob Donley",
+        "Ritwik Giri",
+        "Buye Xu"
+      ],
+      "published": "2026-08-07T17:11:35Z",
+      "summary": "Low-latency, low-compute speech enhancement is essential for wearable devices with real-time communication requirements, but strict computational constraints significantly limit on-device performance. Knowledge Boosting has been proposed as an effective approach to improve edge model performance by leveraging a more capable server-side model, but performance gains for speech enhancement have been limited. We propose a collaborative framework incorporating three techniques: (1) delayed server output as additional input, (2) layerwise feature boosting that transfers intermediate server representations to guide edge inference, and (3) collaborative multichannel Wiener filtering, which fuses weighted covariance matrices estimated from both server and edge models for improved beamforming. Experimental results demonstrate that the proposed collaborative framework significantly outperforms the edge-only baseline with minimal additional computational overhead.",
+      "paper_url": "http://arxiv.org/abs/2608.07423v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.07423v1",
+      "categories": [
+        "cs.SD",
+        "cs.LG"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 8.0,
+      "justification": "论文提出云端增强的多通道语音增强框架，结合特征增强与协作维纳滤波，与语音增强和波束形成方向高度相关，方法扎实新颖，适合实时可穿戴设备。",
+      "citation_count": null,
+      "date_added": "2026-08-10",
+      "chinese_summary": {
+        "problem": "在穿戴设备等低算力、低延迟场景下，如何在严格计算约束下实现高性能多通道语音增强。",
+        "method": "提出云-端协同增强框架：将服务器端模型的延迟输出作为附加输入，通过逐层特征增强传递服务器中间表示来引导边缘推理，并融合双方估计的加权协方差矩阵进行协作多通道维纳滤波。",
+        "innovation": "首次将知识增强机制扩展到多通道语音增强的逐层特征层面；提出协作多通道维纳滤波，利用服务器和边缘模型共同估计的协方差矩阵改善波束成形；在几乎不增加边缘计算开销的前提下显著提升增强性能。",
+        "evidence": "实验显示所提框架相比纯边缘基线有显著性能提升，且额外计算开销极小。",
+        "limitations": "摘要未给出具体评价指标、数据集和对比方法，也未说明服务器端延迟对实时性的影响程度，需要阅读全文确认。",
+        "why_relevant": "直接针对多通道语音增强，涉及噪声抑制和波束成形，与研究方向中的‘多通道语音增强’、‘噪声抑制’、‘去混响’高度匹配，且方法包括前端处理流程，符合‘音频前端’范畴。"
       }
     }
   ]
