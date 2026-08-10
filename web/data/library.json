@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-10T03:19:50.271114+00:00",
+  "updated_at_iso": "2026-08-10T08:59:49.595022+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -6626,6 +6626,111 @@
         "evidence": "实验显示所提框架相比纯边缘基线有显著性能提升，且额外计算开销极小。",
         "limitations": "摘要未给出具体评价指标、数据集和对比方法，也未说明服务器端延迟对实时性的影响程度，需要阅读全文确认。",
         "why_relevant": "直接针对多通道语音增强，涉及噪声抑制和波束成形，与研究方向中的‘多通道语音增强’、‘噪声抑制’、‘去混响’高度匹配，且方法包括前端处理流程，符合‘音频前端’范畴。"
+      }
+    },
+    {
+      "id": "arxiv:2301.10752",
+      "arxiv_id": "2301.10752",
+      "title": "Separate And Diffuse: Using a Pretrained Diffusion Model for Improving Source Separation",
+      "authors": [
+        "Shahar Lutati",
+        "Eliya Nachmani",
+        "Lior Wolf"
+      ],
+      "published": "2023-01-25T00:00:00+00:00",
+      "summary": "The problem of speech separation, also known as the cocktail party problem, refers to the task of isolating a single speech signal from a mixture of speech signals. Previous work on source separation derived an upper bound for the source separation task in the domain of human speech. This bound is derived for deterministic models. Recent advancements in generative models challenge this bound. We show how the upper bound can be generalized to the case of random generative models. Applying a diffusion model Vocoder that was pretrained to model single-speaker voices on the output of a deterministic separation model leads to state-of-the-art separation results. It is shown that this requires one to combine the output of the separation model with that of the diffusion model. In our method, a linear combination is performed, in the frequency domain, using weights that are inferred by a learned model. We show state-of-the-art results on 2, 3, 5, 10, and 20 speakers on multiple benchmarks. In particular, for two speakers, our method is able to surpass what was previously considered the upper performance bound.",
+      "paper_url": "https://arxiv.org/abs/2301.10752",
+      "pdf_url": "http://arxiv.org/pdf/2301.10752",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "论文将预训练扩散声码器用于改进确定性语音分离，通过线性组合在频域融合，在2到20说话人场景达到最优，颠覆传统上界，与语音分离和生成式语音方向高度相关，方法新颖，但引用数尚不高。",
+      "citation_count": 24,
+      "date_added": "2026-08-10",
+      "chinese_summary": {
+        "problem": "在确定性模型上界限制下，进一步提升语音分离性能，突破传统源分离任务在人类语音域中的性能上界。",
+        "method": "先利用确定性分离模型生成初步估计，再通过预训练的单说话人扩散模型声码器增强该输出，最后在频域由学习到的模型推得权重，对两者进行线性组合，获得最终分离信号。",
+        "innovation": "将源分离性能上界的理论分析从确定性模型推广到随机生成模型；提出分离模型与扩散模型输出在频域的加权线性组合策略，权重通过可学习方式确定；结合预训练扩散模型作为后处理模块，首次在2说话人场景下超越此前公认的性能上界。",
+        "evidence": "摘要声称在2、3、5、10、20个说话人的多个基准测试上取得最先进结果，并特别指出在两说话人场景下超越了之前认为的性能上界，但未提供具体数据集、评价指标或数值结果。",
+        "limitations": "实验细节（如数据集、评价指标）未在摘要中给出；扩散模型与分离模型的组合方式可能对预训练模型有强依赖；未提及该方法在混响、噪声等复杂环境下的表现；需确认是否仅适用于已知说话人数目的场景。",
+        "why_relevant": "论文直接针对语音分离任务，解决鸡尾酒会问题，与研究方向中的语音分离、盲源分离、掩蔽方法等关键词高度契合，提出的扩散增强方法可为时间域或时频域分离框架提供新的后处理思路。"
+      }
+    },
+    {
+      "id": "arxiv:2409.16117",
+      "arxiv_id": "2409.16117",
+      "title": "Generative Speech Foundation Model Pretraining for High-Quality Speech Extraction and Restoration",
+      "authors": [
+        "Pin-Jui Ku",
+        "Alexander H. Liu",
+        "Roman Korostik",
+        "Sung-Feng Huang",
+        "Szu-Wei Fu",
+        "Ante Jukic"
+      ],
+      "published": "2024-09-24T00:00:00+00:00",
+      "summary": "This paper proposes a generative pretraining foundation model for high-quality speech restoration tasks. By directly operating on complex-valued short-time Fourier transform coefficients, our model does not rely on any vocoders for time-domain signal reconstruction. As a result, our model simplifies the synthesis process and removes the quality upper-bound introduced by any mel-spectrogram vocoder compared to prior work SpeechFlow. The proposed method is evaluated on multiple speech restoration tasks, including speech denoising, bandwidth extension, codec artifact removal, and target speaker extraction. In all scenarios, finetuning our pretrained model results in superior performance over strong baselines. Notably, in the target speaker extraction task, our model outperforms existing systems, including those leveraging SSL-pretrained encoders like WavLM. The code and the pretrained checkpoints are publicly available in the NVIDIA NeMo framework.",
+      "paper_url": "https://arxiv.org/abs/2409.16117",
+      "pdf_url": "https://arxiv.org/pdf/2409.16117",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "提出在复数STFT域进行生成式预训练的基础模型，无需声码器即实现语音去噪、扩展和目标说话人提取等任务，性能超越WavLM等基线，与语音增强、分离与生成式方向高度相关。",
+      "citation_count": 26,
+      "date_added": "2026-08-10",
+      "chinese_summary": {
+        "problem": "论文要解决高质量语音提取与恢复任务，包括语音去噪、带宽扩展、编解码伪影去除和目标说话人提取，旨在通过生成式预训练基础模型提升合成质量。",
+        "method": "提出一种生成式预训练基础模型，直接在复数短时傅里叶变换系数上操作，无需声码器即可重构时域信号；模型在通用语音数据上预训练后，针对具体任务微调，简化合成流程并消除mel谱声码器带来的质量上限。",
+        "innovation": "与先前方法SpeechFlow相比，本模型直接处理复数STFT系数，彻底摆脱了声码器依赖，从而避免声码器引入的重建质量瓶颈；采用生成式基础模型预训练范式，在多任务上微调均取得最优性能；在目标说话人提取任务中，性能超越基于WavLM等自监督预训练编码器的现有系统。",
+        "evidence": "在多个语音恢复任务上微调后性能超过强基线；目标说话人提取任务中明确优于现有系统（包括使用WavLM的模型）；代码与预训练模型已在NVIDIA NeMo框架公开。",
+        "limitations": "摘要未提及模型规模、计算效率、预训练数据量及域匹配细节；未说明对复杂声学场景（如低信噪比或多说话人重叠）的鲁棒性；对提取任务仅给出相对提升，缺乏绝对指标。",
+        "why_relevant": "论文直接将目标说话人提取作为核心评测任务，并声称性能最优，与研究方向中的target speaker extraction和speaker extraction高度吻合；其基于频谱域生成式建模的思路也为语音分离研究提供了新视角。"
+      }
+    },
+    {
+      "id": "arxiv:2302.07928",
+      "arxiv_id": "2302.07928",
+      "title": "Multi-Channel Target Speaker Extraction with Refinement: The WavLab Submission to the Second Clarity Enhancement Challenge",
+      "authors": [
+        "Samuele Cornell",
+        "Zhongqiu Wang",
+        "Yoshiki Masuyama",
+        "Shinji Watanabe",
+        "Manuel Pariente",
+        "Nobutaka Ono"
+      ],
+      "published": "2023-02-15T00:00:00+00:00",
+      "summary": "This paper describes our submission to the Second Clarity Enhancement Challenge (CEC2), which consists of target speech enhancement for hearing-aid (HA) devices in noisy-reverberant environments with multiple interferers such as music and competing speakers. Our approach builds upon the powerful iterative neural/beamforming enhancement (iNeuBe) framework introduced in our recent work, and this paper extends it for target speaker extraction. We therefore name the proposed approach as iNeuBe-X, where the X stands for extraction. To address the challenges encountered in the CEC2 setting, we introduce four major novelties: (1) we extend the state-of-the-art TF-GridNet model, originally designed for monaural speaker separation, for multi-channel, causal speech enhancement, and large improvements are observed by replacing the TCNDenseNet used in iNeuBe with this new architecture; (2) we leverage a recent dual window size approach with future-frame prediction to ensure that iNueBe-X satisfies the 5 ms constraint on algorithmic latency required by CEC2; (3) we introduce a novel speaker-conditioning branch for TF-GridNet to achieve target speaker extraction; (4) we propose a fine-tuning step, where we compute an additional loss with respect to the target speaker signal compensated with the listener audiogram. Without using external data, on the official development set our best model reaches a hearing-aid speech perception index (HASPI) score of 0.942 and a scale-invariant signal-to-distortion ratio improvement (SI-SDRi) of 18.8 dB. These results are promising given the fact that the CEC2 data is extremely challenging (e.g., on the development set the mixture SI-SDR is -12.3 dB). A demo of our submitted system is available at WAVLab CEC2 demo.",
+      "paper_url": "https://arxiv.org/abs/2302.07928",
+      "pdf_url": "http://arxiv.org/pdf/2302.07928",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "该论文提出iNeuBe-X，将TF-GridNet扩展至多通道因果目标说话人提取，在Clarity Challenge中表现突出，与目标说话人提取方向高度相关，方法新颖扎实，但引用数尚低（21），尚未成为经典基线，给予8分。",
+      "citation_count": 21,
+      "date_added": "2026-08-10",
+      "chinese_summary": {
+        "problem": "针对助听器场景下的多通道目标说话人提取任务，需在强混响、多噪声干扰（音乐、竞争说话人）条件下工作，并严格满足5ms算法延迟要求。",
+        "method": "基于iNeuBe框架扩展的iNeuBe-X方法，核心将单通道TF-GridNet改造为多通道因果语音增强网络，替代原有TCNDenseNet；采用双窗口大小结合未来帧预测技术满足低延迟约束；新增说话人条件分支使TF-GridNet具备目标说话人提取能力，并通过以听者听力图补偿的目标信号为指导的微调步骤优化最终性能。",
+        "innovation": "首次将TF-GridNet从单通道说话人分离扩展至多通道、因果、低延迟的语音增强，并引入说话人条件分支实现目标提取，不同于常规条件方法；创新地采用双窗口与未来帧预测实现5ms算法延迟，满足助听器实时性需求；微调阶段利用听者听力图补偿损失函数，使系统输出适配听损用户的感知特性。",
+        "evidence": "在官方开发集上，最佳模型达到HASPI 0.942、SI-SDRi 18.8 dB，而混合物SI-SDR低至-12.3 dB，性能提升显著；提供在线demo可核验效果。",
+        "limitations": "摘要未详述多通道融合机制及说话人条件的具体形式（如注册语音的使用）；仅在CEC2数据集上验证，通用性未知；微调步骤依赖个性化听力图数据，实际部署需额外采集。",
+        "why_relevant": "论文直接解决目标说话人提取（target speaker extraction），方法涉及时域双路径网络（TF-GridNet）、掩蔽模型、因果实时推理，与研究方向“目标说话人提取”“时域分离网络”“掩蔽模型”及鸡尾酒会问题高度吻合；低延迟多通道提取对实际应用场景有参考价值。"
       }
     }
   ]
