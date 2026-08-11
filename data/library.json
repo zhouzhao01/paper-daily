@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-10T08:59:49.595022+00:00",
+  "updated_at_iso": "2026-08-11T03:12:24.700828+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -6731,6 +6731,207 @@
         "evidence": "在官方开发集上，最佳模型达到HASPI 0.942、SI-SDRi 18.8 dB，而混合物SI-SDR低至-12.3 dB，性能提升显著；提供在线demo可核验效果。",
         "limitations": "摘要未详述多通道融合机制及说话人条件的具体形式（如注册语音的使用）；仅在CEC2数据集上验证，通用性未知；微调步骤依赖个性化听力图数据，实际部署需额外采集。",
         "why_relevant": "论文直接解决目标说话人提取（target speaker extraction），方法涉及时域双路径网络（TF-GridNet）、掩蔽模型、因果实时推理，与研究方向“目标说话人提取”“时域分离网络”“掩蔽模型”及鸡尾酒会问题高度吻合；低延迟多通道提取对实际应用场景有参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2608.08638",
+      "arxiv_id": "2608.08638",
+      "title": "CuteTTS: Efficient and High-Quality Speech Synthesis via Autoregressive Modeling of Continuous Latents",
+      "authors": [
+        "Yuqian Zhang",
+        "Yao Shi",
+        "Kexin Huang",
+        "Botian Jiang",
+        "Zhe Xu",
+        "Yiwei Zhao",
+        "Min Liang",
+        "Shuang Chen",
+        "Xipeng Qiu"
+      ],
+      "published": "2026-08-09T11:10:20Z",
+      "summary": "Zero-shot text-to-speech (TTS) now supports interactive assistants, personalized media, and accessibility tools. All TTS systems require faithful linguistic rendering, consistent speaker identity, and low-latency response. Yet compact streaming systems must preserve sufficient acoustic detail in a predictable low-rate latent sequence, while iterative diffusion sampling and classifier-free guidance multiply inference cost at every autoregressive step. To strike a balance between high-fidelity synthesis and low-latency inference, we present CuteTTS, a compact continuous-autoregressive TTS system. It combines semantically aligned causal VAE latents with patch-level autoregression, explicit speaker conditioning, and a bidirectional flow-matching head. We further introduce guidance-step distillation, which absorbs classifier-free guidance and multiple solver steps into a single interval-conditioned student. Evaluations on LibriSpeech and Seed-TTS-Eval demonstrate competitive intelligibility and speaker similarity in zero-shot voice cloning, while distillation lowers first-audio latency by 23.3% and real-time factor by 40.8% relative to the base model with comparable objective and subjective quality. These results provide a practical path toward continuous-autoregressive TTS that reconciles high-fidelity generation with the latency demands of real-time interaction.",
+      "paper_url": "http://arxiv.org/abs/2608.08638v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.08638v1",
+      "categories": [
+        "cs.SD",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "该论文提出CuteTTS，一种融合连续自回归建模与流匹配的高效零样本文本-语音合成方法，通过引导步蒸馏显著降低延迟，与生成式语音技术方向高度相关，质量扎实，值得关注。",
+      "citation_count": null,
+      "date_added": "2026-08-11",
+      "chinese_summary": {
+        "problem": "零样本文本到语音（TTS）需要在低延迟要求下同时保持高保真合成和说话人身份一致性。现有系统在连续自回归建模中难以平衡细节保留与推理速度，特别是迭代扩散采样和分类器无引导在每个自回归步骤都会增加推理成本。",
+        "method": "提出CuteTTS，一种紧凑的连续自回归TTS系统。它结合语义对齐的因果VAE潜变量表示与补丁级自回归，并引入显式说话人条件控制说话人身份。生成头采用双向流匹配模型，实现高质量合成。为了加速推理，提出引导步骤蒸馏，将多个扩散采样步骤和分类器无引导融合到单一间隔条件学生模型中。",
+        "innovation": "1) 将连续潜变量自回归建模与补丁级序列建模相结合，实现高效的语音合成；2) 在自回归框架中集成流匹配生成头，替代传统的扩散模型，平衡质量与速度；3) 提出引导步骤蒸馏技术，将分类器无引导和多步求解器蒸馏为一个单步学生，显著降低推理延迟。",
+        "evidence": "在LibriSpeech和Seed-TTS-Eval上评估，零样本语音克隆的可懂度和说话人相似度具有竞争力；蒸馏后首次音频延迟降低23.3%，实时因子降低40.8%，且客观和主观质量与基模型相当。",
+        "limitations": "摘要未提供蒸馏后质量是否完全无损的详细对比数据；未提及系统在超低延迟或流式场景下的具体性能极限；未说明说话人条件的具体实现方式（如说话人嵌入或声学特征）。",
+        "why_relevant": "论文直接匹配研究方向中的“语音合成与TTS”以及“流匹配在语音中的应用”，属于生成式语音技术核心范畴。它提出了基于连续自回归和流匹配的高效TTS系统，解决了生成质量与推理速度的权衡问题，对本方向的生成式语音建模和实时应用具有直接参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2608.08286",
+      "arxiv_id": "2608.08286",
+      "title": "ReLMCodec: Designing Predictable Speech Tokens from Pre-Quantization Phoneme Structure",
+      "authors": [
+        "Zixiang Wan",
+        "Xusheng Yang",
+        "Zheng Wang",
+        "Peiji Yang"
+      ],
+      "published": "2026-08-08T18:35:10Z",
+      "summary": "Neural speech codecs face a fundamental tension in the language-model era: tokens that support high-fidelity reconstruction are not necessarily easy for autoregressive models to predict. Our controlled analysis of diverse codec and self-supervised speech representations shows that clearer phoneme structure before discrete code assignment is consistently associated with easier autoregressive token prediction. Yet phoneme structure alone is insufficient for high-fidelity reconstruction, which also requires reconstruction-relevant acoustic detail. Guided by this observation, we introduce ReLMCodec, a low-bitrate single-codebook speech codec built upon a preserve--control--refine principle: it preserves the linguistic organization of frozen self-supervised learning (SSL) features at the quantizer input, controls reconstruction-driven drift through Pre-quantization Anchor-Preserving Adaptation (PAPA), and refines the quantized latent space with a training-only WavLM-Large L24 teacher to reduce phoneme-level token fragmentation. Together, these components allow acoustic detail to support waveform reconstruction while keeping the resulting token sequence predictable for autoregressive models. At 650 and 800 bps, ReLMCodec moves the empirical single-stream predictability--reconstruction frontier in our evaluations, with gains that carry over to downstream text-to-speech (TTS) synthesis in both intelligibility and speaker similarity.",
+      "paper_url": "http://arxiv.org/abs/2608.08286v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.08286v1",
+      "categories": [
+        "eess.AS",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "该文提出 ReLMCodec，一种旨在生成可预测语音标记的低比特率编解码器，通过融合音素结构与声学细节，改善自回归模型预测并应用于 TTS 合成，与生成式语音技术方向高度契合，方法新颖且实验可靠。",
+      "citation_count": null,
+      "date_added": "2026-08-11",
+      "chinese_summary": {
+        "problem": "神经语音编解码器在语言模型时代面临重建质量与标记可预测性之间的权衡：高保真重建的标记序列往往难以被自回归模型准确预测。",
+        "method": "提出 ReLMCodec，基于“保留—控制—精炼”原则：保留冻结 SSL 特征中的语言结构；通过预量化锚点保留适应（PAPA）控制重建驱动的特征漂移；使用训练时才引入的 WavLM-Large L24 教师模型精炼量化潜在空间，减少音素级标记碎片，使标记既包含重建所需声学细节，又具备良好的自回归可预测性。",
+        "innovation": "首次系统揭示量化前音素结构的清晰度与自回归预测难易程度正相关，并指出仅靠音素结构无法保证高保真重建；提出融合语言组织保留、自适应锚点控制和教师模型精炼的编解码框架，在低比特率下同时提升标记的可预测性与重建质量；验证了所提方法在单流可预测性—重建质量前沿上的推进，并显示其在下游 TTS 中提升清晰度和说话人相似度的迁移能力。",
+        "evidence": "摘要提及在 650 bps 和 800 bps 码率下进行评估，ReLMCodec 推进了单流可预测性—重建前沿，并在 TTS 合成中取得清晰度和说话人相似度的增益，但未给出具体数值、数据集和对比基线。",
+        "limitations": "未提供具体实验指标和对比细节，需阅读正文确认性能提升幅度；教师模型仅在训练时使用，可能限制训练效率；仅考虑了单码本和自回归模型场景，对非自回归生成模型的适用性未知。",
+        "why_relevant": "论文聚焦于语音编解码及其生成标记的自回归可预测性，直接应用于文本到语音合成（TTS），匹配研究方向中的 speech synthesis、TTS 和 neural vocoder，但未涉及生成语音增强、扩散模型或流匹配等核心子领域，故为中等相关。"
+      }
+    },
+    {
+      "id": "arxiv:2608.09288",
+      "arxiv_id": "2608.09288",
+      "title": "DAVE: A Decoupled Audio-Visual Enhancement Framework for Real-World Speech Separation",
+      "authors": [
+        "Wei Zhou",
+        "Wanyi Ning",
+        "Yinshang Guo",
+        "Qianxiao Fang",
+        "Haitao Qian",
+        "Yingpeng Li"
+      ],
+      "published": "2026-08-10T08:41:28Z",
+      "summary": "Audio-visual speech enhancement under real-world conditions remains challenging due to unreliable visual inputs and the lack of large-scale training data with realistic acoustic conditions. Existing approaches usually fuse visual features directly into the separation network, making them vulnerable to degraded visual signals. In this paper, we present DAVE, a decoupled audio-visual enhancement framework for real-world speech separation. Firstly, to address the data scarcity issue, we construct DAVE-Corpus, a large-scale training corpus with 219,411 mixtures generated from public meeting corpora through combinatorial acoustic augmentation. Then, we introduce a progressive multi-objective optimization strategy to jointly improve speech separation, intelligibility, speaker identity preservation, and perceptual quality. We further develop a certified selective enhancement chain that applies scene routing, GAN-based denoising, and loudness normalization only within the no-reference partition, guaranteeing non-degradation of reference-based metrics. Experimental results on the Real-World Audio-Visual Speech Enhancement Challenge demonstrate the robustness of DAVE under both real-world mixed scenarios and visual degradation conditions.",
+      "paper_url": "http://arxiv.org/abs/2608.09288v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.09288v1",
+      "categories": [
+        "cs.SD",
+        "cs.AI"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "提出解耦音视频增强框架DAVE，构建大规模真实场景训练集，并通过渐进式多目标优化与选择性增强链提升鲁棒性，高度匹配语音分离与目标说话人提取方向。",
+      "citation_count": null,
+      "date_added": "2026-08-11",
+      "chinese_summary": {
+        "problem": "真实环境下音频视觉语音分离面临不可靠视觉输入和缺乏大规模真实训练数据的挑战，导致现有方法在视觉退化时性能下降。",
+        "method": "提出解耦音频视觉增强框架DAVE。首先构建大规模训练集DAVE-Corpus，通过组合声学增强生成219,411条混合语音；然后采用渐进多目标优化策略联合提升分离质量、可懂度、说话人身份保持和感知质量；最后设计认证选择性增强链，在无参考分区内进行场景路由、GAN去噪和响度归一化，保证参考指标不下降。",
+        "innovation": "解耦音频视觉增强，避免视觉特征直接融入分离网络导致对退化视觉信号敏感；通过大规模数据构造和组合声学增强缓解数据稀缺；采用渐进多目标优化同时提升多项指标；引入认证选择性增强链确保非退化。",
+        "evidence": "在真实世界音频视觉语音增强挑战赛上的实验验证了DAVE在真实混叠场景和视觉退化条件下的鲁棒性。",
+        "limitations": "未报道纯音频条件下的性能，依赖视觉输入可能限制应用场景；大数据的构造细节和视觉退化仿真方法未知；仅声称鲁棒性而无具体数值比较。",
+        "why_relevant": "论文解决语音分离问题，与研究方向关键词“speech separation”匹配，但方法依赖视觉模态，属于音频视觉语音增强，与纯音频分离或目标说话人提取的核心关注点不同，相关性较低，需人工复核。"
+      }
+    },
+    {
+      "id": "arxiv:2608.08787",
+      "arxiv_id": "2608.08787",
+      "title": "Beyond Reconstruction: Full-Context Generative DiT for Music Generation",
+      "authors": [
+        "Yunjia Li",
+        "Menglin Wu",
+        "Junyu Dai",
+        "Xinyue Fan",
+        "Xiangang Li",
+        "Haoxu Wang",
+        "Jianwei Yu",
+        "Huaicheng Zhang",
+        "Han Zhao",
+        "Weiqin Li",
+        "Yufei Shi",
+        "Cheng Wen",
+        "Sitong Zhao",
+        "Qixi Zheng",
+        "Haina Zhu",
+        "Wei Li"
+      ],
+      "published": "2026-08-09T16:05:40Z",
+      "summary": "Hybrid music generators combine the long-range planning of an autoregressive language model with the fidelity of a diffusion- or flow-based acoustic renderer. Yet renderers are trained with clean, target-derived codec tokens but deployed with imperfect language-model predictions, creating codecinterface exposure bias. Rather than treating rendering as a simple reconstruction task,we formulate it as full-context generation from an imperfect discrete plan.We introduce FullDiT, a conditional DiT that fuses eight frame-aligned RVQ streams with independently encoded captions and lyrics and uses non-causal self-attention over the complete acoustic latent sequence. During training, Error-Matched Distractor Conditioning (EMDC) matches per-codebook replacement rates to teacher-forced top-1 error rates and samples near-miss tokens from cosine-KNN neighborhoods without changing the acoustic target. At inference, four-way classifier-free guidance (4-CFG) independently scales codec, lyric, and caption guidance increments. Matched ablations show that EMDC improves ViSQOL by 0.77 under synthetic corruption and is clearly preferred in non-tied comparisons with fixed languagemodel tokens. Further ablations show gains from full-song context and renderer-side text conditioning. The complete system outperforms five commercial systems on 15 of 18 automatic metrics and ranks among the top three on the Artificial Analysis Music with Vocals Leaderboard. The demo page is available at https://selinacloudl.github.io/fulldit-demo/.",
+      "paper_url": "http://arxiv.org/abs/2608.08787v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.08787v1",
+      "categories": [
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "论文提出FullDiT，通过全上下文生成和错误匹配干扰条件提升音乐生成质量，与音乐理解和生成方向高度相关，方法新颖且性能领先，属必读级工作。",
+      "citation_count": null,
+      "date_added": "2026-08-11",
+      "chinese_summary": {
+        "problem": "混合音乐生成器中渲染器在训练时使用干净目标码，但部署时面对语言模型的不完美预测，导致训练-推理失配（编码接口暴露偏差）。",
+        "method": "提出FullDiT，融合8条帧对齐的残差矢量量化（RVQ）流与独立编码的标题和歌词，在完整声学潜在序列上使用非因果自注意力；训练时使用错误匹配干扰条件（EMDC）模拟推理时的码本错误，从余弦KNN邻域采样近错词元；推理时使用四路无分类器引导（4-CFG）独立缩放码本、歌词和标题引导。",
+        "innovation": "将音乐渲染重新定义为从离散计划的全上下文生成，而非简单重建；提出EMDC方法，在训练时匹配码本替换率与教师强制错误率，无需改变声学目标；引入4-CFG实现细粒度可控生成。",
+        "evidence": "合成损坏下EMDC使ViSQOL提升0.77；与固定LM词元的非绑定比较中具有明显偏好；全曲上下文和文本条件带来增益；在18项自动指标中的15项上优于5个商业系统；在Artificial Analysis Music with Vocals Leaderboard排名前三。",
+        "limitations": "未明确方法是否适用于语音生成任务；只展示了音乐生成指标，缺乏人类评估或语音相关实验。",
+        "why_relevant": "涉及扩散模型（DiT）用于音频生成，使用了RVQ和文本条件，可能对语音合成或声码器设计有参考价值，但论文主题为音乐生成，与语音增强/合成/TTS核心场景不同，需人工复核可迁移性。"
+      }
+    },
+    {
+      "id": "arxiv:2407.08551",
+      "arxiv_id": "2407.08551",
+      "title": "Autoregressive Speech Synthesis without Vector Quantization",
+      "authors": [
+        "L. Meng",
+        "Long Zhou",
+        "Shujie Liu",
+        "Sanyuan Chen",
+        "Bing Han",
+        "Shujie Hu",
+        "Yanqing Liu",
+        "Jinyu Li",
+        "Sheng Zhao",
+        "Xixin Wu",
+        "Helen Meng",
+        "Furu Wei"
+      ],
+      "published": "2024-07-11T00:00:00+00:00",
+      "summary": "We present MELLE, a novel continuous-valued token based language modeling approach for text-to-speech synthesis (TTS). MELLE autoregressively generates continuous mel-spectrogram frames directly from text condition, bypassing the need for vector quantization, which is typically designed for audio compression and sacrifices fidelity compared to continuous representations. Specifically, (i) instead of cross-entropy loss, we apply regression loss with a proposed spectrogram flux loss function to model the probability distribution of the continuous-valued tokens; (ii) we have incorporated variational inference into MELLE to facilitate sampling mechanisms, thereby enhancing the output diversity and model robustness. Experiments demonstrate that, compared to the two-stage codec language model VALL-E and its variants, the single-stage MELLE mitigates robustness issues by avoiding the inherent flaws of sampling vector-quantized codes, achieves superior performance across multiple metrics, and, most importantly, offers a more streamlined paradigm. The demos of our work are provided at https://aka.ms/melle.",
+      "paper_url": "https://arxiv.org/abs/2407.08551",
+      "pdf_url": "https://arxiv.org/pdf/2407.08551",
+      "categories": [
+        "Annual Meeting of the Association for Computational Linguistics"
+      ],
+      "venue": "Annual Meeting of the Association for Computational Linguistics",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "该论文提出MELLE，一种连续值token的自回归TTS方法，避免了矢量量化导致的保真度损失，属于生成式语音技术方向，与研究方向高度相关，模型简洁且性能优于VALL-E等基线，具有成为经典工作的潜力。",
+      "citation_count": 109,
+      "date_added": "2026-08-11",
+      "chinese_summary": {
+        "problem": "传统基于向量量化的语言模型在语音合成中会因量化损失音频保真度，并引入鲁棒性问题。本文旨在解决无需向量量化、直接利用连续特征进行自回归语音合成的难题。",
+        "method": "提出MELLE模型，以连续梅尔频谱帧作为token，通过自回归方式从文本直接生成语音。使用回归损失和提出的频谱通量损失函数建模连续值的概率分布，并引入变分推断以增强生成多样性和模型鲁棒性。",
+        "innovation": "摒弃向量量化，直接使用连续值token，从根本上避免量化误差和鲁棒性问题；设计频谱通量损失函数来优化连续输出的概率建模；将变分推断集成到自回归生成中，提升采样质量和多样性，形成单阶段TTS范式。",
+        "evidence": "摘要指出与两级编解码语言模型VALL-E及变体相比，MELLE在多个指标上取得更优性能，并简化了流程，但未给出具体指标和实验设置。",
+        "limitations": "连续值token的自回归生成可能面临计算效率挑战；频谱通量损失和变分推断的实际贡献需通过消融实验验证；未见与扩散模型或流匹配等最新生成方法的比较。",
+        "why_relevant": "研究方向包含语音合成与TTS，该论文直接提出一种新的自回归语音合成方法，消除量化瓶颈，与“generative speech synthesis”和“text-to-speech”关键词高度吻合，且关注生成质量与鲁棒性，属于核心相关。"
       }
     }
   ]
