@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-11T03:12:24.700828+00:00",
+  "updated_at_iso": "2026-08-12T03:30:23.132674+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -6932,6 +6932,187 @@
         "evidence": "摘要指出与两级编解码语言模型VALL-E及变体相比，MELLE在多个指标上取得更优性能，并简化了流程，但未给出具体指标和实验设置。",
         "limitations": "连续值token的自回归生成可能面临计算效率挑战；频谱通量损失和变分推断的实际贡献需通过消融实验验证；未见与扩散模型或流匹配等最新生成方法的比较。",
         "why_relevant": "研究方向包含语音合成与TTS，该论文直接提出一种新的自回归语音合成方法，消除量化瓶颈，与“generative speech synthesis”和“text-to-speech”关键词高度吻合，且关注生成质量与鲁棒性，属于核心相关。"
+      }
+    },
+    {
+      "id": "arxiv:2608.09451",
+      "arxiv_id": "2608.09451",
+      "title": "Dynamic Clustering for Cross-Segment Permutation Alignment in Long Speech Separation",
+      "authors": [
+        "Yuzhu Wang",
+        "Archontis Politis",
+        "Konstantinos Drossos",
+        "Tuomas Virtanen"
+      ],
+      "published": "2026-08-10T11:23:35Z",
+      "summary": "Long speech separation typically employs a segment-separation-stitch paradigm where recordings are divided into short segments, processed independently, and stitched together. Its challenge lies in predicting cross-segment permutations. This paper proposes a training-free dynamic clustering approach for cross-segment permutation alignment using speaker embedding reference pools. The method predicts the permutation using the cosine similarity between current segment embeddings and the reference pools. The approach updates reference pools by retaining the most representative speaker embeddings based on their overall cosine similarity with existing references. As a plug-and-play post-processing module compatible with existing separation models, the proposed method demonstrates superior performance compared to existing methods on dense and sparse long speech scenarios, particularly in challenging sparse scenarios with extended utterance gaps, and further shows robustness to speaker count estimation errors in unknown speaker count scenarios.",
+      "paper_url": "http://arxiv.org/abs/2608.09451v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.09451v1",
+      "categories": [
+        "eess.AS",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 9.0,
+      "justification": "针对长语音分离的排列对齐难题，提出训练无关的动态聚类方法，即插即用，在稀疏场景效果显著，与语音分离方向高度相关且新颖。",
+      "citation_count": null,
+      "date_added": "2026-08-12",
+      "chinese_summary": {
+        "problem": "长语音分离通常将录音切分为短段独立处理后再拼接，其主要挑战在于预测和修正跨段输出的排列（排列对齐问题），导致连续语音在拼接时身份不一致。",
+        "method": "提出一种无需训练的动态聚类方案，利用说话人嵌入参考池进行跨段排列对齐。通过计算当前段嵌入与参考池的余弦相似度来预测排列，并不断更新参考池，保留与现有参考整体相似度最高的代表性说话人嵌入。该方法可作为一个即插即用的后处理模块，兼容现有语音分离模型。",
+        "innovation": "提出一种训练无关的动态聚类方法来解决跨段排列对齐问题；通过构建和更新说话人嵌入参考池，避免了额外训练开销并实现了高效排列预测；在密集和稀疏长语音场景下均取得优于现有方法的性能，特别是在长间隔的稀疏场景和未知说话人数目时表现出鲁棒性。",
+        "evidence": "摘要中明确提及在密集和稀疏长语音场景下相比现有方法均展现出优越性能，并特别指出在挑战性稀疏场景（含有长时间沉默）和未知说话人数目时具有鲁棒性。",
+        "limitations": "摘要未提供具体数据集、对比方法及评价指标；方法的有效性可能依赖于底层分离模型输出的嵌入质量；动态聚类更新策略的超参数（如保留机制）可能需要调试；需阅读全文确认其在不同声学环境下的泛化能力。",
+        "why_relevant": "论文直接针对语音分离任务中的关键排列问题，与研究方向“语音分离”高度契合；方法用于提升长语音分离的连续性和正确性，属于盲源分离后处理，与关键词“speech separation”“permutation invariant training”等紧密关联。"
+      }
+    },
+    {
+      "id": "arxiv:2608.10106",
+      "arxiv_id": "2608.10106",
+      "title": "BiTSE: Binaural Target Speaker Extraction in Noisy Multi-Talker Environments for AR Glass Arrays",
+      "authors": [
+        "Selani A. Indrapala",
+        "Wageesha N. Manamperi"
+      ],
+      "published": "2026-08-10T18:14:00Z",
+      "summary": "Isolating a desired speech signal in noisy multi-talker conversational scenarios is a key requirement for augmented reality (AR) wearable microphone array systems. In this work, a binaural target speaker extraction (TSE) framework, termed BiTSE, is proposed. It leverages both spatial and temporal cues, specifically the direction-of-arrival (DoA) of the target speaker and corresponding voice activity information, to guide the extraction process. Built upon a binaural signal denoising architecture, our model integrates three key enhancements: (i) a DoA-aware attention mechanism using cyclic positional embeddings, (ii) a timestamp-based masking strategy that utilizes speaker activity to suppress non-target segments, and (iii) a novel two-stage loss optimization strategy that first trains the model for robust denoising and then fine-tunes it to improve perceptual quality. Evaluations on the SPeech Enhancement for Augmented Reality (SPEAR) challenge dataset demonstrate that the proposed BiTSE consistently improves upon conventional approaches, leading to enhanced signal fidelity and perceptual quality.",
+      "paper_url": "http://arxiv.org/abs/2608.10106v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.10106v1",
+      "categories": [
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "高度相关于目标说话人提取，提出融合DoA和VAD的双耳TSE框架，引入循环位置嵌入注意力与两阶段优化，在AR场景有实际贡献，但方法组合创新为主。",
+      "citation_count": null,
+      "date_added": "2026-08-12",
+      "chinese_summary": {
+        "problem": "在嘈杂多说话人环境中，从可穿戴AR麦克风阵列中孤立出目标说话人的语音信号。",
+        "method": "提出BiTSE框架，基于双耳信号降噪架构，集成三项增强：使用循环位置嵌入的方向感知注意力机制；利用说话人活动的时间戳掩蔽策略；以及两阶段损失优化，先训练鲁棒降噪再微调改善感知质量。",
+        "innovation": "1) 引入方向感知注意力机制，使用循环位置嵌入编码目标说话人的DOA，增强空间线索利用。2) 提出基于时间戳的掩蔽策略，利用说话人活动信息抑制非目标片段。3) 设计两阶段训练策略，先进行降噪预训练再进行感知质量微调，提升整体性能。",
+        "evidence": "在SPEAR挑战数据集上评估，与常规方法相比，提出的BiTSE在信号保真度和感知质量上持续改进。",
+        "limitations": "未提及对动态声学场景或移动目标的适应性，可能仅限于静态或已知DOA；两阶段训练可能需要更多调参；未说明计算复杂度是否适用于实时AR设备。",
+        "why_relevant": "论文直接研究目标说话人提取，属于我的研究方向核心主题；使用双耳阵列的空间线索，类似多通道语音分离；方法包括掩蔽和端到端训练，与我的兴趣一致。"
+      }
+    },
+    {
+      "id": "arxiv:2608.08362",
+      "arxiv_id": "2608.08362",
+      "title": "CtrlSpeech: Coarse-to-Fine Control for Expressive Speech Synthesis",
+      "authors": [
+        "Zhisheng Zheng",
+        "Xiaohang Sun",
+        "Zhu Liu",
+        "Caren Chen",
+        "Rohith Kumar",
+        "Manoj Aggarwal",
+        "Gerard Medioni",
+        "David Harwath"
+      ],
+      "published": "2026-08-08T23:17:09Z",
+      "summary": "Recent Text-To-Speech (TTS) systems have achieved strong naturalness and zero-shot voice cloning performance, but fine-grained control of expressive speech at the word or phoneme level remains challenging. We propose CtrlSpeech, a controllable, expressive TTS framework with coarse-to-fine control. Built on the DiTAR architecture, CtrlSpeech combines global speaker conditioning with phone-aligned pitch, loudness, and duration signals, enabling localized prosodic control while preserving the target speaker's timbre. This design allows users to adjust expressive attributes at a fine temporal granularity, making speech refinement more flexible and controllable. Experimental results show that CtrlSpeech achieves competitive zero-shot TTS performance and improves controllability over expressive attributes, demonstrating its effectiveness for flexible and practical expressive speech synthesis.",
+      "paper_url": "http://arxiv.org/abs/2608.08362v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.08362v1",
+      "categories": [
+        "eess.AS",
+        "cs.HC",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "论文提出粗到细的生成式语音合成控制框架，在零样本场景下实现细粒度韵律调节，与生成语音技术方向高度相关，工作扎实、设计合理。",
+      "citation_count": null,
+      "date_added": "2026-08-12",
+      "chinese_summary": {
+        "problem": "现有零样本 TTS 系统缺乏对词/音素级韵律特征（如音高、响度、时长）的细粒度灵活控制，难以实现精准的局部表现力编辑。",
+        "method": "基于 DiTAR 架构，在全局说话人表征的基础上注入音素对齐的音高、响度和时长信号，通过粗细粒度分层控制实现可控表达语音合成。用户可在不损失目标说话人音色的前提下，对局部韵律属性进行精细调整。",
+        "innovation": "提出粗细粒度结合的控制框架，允许在保持全局音色的同时，对音素级韵律参数实施显式调节；将 DiTAR 架构与多维韵律提示结合，增强了语音合成中表现力的灵活性和可操控性。",
+        "evidence": "摘要仅给出结论性描述：“实验结果表明零样本 TTS 性能有竞争力且提升了表现力属性的可控性”，未提供具体指标或对比基线，属于自述性证据，强度不足。",
+        "limitations": "摘要未给出 DiTAR 架构细节，无法判断其是否依赖扩散或流匹配等生成模型；可控性的主客观评测指标、鲁棒性以及对复杂韵律组合的控制能力等需阅读全文。",
+        "why_relevant": "研究方向覆盖语音合成与 TTS，该工作聚焦于零样本可控 TTS，直接匹配“text-to-speech”和“speech synthesis”关键词。但研究方法（DiTAR）摘要中未表明涉及扩散模型或流匹配，与当前侧重生成式方法（扩散/流匹配）的子领域匹配度中等。需人工确认其生成机制。"
+      }
+    },
+    {
+      "id": "arxiv:2608.08911",
+      "arxiv_id": "2608.08911",
+      "title": "Physics-Informed Learning for Robust Acoustic Localization with Calibrated Uncertainty",
+      "authors": [
+        "Jennifer N. Kampe",
+        "Changwoo J. Lee",
+        "Xin Shen",
+        "Ari Lehtiö",
+        "Sandro von Brandenburg",
+        "Ossi Nokelainen",
+        "David B. Dunson",
+        "Otso Ovaskainen"
+      ],
+      "published": "2026-08-09T20:55:17Z",
+      "summary": "Recent advances in Passive Acoustic Monitoring (PAM) offer an opportunity to obtain ecological spatial point-process data at unprecedented scale. However, realizing this opportunity necessitates the development of accurate and scalable localization methods. In real-world outdoor soundscapes, however, the assumptions underlying classical localization methods such as hyperbolic and score-based localization are routinely violated by multipath dominance, near-field effects, and complex propagation. Under these conditions, classical localization methods become brittle, with extreme errors possible even in small detection arrays. Rather than statistically replacing the underlying physics, we propose a method to refine it and increase robustness outside of ideal operating conditions: a learned model operating on physics-informed acoustic features corrects a fast hyperbolic solver where it produces implausible solutions, substantially reducing catastrophic worst-case errors while matching its median accuracy on field data. We further provide calibrated, geometry-aware uncertainty estimates suitable for propagation into downstream spatial models. Evaluating on distributed microphone arrays in real and simulated outdoor environments, we demonstrate that the proposed method yields robust, uncertainty-aware localization, providing a step toward scalable automated wildlife monitoring in complex acoustic environments.",
+      "paper_url": "http://arxiv.org/abs/2608.08911v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.08911v1",
+      "categories": [
+        "stat.ML",
+        "cs.LG",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "论文与麦克风阵列声源定位高度相关，提出物理信息学习提升鲁棒性和不确定性校准，方法新颖且扎实，但应用场景为生态声学监测，非直接针对语音处理，仍属相关研究。",
+      "citation_count": null,
+      "date_added": "2026-08-12",
+      "chinese_summary": {
+        "problem": "在复杂户外声学环境中，多径、近场效应等导致经典声源定位方法失效，产生严重误差，需要一种鲁棒且能提供可靠不确定性估计的定位方法。",
+        "method": "将物理引导的学习模型与快速双曲线求解器结合：提取物理信息声学特征，训练模型识别并修正双曲线求解器产生的不合理定位，降低最差情形误差；同时输出几何感知的校准不确定性估计。",
+        "innovation": "与传统定位方法直接运用物理模型或纯数据驱动不同，本工作保留物理求解器并利用学习模型对其输出进行鲁棒修正，而非整体替代；额外提供显式校准的不确定性度量，可向下游空间模型传播；在户外真实与模拟分布式阵列上验证了鲁棒提升与不确定性感知能力。",
+        "evidence": "在真实和模拟户外环境的分布式麦克风阵列上进行了实验，结果显示方法可减少灾难性最差误差并匹配中位精度，同时提供了几何感知的不确定性估计。",
+        "limitations": "未提及方法对阵列构型变化、不同噪声与混响条件的泛化能力，也未讨论计算实时性及在更复杂场景下的定位精度。",
+        "why_relevant": "论文面向声源定位，非语音生成、增强或合成；虽同属音频信号处理，但无生成式方法（如扩散模型、流匹配）或神经声码器相关内容，与研究方向匹配度低。"
+      }
+    },
+    {
+      "id": "arxiv:2608.09425",
+      "arxiv_id": "2608.09425",
+      "title": "Neural Array-Generic Direction-of-Arrival Estimation Exploiting Array Transfer Functions",
+      "authors": [
+        "Mikko Heikkinen",
+        "Archontis Politis",
+        "Konstantinos Drossos",
+        "Tuomas Virtanen"
+      ],
+      "published": "2026-08-10T10:53:23Z",
+      "summary": "Direction-of-arrival (DoA) estimation is a key component of multichannel audio processing, yet many deep learning approaches remain tied to the microphone arrays used during training and generalize poorly to unseen devices. This paper proposes an array-generic neural DoA estimation framework using measured or simulated complex directional array transfer functions (ATFs) matched to real-world multi-microphone devices. The method processes multichannel spectrograms and ATF metadata with separate convolutional encoders, fuses the resulting representations through cross-attention, and predicts source directions using a multi-source Cartesian vector output formulation. Experiments on simulated 2D and 3D localization tasks under reverberation and diffuse babble noise show that the proposed approach generalizes to previously unseen arrays, including mobile-phone-like configurations, without major performance degradation, while remaining competitive with conventional and learning-based baselines.",
+      "paper_url": "http://arxiv.org/abs/2608.09425v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.09425v1",
+      "categories": [
+        "eess.AS"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 8.0,
+      "justification": "提出利用阵列传递函数的阵列通用神经DoA估计方法，在未见阵列上有效泛化，与麦克风阵列与波束成形方向高度相关，工作质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-08-12",
+      "chinese_summary": {
+        "problem": "现有深度学习方法依赖训练时使用的特定麦克风阵列，难以泛化到未见过的设备，导致在实际多设备场景下DOA估计性能下降。",
+        "method": "提出一种阵列通用的神经DOA估计框架：利用实测或仿真的复数方向阵列传递函数（ATF）作为元数据，将多通道频谱图和ATF元数据分别通过独立的卷积编码器提取特征，再通过交叉注意力融合模态信息，最后采用多源笛卡尔向量输出方式预测声源方向。",
+        "innovation": "首次利用方向性ATF实现阵列无关的神经DOA估计，使模型能泛化到训练时未见过的麦克风阵列（如手机阵列）；采用双编码器与交叉注意力架构有效融合音频与空间元数据；以多源笛卡尔向量输出形式直接估计方向，简化了多目标定位。",
+        "evidence": "在模拟混响和扩散噪声的2D与3D定位任务上进行了实验，结果显示方法能够泛化到未见过的手机式阵列，且性能与传统及学习基线相比无明显下降，证明了阵列通用性。",
+        "limitations": "仅在模拟环境下验证，未涉及真实录音；需要提供目标阵列的ATF先验知识；对阵列阵元数剧变或严重不匹配场景的泛化性待验证；多源分离能力未详细说明。",
+        "why_relevant": "直接匹配研究方向中的声源定位与到达方向估计，利用麦克风阵列的多通道信号与空间特征，方法可为后续波束成形等任务提供阵列通用DOA信息，高度相关。"
       }
     }
   ]
