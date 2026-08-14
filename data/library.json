@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-13T03:33:56.194426+00:00",
+  "updated_at_iso": "2026-08-14T03:30:58.814320+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -7319,6 +7319,183 @@
         "evidence": "在Voicebank-DEMAND上，8层RT-SEMamba达到3.32 PESQ，满足25ms算法延迟约束；蒸馏的1层学生模型将朴素1层基线从3.06提升至3.18 PESQ，同时保持相同稳态RTF，推理速度比教师模型快2.75倍。",
         "limitations": "仅在Voicebank-DEMAND一个数据集上评估，泛化性未知；未与更广泛的实时语音增强方法全面对比；1层学生模型性能仍显著低于教师，显示容量有限；知识蒸馏的具体实现和中间表示蒸馏的细节需查阅全文；未提供实际硬件上的实时性指标。",
         "why_relevant": "论文属于语音增强方向，与关键词中的generative speech enhancement部分相关，但核心方法采用判别式Mamba，而非生成式扩散模型或流匹配，因此不直接匹配生成式语音增强的研究重点。若关注高效实时语音增强或Mamba在语音处理中的应用，可人工复核。"
+      }
+    },
+    {
+      "id": "arxiv:2608.11590",
+      "arxiv_id": "2608.11590",
+      "title": "CookVoice: Unified Framework for Style Controllable Multi-Modal Human Voice Generation",
+      "authors": [
+        "Haowei Lou",
+        "Hye-Young Paik",
+        "Dai Jia",
+        "Kai Li",
+        "Lina Yao"
+      ],
+      "published": "2026-08-12T02:58:45Z",
+      "summary": "Human voice generation has made rapid progress in speech generation, singing voice generation, voice cloning, and voice editing. However, most existing systems are designed for specific tasks and often rely on task-dependent architectures, control signals, or autoregressive decoding, limiting fine-grained controllability and inference efficiency. In this paper, we propose CookVoice, a unified framework for multimodal, multi-style, and multi-task human voice generation. CookVoice decomposes the human voice into three key factors: content, prosody, and style, enabling both speech and singing voice generation within a unified model. To achieve precise and flexible controllability, we design a flexible alignment strategy that maps text, style, and prosody control signals onto the frame-level of spectrogram. This design allows CookVoice to support a wide range of tasks, including text-to-speech, text-to-singing voice, style-controllable generation, voice mimicry, voice conversion, and voice editing. Experimental results show that CookVoice achieves generation quality comparable to existing Text-to-Speech and text-to-singing voice baselines, while providing stronger style and prosody controllability. Moreover, CookVoice achieves comparable performance to large-scale baselines with only 43.51 million parameters and efficient inference using as few as 4 ODE steps, making it a practical solution for real-world human voice generation applications. Demo page is available at https://haoweilou.github.io/CookVoice/.",
+      "paper_url": "http://arxiv.org/abs/2608.11590v2",
+      "pdf_url": "https://arxiv.org/pdf/2608.11590v2",
+      "categories": [
+        "cs.SD",
+        "cs.LG"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "CookVoice提出统一多模态人声生成框架，解耦内容、韵律与风格，支持TTS、歌声合成、语音转换与编辑，并使用少步ODE推理，与生成语音技术方向高度相关且质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-08-14",
+      "chinese_summary": {
+        "problem": "现有语音生成系统通常针对特定任务设计，依赖任务特定架构、控制信号或自回归解码，限制了细粒度可控性和推理效率。论文旨在构建统一框架，实现多模态、多风格、多任务的人声生成，并提升风格和韵律的可控性及推理效率。",
+        "method": "CookVoice将人声分解为内容、韵律和风格三个因素，使用统一模型同时支持语音和歌声生成。通过灵活对齐策略将文本、风格和韵律控制信号映射到频谱图帧级，从而支持文本到语音、文本到歌声、风格可控生成、语音模仿、语音转换和语音编辑等多种任务。模型仅43.51M参数，推理采用ODE求解器，仅需4步。",
+        "innovation": "提出统一框架取代任务特定模型，实现多任务人声生成；设计帧级灵活对齐策略，提供细粒度的风格和韵律控制；以轻量参数和极简ODE步数达到与大规模基线相当的性能，兼顾效率与可控性。",
+        "evidence": "摘要指出实验结果显示生成质量与现有TTS和text-to-singing基线相当，且具有更强的风格和韵律可控性；与大规模基线相比，仅使用43.51M参数和4个ODE步骤即可获得可比性能；并提供了Demo页面供验证。",
+        "limitations": "摘要未给出具体客观评测指标或主观听感测试细节；未单独报告语音转换、语音编辑等任务的效果；未明确所使用的生成模型类型（是否基于扩散或流匹配仅从ODE步骤推测）；实际风格可控性和生成自然度需通过Demo或全文验证。",
+        "why_relevant": "匹配用户研究方向中的语音合成、文本到语音、生成模型音频等关键词（论文涉及speech generation、text-to-speech，并提到ODE推理步骤，暗示可能采用扩散或流匹配类生成模型）。该工作展示了统一生成框架在多任务语音生成中的应用，对生成式语音技术有参考价值。但未涉及生成式语音增强或语音恢复，且摘要未明确扩散/流匹配，建议人工复核是否关注多任务语音生成框架。"
+      }
+    },
+    {
+      "id": "arxiv:2608.11650",
+      "arxiv_id": "2608.11650",
+      "title": "Confucius4-TTS: Transcript-Free Cross-Lingual Zero-Shot TTS with a Learnable Speaker Encoder",
+      "authors": [
+        "Huaxuan Wang",
+        "Huimin Wang",
+        "Ruiyu Zhang",
+        "Yingjie Li",
+        "Yitao Duan"
+      ],
+      "published": "2026-08-12T04:48:29Z",
+      "summary": "Recent advances in zero-shot text-to-speech (TTS) have substantially improved speech quality and voice cloning fidelity. However, many zero-shot TTS systems still depend on audio prompt transcripts at inference time. This dependency limits cross-lingual voice cloning, since in-the-wild reference audio is often untranscribed. In this technical report, we present Confucius4-TTS, a multilingual zero-shot TTS system that supports 14 languages and performs both intra-lingual and cross-lingual reference cloning without requiring transcripts of audio prompts. Confucius4-TTS follows a two-stage architecture, consisting of text-to-semantic (T2S) and semantic-to-acoustic (S2A) modules. The LLM-based T2S module uses a learnable speaker encoder to extract timbre features from self-supervised speech representations, and the conditional flow-matching S2A module converts the predicted semantic tokens into mel-spectrograms. The same model also supports continuation cloning when a reference transcript is available. Confucius4-TTS is trained on large-scale multilingual speech data. It achieves high intelligibility and speaker similarity on public benchmarks. On the CV3-Eval cross-lingual benchmark, Confucius4-TTS obtains an average WER of 3.73% across six directions. On our internal cross-lingual set, it achieves the best average overall rank in human evaluation among recent open-source and commercial systems. We release code, model checkpoints, and demos at https://github.com/netease-youdao/Confucius4-TTS.",
+      "paper_url": "http://arxiv.org/abs/2608.11650v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.11650v1",
+      "categories": [
+        "cs.SD",
+        "cs.CL"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "论文提出无需音频提示转写的跨语言零样本TTS系统，使用可学习说话人编码器和条件流匹配，属于生成式语音合成方向，相关度高且工作质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-08-14",
+      "chinese_summary": {
+        "problem": "现有零样本TTS在推理时依赖参考音频的转录文本，限制了跨语言语音克隆，因为野外参考音频往往没有转录。本文解决无需参考音频转录的多语言零样本TTS，支持14种语言及跨语言音色克隆。",
+        "method": "采用两阶段架构：文本到语义（T2S）和语义到声学（S2A）。T2S模块基于LLM，使用可学习说话人编码器从自监督语音表示中提取音色特征；S2A模块使用条件流匹配将预测的语义token转换为梅尔频谱。同一模型在有参考转录时也支持延续克隆。",
+        "innovation": "提出无需参考音频转录的跨语言零样本TTS，通过可学习说话人编码器从自监督表征提取音色，消除了推理时对转录的依赖；结合LLM-based T2S与条件流匹配S2A的两阶段流程，实现多语言和跨语言克隆，并兼顾延续克隆能力。",
+        "evidence": "在CV3-Eval跨语言基准上六个方向平均WER为3.73%；在内部跨语言测试集的人工评测中平均总体排名优于近期开源和商业系统；已发布代码、模型权重和演示。",
+        "limitations": "摘要未提供说话人相似度的具体数值或与各基线的详细对比；人工评测仅在内部集合上进行，需阅读全文确认泛化性；缺少模型规模、训练数据量、计算成本、推理速度等细节；流匹配模块的具体配置也未说明。",
+        "why_relevant": "论文直接属于生成式语音技术中的TTS方向，使用了条件流匹配生成声学特征，与用户研究方向中“speech synthesis, text-to-speech, flow matching speech, generative model audio”高度匹配；跨语言克隆和说话人编码器也涉及语音生成中的音色建模。"
+      }
+    },
+    {
+      "id": "arxiv:2608.12715",
+      "arxiv_id": "2608.12715",
+      "title": "HybridSB-MoE: Dual-Domain Schrödinger Bridges with Scene-Adaptive Expert Routing for Speech Enhancement",
+      "authors": [
+        "Zhengyi Lu",
+        "Aswini Sivakumar",
+        "Jie Hu",
+        "Yao Qiang"
+      ],
+      "published": "2026-08-13T02:00:52Z",
+      "summary": "Generative speech enhancement faces three gaps: spectral models capture harmonic structure but often disrupt phase, waveform models preserve phase but miss harmonics, and Schrödinger Bridges (SB) shorten transport from noise to clean speech but leave inference cost only loosely tied to training. We propose HybridSB-MoE, a dual-domain framework that fills these gaps through three contributions unified by a single asymmetric design principle. (i) Asymmetric uncertainty fusion: The spectral path captures epistemic uncertainty via expert disagreement, while the waveform bridge models aleatoric variance through stochastic dynamics. We fuse them asymmetrically, allowing the mixing weight to adapt to distinct error regimes rather than average predictions. (ii) Heterogeneous MoE with top-k=2 routing across five distinct architectural archetypes, where architectural diversity makes the epistemic signal indicate which inductive bias fails rather than small perturbations among similar experts. (iii) Discretization bound (Theorem 1): path-consistency and trajectory regularizers together bound the K-step bridge sampling error in 2-Wasserstein distance at rate K-alpha, making small-K inference an objective-level guarantee rather than an empirical claim. On VoiceBank+DEMAND, HybridSB-MoE outperforms diffusion- and SB-based baselines at their step budgets while remaining competitive with consistency-distilled few-step methods.",
+      "paper_url": "http://arxiv.org/abs/2608.12715v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.12715v1",
+      "categories": [
+        "cs.SD",
+        "cs.AI"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "该论文提出双域 Schrödinger Bridge 与场景自适应专家路由的生成式语音增强框架，包含理论离散化界，直接匹配生成式语音增强方向，工作新颖且实验扎实，但尚需更多验证方可视为必读。",
+      "citation_count": null,
+      "date_added": "2026-08-14",
+      "chinese_summary": {
+        "problem": "论文针对生成式语音增强中频谱模型破坏相位、波形模型丢失谐波，以及Schrödinger Bridge训练与推理步数成本联系松散的问题，提出统一解决方案。",
+        "method": "提出双域框架HybridSB-MoE。频谱路径通过专家分歧捕获认知不确定性，波形桥通过随机动态建模偶然方差，并以非对称方式融合以适应不同误差模式；采用五个不同架构原型的异构混合专家（MoE）并进行top-k=2路由，使专家间架构多样性提供更有意义的认知信号；引入路径一致性和轨迹正则化器，从理论上约束K步桥采样误差。",
+        "innovation": "创新包括：非对称不确定性融合，频谱与波形路径根据误差类型自适应混合而非简单平均；异构MoE中五个不同架构专家带来真正的归纳偏差差异，而非同类专家微小扰动；定理1的离散化边界将小步数推理误差保证归结为目标级正则化，而非仅经验结果。",
+        "evidence": "在VoiceBank+DEMAND数据集上，HybridSB-MoE在对应步数预算下优于扩散和SB基线，并与一致性蒸馏少步方法竞争；定理1提供了2-Wasserstein距离下K步采样误差以K^{-alpha}速率收敛的界，但摘要未给出具体alpha数值或实现细节。",
+        "limitations": "摘要未报告具体数值指标（如PESQ、STOI）或统计显著性；仅在一个数据集上验证，泛化性待考；MoE多专家结构可能增加推理计算与内存开销；非对称融合的权重自适应机制细节缺失，需阅读全文确认。",
+        "why_relevant": "该论文直接针对生成式语音增强，提出基于Schrödinger Bridge的生成模型，属于扩散模型/流匹配在语音增强中的应用；其双域（频谱+波形）设计与研究方向中的生成式语音增强、语音恢复、生成式音频建模高度契合；同时涉及生成模型的理论采样效率，与研究关注点一致。"
+      }
+    },
+    {
+      "id": "arxiv:2608.11627",
+      "arxiv_id": "2608.11627",
+      "title": "Deep Learning Based Relative Transfer Matrix Estimation for Multiple Sources and Multiple Microphones",
+      "authors": [
+        "Oshan A. B. Yalegama",
+        "Wageesha N. Manamperi"
+      ],
+      "published": "2026-08-12T04:18:45Z",
+      "summary": "The Relative Transfer Matrix (ReTM), recently introduced as a generalization of the relative transfer function for multiple receivers and sources, shows promising performance when applied to speech enhancement in noisy environments. Estimating the ReTM of sound sources by exploiting the covariance matrices of multichannel recordings is highly beneficial for practical applications and, to date, remains the only proposed approach. This paper investigates deep learning-based ReTM estimation. We propose three novel supervised learning frameworks using time and short-time frequency transform domain convolutional networks, and a Long Short-Term Memory-based recurrent neural network. Experimental results demonstrate that the proposed models achieve more accurate estimation of the ReTM using five objective metrics compared to the covariance-based method. We also show the effectiveness of the proposed frameworks for speech enhancement, achieving performance on par with the baseline method.",
+      "paper_url": "http://arxiv.org/abs/2608.11627v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.11627v1",
+      "categories": [
+        "eess.AS",
+        "cs.AI",
+        "eess.SP"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "microphone_array_beamforming",
+      "topic_name": "Microphone Array and Beamforming",
+      "score": 7.0,
+      "justification": "论文提出深度学习估计多源多麦克风相对传递矩阵，与麦克风阵列和语音增强方向高度相关，框架新颖且实验扎实，但增强性能未显著超越基线。",
+      "citation_count": null,
+      "date_added": "2026-08-14",
+      "chinese_summary": {
+        "problem": "针对多源多麦克风场景下相对传递矩阵（ReTM）估计问题，现有方法仅基于协方差矩阵、精度有限；本文探索利用深度学习直接估计 ReTM，以提升估计准确性并服务于噪声环境下的语音增强。",
+        "method": "提出三种监督学习框架：时域卷积网络、短时频域卷积网络和基于 LSTM 的循环神经网络。这些网络从多通道录音中学习特征并直接估计 ReTM，取代传统基于协方差矩阵的估计流程。训练目标为准确的 ReTM，具体输入输出细节未在摘要中展开。",
+        "innovation": "首次将深度学习引入 ReTM 估计，突破了此前仅有协方差方法的局限；提出三种新颖架构（时域 CNN、频域 CNN、LSTM RNN），分别从时域和频域建模空间传递特性；实验表明在五个客观指标上估计精度优于协方差方法，且用于语音增强时性能与基线相当。",
+        "evidence": "摘要报告：所提模型在五个客观指标上比基于协方差的方法估计更准确；在语音增强任务中，性能达到与基线方法相当的水平。未给出具体数值、数据集或对比细节。",
+        "limitations": "摘要未说明数据集规模、噪声/混响条件、模型复杂度、实时性、与深度学习基线的对比；语音增强性能仅与基线相当而非超越；未明确 ReTM 估计是否直接用于波束形成或其他空间滤波，需阅读全文确认。",
+        "why_relevant": "论文涉及多麦克风阵列下的空间传递矩阵估计，属于阵列信号处理和空间特征提取，与研究方向中的 microphone array、multichannel speech enhancement、spatial filtering、spatial features 直接相关；所提深度学习方法可视为神经空间特征估计，可能作为波束形成的上游模块。但摘要未直接涉及 beamforming 或 DOA 估计，建议人工复核全文以确认其与波束形成的耦合方式。"
+      }
+    },
+    {
+      "id": "arxiv:2608.11576",
+      "arxiv_id": "2608.11576",
+      "title": "Dialogue-Aware Video-to-Music Generation Using Public Domain Film Collections",
+      "authors": [
+        "Haven Kim",
+        "Zachary Novack",
+        "Julian McAuley",
+        "Hao-Wen Dong"
+      ],
+      "published": "2026-08-12T02:32:32Z",
+      "summary": "Video-to-music generation has drawn growing interest for its role in conveying the emotion of visual media, including film. Progress in the field, however, is hampered by a reproducibility gap: models are often trained on crawled corpora referenced through YouTube URLs that may be deleted, with the underlying data often difficult and time-consuming to retrieve. To address this, we introduce the Open Screen Soundtrack Library version 2 (OSSL-v2), a self-hosted corpus of 34,343 video clips totaling 246.4 hours, sourced from public-domain films. Unlike crawled corpora, OSSL-v2 is reproducible (i.e., not subject to link rot) and copyright-conscious, yet still large enough to train functional video-to-music models. We then use this film-domain corpus to study dialogue as a conditioning signal for video-to-music generation, motivated by the close temporal coupling between film music and on-screen speech. Specifically, we augment existing models' video cross-attention with a time axis and modulate it frame-by-frame with the dialogue track. Evaluated on both public-domain and commercial films, our approach shows improvement over the state-of-the-art baselines. The dataset is available at https://huggingface.co/datasets/McAuley-Lab/OSSL-v2.",
+      "paper_url": "http://arxiv.org/abs/2608.11576v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.11576v1",
+      "categories": [
+        "cs.SD",
+        "cs.CV",
+        "cs.MM"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 7.0,
+      "justification": "论文提出可复现公共领域电影数据集OSSL-v2，并通过对话感知改进视频到音乐生成，属于音乐生成方向，与音乐信息检索与表示相关，但非核心语音增强/阵列/分离方向。",
+      "citation_count": null,
+      "date_added": "2026-08-14",
+      "chinese_summary": {
+        "problem": "视频到音乐生成领域存在可复现性缺口：模型训练常依赖易失效的YouTube链接抓取数据，且现有方法未充分利用电影配乐与对白之间的时间耦合关系作为条件信号。",
+        "method": "引入自托管、可复现且版权友好的公开领域电影数据集OSSL-v2（34,343个视频片段，共246.4小时）。在此基础上，作者对现有视频到音乐模型进行扩展：在视频交叉注意力中增加时间轴，并用对白音轨逐帧调制该时间轴，实现对话感知的视频到音乐生成。",
+        "innovation": "一是构建了自托管、不受链接失效影响且版权清晰的公开领域电影数据集OSSL-v2，规模足够训练模型；二是首次将对话信号以时间轴调制方式显式融入视频到音乐生成，区别于简单条件拼接；三是在公开领域和商业电影上验证了相对SOTA基线的改进。",
+        "evidence": "摘要中仅提到在公开领域和商业电影上进行了评估，且相对现有最优基线有改善，但未给出具体指标、数据集划分或统计显著性；数据集规模有明确数值。",
+        "limitations": "OSSL-v2仅来自公有领域电影，可能不覆盖现代商业电影配乐风格；对话调制仅在电影领域验证，泛化性未知；摘要未提供量化结果、消融实验或模型细节，需阅读全文确认实际增益幅度。",
+        "why_relevant": "与我的研究方向在“music generation”关键词上部分重合，涉及视频到音乐生成任务；但论文核心是视频-音乐生成和数据集构建，缺少音乐表示学习、MIR或自监督音频表征内容，与我的MIR和表示学习主线匹配较弱，建议人工复核是否需要深入阅读。"
       }
     }
   ]
