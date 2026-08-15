@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-14T03:30:58.814320+00:00",
+  "updated_at_iso": "2026-08-15T02:27:28.903537+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -7496,6 +7496,179 @@
         "evidence": "摘要中仅提到在公开领域和商业电影上进行了评估，且相对现有最优基线有改善，但未给出具体指标、数据集划分或统计显著性；数据集规模有明确数值。",
         "limitations": "OSSL-v2仅来自公有领域电影，可能不覆盖现代商业电影配乐风格；对话调制仅在电影领域验证，泛化性未知；摘要未提供量化结果、消融实验或模型细节，需阅读全文确认实际增益幅度。",
         "why_relevant": "与我的研究方向在“music generation”关键词上部分重合，涉及视频到音乐生成任务；但论文核心是视频-音乐生成和数据集构建，缺少音乐表示学习、MIR或自监督音频表征内容，与我的MIR和表示学习主线匹配较弱，建议人工复核是否需要深入阅读。"
+      }
+    },
+    {
+      "id": "arxiv:2307.02909",
+      "arxiv_id": "2307.02909",
+      "title": "Audio-Visual End-to-End Multi-Channel Speech Separation, Dereverberation and Recognition",
+      "authors": [
+        "Guinan Li",
+        "Jiajun Deng",
+        "Mengzhe Geng",
+        "Zengrui Jin",
+        "Tianzi Wang",
+        "Shujie Hu",
+        "Mingyu Cui",
+        "Helen M. Meng",
+        "Xunying Liu"
+      ],
+      "published": "2023-07-06T00:00:00+00:00",
+      "summary": "Accurate recognition of cocktail party speech containing overlapping speakers, noise and reverberation remains a highly challenging task to date. Motivated by the invariance of visual modality to acoustic signal corruption, an audio-visual multi-channel speech separation, dereverberation and recognition approach featuring a full incorporation of visual information into all system components is proposed in this article. The efficacy of the video input is consistently demonstrated in mask-based MVDR speech separation, DNN-WPE or spectral mapping (SpecM) based speech dereverberation front-end and Conformer ASR back-end. Audio-visual integrated front-end architectures performing speech separation and dereverberation in a pipelined or joint fashion via mask-based WPD are investigated. The error cost mismatch between the speech enhancement front-end and ASR back-end components is minimized by end-to-end jointly fine-tuning using either the ASR cost function alone, or its interpolation with the speech enhancement loss. Experiments were conducted on the mixture overlapped and reverberant speech data constructed using simulation or replay of the Oxford LRS2 dataset. The proposed audio-visual multi-channel speech separation, dereverberation and recognition systems consistently outperformed the comparable audio-only baseline by 9.1% and 6.2% absolute (41.7% and 36.0% relative) word error rate (WER) reductions. Consistent speech enhancement improvements were also obtained on PESQ, STOI and SRMR scores.",
+      "paper_url": "https://arxiv.org/abs/2307.02909",
+      "pdf_url": "http://arxiv.org/pdf/2307.02909",
+      "categories": [
+        "IEEE/ACM Transactions on Audio Speech and Language Processing"
+      ],
+      "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 8.0,
+      "justification": "该论文提出音频视觉多通道语音分离、去混响与识别端到端框架，将视觉信息融入MVDR分离、WPE去混响和Conformer ASR，显著降低WER，高度匹配语音增强与前端、麦克风阵列及语音分离方向，质量扎实但引用数尚不高。",
+      "citation_count": 24,
+      "date_added": "2026-08-15",
+      "chinese_summary": {
+        "problem": "论文旨在解决鸡尾酒会场景下包含重叠说话人、噪声和混响的多通道语音分离、去混响与识别问题。",
+        "method": "提出音视频融合系统，将视觉信息全面用于所有组件：基于时频掩蔽的MVDR波束形成进行语音分离，DNN-WPE或谱映射(SpecM)进行去混响，Conformer作为ASR后端；前端可流水线或联合工作（基于mask的WPD），并通过端到端联合微调（ASR损失单独或与语音增强损失插值）减小前端与后端之间的误差代价不匹配。",
+        "innovation": "首次将视觉信息完整融入多通道语音分离、去混响和识别全流程；对比了流水线与联合前端架构，采用mask-based WPD联合分离与去混响；提出前端-后端端到端联合优化策略，有效缓解增强与识别目标不一致问题。",
+        "evidence": "在Oxford LRS2数据集模拟/重放构造的混合重叠和混响语音上，相比音频-only基线，绝对WER降低9.1%和6.2%（相对41.7%和36.0%），同时PESQ、STOI、SRMR指标均有提升。",
+        "limitations": "依赖视频输入，实际应用中视频不一定可用；多通道设置增加部署复杂度；实验基于模拟/重放数据，真实声学环境泛化性未验证；消融实验细节未在摘要中充分披露。",
+        "why_relevant": "论文核心涉及多通道语音分离（MVDR）、去混响（WPE、SpecM、WPD）及前端-后端联合优化，与您研究方向中的“多通道语音增强、去混响、前端处理”高度重合；但额外引入视觉模态，需评估该部分对您工作的参考价值。"
+      }
+    },
+    {
+      "id": "arxiv:2402.17146",
+      "arxiv_id": "2402.17146",
+      "title": "Target Speaker Extraction by Directly Exploiting Contextual Information in the Time-Frequency Domain",
+      "authors": [
+        "Xue Yang",
+        "Changchun Bao",
+        "Jing Zhou",
+        "Xianhong Chen"
+      ],
+      "published": "2024-02-27T00:00:00+00:00",
+      "summary": "In target speaker extraction, many studies rely on the speaker embedding which is obtained from an enrollment of the target speaker and employed as the guidance. However, solely using speaker embedding may not fully utilize the contextual information contained in the enrollment. In this paper, we directly exploit this contextual information in the time-frequency (T-F) domain. Specifically, the T-F representations of the enrollment and the mixed signal are interacted to compute the weighting matrices through an attention mechanism. These weighting matrices reflect the similarity among different frames of the T-F representations and are further employed to obtain the consistent T-F representations of the enrollment. These consistent representations are served as the guidance, allowing for better exploitation of the contextual information. Furthermore, the proposed method achieves the state-of-the-art performance on the benchmark dataset and shows its effectiveness in the complex scenarios.",
+      "paper_url": "https://arxiv.org/abs/2402.17146",
+      "pdf_url": "https://arxiv.org/pdf/2402.17146",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 7.0,
+      "justification": "论文提出在时频域直接利用enrollment上下文信息进行目标说话人提取，与语音分离/目标说话人提取方向高度相关，方法有创新且实验达到SOTA，但属于ICASSP常规改进，尚未成为经典基础。",
+      "citation_count": 25,
+      "date_added": "2026-08-15",
+      "chinese_summary": {
+        "problem": "目标说话人提取任务中，仅使用从注册语音得到的说话人嵌入作为引导，可能无法充分利用注册语音中丰富的上下文信息，导致提取性能受限。",
+        "method": "论文提出直接利用注册语音的时频（T-F）上下文信息。通过注意力机制让注册语音和混合信号的T-F表示进行交互，计算反映不同帧之间相似性的权重矩阵；利用这些权重矩阵获得注册语音的一致T-F表示，并将其作为引导信息，用于目标说话人提取模型。",
+        "innovation": "1）区别于仅使用固定维度的说话人嵌入，首次直接利用注册语音的时频上下文信息；2）通过注意力机制计算注册与混合信号T-F表示之间的帧级相似性权重，生成一致T-F表示作为引导，实现更充分的上下文利用；3）在基准数据集上达到最先进性能，并在复杂场景中验证有效性。",
+        "evidence": "摘要仅提到在基准数据集上取得最先进性能并在复杂场景中有效，未给出具体数据集名称、指标数值或对比实验细节，需阅读全文确认。",
+        "limitations": "摘要未提供实验细节、数据集规模、计算复杂度或与现有方法的定量对比；是否适用于在线或低延迟场景未知；一致T-F表示的计算开销和泛化性需进一步验证。",
+        "why_relevant": "该论文直接针对目标说话人提取（target speaker extraction）任务，属于我的研究方向核心。方法基于时频域（time-frequency），利用注意力机制改进引导信息，与我的关键词'目标说话人提取'、'说话人提取'、'时频分离方法'高度匹配，并涉及引导信息利用这一关键瓶颈。"
+      }
+    },
+    {
+      "id": "arxiv:2406.05983",
+      "arxiv_id": "2406.05983",
+      "title": "Separate and Reconstruct: Asymmetric Encoder-Decoder for Speech Separation",
+      "authors": [
+        "U.H Shin",
+        "Sangyoun Lee",
+        "Taehan Kim",
+        "Hyung-Min Park"
+      ],
+      "published": "2024-06-10T00:00:00+00:00",
+      "summary": "In speech separation, time-domain approaches have successfully replaced the time-frequency domain with latent sequence feature from a learnable encoder. Conventionally, the feature is separated into speaker-specific ones at the final stage of the network. Instead, we propose a more intuitive strategy that separates features earlier by expanding the feature sequence to the number of speakers as an extra dimension. To achieve this, an asymmetric strategy is presented in which the encoder and decoder are partitioned to perform distinct processing in separation tasks. The encoder analyzes features, and the output of the encoder is split into the number of speakers to be separated. The separated sequences are then reconstructed by the weight-shared decoder, which also performs cross-speaker processing. Without relying on speaker information, the weight-shared network in the decoder directly learns to discriminate features using a separation objective. In addition, to improve performance, traditional methods have extended the sequence length, leading to the adoption of dual-path models, which handle the much longer sequence effectively by segmenting it into chunks. To address this, we introduce global and local Transformer blocks that can directly handle long sequences more efficiently without chunking and dual-path processing. The experimental results demonstrated that this asymmetric structure is effective and that the combination of proposed global and local Transformer can sufficiently replace the role of inter- and intra-chunk processing in dual-path structure. Finally, the presented model combining both of these achieved state-of-the-art performance with much less computation in various benchmark datasets.",
+      "paper_url": "https://arxiv.org/abs/2406.05983",
+      "pdf_url": "https://arxiv.org/pdf/2406.05983",
+      "categories": [
+        "Neural Information Processing Systems"
+      ],
+      "venue": "Neural Information Processing Systems",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 7.0,
+      "justification": "提出非对称编码器-解码器提前分离说话人，并用全局/局部Transformer替代双路径处理，在语音分离任务上达到SOTA且计算更少，方向高度相关、质量扎实，但引用数尚低，基础影响力有限，未达必读级别。",
+      "citation_count": 41,
+      "date_added": "2026-08-15",
+      "chinese_summary": {
+        "problem": "传统时域语音分离通常在网络末端分离说话人特征，且为处理长序列普遍采用双路径分块模型，导致计算复杂；本文旨在提出早期特征分离策略并高效处理长序列。",
+        "method": "提出非对称编码器-解码器结构：编码器分析特征，输出按说话人数分割为多个特征序列，再由权重共享的解码器重建并执行跨说话人处理，直接以分离目标训练判别特征。同时引入全局和局部Transformer块，直接处理长序列，替代双路径模型中的分块和块间/块内处理。",
+        "innovation": "1) 将说话人特征分离提前至编码器输出，通过扩展特征序列维度实现早期分离，而非在最终阶段进行；2) 采用非对称编解码策略，编码器与解码器分工，解码器权重共享且不依赖说话人信息，实现跨说话人特征判别；3) 用全局和局部Transformer组合替代双路径结构中的块间/块内处理，在减少计算的同时保持长序列建模能力。",
+        "evidence": "摘要中仅给出定性结论：实验表明非对称结构有效，全局和局部Transformer组合可充分替代双路径中的块间/块内处理，并在多个基准数据集上以更少计算实现最先进性能；但未列出具体数据集名称、指标数值或对比细节，证据强度有限。",
+        "limitations": "摘要未提供具体实验数据集和量化对比，无法验证泛化性；未讨论方法对任意说话人数量的扩展性；未提及是否适用于目标说话人提取；全局和局部Transformer的实际计算优势需通过全文数据确认。",
+        "why_relevant": "论文直接解决语音分离问题，采用时域方法，提出替代双路径网络的全局/局部Transformer，与研究方向中的'time-domain separation'、'dual-path network'高度匹配；其非对称编码器-解码器的特征分离机制可能为端到端分离和掩码估计提供新思路。但未涉及target speaker extraction或masking model，因此核心匹配集中于纯分离和网络架构优化。"
+      }
+    },
+    {
+      "id": "s2:a60168be52df4fada4e72ec0af53d8514d8bb245",
+      "arxiv_id": "",
+      "title": "Efficient Monaural Speech Enhancement with Universal Sample Rate Band-Split RNN",
+      "authors": [
+        "Jianwei Yu",
+        "Yi Luo"
+      ],
+      "published": "2023-06-04T00:00:00+00:00",
+      "summary": "While recent developments on the design of neural networks have greatly advanced the state-of-the-art of speech enhancement and separation systems, practical applications of such networks often put extra constraints on their model size and computational complexity. Moreover, as different telecommunication services may have different transmission bandwidths which result in different signal sample rates, one model is typically designed for a particular sample rate. In this paper, we extend the usage of a recently proposed frequency-domain source separation model, the band-split RNN (BSRNN), to the task of universal-sample-rate resource efficient speech enhancement. BSRNN explicitly splits the spectrogram into different frequency bands and perform interleaved band-level and sequence-level modeling, and the bandwidths can be manually designed to balance the model size, computational cost, and performance. By properly designing the band-splitting scheme and the hyperparameters, a single BSRNN model can handle signals at a wide range of sample rates, and the computational cost required to process a lower-sample-rate signal can be smaller than that of a higher-sample-rate signal. Experiment results show that compared to various benchmark systems in speech enhancement and separation, our universal-sample-rate BSRNN (USR-BSRNN) achieves comparable or better signalto-noise ratio (SNR) performance at a same level of model size or computational cost.",
+      "paper_url": "https://www.semanticscholar.org/paper/a60168be52df4fada4e72ec0af53d8514d8bb245",
+      "pdf_url": "https://doi.org/10.1109/icassp49357.2023.10096020",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 7.0,
+      "justification": "该文提出通用采样率带宽分离RNN（USR-BSRNN）用于单声道语音增强，通过频带划分实现多采样率下的高效处理，与语音增强和语音分离方向密切相关，质量扎实但尚未达到必读经典影响力。",
+      "citation_count": 39,
+      "date_added": "2026-08-15",
+      "chinese_summary": {
+        "problem": "论文针对现有语音增强模型在资源受限和不同采样率场景下缺乏通用性、计算成本固定等问题，提出一种能处理宽范围采样率的单模型高效语音增强方法。",
+        "method": "将频域源分离模型BSRNN扩展到语音增强任务，通过将频谱显式分割为不同频带，并进行交错频带级和序列级建模；通过手动设计频带分割方案和超参数，使单个模型能处理多种采样率信号，且处理较低采样率信号的计算成本更低。",
+        "innovation": "将源分离中的BSRNN迁移到语音增强，提出通用采样率BSRNN (USR-BSRNN)；利用频带分割设计平衡模型大小、计算成本与性能；实现单个模型覆盖宽采样率范围，且计算成本随采样率自适应变化。",
+        "evidence": "实验与多种语音增强和分离基准系统比较，在相同模型大小或计算成本下，USR-BSRNN取得可比或更好的信噪比（SNR）性能。摘要未提供具体数据集、数值结果或消融实验。",
+        "limitations": "仅报告SNR指标，未提及语音质量或可懂度指标；未在目标说话人提取或多说话人分离任务上评估；模型设计细节和计算复杂度对比需阅读全文确认。",
+        "why_relevant": "BSRNN源自源分离，其频带分割和序列建模与时间频域分离方法相关，关键词命中了source separation。但本文聚焦于语音增强而非目标说话人提取或语音分离，未涉及掩蔽模型、置换不变训练等核心分离技术，相关性较低，建议人工复核是否值得借鉴其高效多采样率架构。"
+      }
+    },
+    {
+      "id": "arxiv:2308.08143",
+      "arxiv_id": "2308.08143",
+      "title": "IIANet: An Intra- and Inter-Modality Attention Network for Audio-Visual Speech Separation",
+      "authors": [
+        "Kai Li",
+        "Run Yang",
+        "Fuchun Sun",
+        "Xiaolin Hu"
+      ],
+      "published": "2023-08-16T00:00:00+00:00",
+      "summary": "Recent research has made significant progress in designing fusion modules for audio-visual speech separation. However, they predominantly focus on multi-modal fusion at a single temporal scale of auditory and visual features without employing selective attention mechanisms, which is in sharp contrast with the brain. To address this issue, We propose a novel model called Intra- and Inter-Attention Network (IIANet), which leverages the attention mechanism for efficient audio-visual feature fusion. IIANet consists of two types of attention blocks: intra-attention (IntraA) and inter-attention (InterA) blocks, where the InterA blocks are distributed at the top, middle and bottom of IIANet. Heavily inspired by the way how human brain selectively focuses on relevant content at various temporal scales, these blocks maintain the ability to learn modality-specific features and enable the extraction of different semantics from audio-visual features. Comprehensive experiments on three standard audio-visual separation benchmarks (LRS2, LRS3, and VoxCeleb2) demonstrate the effectiveness of IIANet, outperforming previous state-of-the-art methods while maintaining comparable inference time. In particular, the fast version of IIANet (IIANet-fast) has only 7% of CTCNet's MACs and is 40% faster than CTCNet on CPUs while achieving better separation quality, showing the great potential of attention mechanism for efficient and effective multimodal fusion.",
+      "paper_url": "https://arxiv.org/abs/2308.08143",
+      "pdf_url": "https://arxiv.org/pdf/2308.08143",
+      "categories": [
+        "International Conference on Machine Learning"
+      ],
+      "venue": "International Conference on Machine Learning",
+      "track": "foundation",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 7.0,
+      "justification": "提出IIANet利用注意力机制进行音视频特征融合，在语音分离基准上取得SOTA且高效，与语音分离方向高度相关，但作为经典赛道引用和基础性尚有限。",
+      "citation_count": 29,
+      "date_added": "2026-08-15",
+      "chinese_summary": {
+        "problem": "论文针对音频-视觉语音分离中现有多模态融合模块仅在单一时间尺度操作且缺乏选择性注意力机制，导致融合效率与效果受限的问题。",
+        "method": "提出IIANet，由模态内注意力（IntraA）和模态间注意力（InterA）两种注意力块组成；InterA块分布在网络的上、中、下三个位置，在多个时间尺度上学习模态特定特征并提取不同语义，模仿大脑选择性关注相关内容的机制进行高效的音视频特征融合。",
+        "innovation": "1）引入注意力机制进行音频-视觉特征融合，弥补现有方法缺少选择性注意力的不足；2）设计模态内和模态间两种注意力块，并在顶层、中层、底层多个时间尺度进行融合；3）IIANet-fast在保持更好分离质量的同时大幅降低计算量（MACs仅为CTCNet的7%，CPU上快40%），展示了高效多模态融合的潜力。",
+        "evidence": "在三个标准音视频分离基准（LRS2、LRS3、VoxCeleb2）上进行实验，IIANet优于先前最先进方法且推理时间可比；IIANet-fast的MACs仅为CTCNet的7%，CPU速度快40%，同时分离质量更好。",
+        "limitations": "摘要未报告具体分离质量指标数值和对比基线细节；未说明注意力机制的具体实现与可解释性；未提及音频-视觉输入不匹配或视觉信息不可用时的鲁棒性；需阅读全文确认这些细节。",
+        "why_relevant": "论文匹配“speech separation”关键词，但侧重音频-视觉多模态融合，引入视觉线索，不属于纯音频的盲源分离或目标说话人提取。与您描述中的时域/时频分离、掩蔽方法、置换不变训练等核心方向重叠有限，仅可能在注意力机制和多尺度融合思想上提供借鉴。需要人工复核是否关注视觉辅助的语音分离。"
       }
     }
   ]
