@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-15T02:27:28.903537+00:00",
+  "updated_at_iso": "2026-08-16T02:35:44.503008+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -7669,6 +7669,194 @@
         "evidence": "在三个标准音视频分离基准（LRS2、LRS3、VoxCeleb2）上进行实验，IIANet优于先前最先进方法且推理时间可比；IIANet-fast的MACs仅为CTCNet的7%，CPU速度快40%，同时分离质量更好。",
         "limitations": "摘要未报告具体分离质量指标数值和对比基线细节；未说明注意力机制的具体实现与可解释性；未提及音频-视觉输入不匹配或视觉信息不可用时的鲁棒性；需阅读全文确认这些细节。",
         "why_relevant": "论文匹配“speech separation”关键词，但侧重音频-视觉多模态融合，引入视觉线索，不属于纯音频的盲源分离或目标说话人提取。与您描述中的时域/时频分离、掩蔽方法、置换不变训练等核心方向重叠有限，仅可能在注意力机制和多尺度融合思想上提供借鉴。需要人工复核是否关注视觉辅助的语音分离。"
+      }
+    },
+    {
+      "id": "arxiv:2307.07218",
+      "arxiv_id": "2307.07218",
+      "title": "Mega-TTS 2: Boosting Prompting Mechanisms for Zero-Shot Speech Synthesis",
+      "authors": [
+        "Ziyue Jiang",
+        "Jinglin Liu",
+        "Yi Ren",
+        "Jinzheng He",
+        "Shengpeng Ji",
+        "Chen Zhang",
+        "Zhe Ye",
+        "Pengfei Wei",
+        "Chunfeng Wang",
+        "Xiang Yin",
+        "Zejun Ma",
+        "Zhou Zhao"
+      ],
+      "published": "2023-07-14T00:00:00+00:00",
+      "summary": "Zero-shot text-to-speech (TTS) aims to synthesize voices with unseen speech prompts, which significantly reduces the data and computation requirements for voice cloning by skipping the fine-tuning process. However, the prompting mechanisms of zero-shot TTS still face challenges in the following aspects: 1) previous works of zero-shot TTS are typically trained with single-sentence prompts, which significantly restricts their performance when the data is relatively sufficient during the inference stage. 2) The prosodic information in prompts is highly coupled with timbre, making it untransferable to each other. This paper introduces Mega-TTS 2, a generic prompting mechanism for zero-shot TTS, to tackle the aforementioned challenges. Specifically, we design a powerful acoustic autoencoder that separately encodes the prosody and timbre information into the compressed latent space while providing high-quality reconstructions. Then, we propose a multi-reference timbre encoder and a prosody latent language model (P-LLM) to extract useful information from multi-sentence prompts. We further leverage the probabilities derived from multiple P-LLM outputs to produce transferable and controllable prosody. Experimental results demonstrate that Mega-TTS 2 could not only synthesize identity-preserving speech with a short prompt of an unseen speaker from arbitrary sources but consistently outperform the fine-tuning method when the volume of data ranges from 10 seconds to 5 minutes. Furthermore, our method enables to transfer various speaking styles to the target timbre in a fine-grained and controlled manner. Audio samples can be found in https://boostprompt.github.io/boostprompt/.",
+      "paper_url": "https://arxiv.org/abs/2307.07218",
+      "pdf_url": "https://arxiv.org/pdf/2307.07218",
+      "categories": [
+        "International Conference on Learning Representations"
+      ],
+      "venue": "International Conference on Learning Representations",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "论文提出了 Mega-TTS 2，通过分离音色与韵律编码、多参考音色编码器和韵律潜语言模型，显著提升了零样本语音合成的可控性与多句提示利用，属于生成式语音技术中 TTS 方向的必读级前沿工作。",
+      "citation_count": 83,
+      "date_added": "2026-08-16",
+      "chinese_summary": {
+        "problem": "论文解决零样本文本到语音合成中的提示机制缺陷：现有模型通常用单句提示训练，推理阶段即使有多句提示数据也难以充分利用；同时提示中的韵律信息与音色高度耦合，无法独立迁移。",
+        "method": "提出 Mega-TTS 2 通用提示机制，包含一个强声学自编码器，将韵律和音色分别编码到压缩潜在空间并保证高质量重构；设计多参考音色编码器与韵律潜在语言模型（P-LLM）从多句提示中提取有效信息；利用多个 P-LLM 输出的概率生成可迁移、可控的韵律。",
+        "innovation": "引入多参考音色编码和韵律潜在语言模型，突破单句提示限制，支持多句提示并提升身份一致性；通过将韵律与音色解耦编码，实现细粒度、可控的说话风格迁移，使风格与目标音色可独立组合。",
+        "evidence": "摘要中的实验结果表明，Mega-TTS 2 能用未见说话者的短提示合成保留身份的语音，并且在数据量从 10 秒到 5 分钟范围内 consistently 优于 fine-tuning 方法；还能以细粒度、受控的方式将各种说话风格迁移到目标音色。音频样本见项目网页。但摘要未给出具体客观指标或对比基线。",
+        "limitations": "摘要未报告 MOS、说话人相似度等量化指标，也未说明与现有零样本 TTS 基线（如 VALL-E、YourTTS）的系统比较；模型规模、训练数据、计算开销和推理效率未知；韵律与音色解耦的实际效果需通过样本或全文验证。",
+        "why_relevant": "匹配您研究方向中的 speech synthesis 和 text-to-speech，但论文侧重零样本 TTS 的提示机制与韵律/音色解耦，而非生成式语音增强、语音恢复、扩散模型、流匹配或神经声码器。因此与您核心关注点仅部分重叠，建议人工复核是否关注语音克隆和说话风格迁移。"
+      }
+    },
+    {
+      "id": "arxiv:2311.12454",
+      "arxiv_id": "2311.12454",
+      "title": "HierSpeech++: Bridging the Gap Between Semantic and Acoustic Representation of Speech by Hierarchical Variational Inference for Zero-Shot Speech Synthesis",
+      "authors": [
+        "Sang-Hoon Lee",
+        "Ha-Yeong Choi",
+        "Seung-Bin Kim",
+        "Seong-Whan Lee"
+      ],
+      "published": "2023-11-21T00:00:00+00:00",
+      "summary": "Large language model (LLM)-based speech synthesis has been widely adopted in zero-shot speech synthesis. However, they require a large-scale data and possess the same limitations as previous autoregressive speech models, including slow inference speed and lack of robustness. This article proposes HierSpeech++, a fast and strong zero-shot speech synthesizer for text-to-speech (TTS) and voice conversion (VC). We verified that hierarchical speech synthesis frameworks could significantly improve the robustness and expressiveness of the synthetic speech. Furthermore, we significantly improve the naturalness and speaker similarity of synthetic speech even in zero-shot speech synthesis scenarios. For TTS, we adopt the text-to-vec (TTV) framework, which generates a self-supervised speech representation and an F0 representation based on text representations and prosody prompts. Then, HierSpeech++ generates speech from the generated vector, F0, and voice prompt. We further introduce a high-efficient speech super-resolution (SpeechSR) framework from 16 to 48 kHz. The experimental results demonstrated that the hierarchical variational autoencoder could be a strong zero-shot speech synthesizer given that it outperforms LLM-based and diffusion-based models. Moreover, we achieved the first human-level quality zero-shot speech synthesis. Audio samples and source code are available at https://github.com/hierspeechpp/code",
+      "paper_url": "https://arxiv.org/abs/2311.12454",
+      "pdf_url": "https://doi.org/10.1109/tnnls.2025.3584944",
+      "categories": [
+        "IEEE Transactions on Neural Networks and Learning Systems"
+      ],
+      "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出HierSpeech++层次变分推理框架，实现零样本文本到语音与语音转换，首次达到人类水平零样本合成，高度匹配生成式语音技术方向。",
+      "citation_count": 80,
+      "date_added": "2026-08-16",
+      "chinese_summary": {
+        "problem": "零样本语音合成（TTS和VC）中，基于LLM的方法需要大规模数据、推理速度慢且鲁棒性不足；现有模型在自然度和说话人相似度上仍有局限。论文旨在提出快速、鲁棒、高质量的零样本语音合成器。",
+        "method": "提出HierSpeech++，采用分层变分推断框架弥合语音语义和声学表示之间的差距。TTS采用text-to-vec (TTV)框架，基于文本表示和韵律提示生成自监督语音表示和F0表示；然后从生成的向量、F0和语音提示生成语音。同时引入高效语音超分辨率(SpeechSR)框架，将采样率从16 kHz提升到48 kHz。",
+        "innovation": "1) 分层语音合成框架显著提高合成语音的鲁棒性和表现力；2) 在零样本场景下显著改善自然度和说话人相似度；3) 提出的分层变分自编码器在性能上优于基于LLM和扩散模型的模型，并首次实现人类水平的零样本语音合成。",
+        "evidence": "摘要中实验结果表明分层变分自编码器可作为强零样本语音合成器，优于LLM-based和diffusion-based模型；实现了首个达到人类水平的零样本语音合成；提供音频样本和源代码链接。但摘要未给出具体数值指标（如MOS、相似度分数等）。",
+        "limitations": "摘要未提供具体实验数据、模型规模、推理速度对比、训练数据量及鲁棒性测试的详细条件；未说明在不同语言或噪声条件下的表现；SpeechSR的具体架构和与整体系统的耦合方式未详述。",
+        "why_relevant": "论文直接属于生成式语音合成，对应研究方向中的speech synthesis和text-to-speech；其使用分层变分自编码器生成语音，属于生成模型音频范畴；语音超分辨率模块可视为带宽扩展或神经声码器相关技术；零样本语音合成场景与生成式语音技术目标一致。但论文未涉及扩散模型或流匹配，匹配主要在语音合成和生成模型层面。"
+      }
+    },
+    {
+      "id": "arxiv:2502.03930",
+      "arxiv_id": "2502.03930",
+      "title": "DiTAR: Diffusion Transformer Autoregressive Modeling for Speech Generation",
+      "authors": [
+        "Dongya Jia",
+        "Zhuo Chen",
+        "Jiawei Chen",
+        "Chenpeng Du",
+        "Jian Wu",
+        "Jian Cong",
+        "Xiaobin Zhuang",
+        "Chumin Li",
+        "Zhengnan Wei",
+        "Yuping Wang",
+        "Yuxuan Wang"
+      ],
+      "published": "2025-02-06T00:00:00+00:00",
+      "summary": "Several recent studies have attempted to autoregressively generate continuous speech representations without discrete speech tokens by combining diffusion and autoregressive models, yet they often face challenges with excessive computational loads or suboptimal outcomes. In this work, we propose Diffusion Transformer Autoregressive Modeling (DiTAR), a patch-based autoregressive framework combining a language model with a diffusion transformer. This approach significantly enhances the efficacy of autoregressive models for continuous tokens and reduces computational demands. DiTAR utilizes a divide-and-conquer strategy for patch generation, where the language model processes aggregated patch embeddings and the diffusion transformer subsequently generates the next patch based on the output of the language model. For inference, we propose defining temperature as the time point of introducing noise during the reverse diffusion ODE to balance diversity and determinism. We also show in the extensive scaling analysis that DiTAR has superb scalability. In zero-shot speech generation, DiTAR achieves state-of-the-art performance in robustness, speaker similarity, and naturalness.",
+      "paper_url": "https://arxiv.org/abs/2502.03930",
+      "pdf_url": "https://arxiv.org/pdf/2502.03930",
+      "categories": [
+        "International Conference on Machine Learning"
+      ],
+      "venue": "International Conference on Machine Learning",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出基于patch的自回归扩散Transformer框架DiTAR，在零样本语音生成中取得SOTA，与生成式语音技术方向高度相关且具有较强新颖性。",
+      "citation_count": 81,
+      "date_added": "2026-08-16",
+      "chinese_summary": {
+        "problem": "论文针对已有扩散模型与自回归模型结合生成连续语音表示（不使用离散语音 token）时存在的计算开销过高或生成质量不佳的问题，提出一种更高效的框架以同时提升效果与降低计算成本。",
+        "method": "DiTAR 是一种基于 patch 的自回归框架，融合语言模型与扩散 Transformer。采用分治策略生成 patch：语言模型处理聚合后的 patch 嵌入，扩散 Transformer 根据语言模型的输出生成下一个 patch。推理时，将温度参数定义为在反向扩散 ODE 中引入噪声的时间点，用以平衡多样性与确定性。",
+        "innovation": "提出 patch 级分治生成策略，将聚合嵌入的语言模型与细节生成的扩散 Transformer 解耦，相对已有连续 token 扩散自回归方法大幅降低计算量；将推理温度映射为扩散 ODE 的噪声注入时间点，实现更灵活的多样性控制；通过大规模扩展分析验证了模型的可扩展性，并在 zero-shot 语音生成上取得 SOTA。",
+        "evidence": "摘要报告了在 zero-shot 语音生成任务上，DiTAR 在鲁棒性、说话人相似度和自然度方面达到 state-of-the-art；并进行了广泛的扩展分析（scaling analysis）展示可扩展性。但摘要未给出具体数据集、指标数值、对比模型或消融实验，可核验证据有限。",
+        "limitations": "摘要缺乏具体实验配置、数据集、参数量、计算开销对比、推理速度等细节；zero-shot 语音生成的具体任务范围（如 TTS、语音转换、音频生成）未明确；扩散 Transformer 与语言模型的训练策略、依赖条件（如文本或说话人嵌入）需阅读正文确认。",
+        "why_relevant": "该论文直接属于生成式语音方向，结合扩散模型与自回归模型生成连续语音表示，与用户研究方向中的 generative speech synthesis、diffusion model speech、text-to-speech、neural vocoder 等高度匹配；其 patch-based 生成和扩散 Transformer 设计也可为神经声码器或带宽扩展提供生成建模思路。基础匹配分数 0.29 偏低，主要因仅命中关键词 speech generation，但实际主题高度相关，建议提升匹配等级。"
+      }
+    },
+    {
+      "id": "arxiv:2308.16692",
+      "arxiv_id": "2308.16692",
+      "title": "SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models",
+      "authors": [
+        "Xin Zhang",
+        "Dong Zhang",
+        "Shimin Li",
+        "Yaqian Zhou",
+        "Xipeng Qiu"
+      ],
+      "published": "2023-08-31T00:00:00+00:00",
+      "summary": "Current speech large language models build upon discrete speech representations, which can be categorized into semantic tokens and acoustic tokens. However, existing speech tokens are not specifically designed for speech language modeling. To assess the suitability of speech tokens for building speech language models, we established the first benchmark, SLMTokBench. Our results indicate that neither semantic nor acoustic tokens are ideal for this purpose. Therefore, we propose SpeechTokenizer, a unified speech tokenizer for speech large language models. SpeechTokenizer adopts the Encoder-Decoder architecture with residual vector quantization (RVQ). Unifying semantic and acoustic tokens, SpeechTokenizer disentangles different aspects of speech information hierarchically across different RVQ layers. Furthermore, We construct a Unified Speech Language Model (USLM) leveraging SpeechTokenizer. Experiments show that SpeechTokenizer performs comparably to EnCodec in speech reconstruction and demonstrates strong performance on the SLMTokBench benchmark. Also, USLM outperforms VALL-E in zero-shot Text-to-Speech tasks. Code and models are available at https://github.com/ZhangXInFD/SpeechTokenizer/.",
+      "paper_url": "https://arxiv.org/abs/2308.16692",
+      "pdf_url": "https://arxiv.org/pdf/2308.16692",
+      "categories": [
+        "International Conference on Learning Representations"
+      ],
+      "venue": "International Conference on Learning Representations",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "提出统一语音tokenizer，通过RVQ分层解耦语义与声学信息，用于语音大语言模型，高度契合生成式语音技术方向，且发表于ICLR并成为后续工作的重要基线。",
+      "citation_count": 141,
+      "date_added": "2026-08-16",
+      "chinese_summary": {
+        "problem": "现有语音大语言模型建立在离散语音表示上，但语义token和声学token并非为语音语言建模设计，缺乏统一评估基准和适配的语音表示。",
+        "method": "提出SpeechTokenizer，采用Encoder-Decoder架构和残差向量量化（RVQ），在不同RVQ层分层解耦语义和声学信息，统一语义与声学token。进一步构建统一语音语言模型USLM，利用该tokenizer的离散表示进行语音建模与生成。",
+        "innovation": "建立首个面向语音语言建模的token基准SLMTokBench；提出统一语音tokenizer，通过RVQ层级解耦语义与声学信息，区别于现有分离的语义或声学token；将SpeechTokenizer集成到USLM，展示了在零样本文本到语音任务上优于VALL-E的潜力。",
+        "evidence": "摘要报告SpeechTokenizer在语音重建上与EnCodec可比，在SLMTokBench上表现强，USLM在零样本文本到语音任务上优于VALL-E；但未给出具体数值或统计显著性。",
+        "limitations": "摘要未提供码本大小、层数、计算开销等实现细节；未说明在语音增强、语音恢复等任务上的适用性；与VALL-E的对比缺少主观评估和具体指标；需阅读全文确认其泛化性。",
+        "why_relevant": "论文研究语音离散表示和语音语言模型，与生成式语音技术中的语音合成、文本到语音、神经声码器组件有交集；其统一tokenizer可作为生成式语音建模的基础表示。但未涉及扩散模型、流匹配或语音增强/恢复，匹配度为中等，建议人工复核是否关注语音tokenizer基础研究。"
+      }
+    },
+    {
+      "id": "arxiv:2307.16430",
+      "arxiv_id": "2307.16430",
+      "title": "VITS2: Improving Quality and Efficiency of Single-Stage Text-to-Speech with Adversarial Learning and Architecture Design",
+      "authors": [
+        "Jungil Kong",
+        "Jihoon Park",
+        "Beomjeong Kim",
+        "Jeongmin Kim",
+        "Dohee Kong",
+        "Sangjin Kim"
+      ],
+      "published": "2023-07-31T00:00:00+00:00",
+      "summary": "Single-stage text-to-speech models have been actively studied recently, and their results have outperformed two-stage pipeline systems. Although the previous single-stage model has made great progress, there is room for improvement in terms of its intermittent unnaturalness, computational efficiency, and strong dependence on phoneme conversion. In this work, we introduce VITS2, a single-stage text-to-speech model that efficiently synthesizes a more natural speech by improving several aspects of the previous work. We propose improved structures and training mechanisms and present that the proposed methods are effective in improving naturalness, similarity of speech characteristics in a multi-speaker model, and efficiency of training and inference. Furthermore, we demonstrate that the strong dependence on phoneme conversion in previous works can be significantly reduced with our method, which allows a fully end-to-end single-stage approach.",
+      "paper_url": "https://arxiv.org/abs/2307.16430",
+      "pdf_url": "https://arxiv.org/pdf/2307.16430",
+      "categories": [
+        "Interspeech"
+      ],
+      "venue": "Interspeech",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 9.0,
+      "justification": "单阶段TTS的重要改进，引入对抗学习和架构优化提升自然度与效率，并降低音素依赖，高度匹配生成式语音技术方向。",
+      "citation_count": 79,
+      "date_added": "2026-08-16",
+      "chinese_summary": {
+        "problem": "论文旨在解决单阶段文本到语音（TTS）模型VITS存在的间歇性不自然、计算效率不高、以及对音素转换依赖过强的问题，以提升合成语音的自然度和效率。",
+        "method": "在VITS基础上提出改进的模型结构和训练机制（包括对抗学习等），优化多说话人场景下的音色相似度、训练与推理效率；同时减少对显式音素转换的依赖，使系统更接近完全端到端的单阶段TTS流程。",
+        "innovation": "相较于VITS，引入新的结构设计与训练策略，有效缓解间歇性不自然；显著降低对音素转换的依赖，实现更彻底的单阶段端到端建模；在保持或提升自然度的同时提高计算效率和多说话人相似度。",
+        "evidence": "摘要仅给出定性结论，称所提方法在自然度、相似度和效率方面有效，并减少音素依赖；但未提供具体实验数据、基准对比、消融研究或客观指标，因此可核验证据不足。",
+        "limitations": "摘要未披露具体架构改动和训练细节，难以判断改进的实质贡献；未给出定量实验结果，无法评估实际性能增益；对抗训练可能带来稳定性问题，需要阅读全文确认。",
+        "why_relevant": "论文直接匹配研究方向中的 text-to-speech 和 speech synthesis 关键词，属于单阶段生成式语音模型；但其核心贡献是VITS架构优化与对抗训练，未涉及扩散模型、流匹配或语音增强/恢复，若当前关注点偏向这些生成式方法，则相关性中等，需人工复核是否值得精读。"
       }
     }
   ]
