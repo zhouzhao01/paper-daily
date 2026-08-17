@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-16T02:35:44.503008+00:00",
+  "updated_at_iso": "2026-08-17T02:34:59.166447+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -7857,6 +7857,132 @@
         "evidence": "摘要仅给出定性结论，称所提方法在自然度、相似度和效率方面有效，并减少音素依赖；但未提供具体实验数据、基准对比、消融研究或客观指标，因此可核验证据不足。",
         "limitations": "摘要未披露具体架构改动和训练细节，难以判断改进的实质贡献；未给出定量实验结果，无法评估实际性能增益；对抗训练可能带来稳定性问题，需要阅读全文确认。",
         "why_relevant": "论文直接匹配研究方向中的 text-to-speech 和 speech synthesis 关键词，属于单阶段生成式语音模型；但其核心贡献是VITS架构优化与对抗训练，未涉及扩散模型、流匹配或语音增强/恢复，若当前关注点偏向这些生成式方法，则相关性中等，需人工复核是否值得精读。"
+      }
+    },
+    {
+      "id": "arxiv:2608.13831",
+      "arxiv_id": "2608.13831",
+      "title": "VoiceChat-TTS: A Low-Latency Continuous Speech Synthesis Model for Interactive Agents",
+      "authors": [
+        "Edresson Casanova",
+        "Jaehyeon Kim",
+        "Mariana Graterol Fuenmayor",
+        "Shehzeen Hussain",
+        "Viacheslav Klimkov",
+        "Valentin Mendelev",
+        "Mikyas Desta",
+        "Paarth Neekhara",
+        "Piotr Zelasko",
+        "Chen Chen",
+        "Elena Rastorgueva",
+        "Ke Hu",
+        "Ankita Pasad",
+        "Xuesong Yang",
+        "Aya Alja'fari",
+        "Rajarshi Roy",
+        "Rohan Badlani",
+        "Jason Roche",
+        "Jason Li",
+        "Zhehuai Chen"
+      ],
+      "published": "2026-08-13T23:37:07Z",
+      "summary": "Spoken dialogue is a natural form of human--computer interaction, yet most speech language models remain limited to turn-based operation and lack real-time adaptability, such as user barge-in. Recent duplex speech-to-speech and speech-to-text models reduce latency by replacing multi-stage pipelines, but often compromise speech quality because accurate ASR, interruption handling, and high-fidelity synthesis must be optimized jointly. We propose VoiceChat-TTS, a low-latency, continuous, and streamable text-to-speech model for interactive agents. VoiceChat-TTS is driven directly by LLM text-token streams, supports explicit interruption via control tokens, and produces silence when no textual input is available. The model enables always-on, responsive speech generation while preserving modularity and high speech quality, and it supports mid-utterance interruptions without resetting the KV cache.",
+      "paper_url": "http://arxiv.org/abs/2608.13831v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.13831v1",
+      "categories": [
+        "eess.AS",
+        "cs.CL"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "该论文提出低延迟连续可流式 TTS 模型，支持 LLM 文本 token 流、控制 token 显式打断与静音生成，并保持 KV cache 不重置，直接匹配生成式语音技术中的语音合成/TTS 方向，工作质量扎实。",
+      "citation_count": null,
+      "date_added": "2026-08-17",
+      "chinese_summary": {
+        "problem": "现有语音语言模型多限于轮次式操作，缺乏实时打断等交互能力；近期双工模型虽降低延迟，但联合优化 ASR、打断处理和高保真合成困难，常牺牲语音质量。本文要解决交互式代理中低延迟、连续、可流式 TTS 的生成问题，同时支持用户打断和静音输出。",
+        "method": "VoiceChat-TTS 直接消费 LLM 输出的文本 token 流进行语音合成，无需等待完整句子；通过引入控制 token 显式表示打断和静音，在无文本输入时生成静音；模型保持持续生成状态，并支持话语中途打断且无需重置 KV cache，从而维持低延迟和模块化。",
+        "innovation": "相对传统轮次式 TTS 和近期双工语音模型，本文提出由 LLM 文本 token 流直接驱动的连续流式 TTS 架构；引入控制 token 统一处理用户打断和静音生成，使系统始终在线且可响应；在保持模块化和声称的高语音质量前提下，实现 mid-utterance 打断而不重置 KV cache，避免上下文丢失。",
+        "evidence": "证据不足：摘要未提供任何量化实验结果、对比基线、延迟数值、MOS 或数据集信息，仅描述系统能力和设计特性。",
+        "limitations": "摘要缺少客观评估，需阅读全文确认实际语音质量、延迟指标和与现有流式/双工 TTS 的对比；控制 token 机制在真实噪声或多人交互下的鲁棒性未说明；未披露声码器或生成模型类型，可能对语音自然度有影响；模块化程度和是否依赖特定 LLM 也需确认。",
+        "why_relevant": "该论文属于 speech synthesis 和 text-to-speech 方向，涉及流式语音生成和交互式代理，与研究方向中的生成式语音技术（特别是 TTS）部分匹配。但它不涉及扩散模型、流匹配或语音增强/恢复，因此仅与流式对话 TTS 或 LLM 驱动语音生成子领域相关，建议人工复核以确定是否重点关注。"
+      }
+    },
+    {
+      "id": "arxiv:2608.14516",
+      "arxiv_id": "2608.14516",
+      "title": "Singer-Informed Vocal Source Separation for Multi-Singer Music Mixtures",
+      "authors": [
+        "Jocelyn Xu",
+        "Minje Kim"
+      ],
+      "published": "2026-08-14T17:38:16Z",
+      "summary": "Music source separation systems typically extract a single vocal track and do not distinguish between multiple singers. We study singer-informed vocal source separation for multi-singer mixtures. Our framework introduces a short enrollment recording of a target singer to guide separation through a learned embedding. The singer embedding is incorporated using feature concatenation or feature-wise linear modulation (FiLM), enabling the model to focus on the target singer while suppressing interference. We construct a duet dataset based on DAMP-VSEP with quality filtering and non-overlapping enrollment segments. Experiments on solo and duet settings show that while baseline models perform well for single-singer mixtures, the proposed method improves target-singer extraction in multi-singer cases, increasing target-singer SI-SDR from 0.33 dB to 5.58 dB. Fréchet Audio Distance (FAD) further shows improved perceptual quality and better alignment with target audio distributions. Code and checkpoints are available at https://github.com/jocelynxu01/singer-separation-paper.",
+      "paper_url": "http://arxiv.org/abs/2608.14516v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.14516v1",
+      "categories": [
+        "eess.AS",
+        "cs.SD"
+      ],
+      "venue": "",
+      "track": "frontier",
+      "topic_id": "speech_separation_extraction",
+      "topic_name": "Speech Separation and Target Speaker Extraction",
+      "score": 8.0,
+      "justification": "提出基于歌手嵌入（特征拼接/FiLM）的目标歌手提取框架，显著提升多歌手混合中的目标歌手SI-SDR，直接匹配目标说话人提取方向，工作扎实且有代码开源。",
+      "citation_count": null,
+      "date_added": "2026-08-17",
+      "chinese_summary": {
+        "problem": "论文解决多歌手音乐混合中难以区分并提取目标歌手声音的问题，现有音乐源分离通常只输出单一 vocal 轨而不区分歌手。",
+        "method": "提出歌手知情的声源分离框架，利用目标歌手的短注册录音生成歌手嵌入，通过特征拼接或 FiLM 模块将嵌入融入分离网络，使模型聚焦目标歌手并抑制其他干扰；同时构建了基于 DAMP-VSEP 的二重唱数据集，包含质量过滤和非重叠注册片段。",
+        "innovation": "首次针对多歌手混合提出歌手知情分离框架，将注册嵌入引入音乐源分离；采用 FiLM 等灵活的条件机制增强目标歌手特征；构建了专门的多歌手二重唱数据集以支撑训练与评估。",
+        "evidence": "实验表明，在二重唱设置下，所提方法将目标歌手 SI-SDR 从 0.33 dB 提升至 5.58 dB；FAD 指标显示感知质量提升且与目标音频分布对齐更好；提供代码和检查点。",
+        "limitations": "摘要仅验证了二重唱场景，未涉及更多歌手或复杂背景；未讨论注册录音长度和嵌入泛化性；与语音分离的差异需阅读全文确认，例如歌声特性、音乐伴奏干扰等。",
+        "why_relevant": "该论文研究目标歌手提取，本质是目标说话人提取在音乐领域的变体，其注册嵌入引导、FiLM 条件机制和多说话人混合场景与你的研究方向高度重合，可直接借鉴到语音分离和目标说话人提取任务中；匹配关键词包括 source separation、target speaker extraction（歌手提取）、speaker embedding、cocktail party 类比多歌手混合。"
+      }
+    },
+    {
+      "id": "arxiv:2408.14340",
+      "arxiv_id": "2408.14340",
+      "title": "Foundation Models for Music: A Survey",
+      "authors": [
+        "Ying-Chao Ma",
+        "Anders Oland",
+        "Anton Ragni",
+        "B. D. Sette",
+        "C. Saitis",
+        "Chris Donahue",
+        "Chenghua Lin",
+        "Christos Plachouras",
+        "Emmanouil Benetos",
+        "Elio Quinton",
+        "Elona Shatri",
+        "Fabio Morreale"
+      ],
+      "published": "2024-08-26T00:00:00+00:00",
+      "summary": "In recent years, foundation models (FMs) such as large language models (LLMs) and latent diffusion models (LDMs) have profoundly impacted diverse sectors, including music. This comprehensive review examines state-of-the-art (SOTA) pre-trained models and foundation models in music, spanning from representation learning, generative learning and multimodal learning. We first contextualise the significance of music in various industries and trace the evolution of AI in music. By delineating the modalities targeted by foundation models, we discover many of the music representations are underexplored in FM development. Then, emphasis is placed on the lack of versatility of previous methods on diverse music applications, along with the potential of FMs in music understanding, generation and medical application. By comprehensively exploring the details of the model pre-training paradigm, architectural choices, tokenisation, finetuning methodologies and controllability, we emphasise the important topics that should have been well explored, like instruction tuning and in-context learning, scaling law and emergent ability, as well as long-sequence modelling etc. A dedicated section presents insights into music agents, accompanied by a thorough analysis of datasets and evaluations essential for pre-training and downstream tasks. Finally, by underscoring the vital importance of ethical considerations, we advocate that following research on FM for music should focus more on such issues as interpretability, transparency, human responsibility, and copyright issues. The paper offers insights into future challenges and trends on FMs for music, aiming to shape the trajectory of human-AI collaboration in the music realm.",
+      "paper_url": "https://arxiv.org/abs/2408.14340",
+      "pdf_url": "https://arxiv.org/pdf/2408.14340",
+      "categories": [
+        "arXiv.org"
+      ],
+      "venue": "arXiv.org",
+      "track": "foundation",
+      "topic_id": "music_mir_representation",
+      "topic_name": "Music Information Retrieval and Representation",
+      "score": 7.0,
+      "justification": "该综述系统梳理了音乐基础模型的表示学习、生成与多模态方法，与音乐信息检索与表示方向高度相关，质量扎实但非开创性基础工作。",
+      "citation_count": 59,
+      "date_added": "2026-08-17",
+      "chinese_summary": {
+        "problem": "该综述旨在系统梳理音乐领域基础模型（FMs）的现状，识别现有预训练模型在音乐表示、生成和多模态任务中的不足，并指出音乐表示在FM发展中未被充分探索的现状及未来研究方向。",
+        "method": "采用文献综述方法，系统调研音乐领域最先进的预训练模型和基础模型，涵盖表示学习、生成学习和多模态学习；通过分析模型预训练范式、架构选择、标记化、微调方法和可控性等维度，归纳出指令调优、上下文学习、缩放定律、长序列建模等关键未充分探索主题；并专门讨论了音乐智能体、数据集与评估方法，以及伦理问题。",
+        "innovation": "该综述的创新在于系统性地将基础模型范式与音乐领域结合，全面梳理从表示学习到生成学习的各类预训练模型；明确指出音乐表示在FM开发中未被充分探索，并梳理了指令调优、上下文学习、缩放定律、长序列建模等关键开放问题；同时引入音乐智能体视角，并强调伦理与版权等非技术层面的挑战。",
+        "evidence": "该论文为综述性论文，摘要未提供具体实验数据或定量结果；其主要贡献在于对现有工作的系统梳理和归纳，包括对预训练范式、架构、标记化、微调、数据集和评估的分析，以及伦理问题的论述。",
+        "limitations": "作为综述，该论文不提出新方法，缺乏实证验证；其结论（如音乐表示未充分探索、需要关注指令调优等）需结合全文具体案例确认；对音乐智能体和数据集的讨论可能仅为概述，未能深入具体模型或基准；伦理建议的实际可操作性有待商榷。",
+        "why_relevant": "该综述直接覆盖用户研究方向中的多个关键词，如music representation learning、music encoder、music understanding、self-supervised audio、audio foundation model等。它系统梳理了音乐基础模型中的表示学习与预训练方法，并指出音乐表示在FM发展中未被充分探索，这有助于用户了解领域现状和瓶颈，为音乐编码器和自监督音频表示研究提供背景和方向。但因其为综述而非技术论文，匹配程度为medium，建议人工复核是否值得深入阅读。"
       }
     }
   ]
