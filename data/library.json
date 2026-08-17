@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_iso": "2026-08-17T02:34:59.166447+00:00",
+  "updated_at_iso": "2026-08-17T08:09:43.431495+00:00",
   "topics": [
     {
       "id": "speech_enhancement_frontend",
@@ -7983,6 +7983,77 @@
         "evidence": "该论文为综述性论文，摘要未提供具体实验数据或定量结果；其主要贡献在于对现有工作的系统梳理和归纳，包括对预训练范式、架构、标记化、微调、数据集和评估的分析，以及伦理问题的论述。",
         "limitations": "作为综述，该论文不提出新方法，缺乏实证验证；其结论（如音乐表示未充分探索、需要关注指令调优等）需结合全文具体案例确认；对音乐智能体和数据集的讨论可能仅为概述，未能深入具体模型或基准；伦理建议的实际可操作性有待商榷。",
         "why_relevant": "该综述直接覆盖用户研究方向中的多个关键词，如music representation learning、music encoder、music understanding、self-supervised audio、audio foundation model等。它系统梳理了音乐基础模型中的表示学习与预训练方法，并指出音乐表示在FM发展中未被充分探索，这有助于用户了解领域现状和瓶颈，为音乐编码器和自监督音频表示研究提供背景和方向。但因其为综述而非技术论文，匹配程度为medium，建议人工复核是否值得深入阅读。"
+      }
+    },
+    {
+      "id": "arxiv:2312.09747",
+      "arxiv_id": "2312.09747",
+      "title": "SELM: Speech Enhancement using Discrete Tokens and Language Models",
+      "authors": [
+        "Ziqian Wang",
+        "Xinfa Zhu",
+        "Zihan Zhang",
+        "Yuanjun Lv",
+        "Ning Jiang",
+        "Guoqing Zhao",
+        "Lei Xie"
+      ],
+      "published": "2023-12-15T00:00:00+00:00",
+      "summary": "Language models (LMs) have recently shown superior performances in various speech generation tasks, demonstrating their powerful ability for semantic context modeling. Given the intrinsic similarity between speech generation and speech enhancement, harnessing semantic information is advantageous for speech enhancement tasks. In light of this, we propose SELM, a novel speech enhancement paradigm that integrates discrete tokens and leverages language models. SELM comprises three stages: encoding, modeling, and decoding. We transform continuous waveform signals into discrete tokens using pre-trained self-supervised learning (SSL) models and a k-means tokenizer. Language models then capture comprehensive contextual information within these tokens. Finally, a de-tokenizer and HiFi-GAN restore them into enhanced speech. Experimental results demonstrate that SELM achieves comparable performance in objective metrics and superior subjective perception results. Our demos are available 1.",
+      "paper_url": "https://arxiv.org/abs/2312.09747",
+      "pdf_url": "https://arxiv.org/pdf/2312.09747",
+      "categories": [
+        "IEEE International Conference on Acoustics, Speech, and Signal Processing"
+      ],
+      "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+      "track": "foundation",
+      "topic_id": "generative_speech",
+      "topic_name": "Generative Speech Technology",
+      "score": 8.0,
+      "justification": "该论文提出SELM，将离散token与语言模型引入语音增强，结合SSL和k-means实现生成式增强，与语音增强及生成式语音技术高度相关，方法扎实且有一定影响力，但引用数尚不突出。",
+      "citation_count": 74,
+      "date_added": "2026-08-17",
+      "chinese_summary": {
+        "problem": "论文旨在解决传统语音增强在复杂噪声环境下语义信息利用不足的问题，提出利用离散token和语言模型建模语音语义上下文以提升增强语音的主观质量。",
+        "method": "SELM采用三阶段流程：首先使用预训练自监督模型和k-means聚类将连续语音波形编码为离散token；然后通过语言模型对token序列进行上下文建模，捕获语义信息；最后利用de-tokenizer和HiFi-GAN声码器将处理后的token恢复为增强语音波形。",
+        "innovation": "将离散token表示与语言模型引入语音增强，利用语音生成与增强的相似性，通过语义上下文建模提升增强效果；整个系统以生成式框架进行语音增强，区别于传统判别式或掩码方法。",
+        "evidence": "摘要指出实验结果表明SELM在客观指标上达到可比性能，并且主观感知结果更优，提供在线demo；但未给出具体数值、数据集或对比基线。",
+        "limitations": "摘要仅提及客观指标“可比”而非显著提升，可能改进有限；离散token可能丢失声学细节；需要确认语言模型的具体类型、训练数据规模及推理实时性。",
+        "why_relevant": "论文属于生成式语音增强范畴，使用语言模型和离散token进行语音恢复，并用HiFi-GAN作为神经声码器，匹配我的研究方向中的“generative speech enhancement”、“speech restoration”和“neural vocoder”关键词；但未涉及扩散或流匹配模型，需人工复核其生成机制是否与我的核心兴趣一致。"
+      }
+    },
+    {
+      "id": "arxiv:2305.08227",
+      "arxiv_id": "2305.08227",
+      "title": "DeepFilterNet: Perceptually Motivated Real-Time Speech Enhancement",
+      "authors": [
+        "Hendrik Schröter",
+        "T. Rosenkranz",
+        "Alberto N. Escalante",
+        "Andreas Maier"
+      ],
+      "published": "2023-05-14T00:00:00+00:00",
+      "summary": "Multi-frame algorithms for single-channel speech enhancement are able to take advantage from short-time correlations within the speech signal. Deep Filtering (DF) was proposed to directly estimate a complex filter in frequency domain to take advantage of these correlations. In this work, we present a real-time speech enhancement demo using DeepFilterNet. DeepFilterNet's efficiency is enabled by exploiting domain knowledge of speech production and psychoacoustic perception. Our model is able to match state-of-the-art speech enhancement benchmarks while achieving a real-time-factor of 0.19 on a single threaded notebook CPU. The framework as well as pretrained weights have been published under an open source license.",
+      "paper_url": "https://arxiv.org/abs/2305.08227",
+      "pdf_url": "http://arxiv.org/pdf/2305.08227",
+      "categories": [
+        "Interspeech"
+      ],
+      "venue": "Interspeech",
+      "track": "foundation",
+      "topic_id": "speech_enhancement_frontend",
+      "topic_name": "Speech Enhancement and Audio Frontend",
+      "score": 7.0,
+      "justification": "该工作展示了基于DeepFilterNet的实时语音增强demo，利用语音产生与心理声学感知先验实现低复杂度增强，与语音增强方向高度相关；但作为demo展示而非核心方法论文，基础性和影响力一般。",
+      "citation_count": 60,
+      "date_added": "2026-08-17",
+      "chinese_summary": {
+        "problem": "解决单通道语音增强在实时约束下利用多帧相关性（Deep Filtering）时的计算效率问题，使复杂滤波方法能够实时运行。",
+        "method": "提出DeepFilterNet模型，基于Deep Filtering在频域直接估计复数滤波器以利用语音短时相关性，并通过引入语音产生机理和心理声学感知的领域知识来设计高效网络结构。该系统实现为实时语音增强演示，推理速度达到RTF 0.19。",
+        "innovation": "将语音产生与心理声学感知的领域知识融入神经网络设计以提升效率；在保持与最新语音增强基准可比性能的同时实现单线程CPU上的实时推理；开源框架和预训练权重便于复现与应用。",
+        "evidence": "摘要中报告模型能够匹配SOTA语音增强基准，并在单线程笔记本CPU上达到0.19的实时因子；框架和预训练权重已开源。但未给出具体数据集、评估指标或对比方法，证据有限。",
+        "limitations": "摘要未明确具体增强任务（如去噪、去混响、回声消除）、使用的数据集和评估指标、模型参数量、对比的SOTA方法、以及心理声学领域知识的具体实现方式。",
+        "why_relevant": "论文直接针对单通道语音增强，与用户研究方向核心关键词“speech enhancement”高度匹配；采用神经网络模型和频域复数滤波，可能涉及神经掩蔽或前端处理；关注实时性，符合音频前端部署需求。但摘要未提及去噪、去混响、回声消除等具体子任务，也未明确与用户关键词中的neural masking、U-Net直接关联，需人工复核全文确认是否覆盖细分方向。"
       }
     }
   ]
